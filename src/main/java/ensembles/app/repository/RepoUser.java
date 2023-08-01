@@ -23,7 +23,7 @@ public class RepoUser  {
 //		EntityTransaction tx = this.entityManager.getTransaction();
 //		tx.begin();
 		entityManager.persist(user);
-//		entityManager.flush();
+		entityManager.flush();
 //		tx.commit();
 //		entityManager.close();
 //		HibernateUtil.closeEntityManagerFactory();
