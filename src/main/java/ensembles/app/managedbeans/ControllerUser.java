@@ -1,44 +1,54 @@
 package ensembles.app.managedbeans;
 
+import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@ManagedBean
-public class ControllerUser {
+import ensembles.app.entity.User;
+import ensembles.app.service.UserService;
+import ensembles.app.viewmodels.UserViewModel;
 
-@Id
-@GeneratedValue (strategy= GenerationType.AUTO)
-        private Long id;
-		private String Email;
-		private String Password;
-			
-		
-		public ControllerUser(String email, String password) {
-			super();
-			Email = email;
-			Password = password;
-			
-		}
-		
-		
+@ManagedBean(name="controllerUser")
+@RequestScoped
+public class ControllerUser implements Serializable {
 
-		public String getEmail() {
-			return Email;
-		}
-		public void setEmail(String email) {
-			Email = email;
-		}
-		public String getPassword() {
-			return Password;
-		}
-		public void setPassword(String password) {
-			Password = password;
-		}
+	private static final long serialVersionUID = 1L;
+	
+	@Inject
+	private UserViewModel userViewModel;
+	@Inject
+	UserService userService;
+
+	public String saveUser() {
+		userService.saveUser(userViewModel.getEmail(), userViewModel.getPassword());
 		
+		//reset le view model
+		userViewModel = new UserViewModel();
 		
+		return "index.xhtml?faces-redirect=true";
 	}
 
+	public UserViewModel getUserViewModel() {
+		return userViewModel;
+	}
 
+	public void setUserViewModel(UserViewModel userViewModel) {
+		this.userViewModel = userViewModel;
+	}
+
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
+	
+}

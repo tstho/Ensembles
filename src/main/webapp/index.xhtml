@@ -12,43 +12,6 @@
 	<h2>index</h2>
 	<hr />
 	<br /> 
-	<title>Inscription</title>
-       
-    
-    
-      
-      
-         
-
-    <h:form action="#" method="post">
-        <fieldset>
-            <legend>Login</legend>
-            <table>
-                <tr>
-                    <td><h:outputLabel for="email">Email<span class="requis">*</span></h:outputLabel></td>
-                    <td><h:inputText type="email" id="email" name="email" value="" size="20" maxlength="20" /></td>
-                </tr>
-                <tr>
-                    <td><h:outputLabel for="password">Password<span class="requis">*</span></h:outputLabel></td>
-                    <td><h:inputSecret type="password" id="password" name="password" value="" size="20" maxlength="20" /></td>
-                </tr>
-                <tr>
-                    <td><h:outputLabel for="confirmation">Confirm Password <span class="requis">*</span></h:outputLabel></td>
-                    <td><h:inputSecret type="password" id="confirmation" name="confirmation" value="" size="20" maxlength="20" /></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><button type="submit" class="btn btn-secondary">Connexion</button></td>
-                </tr>
-            </table>
-
-            <p class="${empty form.erreurs ? 'succes' : 'erreur'}">
-                <!-- Ce paragraphe affichera un message d'erreur ou de succès en fonction de la condition -->
-            </p>
-        </fieldset>
-    </h:form>
-
-
-
 
 
     <h:form action="#" method="post">
@@ -86,7 +49,7 @@
         </fieldset>
     </h:form>
 
-    <p>Vous avez déjà un compte? <a href="#login">Connectez-vous ici</a> ou <a href="#inscription">créez un compte</a></p>
+    <p>Vous avez déjà un compte? <a href="#login">Connectez-vous ici</a> ou <a href="inscription.xhtml">créez un compte</a></p>
 </h:body>
 </html>
 
