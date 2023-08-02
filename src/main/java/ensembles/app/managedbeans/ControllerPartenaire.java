@@ -7,9 +7,9 @@ import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 
 import ensembles.app.service.PartenaireService;
-import ensembles.app.service.UserService;
+
 import ensembles.app.viewmodels.PartenaireViewModel;
-import ensembles.app.viewmodels.UserViewModel;
+
 
 @ManagedBean(name="controllerPartenaire")
 @RequestScoped
@@ -23,29 +23,30 @@ private static final long serialVersionUID = 1L;
 	PartenaireService partenaireService;
 
 	public String savePartenaire() {
-		userService.saveUser(userViewModel.getEmail(), userViewModel.getPassword());
+		partenaireService.savePartenaire(partenaireViewModel.getNom(), partenaireViewModel.getLocalisation());
 		
 		//reset le view model
-		userViewModel = new UserViewModel();
+		partenaireViewModel = new PartenaireViewModel();
 		
 		return "index.xhtml?faces-redirect=true";
 	}
 
-	public UserViewModel getUserViewModel() {
-		return userViewModel;
+	public PartenaireViewModel getPartenaireViewModel() {
+		return partenaireViewModel;
 	}
 
-	public void setUserViewModel(UserViewModel userViewModel) {
-		this.userViewModel = userViewModel;
+	public void setPartenaireViewModel(PartenaireViewModel partenaireViewModel) {
+		this.partenaireViewModel = partenaireViewModel;
 	}
 
-	public UserService getUserService() {
-		return userService;
+	public PartenaireService getPartenaireService() {
+		return partenaireService;
 	}
 
-	public void setUserService(UserService userService) {
-		this.userService = userService;
+	public void setPartenaireService(PartenaireService partenaireService) {
+		this.partenaireService = partenaireService;
 	}
+
 
 
 }

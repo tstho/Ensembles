@@ -30,4 +30,20 @@ public class ServiceService {
 		
 	}
 
+	public RepoService getRepoService() {
+		return repoService;
+	}
+
+	public void setRepoService(RepoService repoService) {
+		this.repoService = repoService;
+	}
+
+	public Service getService() {
+		return service;
+	}
+
+	public void setService(Service service) {
+		this.service = service;
+	}
+
 }
