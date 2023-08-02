@@ -4,7 +4,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import ensembles.app.entity.Partenaire;
-import ensembles.app.entity.User;
+
 import ensembles.app.repository.RepoPartenaire;
 
 
