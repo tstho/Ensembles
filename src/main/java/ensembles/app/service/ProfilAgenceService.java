@@ -20,6 +20,7 @@ public class ProfilAgenceService {
 		profilAgence.setVoieSociete(profilAgenceViewModel.getVoieSociete());
 		profilAgence.setCodePostalSociete(profilAgenceViewModel.getCodePostalSociete());
 		profilAgence.setVilleSociete(profilAgenceViewModel.getVilleSociete());
+		profilAgence.setDepartementSociete(profilAgenceViewModel.getDepartementSociete());
 		profilAgence.setPaysSociete(profilAgenceViewModel.getPaysSociete());
 		profilAgence.setNomResponsableSociete(profilAgenceViewModel.getNomResponsableSociete());
 		profilAgence.setPrenomResponsableSociete(profilAgenceViewModel.getPrenomResponsableSociete());
