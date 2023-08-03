@@ -53,4 +53,11 @@ public class User {
 		Password = password;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", Email=" + Email + ", Password=" + Password + "]";
+	}
+	
+	
+
 }

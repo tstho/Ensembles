@@ -5,12 +5,6 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import ensembles.app.entity.User;
 import ensembles.app.service.UserService;
 import ensembles.app.viewmodels.UserViewModel;
 

@@ -1,8 +1,14 @@
 package ensembles.app.service;
 
+
+
+import java.util.Date;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import ensembles.app.entity.SubscriptionStatut;
+import ensembles.app.entity.SubscriptionType;
 import ensembles.app.entity.User;
 import ensembles.app.repository.RepoUser;
 
@@ -39,7 +45,17 @@ public class UserService {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	
+	}
+
+	
+	
+
+	
+		
 	
 	
 	
-}
+	
+
