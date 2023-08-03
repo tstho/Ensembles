@@ -5,22 +5,32 @@
 	xsi:schemaLocation="
         http://xmlns.jcp.org/xml/ns/persistence
         http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+	<persistence-unit name="ensemblesBDD" transaction-type="JTA">
+		<jta-data-source>java:jboss/datasources/ensemblesBDD</jta-data-source>
         
-	<persistence-unit name="EnsemblesBDD"
-		>
-		<properties>
-			<property name="javax.persistence.jdbc.driver"
-				value="com.mysql.cj.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/EnsemblesBDD?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;serverTimezone=Europe/Paris" />
+		
+	<!-- <properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/EnsemblesBDD?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;serverTimezone=Europe/Paris" />
 				
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="rrrrr" />
 			
-			<property name="hibernate.dialect"
-				value="org.hibernate.dialect.MySQL5Dialect" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 		</properties>
+	 -->	
+		<properties>
+			<!-- Properties for Hibernate -->
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.connection.characterEncoding"
+				value="UTF-8" />
+			<property name="hibernate.connection.CharSet" value="utf8" />
+			<property name="hibernate.connection.useUnicode" value="true" />
+		</properties>
+		
 	</persistence-unit>
 </persistence>

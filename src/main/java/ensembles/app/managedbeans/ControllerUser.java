@@ -2,38 +2,45 @@ package ensembles.app.managedbeans;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import ensembles.app.entity.User;
 import ensembles.app.service.UserService;
 import ensembles.app.viewmodels.UserViewModel;
 
-@ManagedBean(name="controllerUser")
+@Named
 @RequestScoped
 public class ControllerUser implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	@Inject
-	private UserViewModel userViewModel;
-	@Inject
-	UserService userService;
 
+	@Inject
+	private UserService userService;
+
+	private UserViewModel userViewModel = new UserViewModel();
+
+	/*
+	 * Méthode appelé depuis la vue pour enregistrer un user
+	 */
 	public String saveUser() {
 		userService.saveUser(userViewModel.getEmail(), userViewModel.getPassword());
 		
 		//reset le view model
-		userViewModel = new UserViewModel();
-		
+	//	clearUserViewModel();
+		//redirection vers l'index
 		return "index.xhtml?faces-redirect=true";
 	}
 
+	/*
+	 * Efface les champs du view model
+	 */
+	public void clearUserViewModel() {
+		userViewModel = new UserViewModel();
+	}
+
+	/*
+	 * getters & setters
+	 */
 	public UserViewModel getUserViewModel() {
 		return userViewModel;
 	}
@@ -42,13 +49,6 @@ public class ControllerUser implements Serializable {
 		this.userViewModel = userViewModel;
 	}
 
-	public UserService getUserService() {
-		return userService;
-	}
-
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
 
 	
 }

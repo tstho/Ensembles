@@ -11,12 +11,11 @@ public class UserService {
 	
 	@Inject
 	private RepoUser repoUser;
-	@Inject
-	private User user;
+	
 
 	public void saveUser(String email, String password) {
 	
-		user = new User();
+		User user = new User();
 		user.setEmail(email);
 		user.setPassword(password);
 		repoUser.saveUser(user);
@@ -24,22 +23,7 @@ public class UserService {
 		
 	}
 
-	public RepoUser getRepoUser() {
-		return repoUser;
-	}
 
-	public void setRepoUser(RepoUser repoUser) {
-		this.repoUser = repoUser;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-	
 	
 	
 }
