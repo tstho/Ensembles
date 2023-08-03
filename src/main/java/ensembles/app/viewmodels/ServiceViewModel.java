@@ -1,6 +1,6 @@
 package ensembles.app.viewmodels;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 

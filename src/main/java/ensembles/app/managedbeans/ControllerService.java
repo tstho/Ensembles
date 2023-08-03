@@ -20,7 +20,7 @@ private static final long serialVersionUID = 1L;
 	@Inject
 	ServiceService serviceService;
 
-	public String saveUser() {
+	public String saveService() {
 		serviceService.saveService(serviceViewModel.getName(), serviceViewModel.getPlace(),serviceViewModel.getBegin(),serviceViewModel.getEnd(),serviceViewModel.getServiceType(),serviceViewModel.getPrice(), serviceViewModel.getDescription());
 		
 		//reset le view model

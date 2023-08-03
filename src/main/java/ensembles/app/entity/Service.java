@@ -2,6 +2,8 @@ package ensembles.app.entity;
 
 import java.util.Date;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +22,7 @@ public class Service {
 	
 	private Date end;
 	
+	@Enumerated(EnumType.STRING)
 	private ServiceType ServiceType ;
 	
 	private Double price; 
