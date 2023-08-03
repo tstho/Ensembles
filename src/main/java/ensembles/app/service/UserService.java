@@ -1,8 +1,14 @@
 package ensembles.app.service;
 
+
+
+import java.util.Date;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import ensembles.app.entity.SubscriptionStatut;
+import ensembles.app.entity.SubscriptionType;
 import ensembles.app.entity.User;
 import ensembles.app.repository.RepoUser;
 import ensembles.app.viewmodels.UserViewModel;
@@ -27,5 +33,11 @@ public class UserService {
 	}
 
 	
+
 	
-}
+		
+	
+	
+	
+	
+

@@ -45,7 +45,6 @@ public class User {
 	public void setPassword(String password) {
 		Password = password;
 	}
-
 	public Role getRole() {
 		return role;
 	}

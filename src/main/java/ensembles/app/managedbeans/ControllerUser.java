@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
-
 import ensembles.app.entity.Role;
 import ensembles.app.service.UserService;
 import ensembles.app.viewmodels.UserViewModel;
