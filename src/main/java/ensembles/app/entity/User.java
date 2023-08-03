@@ -1,33 +1,26 @@
 package ensembles.app.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "User")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String Email;
+	private String email;
 
 	private String Password;
-
-	public User(String email, String password) {
-		super();
-		Email = email;
-		Password = password;
-
-	}
-
-	public User() {
-		super();
-	}
+	
+	@Enumerated(EnumType.STRING)
+	private Role role;
 
 	public Long getId() {
 		return id;
@@ -38,11 +31,11 @@ public class User {
 	}
 
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -52,12 +45,12 @@ public class User {
 	public void setPassword(String password) {
 		Password = password;
 	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", Email=" + Email + ", Password=" + Password + "]";
+	public Role getRole() {
+		return role;
 	}
-	
-	
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
 
 }

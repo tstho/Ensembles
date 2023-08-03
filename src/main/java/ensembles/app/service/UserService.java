@@ -11,45 +11,27 @@ import ensembles.app.entity.SubscriptionStatut;
 import ensembles.app.entity.SubscriptionType;
 import ensembles.app.entity.User;
 import ensembles.app.repository.RepoUser;
+import ensembles.app.viewmodels.UserViewModel;
 
 @Stateless
 public class UserService {
 	
 	@Inject
 	private RepoUser repoUser;
-	@Inject
-	private User user;
-
-	public void saveUser(String email, String password) {
 	
-		user = new User();
-		user.setEmail(email);
-		user.setPassword(password);
+
+	public void saveUser(UserViewModel userViewModel) {
+	
+		User user = new User();
+		user.setEmail(userViewModel.getEmail());
+		user.setPassword(userViewModel.getPassword());
+		user.setRole(userViewModel.getRole());
 		repoUser.saveUser(user);
 		
+		System.out.println(userViewModel.getRole());
 		
 	}
 
-	public RepoUser getRepoUser() {
-		return repoUser;
-	}
-
-	public void setRepoUser(RepoUser repoUser) {
-		this.repoUser = repoUser;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	
-	}
-
-	
 	
 
 	

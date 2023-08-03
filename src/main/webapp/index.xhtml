@@ -12,51 +12,17 @@
 	<h2>index</h2>
 	<hr />
 	<br /> 
-
-
-    <h:form action="#" method="post">
-        <fieldset>
-            <legend>Profil</legend>
-            <table>
-                <tr>
-                    <td><h:outputLabel for="nom">Nom<span class="requis">*</span></h:outputLabel></td>
-                    <td><h:inputText type="text" id="nom" name="nom" value="" size="20" maxlength="20" /></td>
+   <table>
+       <tr>
+        <a href="inscription.xhtml">créez un compte</a>
                 </tr>
                 <tr>
-                    <td><h:outputLabel for="prenom">Prénom<span class="requis">*</span></h:outputLabel></td>
-                    <td><h:inputText type="text" id="prenom" name="prenom" value="" size="20" maxlength="20" /></td>
+    <a href="profilAgence.xhtml">Renseigner profil Agence</a>
                 </tr>
                 <tr>
-                    <td><h:outputLabel for="societe">Société<span class="requis">*</span></h:outputLabel></td>
-                    <td><h:inputText type="text" id="societe" name="societe" value="" size="20" maxlength="20" /></td>
-                </tr>
-                <tr>
-                    <td><h:outputLabel for="localisation">Localisation<span class="requis">*</span></h:outputLabel></td>
-                    <td><h:inputText type="text" id="localisation" name="localisation" value="" size="20" maxlength="20" /></td>
-                </tr>
-                <tr>
-                    <td><h:outputLabel for="adresse">Adresse<span class="requis">*</span></h:outputLabel></td>
-                    <td><h:inputText type="text" id="adresse" name="adresse" value="" size="20" maxlength="20" /></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><button type="submit" class="btn btn-secondary">Enregistrer</button></td>
-                </tr>
-            </table>
-
-            <p class="${empty form.erreurs ? 'succes' : 'erreur'}">
-                <!-- Ce paragraphe affichera un message d'erreur ou de succès en fonction de la condition -->
-            </p>
-        </fieldset>
-    </h:form>
-
-    <p>Vous avez déjà un compte? <a href="#login">Connectez-vous ici</a> ou <a href="inscription.xhtml">créez un compte</a></p>
-     ou <p><a href="subscription.xhtml">Abonnement</a></p>
-    
-    
-    
-    
-    
-    
+     <a href="subscription.xhtml">Abonnement</a>
+        </tr>
+  </table>
 </h:body>
 </html>
 
