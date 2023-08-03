@@ -6,5 +6,5 @@ public enum SubscriptionType {
 	
 	BestDealSubscription,
 	
-	PremiunSubscription,
+	PremiumSubscription,
 }

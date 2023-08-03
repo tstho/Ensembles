@@ -19,91 +19,110 @@
 				<td><h:outputLabel value="Subscription Type : " /></td>
 
 				<td><h:selectOneMenu name="subscription"
-						value="#{controllerSubscription.SubscriptionViewModel.SubscriptionType}"/>
-						
-						 <f:selectItem itemValue="#{SubscriptionType.controllerSubscription}" itemLabel="#{SelectSubscriptionType}" />
-						 
-                          <f:selectItems value="#{controllerSubscription.SubscriptionTypeOptions}"  />
-							
+						value="#{controllerSubscription.subscriptionViewModel.subscriptionType}">
+
+						<f:selectItem
+							itemValue="#{SubscriptionType.controllerSubscription}"
+							itemLabel="#{SelectSubscriptionType}" />
+
+						<f:selectItems
+							value="#{controllerSubscription.subscriptionTypeOptions}" />
 
 
-			</h:selectOneMenu></td>
+
+					</h:selectOneMenu></td>
 
 			</tr>
 			<tr>
-				<td><h:outputLabel value="Start Date : " /></td>
+				<!--  <td><h:outputLabel value="Start Date : " /></td>
 				<td><h:inputText
 						value="#{controllersubscription.subscriptionViewModel.StartDate}"
-						size="20" maxlength="20" /> <h:inputText type="date" pattern="dd-MM-yyyy" /></td>
+						size="20" maxlength="20" /> <h:inputText type="date" pattern="dd-MM-yyyy" /></td>-->
+
+				<!--  <td><p:outputLabel for="button" value="Start Date:" /></td>
+				<td><p:calendar id="buttonStartDate"
+						value="#{calendarView.date3}" showOn="button" /></td>-->
 						
+				  <td><h:outputLabel value="Start Date: "/></td>
+                  <td><p:datePicker value="#{controllerSubscription.subscriptionViewModel.startDate}" size="20" maxlength="20" /></td>
+
 			</tr>
 
 			<tr>
-				<td><h:outputLabel value="End Date : " /></td>
+				<!--  	<td><h:outputLabel value="End Date : " /></td>
 				<td><h:inputText
 						value="#{controllersubscription.subscriptionViewModel.EndDate}"
-						size="20" maxlength="20" /><h:inputText type="date" pattern="dd-MM-yyyy" /></td>
+						size="20" maxlength="20" /><h:inputText type="date" pattern="dd-MM-yyyy" /></td>-->
+
+			<!--  	<td><p:outputLabel for="button" value="End Date:" /></td>
+				<td><p:calendar id="button" value="#{calendarView.date3}"
+						showOn="button" /></td>-->
+						 <td><h:outputLabel value="End Date: "/></td>
+                  <td><p:datePicker value="#{controllerSubscription.subscriptionViewModel.endDate}" size="20" maxlength="20" /></td>
 			</tr>
 
 			<tr>
 				<td><h:outputLabel value="price : " /></td>
 				<td><h:inputText
-						value="#{controllersubscription.subscriptionViewModel.price}"
-						size="20" maxlength="20" /> <h:inputText type="number" step="0.01"  /></td>
+						value="#{controllerSubscription.subscriptionViewModel.price}"
+						size="20" maxlength="20" type="number" step="0.01" /></td>
 			</tr>
-			
-			
+
+
 			<tr>
 				<td><h:outputLabel value="Subscription Statut : " /></td>
 
 				<td><h:selectOneMenu name="subscription"
-						value="#{controllersubscription.subscriptionViewModel.subscriptionStatut}"/>
-						
-						 <f:selectItem itemValue="#{subscriptionStatut.controllersubscription}" itemLabel="#{SelectSubscriptionStatut}" />
-						 
-                          <f:selectItems value="#{controllersubscription.subscriptionStatutOptions}"  />
-							
-			</h:selectOneMenu></td>
+						value="#{controllerSubscription.subscriptionViewModel.subscriptionStatut}">
+
+						<f:selectItems
+							value="#{controllerSubscription.subscriptionStatutOptions}" />
+
+					</h:selectOneMenu></td>
 
 			</tr>
-		
-			
+
+
 			<tr>
 				<td><h:outputLabel value="Payment Method : " /></td>
 
 				<td><h:selectOneMenu name="PaymentMethod"
-						value="#{controllerSubscription.subscriptionViewModel.paymentMethod}"/>
-						
-						 <f:selectItem itemValue="#{paymentMethod.controllerSubscription}" itemLabel="#{SelectPaymentMethod}" />
-						 
-                          <f:selectItems value="#{controllerSubscription.PaymentMethodOptions}"  />
-							
+						value="#{controllerSubscription.subscriptionViewModel.paymentMethod}">
+
+						<f:selectItem itemValue="#{paymentMethod.controllerSubscription}"
+							itemLabel="#{SelectPaymentMethod}" />
+
+						<f:selectItems
+							value="#{controllerSubscription.paymentMethodOptions}" />
 
 
-			</h:selectOneMenu></td>
+
+					</h:selectOneMenu></td>
 
 			</tr>
 
-         <tr>
+			<tr>
 				<td><h:outputLabel value="Payment Period : " /></td>
 
 				<td><h:selectOneMenu name="PaymentMethod"
-						value="#{controllerSubscription.subscriptionViewModel.paymentPeriod}"/>
-						
-						 <f:selectItem itemValue="#{paymentMethod.controllerSubscription}" itemLabel="#{SelectPaymentPeriod}" />
-						 
-                          <f:selectItems value="#{controllerSubscription.PaymentPeriodOptions}"  />
-							
+						value="#{controllerSubscription.subscriptionViewModel.paymentPeriod}">
+
+						<f:selectItem itemValue="#{paymentMethod.controllerSubscription}"
+							itemLabel="#{SelectPaymentPeriod}" />
+
+						<f:selectItems
+							value="#{controllerSubscription.paymentPeriodOptions}" />
 
 
-			</h:selectOneMenu></td>
+
+					</h:selectOneMenu></td>
 
 			</tr>
 
 
 			<tr>
 				<td colspan="2"><h:commandButton value="Subscription"
-						action="#{controllerSubscription.savesubscription()}" /></td>
+						action="#{controllerSubscription.saveSubscription()}" /></td>
 			</tr>
 		</table>
 		<!-- 

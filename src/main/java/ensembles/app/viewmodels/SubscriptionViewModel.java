@@ -52,27 +52,9 @@ public class SubscriptionViewModel {
 
 
 
-
-
-
-
-
-
-
-
-
 	public void setSubscriptionType(SubscriptionType subscriptionType) {
 		this.subscriptionType = subscriptionType;
 	}
-
-
-
-
-
-
-
-
-
 
 
 
@@ -90,26 +72,9 @@ public class SubscriptionViewModel {
 
 
 
-
-
-
-
-
-
-
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -121,18 +86,6 @@ public class SubscriptionViewModel {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
@@ -140,30 +93,9 @@ public class SubscriptionViewModel {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 	public double getprice() {
 		return price;
 	}
-
-
-
-
-
-
-
-
-
-
 
 
 
