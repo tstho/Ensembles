@@ -10,7 +10,7 @@ import ensembles.app.entity.Partenaire;
 @Stateless
 public class RepoPartenaire {
 	
-	@PersistenceContext(unitName = "EnsemblesBDD")
+	@PersistenceContext
 	 private EntityManager entityManager;
 	
 //	public RepoUser() {

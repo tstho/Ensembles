@@ -11,7 +11,7 @@ import ensembles.app.entity.User;
 @Stateless
 public class RepoUser  {
 	
-	@PersistenceContext(unitName = "EnsemblesBDD")
+	@PersistenceContext
 	 private EntityManager entityManager;
 	
 //	public RepoUser() {

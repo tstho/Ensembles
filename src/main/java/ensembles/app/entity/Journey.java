@@ -15,12 +15,17 @@ public class Journey {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String Departure;
 	private String Destination; 
+	
 	private Date DepartureDate; 
-	private Date DestinationDate; 
+	private Date DestinationDate;
+	
 	private Conveyance conveyance;
+	
 	private Double price;
+	
 	public Long getId() {
 		return id;
 	}

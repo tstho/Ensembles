@@ -6,7 +6,7 @@ import javax.persistence.PersistenceContext;
 import ensembles.app.entity.Service;
 public class RepoService {
 	
-	@PersistenceContext(unitName = "EnsemblesBDD")
+	@PersistenceContext
 	 private EntityManager entityManager;
 	
 //	public RepoUser() {
