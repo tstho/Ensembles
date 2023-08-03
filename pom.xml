@@ -92,7 +92,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.3.7.Final</version>
+			<scope>provided</scope>
 		</dependency>
 		<!-- API, java.xml.bind module -->
 		<dependency>
@@ -124,7 +124,11 @@
 			<artifactId>cdi-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>12.0.0</version>
+		</dependency>
 		<!-- Import the Common Annotations API (JSR-250), we use provided scope 
 			as the API is included in JBoss WildFly -->
 		<dependency>

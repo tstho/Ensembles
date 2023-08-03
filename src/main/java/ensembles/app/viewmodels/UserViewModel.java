@@ -1,12 +1,14 @@
 package ensembles.app.viewmodels;
 
-import javax.faces.bean.ManagedBean;
 
-@ManagedBean
+
+import ensembles.app.entity.Role;
+
 public class UserViewModel {
 	
 	private String email;
 	private String password;
+	private Role role;
 	
 	
 	
@@ -22,9 +24,12 @@ public class UserViewModel {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	@Override
-	public String toString() {
-		return "UserViewModel [email=" + email + ", password=" + password + "]";
+
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
 	}
 	
 	

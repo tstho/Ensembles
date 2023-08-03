@@ -1,3 +1,4 @@
+
 //package ensembles.app.utils;
 //
 //import javax.persistence.EntityManager;
@@ -20,13 +21,5 @@
 //		entityManagerFactory.close();
 //	}
 //
-//	public static EntityManagerFactory getEntityManagerFactory() {
-//		return entityManagerFactory;
-//	}
-//
-//	public static void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
-//		HibernateUtil.entityManagerFactory = entityManagerFactory;
-//	}
-//	
 //	
 //}
