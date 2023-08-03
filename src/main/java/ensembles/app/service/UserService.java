@@ -19,11 +19,12 @@ public class UserService {
 		User user = new User();
 		user.setEmail(userViewModel.getEmail());
 		user.setPassword(userViewModel.getPassword());
+		user.setRole(userViewModel.getRole());
 		repoUser.saveUser(user);
 		
+		System.out.println(userViewModel.getRole());
 		
 	}
-
 
 	
 	

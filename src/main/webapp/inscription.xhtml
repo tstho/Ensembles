@@ -7,38 +7,51 @@
 <h:head>
 	<title>Ensembles :: Inscription</title>
 	<link type="text/css" rel="stylesheet" href="form.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
 </h:head>
 <h:body>
 	<title>Inscription</title>
 	<br />
 	<hr />
-    <h:form>
-            <table>
-                <tr>
-                    <td><h:outputLabel value="Email : "/></td>
-                    <td><h:inputText type="text" value="#{controllerUser.userViewModel.email}" size="20" maxlength="20" /></td>
-                </tr>
-                <tr>
-                    <td><h:outputLabel value="Password : "/></td>
-                    <td><h:inputSecret type="password" value="#{controllerUser.userViewModel.password}" size="20" maxlength="20" /></td>
-                </tr>
-                <!-- 
+	<h:form>
+		<table>
+		<h:selectOneRadio value = "#{controllerUser.userViewModel.role}">
+            <f:selectItem itemValue = "CLIENT" itemLabel = "client" />
+            <f:selectItem itemValue = "AGENCY" itemLabel = "agence" />
+            <f:selectItem itemValue = "PARTNER" itemLabel = "partenaire" />
+         </h:selectOneRadio>	
+         
+ 	
+			<tr>
+				<td><h:outputLabel value="Email : " /></td>
+				<td><h:inputText type="text"
+						value="#{controllerUser.userViewModel.email}" size="20"
+						maxlength="20" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel value="Password : " /></td>
+				<td><h:inputSecret type="password"
+						value="#{controllerUser.userViewModel.password}" size="20"
+						maxlength="20" /></td>
+			</tr>
+			<!-- 
                 <tr>
                     <td><h:outputLabel for="confirmation">Confirm Password <span class="requis">*</span></h:outputLabel></td>
                     <td><h:inputSecret type="password" id="confirmation" name="confirmation" value="#{controllerUser.userViewModel.password}" size="20" maxlength="20" /></td>
                 </tr>
                  -->
-                <tr>
-                    <td colspan="2"><h:commandButton value="Inscription" action="#{controllerUser.saveUser}"/></td>
-                </tr>
-            </table>
-<!-- 
+			<tr>
+				<td colspan="2"><h:commandButton value="Inscription"
+						action="#{controllerUser.saveUser}" /></td>
+			</tr>
+		</table>
+		<!-- 
             <p class="${empty form.erreurs ? 'succes' : 'erreur'}">
                  Ce paragraphe affichera un message d'erreur ou de succès en fonction de la condition
             </p>
             
                  -->
-    </h:form>
-    
+	</h:form>
+
 </h:body>
 </html>

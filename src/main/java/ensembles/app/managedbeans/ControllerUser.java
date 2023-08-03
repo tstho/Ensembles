@@ -1,11 +1,13 @@
 package ensembles.app.managedbeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
+
+import ensembles.app.entity.Role;
 import ensembles.app.service.UserService;
 import ensembles.app.viewmodels.UserViewModel;
 
@@ -49,6 +51,14 @@ public class ControllerUser implements Serializable {
 	public void setUserViewModel(UserViewModel userViewModel) {
 		this.userViewModel = userViewModel;
 	}
+	
+	public List<Role> getRole() {
+		List<Role> userType = new ArrayList<>();
+		for (Role role : Role.values()) {
+			userType.add(role);
+			}
+		return userType;
+		}
 
 
 	
