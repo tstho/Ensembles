@@ -23,7 +23,6 @@ public class ControllerUser implements Serializable {
 	 * Méthode appelé depuis la vue pour enregistrer un user
 	 */
 	public String saveUser() {
-		System.out.println(userViewModel.toString());
 		userService.saveUser(userViewModel);
 		
 		//reset le view model
