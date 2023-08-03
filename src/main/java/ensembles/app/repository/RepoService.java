@@ -1,9 +1,14 @@
 package ensembles.app.repository;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+
+
 import javax.persistence.PersistenceContext;
 
 import ensembles.app.entity.Service;
+
+@Stateless
 public class RepoService {
 	
 	@PersistenceContext
