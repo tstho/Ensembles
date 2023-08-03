@@ -42,9 +42,11 @@
 				<!--  <td><p:outputLabel for="button" value="Start Date:" /></td>
 				<td><p:calendar id="buttonStartDate"
 						value="#{calendarView.date3}" showOn="button" /></td>-->
-						
-				  <td><h:outputLabel value="Start Date: "/></td>
-                  <td><p:datePicker value="#{controllerSubscription.subscriptionViewModel.startDate}" size="20" maxlength="20" /></td>
+
+				<td><h:outputLabel value="Start Date: " /></td>
+				<td><p:datePicker
+						value="#{controllerSubscription.subscriptionViewModel.startDate}"
+						size="20" maxlength="20" /></td>
 
 			</tr>
 
@@ -54,11 +56,13 @@
 						value="#{controllersubscription.subscriptionViewModel.EndDate}"
 						size="20" maxlength="20" /><h:inputText type="date" pattern="dd-MM-yyyy" /></td>-->
 
-			<!--  	<td><p:outputLabel for="button" value="End Date:" /></td>
+				<!--  	<td><p:outputLabel for="button" value="End Date:" /></td>
 				<td><p:calendar id="button" value="#{calendarView.date3}"
 						showOn="button" /></td>-->
-						 <td><h:outputLabel value="End Date: "/></td>
-                  <td><p:datePicker value="#{controllerSubscription.subscriptionViewModel.endDate}" size="20" maxlength="20" /></td>
+				<td><h:outputLabel value="End Date: " /></td>
+				<td><p:datePicker
+						value="#{controllerSubscription.subscriptionViewModel.endDate}"
+						size="20" maxlength="20" /></td>
 			</tr>
 
 			<tr>

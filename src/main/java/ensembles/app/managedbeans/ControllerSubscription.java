@@ -18,7 +18,7 @@ import ensembles.app.viewmodels.SubscriptionViewModel;
 
 @ManagedBean(name="controllerSubscription")
 @RequestScoped
-public class ControllerSubscription<SelectItem> implements Serializable {
+public class ControllerSubscription implements Serializable {
 	
 
 		private static final long serialVersionUID = 1L;
