@@ -7,8 +7,7 @@
 <h:head>
 	<title>Ensembles :: Inscription</title>
 	<link type="text/css" rel="stylesheet" href="form.css" />
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
 </h:head>
 <h:body>
 	<title>Inscription</title>
@@ -16,6 +15,11 @@
 	<hr />
 	<h:form>
 		<table>
+		<h:selectOneRadio value = "#{controllerUser.userViewModel.role}">
+            <f:selectItem itemValue = "CLIENT" itemLabel = "client" />
+            <f:selectItem itemValue = "AGENCY" itemLabel = "agence" />
+            <f:selectItem itemValue = "PARTNER" itemLabel = "partenaire" />
+         </h:selectOneRadio>	
 			<tr>
 				<td><h:outputLabel value="Email : " /></td>
 				<td><h:inputText type="text"
@@ -34,23 +38,6 @@
                     <td><h:inputSecret type="password" id="confirmation" name="confirmation" value="#{controllerUser.userViewModel.password}" size="20" maxlength="20" /></td>
                 </tr>
                  -->
-			<div class="form-check">
-				<input class="form-check-input" type="radio" name="flexRadioDefault"
-					id="flexRadioDefault1" /><label class="form-check-label"
-					for="flexRadioDefault1"> Client </label>
-			</div>
-			<div class="form-check">
-				<input class="form-check-input" type="radio" name="flexRadioDefault"
-					id="flexRadioDefault2" /><label class="form-check-label"
-					for="flexRadioDefault2"> Partenaire </label>
-			</div>
-			<div class="form-check">
-				<input class="form-check-input" type="radio" name="flexRadioDefault"
-					id="flexRadioDefault2" /><label class="form-check-label"
-					for="flexRadioDefault3"> Agence </label>
-			</div>
-
-
 			<tr>
 				<td colspan="2"><h:commandButton value="Inscription"
 						action="#{controllerUser.saveUser}" /></td>
