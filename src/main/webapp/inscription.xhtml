@@ -16,11 +16,11 @@
             <table>
                 <tr>
                     <td><h:outputLabel value="Email : "/></td>
-                    <td><h:inputText  value="#{controllerUser.userViewModel.email}" size="20" maxlength="20" /></td>
+                    <td><h:inputText type="text" value="#{controllerUser.userViewModel.email}" size="20" maxlength="20" /></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel value="Password : "/></td>
-                    <td><h:inputSecret value="#{controllerUser.userViewModel.password}" size="20" maxlength="20" /></td>
+                    <td><h:inputSecret type="password" value="#{controllerUser.userViewModel.password}" size="20" maxlength="20" /></td>
                 </tr>
                 <!-- 
                 <tr>
@@ -29,7 +29,7 @@
                 </tr>
                  -->
                 <tr>
-                    <td colspan="2"><h:commandButton value="Inscription" action="#{controllerUser.saveUser()}"/></td>
+                    <td colspan="2"><h:commandButton value="Inscription" action="#{controllerUser.saveUser}"/></td>
                 </tr>
             </table>
 <!-- 

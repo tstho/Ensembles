@@ -2,14 +2,14 @@ package ensembles.app.managedbeans;
 
 import java.io.Serializable;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import ensembles.app.service.UserService;
 import ensembles.app.viewmodels.UserViewModel;
 
-@Named
-@RequestScoped
+@ManagedBean
 public class ControllerUser implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -23,7 +23,8 @@ public class ControllerUser implements Serializable {
 	 * Méthode appelé depuis la vue pour enregistrer un user
 	 */
 	public String saveUser() {
-		userService.saveUser(userViewModel.getEmail(), userViewModel.getPassword());
+		System.out.println(userViewModel.toString());
+		userService.saveUser(userViewModel);
 		
 		//reset le view model
 	//	clearUserViewModel();

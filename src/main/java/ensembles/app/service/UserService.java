@@ -5,6 +5,7 @@ import javax.inject.Inject;
 
 import ensembles.app.entity.User;
 import ensembles.app.repository.RepoUser;
+import ensembles.app.viewmodels.UserViewModel;
 
 @Stateless
 public class UserService {
@@ -13,11 +14,11 @@ public class UserService {
 	private RepoUser repoUser;
 	
 
-	public void saveUser(String email, String password) {
+	public void saveUser(UserViewModel userViewModel) {
 	
 		User user = new User();
-		user.setEmail(email);
-		user.setPassword(password);
+		user.setEmail(userViewModel.getEmail());
+		user.setPassword(userViewModel.getPassword());
 		repoUser.saveUser(user);
 		
 		
