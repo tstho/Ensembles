@@ -66,7 +66,5 @@ public class ControllerUser implements Serializable {
 		return userType;
 		}
 	
-
-
 	
 }
