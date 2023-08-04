@@ -7,6 +7,9 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import ensembles.app.entity.Role;
+import ensembles.app.entity.SubscriptionType;
+import ensembles.app.entity.User;
+import ensembles.app.repository.RepoUser;
 import ensembles.app.service.UserService;
 import ensembles.app.viewmodels.UserViewModel;
 
@@ -19,6 +22,9 @@ public class ControllerUser implements Serializable {
 	private UserService userService;
 
 	private UserViewModel userViewModel = new UserViewModel();
+	
+	private RepoUser repoUser = new RepoUser();
+	
 
 	/*
 	 * Méthode appelé depuis la vue pour enregistrer un user
@@ -29,8 +35,10 @@ public class ControllerUser implements Serializable {
 		//reset le view model
 	//	clearUserViewModel();
 		//redirection vers l'index
+		//return "index.xhtml?faces-redirect=true";
 		return "";
 	}
+	
 
 	/*
 	 * Efface les champs du view model
@@ -57,7 +65,6 @@ public class ControllerUser implements Serializable {
 			}
 		return userType;
 		}
-
-
+	
 	
 }

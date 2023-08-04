@@ -16,7 +16,7 @@ import ensembles.app.service.SubscriptionService;
 import ensembles.app.viewmodels.SubscriptionViewModel;
 
 
-@ManagedBean(name="controllerSubscription")
+@ManagedBean
 @RequestScoped
 public class ControllerSubscription implements Serializable {
 	
