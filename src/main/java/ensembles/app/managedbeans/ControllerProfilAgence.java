@@ -33,28 +33,6 @@ public class ControllerProfilAgence  implements Serializable {
 		this.profilAgenceViewModel = profilAgenceViewModel;
 	}
 	
-
-	
-	ProfilClientViewModel profilClientViewModel = new ProfilClientViewModel();
-	
-	
-	@Inject
-	ProfilClientService profilClientService;
-	
-	public void saveProfilClient() {
-		profilClientService.saveProfilClient(profilClientViewModel);
-	}
-
-
-	public ProfilClientViewModel getProfilClientViewModel() {
-		return profilClientViewModel;
-	}
-
-
-	public void setProfilClientViewModel(ProfilClientViewModel profilClientViewModel) {
-		this.profilClientViewModel = profilClientViewModel;
-	}
-	
 	
 	
 }
