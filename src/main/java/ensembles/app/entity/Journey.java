@@ -19,18 +19,13 @@ public class Journey {
 	private String Departure;
 	private String Destination; 
 	
-	public Service getService() {
-		return service;
-	}
-	public void setService(Service service) {
-		this.service = service;
-	}
+	
 	private Date DepartureDate; 
 	private Date DestinationDate;
 	
 	private Conveyance conveyance;
 	
-	private Service service;
+	
 	
 	private Double price;
 	
