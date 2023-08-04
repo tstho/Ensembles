@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<ui:composition>
+
+<!-- Navigation bar -->
+    <div class="mainNavbar">
+        <a href="#" class="navbar-logo">EnsembleS (logo)</a>
+        <a href="#" class="navbar-login">Login</a>
+    </div>
+
+    <!-- Menu container -->
+    <div class="menu-container" id="menuContainer">
+        <div class="menu-item">
+            <div class="input-box">
+                <input type="text" placeholder="Enter your username"/>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="input-box">
+                <input type="password" placeholder="Enter your password"/>
+            </div>
+        </div>
+        <div class="menu-item">Not yet a user?</div>
+    </div>
+    
+    
+    <script>
+        // Toggle menu display when login button is clicked
+        document.querySelector('.navbar-login').addEventListener('click', function () {
+            const menuContainer = document.getElementById('menuContainer');
+            if (menuContainer.style.display === 'block') {
+                menuContainer.style.display = 'none';
+            } else {
+                menuContainer.style.display = 'block';
+            }
+        });
+
+    </script>
+</ui:composition>
+
+
+</html>
