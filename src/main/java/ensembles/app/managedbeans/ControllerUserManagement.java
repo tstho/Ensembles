@@ -24,6 +24,12 @@ public class ControllerUserManagement {
 		userList = rU.findAll();
 		System.out.println(userList);
 	}
+	
+	public void deleteUser(User user) {
+		
+		rU.deleteUser(user);
+		
+	}
 
 	public List<User> getUserList() {
 		return userList;
