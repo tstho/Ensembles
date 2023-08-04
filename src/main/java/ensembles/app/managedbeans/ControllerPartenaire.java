@@ -28,7 +28,7 @@ private static final long serialVersionUID = 1L;
 		//reset le view model
 		partenaireViewModel = new PartenaireViewModel();
 		
-		return "index.xhtml?faces-redirect=true";
+		return "";
 	}
 
 	public PartenaireViewModel getPartenaireViewModel() {

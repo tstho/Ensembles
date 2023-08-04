@@ -34,7 +34,7 @@ public class ControllerSubscription implements Serializable {
 			//reset le view model
 			subscriptionViewModel = new SubscriptionViewModel();
 			
-			return "index.xhtml?faces-redirect=true";
+			return "";
 		}
 		
 		public List<SubscriptionType> getSubscriptionTypeOptions() {

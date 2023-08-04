@@ -29,7 +29,7 @@ public class ControllerUser implements Serializable {
 		//reset le view model
 	//	clearUserViewModel();
 		//redirection vers l'index
-		return "index.xhtml?faces-redirect=true";
+		return "";
 	}
 
 	/*

@@ -26,7 +26,7 @@ private static final long serialVersionUID = 1L;
 		//reset le view model
 		serviceViewModel = new ServiceViewModel();
 		
-		return "index.xhtml?faces-redirect=true";
+		return "";
 	}
 
 	public ServiceViewModel getServiceViewModel() {
