@@ -47,11 +47,13 @@
 					<td><h:outputLabel for="numero">Numéro :</h:outputLabel></td>
 					<td><h:inputText type="text" id="numero"
 							value="#{controllerProfilClient.profilClientViewModel.numero}"
-							size="10" maxlength="10" /></td>
+							size="20" maxlength="20" /></td>
+				</tr>
+				<tr>
 					<td><h:outputLabel for="complement">Complement :</h:outputLabel></td>
 					<td><h:inputText type="text" id="complement"
 							value="#{controllerProfilClient.profilClientViewModel.complement}"
-							size="10" maxlength="10" /></td>
+							size="20" maxlength="20" /></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel for="voie">Voie :</h:outputLabel></td>
@@ -78,12 +80,9 @@
 							value="#{controllerProfilClient.profilClientViewModel.pays}"
 							size="20" maxlength="20" /></td>
 				</tr>
-				<tr>
-					<td colspan="2"><h:commandButton value="Soumettre"
-							action="#{controllerProfilClient.saveProfilClient()}" /></td>
-				</tr>
 			</table>
 		</fieldset>
+		<h:commandButton value="Soumettre" action="#{controllerProfilAgence.saveProfilAgence()}" />
 	</h:form>
 </h:body>
 </html>
