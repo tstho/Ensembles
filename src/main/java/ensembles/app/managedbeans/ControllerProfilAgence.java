@@ -6,9 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 
 import ensembles.app.service.ProfilAgenceService;
-import ensembles.app.service.ProfilClientService;
 import ensembles.app.viewmodels.ProfilAgenceViewModel;
-import ensembles.app.viewmodels.ProfilClientViewModel;
 
 @ManagedBean
 public class ControllerProfilAgence  implements Serializable {
@@ -25,11 +23,11 @@ public class ControllerProfilAgence  implements Serializable {
 		profilAgenceService.saveProfilAgence(profilAgenceViewModel);
 	}
 
-	public ProfilAgenceViewModel getProfilAgenceViewMOdel() {
+	public ProfilAgenceViewModel getProfilAgenceViewModel() {
 		return profilAgenceViewModel;
 	}
 
-	public void setProfilAgenceViewMOdel(ProfilAgenceViewModel profilAgenceViewModel) {
+	public void setProfilAgenceViewModel(ProfilAgenceViewModel profilAgenceViewModel) {
 		this.profilAgenceViewModel = profilAgenceViewModel;
 	}
 	

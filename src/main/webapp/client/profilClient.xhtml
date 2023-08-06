@@ -11,54 +11,79 @@
 <h:body>
 	<h2>Profil client</h2>
 	<hr />
-	<br /> 
+	<br />
 
 
-    <h:form>
-            <table>
-            
+	<h:form>
+		<fieldset>
+			<legend>Informations client</legend>
+			<table>
 				<tr>
-                    <td><h:outputLabel for="prenomClient">Prénom du Client :<span class="requis"></span></h:outputLabel></td>
-                    <td><h:inputText type="text" id="prenomClient" value="#{controllerProfilClient.profilClientViewModel.prenomClient}" size="20" maxlength="20" /></td>
-                </tr>            
-            
-                <tr>
-                    <td><h:outputLabel for="nom">Nom client :<span class="requis"></span></h:outputLabel></td>
-                    <td><h:inputText type="text" id="nomClient" value="#{controllerProfilClient.profilClientViewModel.nomClient}" size="20" maxlength="20" /></td>
-                </tr>
-                
-                <tr>
-                    <td><h:outputLabel for="voie">Voie :<span class="requis"></span></h:outputLabel></td>
-                    <td><h:inputText type="text" id="voieClient" value="#{controllerProfilClient.profilClientViewModel.voie}" size="20" maxlength="20" /></td>
-                </tr>
-                <tr>
-                    <td><h:outputLabel for="codePostal">Code Postal :<span class="requis"></span></h:outputLabel></td>
-                    <td><h:inputText type="text" id="codePostalClient" value="#{controllerProfilClient.profilClientViewModel.codepostal}" size="20" maxlength="20" /></td>
-                </tr>
-                <tr>
-                    <td><h:outputLabel for="ville">Ville :<span class="requis"></span></h:outputLabel></td>
-                    <td><h:inputText type="text" id="villeClient" value="#{controllerProfilClient.profilClientViewModel.ville}" size="20" maxlength="20" /></td>
-                </tr>
-                
-                <tr>
-                    <td><h:outputLabel for="pays">Pays :<span class="requis"></span></h:outputLabel></td>
-                    <td><h:inputText type="text" id="paysClient" value="#{controllerProfilClient.profilClientViewModel.pays}" size="20" maxlength="20" /></td>
-                </tr>
-                            
-                
-                
-                <tr>
-                    <td><h:outputLabel for="emailClient">E-mail :<span class="requis"></span></h:outputLabel></td>
-                    <td><h:inputText type="text" id="emailClient"  value="#{controllerProfilClient.profilClientViewModel.emailClient}" size="20" maxlength="50" /></td>
-                </tr>
-                <tr>
-                    <td><h:outputLabel for="telephoneClient">Téléphone du client :<span class="requis"></span></h:outputLabel></td>
-                    <td><h:inputText type="text" id="telephoneClient" value="#{controllerProfilClient.profilClientViewModel.telephoneClient}" size="20" maxlength="20" /></td>
-                </tr>                           
-                <tr>
-                    <td colspan="2"><h:commandButton value="Soumettre" action="#{controllerProfilClient.saveProfilClient()}"/></td>
-                </tr>
-            </table>
-           </h:form>
+					<td><h:outputLabel for="prenomClient">Prénom :</h:outputLabel></td>
+					<td><h:inputText type="text" id="prenomClient"
+							value="#{controllerProfilClient.profilClientViewModel.prenomClient}"
+							size="20" maxlength="20" /></td>
+				</tr>
+
+				<tr>
+					<td><h:outputLabel for="nom">Nom :</h:outputLabel></td>
+					<td><h:inputText type="text" id="nomClient"
+							value="#{controllerProfilClient.profilClientViewModel.nomClient}"
+							size="20" maxlength="20" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="telephoneClient">Téléphone :</h:outputLabel></td>
+					<td><h:inputText type="text" id="telephoneClient"
+							value="#{controllerProfilClient.profilClientViewModel.telephoneClient}"
+							size="20" maxlength="20" /></td>
+				</tr>
+			</table>
+
+		</fieldset>
+		<fieldset>
+			<legend>Adresse</legend>
+			<table>
+				<tr>
+					<td><h:outputLabel for="numero">Numéro :</h:outputLabel></td>
+					<td><h:inputText type="text" id="numero"
+							value="#{controllerProfilClient.profilClientViewModel.numero}"
+							size="10" maxlength="10" /></td>
+					<td><h:outputLabel for="complement">Complement :</h:outputLabel></td>
+					<td><h:inputText type="text" id="complement"
+							value="#{controllerProfilClient.profilClientViewModel.complement}"
+							size="10" maxlength="10" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="voie">Voie :</h:outputLabel></td>
+					<td><h:inputText type="text" id="voie"
+							value="#{controllerProfilClient.profilClientViewModel.voie}"
+							size="20" maxlength="20" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="codePostal">Code Postal :</h:outputLabel></td>
+					<td><h:inputText type="text" id="codePostal"
+							value="#{controllerProfilClient.profilClientViewModel.codePostal}"
+							size="20" maxlength="20" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="ville">Ville :</h:outputLabel></td>
+					<td><h:inputText type="text" id="ville"
+							value="#{controllerProfilClient.profilClientViewModel.ville}"
+							size="20" maxlength="20" /></td>
+				</tr>
+
+				<tr>
+					<td><h:outputLabel for="pays">Pays :</h:outputLabel></td>
+					<td><h:inputText type="text" id="pays"
+							value="#{controllerProfilClient.profilClientViewModel.pays}"
+							size="20" maxlength="20" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><h:commandButton value="Soumettre"
+							action="#{controllerProfilClient.saveProfilClient()}" /></td>
+				</tr>
+			</table>
+		</fieldset>
+	</h:form>
 </h:body>
 </html>
