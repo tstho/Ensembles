@@ -11,7 +11,7 @@ import ensembles.app.service.PartenaireService;
 import ensembles.app.viewmodels.PartenaireViewModel;
 
 
-@ManagedBean(name="controllerPartenaire")
+@ManagedBean
 @RequestScoped
 public class ControllerPartenaire implements Serializable {
 	
@@ -28,7 +28,7 @@ private static final long serialVersionUID = 1L;
 		//reset le view model
 		partenaireViewModel = new PartenaireViewModel();
 		
-		return "index.xhtml?faces-redirect=true";
+		return "";
 	}
 
 	public PartenaireViewModel getPartenaireViewModel() {

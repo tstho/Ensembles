@@ -14,7 +14,6 @@ public class RepoProfilAgence {
 	public void save(ProfilAgence profilAgence) {
 
 		entityManager.persist(profilAgence);
-		entityManager.flush();
 		
 	}
 

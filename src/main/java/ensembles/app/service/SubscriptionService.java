@@ -11,7 +11,6 @@ import ensembles.app.entity.PaymentPeriod;
 import ensembles.app.entity.Subscription;
 import ensembles.app.entity.SubscriptionStatut;
 import ensembles.app.entity.SubscriptionType;
-import ensembles.app.managedbeans.ControllerSubscription;
 import ensembles.app.repository.RepoSubscription;
 
 

@@ -32,10 +32,6 @@ public class Subscription {
 		
 		private PaymentMethod paymentMethod;
 		
-		
-		
-		
-		
 
 		public Subscription() {
 			super();
@@ -55,96 +51,71 @@ public class Subscription {
 			this.paymentPeriod = paymentPeriod;
 			this.paymentMethod = paymentMethod;
 			
-			
-			
-			
-			
-			
-			
-			
 		}
-
 
 		public Long getId() {
 			return id;
 		}
 
-
 		public void setId(Long id) {
 			this.id = id;
 		}
-
 
 		public SubscriptionType getSubscriptionType() {
 			return subscriptionType;
 		}
 
-
 		public void setSubscriptionType(SubscriptionType subscriptionType) {
 			this.subscriptionType = subscriptionType;
 		}
-
 
 		public Date getStartDate() {
 			return startDate;
 		}
 
-
 		public void setStartDate(Date startDate) {
 			this.startDate = startDate;
 		}
-
 
 		public Date getEndDate() {
 			return endDate;
 		}
 
-
 		public void setEndDate(Date endDate) {
 			this.endDate = endDate;
 		}
-
 
 		public double getprice() {
 			return price;
 		}
 
-
 		public void setprice(double price) {
 			this.price = price;
 		}
-
 
 		public SubscriptionStatut getSubscriptionStatut() {
 			return subscriptionStatut;
 		}
 
-
 		public void setSubscriptionStatut(SubscriptionStatut subscriptionStatut) {
 			this.subscriptionStatut = subscriptionStatut;
 		}
-
 
 		public PaymentPeriod getPaymentPeriod() {
 			return paymentPeriod;
 		}
 
-
 		public void setPaymentPeriod(PaymentPeriod paymentPeriod) {
 			this.paymentPeriod = paymentPeriod;
 		}
-
-
 
 		public PaymentMethod getPaymentMethod() {
 			return paymentMethod;
 		}
 
-
 		public void setPaymentMethod(PaymentMethod paymentMethod) {
 			this.paymentMethod = paymentMethod;
 		}
-
 
 		@Override
 		public String toString() {
