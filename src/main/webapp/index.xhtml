@@ -5,9 +5,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-<meta charset="utf-8"></meta>
-   <link href="~/css/Site.css" rel="stylesheet" />
-</h:head>	
+	<meta charset="utf-8"></meta>
+</h:head>
 
 
 <h:body>
@@ -15,32 +14,33 @@
 	<ui:composition template="layouts/mainLayout.xhtml">
 
 		<ui:define name="content">
-		
-		    <div class="container">
-        <div class="jumbotron">
-            <div class="row">
-                <!-- Left box? plateform description -->
-                <div class="col-sm-3" style="width: 30%">
-				<a href="partners/mainPartner.xhtml" class="btn btn-secondary btn-lg active">Devenir partenaire</a>
-				<a href="agency/mainAgency.xhtml" class="btn btn-secondary btn-lg active">Reinseigner votre agence</a>
-                </div>
 
-                <!-- Right box with video -->
-                <div class="col-sm-9" style="width: 70%">
-                    <p>something something</p>
-                </div>
-            </div>
-        </div>
-    </div>
+			<div class="container">
+				<div class="jumbotron">
+					<div class="row">
+						<!-- Left box? plateform description -->
+						<div class="col-sm-3" style="width: 30%">
+							<a href="partners/mainPartner.xhtml"
+								class="btn btn-secondary btn-sm active">Devenir partenaire</a> <a
+								href="agency/mainAgency.xhtml"
+								class="btn btn-secondary btn-lg active">Renseigner votre
+								agence</a>
+						</div>
+
+						<!-- Right box with video -->
+						<div class="col-sm-9" style="width: 70%">
+							<p>something something</p>
+						</div>
+					</div>
+				</div>
+			</div>
 
 
 
-    <!--  Template boxes -->
-    <div class="container">
-        <div class="jumbotron">
-            boites avec les agences
-        </div>
-    </div>
+			<!--  Template boxes -->
+			<div class="container">
+				<div class="jumbotron">boites avec les agences</div>
+			</div>
 			<hr />
 			<br />
 			<a href="ensembles/inscription.xhtml">créez un compte</a> aussi accesible du login dropdown
@@ -49,10 +49,25 @@
 			<a href="agency/profilAgence.xhtml">Renseigner profil Agence</a>
 
 			<br />
+			<a href="client/profilClient.xhtml">Renseigner profil Client</a>
+
+			<br />
 			<a href="partners/AddService.xhtml">Proposez vos services</a>
 
 			<br />
 			<a href="agency/subscription.xhtml">Abonnement</a>
+
+			<br />
+			<a href="ensembles/displayAllSubscription.xhtml">Affichage des
+				abonnements</a>
+
+			<br />
+			<a href="ensembles/RechercherSubscription.xhtml">rechercher des
+				abonnements</a>
+
+			<br />
+			<a href="ensembles/displayAllUser.xhtml">Affichage des
+				utilisateurs</a>
 		</ui:define>
 
 

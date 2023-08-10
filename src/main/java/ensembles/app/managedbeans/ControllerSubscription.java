@@ -10,13 +10,16 @@ import javax.inject.Inject;
 
 import ensembles.app.entity.PaymentMethod;
 import ensembles.app.entity.PaymentPeriod;
+import ensembles.app.entity.Role;
+import ensembles.app.entity.Subscription;
 import ensembles.app.entity.SubscriptionStatut;
 import ensembles.app.entity.SubscriptionType;
+import ensembles.app.repository.RepoSubscription;
 import ensembles.app.service.SubscriptionService;
 import ensembles.app.viewmodels.SubscriptionViewModel;
 
 
-@ManagedBean(name="controllerSubscription")
+@ManagedBean
 @RequestScoped
 public class ControllerSubscription implements Serializable {
 	
@@ -27,7 +30,9 @@ public class ControllerSubscription implements Serializable {
 		private SubscriptionViewModel subscriptionViewModel;
 		@Inject
 		SubscriptionService subscriptionService;
-
+        @Inject
+        private RepoSubscription reposubscription;
+        
 		public String saveSubscription() {
 			subscriptionService.saveSubscription(subscriptionViewModel.getSubscriptionType(), subscriptionViewModel.getStartDate(),subscriptionViewModel.getEndDate(),subscriptionViewModel.getprice(),subscriptionViewModel.getSubscriptionStatut(),subscriptionViewModel.getPaymentPeriod(),subscriptionViewModel.getPaymentMethod());
 			
@@ -37,6 +42,12 @@ public class ControllerSubscription implements Serializable {
 			return "";
 		}
 		
+		
+	
+		
+				
+	
+		 
 		public List<SubscriptionType> getSubscriptionTypeOptions() {
 		    List<SubscriptionType> options = new ArrayList<>();
 		    for (SubscriptionType type : SubscriptionType.values()) {
@@ -92,6 +103,23 @@ public class ControllerSubscription implements Serializable {
 		public void setSubscriptionService(SubscriptionService subscriptionService) {
 			this.subscriptionService = subscriptionService;
 		}
+
+		public RepoSubscription getReposubscription() {
+			return reposubscription;
+		}
+
+		public void setReposubscription(RepoSubscription reposubscription) {
+			this.reposubscription = reposubscription;
+		}
+
+		
+
+
+
+		
+
+
+
 		
 	}
 

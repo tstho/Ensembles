@@ -1,8 +1,12 @@
 package ensembles.app.repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import ensembles.app.entity.User;
 
@@ -29,5 +33,29 @@ public class RepoUser  {
 		
 	}
 	
+	
+	public List<User> displayUser() {
+		
+		String reqSelect="SELECT * FROM User";
+		
+
+		Query query= entityManager.createNativeQuery(reqSelect, User.class);
+		
+		
+		@SuppressWarnings("unchecked")
+		
+		List<User> resultList = (List<User>)query.getResultList();
+		
+		return resultList;
+		
+	}
+
+	public List<User> findAll() {
+		
+		String reqSelect="SELECT u FROM User u";
+		
+		
+		return entityManager.createQuery(reqSelect, User.class).getResultList();
+	}
 	
 }

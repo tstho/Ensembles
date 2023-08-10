@@ -16,7 +16,6 @@ public class User {
 	private Long id;
 
 	private String email;
-
 	private String Password;
 	
 	@Enumerated(EnumType.STRING)

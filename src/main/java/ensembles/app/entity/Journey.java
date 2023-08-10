@@ -19,10 +19,13 @@ public class Journey {
 	private String Departure;
 	private String Destination; 
 	
+	
 	private Date DepartureDate; 
 	private Date DestinationDate;
 	
 	private Conveyance conveyance;
+	
+	
 	
 	private Double price;
 	

@@ -23,13 +23,14 @@ public class ControllerProfilAgence  implements Serializable {
 		profilAgenceService.saveProfilAgence(profilAgenceViewModel);
 	}
 
-	public ProfilAgenceViewModel getProfilAgenceViewMOdel() {
+	public ProfilAgenceViewModel getProfilAgenceViewModel() {
 		return profilAgenceViewModel;
 	}
 
-	public void setProfilAgenceViewMOdel(ProfilAgenceViewModel profilAgenceViewModel) {
+	public void setProfilAgenceViewModel(ProfilAgenceViewModel profilAgenceViewModel) {
 		this.profilAgenceViewModel = profilAgenceViewModel;
 	}
+	
 	
 	
 }

@@ -1,33 +1,31 @@
-package ensembles.app.viewmodels;
+package ensembles.app.entity;
 
-public class ProfilClientViewModel {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-	private String prenomClient;
-	private String nomClient;
+@Entity
+public class Adresse {
 
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
 	private int numero;
 	private String complement;
 	private String voie;
 	private int codePostal;
 	private String ville;
 	private String pays;
-	
-	private int telephoneClient;
-	private String emailClient;
-	
-	public String getPrenomClient() {
-		return prenomClient;
+		
+	public Long getId() {
+		return id;
 	}
-	public void setPrenomClient(String prenomClient) {
-		this.prenomClient = prenomClient;
+	public void setId(Long id) {
+		this.id = id;
 	}
-	public String getNomClient() {
-		return nomClient;
-	}
-	public void setNomClient(String nomClient) {
-		this.nomClient = nomClient;
-	}
-	
 	public int getNumero() {
 		return numero;
 	}
@@ -64,18 +62,6 @@ public class ProfilClientViewModel {
 	public void setPays(String pays) {
 		this.pays = pays;
 	}
-	public int getTelephoneClient() {
-		return telephoneClient;
-	}
-	public void setTelephoneClient(int telephoneClient) {
-		this.telephoneClient = telephoneClient;
-	}
-	public String getEmailClient() {
-		return emailClient;
-	}
-	public void setEmailClient(String emailClient) {
-		this.emailClient = emailClient;
-	}
 	
-	
+
 }

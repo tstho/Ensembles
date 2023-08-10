@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import ensembles.app.service.ServiceService;
 import ensembles.app.viewmodels.ServiceViewModel;
 
-@ManagedBean(name="controllerService")
+@ManagedBean
 @RequestScoped
 public class ControllerService implements Serializable{
 	

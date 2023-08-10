@@ -11,7 +11,7 @@ import ensembles.app.service.PartenaireService;
 import ensembles.app.viewmodels.PartenaireViewModel;
 
 
-@ManagedBean(name="controllerPartenaire")
+@ManagedBean
 @RequestScoped
 public class ControllerPartenaire implements Serializable {
 	
