@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Créer un abonnement</title>
+    <link href="~/css/Site.css" rel="stylesheet" />
+    <h:outputStylesheet library="css" name="bootstrap.min.css" />
+</h:head>
+<h:body>
+    <h:form>
+        <h3>Créer un nouvel abonnement :</h3>
+        <table>
+            <tr>
+                <td><h:outputLabel value="Type d'abonnement : " /></td>
+                <td><h:selectOneMenu value="#{controllerSubscriptionMangement.subscriptionViewModel.subscriptionType}">
+                        <f:selectItems value="#{controllerSubscriptionMangement.subscriptionViewModel.subscriptionType}" />
+                    </h:selectOneMenu></td>
+            </tr>
+            <tr>
+                <td><h:outputLabel value="Date de début : " /></td>
+                <td><p:datePicker value="#{controllerSubscriptionMangement.subscriptionViewModel.startDate}" /></td>
+            </tr>
+            <tr>
+                <td><h:outputLabel value="Date de fin : " /></td>
+                <td><p:datePicker value="#{controllerSubscriptionMangement.subscriptionViewModel.endDate}" /></td>
+            </tr>
+            <tr>
+                <td><h:outputLabel value="Prix : " /></td>
+                <td><h:inputText value="#{controllerSubscriptionMangement.subscriptionViewModel.price}" type="number" step="0.01" /></td>
+            </tr>
+            <tr>
+                <td><h:outputLabel value="Statut de l'abonnement : " /></td>
+                <td><h:selectOneMenu value="#{controllerSubscriptionMangement.subscriptionViewModel.subscriptionStatut}">
+                        <f:selectItems value="#{controllerSubscriptionMangement.subscriptionViewModel.subscriptionStatut}" />
+                    </h:selectOneMenu></td>
+            </tr>
+            <tr>
+                <td><h:outputLabel value="Méthode de paiement : " /></td>
+                <td><h:selectOneMenu value="#{controllerSubscriptionMangement.subscriptionViewModel.paymentMethod}">
+                        <f:selectItems value="#{controllerSubscriptionMangement.subscriptionViewModel.paymentMethod}" />
+                    </h:selectOneMenu></td>
+            </tr>
+            <tr>
+                <td><h:outputLabel value="Période de paiement : " /></td>
+                <td><h:selectOneMenu value="#{controllerSubscriptionMangement.subscriptionViewModel.paymentPeriod}">
+                        <f:selectItems value="#{controllerSubscriptionMangement.subscriptionViewModel.paymentPeriod}" />
+                    </h:selectOneMenu></td>
+            </tr>
+            <tr>
+                <td colspan="2"><h:commandButton value="Créer l'abonnement" action="#{controllerSubscriptionMangement.addSubscription(controllerSubscriptionMangement.subscriptionViewModel)}" /></td>
+            </tr>
+        </table>
+    </h:form>
+</h:body>
+</html>

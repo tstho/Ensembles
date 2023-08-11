@@ -30,7 +30,8 @@ public class SubscriptionViewModel {
 	private PaymentMethod paymentMethod;
 	
 		
-		
+	
+	
 		
 		
 

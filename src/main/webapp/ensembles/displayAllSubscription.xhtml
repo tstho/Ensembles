@@ -1,23 +1,24 @@
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:p="http://primefaces.org/ui">
 
 
-<h:head>
+ <h:head>
 	<title>Affichage des abonnements</title>
 	<link type="text/css" rel="stylesheet" href="form.css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
 </h:head>
-
 <h:body>
 	<h:form>
-		<h3>Liste des abonnements :</h3>
-
+	<h3>Liste des abonnements :</h3>
+	
 		<h:dataTable value="#{controllerSubscriptionManagement.subscriptionList}" var="subscription">
 
-			<h:column>
+		  	<h:column>
 				<f:facet name="header">ID</f:facet>
 				#{subscription.id}
 			</h:column>
@@ -56,9 +57,64 @@
 				<f:facet name="header">paymentMethod</f:facet>
 				#{subscription.paymentMethod}
 			</h:column>
+           
+           <p:column>
+				<f:facet name="header">Delete</f:facet>
+				 <h:form>
+					<p:commandLink value="Supprimer" action="#{controllerSubscriptionManagement.deleteSubscription(subscription)}">
+						<p:ajax execute="@form" render="@form" />
+					</p:commandLink>
+				</h:form>
+				
+				<h:link value="Supprimer" outcome="deleteSubscription">
+                <f:param name="subscriptionId" value="#{subscription.id}" />
+               </h:link>
+			</p:column>
+			
+			
+    
+    <h:column>
+        <f:facet name="header">Actions</f:facet>
+        <h:link outcome="updatesubscription" value="Mettre à jour">
+            <f:param name="subscriptionId" value="#{subscription.id}" />
+        </h:link>
+    </h:column>
+</h:dataTable>
+			
+			
+           
+          
+           
+    
+<!-- 
 
-		</h:dataTable>
-	</h:form>
+ 
+    
+    <h:panelGroup layout="block" styleClass="subscriptionList">
+   
+        <h:dataTable value="#{controllerSubscriptionManagement.subscriptionList}" var="subscription">
+            <h:panelGroup layout="block" styleClass="subscription-box">
+            
+                <h:outputText value="ID: #{subscription.id}" />
+                <h:outputText value="subscriptionType: #{subscription.subscriptionType}" />
+                <h:outputText value="startDate: #{subscription.startDate}" />
+                <h:outputText value="endDate: #{subscription.endDate}" />
+                <h:outputText value="Price: #{subscription.price}" />
+                <h:outputText value="subscriptionStatut: #{subscription.subscriptionStatut}" />
+                <h:outputText value="payementPeriod: #{subscription.paymentPeriod}" />
+                <h:outputText value="payementMethod: #{subscription.paymentMethod}" />
+                <h:commandLink value="Supprimer">
+                    <f:param name="subscriptionId" value="#{subscription.id}" />
+                </h:commandLink>
+                
+                <h:commandLink value="Modifier">
+                    <f:param name="subscriptionId" value="#{subscription.id}" />
+                </h:commandLink>
+            </h:panelGroup>
+        </h:dataTable>
+
+</h:panelGroup>-->
+  </h:form>          
 </h:body>
 
 </html>

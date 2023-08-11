@@ -6,9 +6,9 @@ public enum SubscriptionStatut {
 	 
 	 Valid,
 	 
-	 Expire,
+	 Expire
 	 
-	 Terminate,
+	 
 	
 
 }
