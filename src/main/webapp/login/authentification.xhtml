@@ -9,30 +9,44 @@
 
 	<ui:define name="content">
 		<br />
-		<hr />
-		<h:form>
-			<table>
-				<tr>
-					<td><h:outputLabel value="Email : " /></td>
-					<td><h:inputText type="text" value="#{authBean.userVM.email}" size="20" maxlength="20" /></td>
-				</tr>
-				<tr>
-					<td><h:outputLabel value="Password : " /></td>
-					<td><h:inputSecret type="password"
-							value="#{authBean.userVM.password}" size="20" maxlength="20" /></td>
-				</tr>
-				<tr>
-					<td colspan="2"><h:commandButton value="Authentification"
-							action="#{authBean.login()}" /></td>
-				</tr>
-			</table>
-			<!-- 
-            <p class="${empty form.erreurs ? 'succes' : 'erreur'}">
-                 Ce paragraphe affichera un message d'erreur ou de succès en fonction de la condition
-            </p>
-            
+
+		<div class="renderedAuth">
+			<h:outputText value="Bienvenue, #{authBean.currentUser.email} !"
+				rendered="#{authBean.authenticated}" />
+			<h:form rendered="#{authBean.authenticated}">
+				<h:commandButton value="Se déconnecter" action="#{authBean.logout}" />
+			</h:form>
+		</div>
+
+
+		<div class="renderedNotAuth">
+			<h:outputText value="Bienvenue, veuillez vous authentifier."
+				rendered="#{not authBean.authenticated}" />
+			<h:form rendered="#{not authBean.authenticated}">
+				<table>
+					<tr>
+						<td><h:outputLabel value="Email : " /></td>
+						<td><h:inputText type="text" value="#{authBean.userVM.email}"
+								size="20" maxlength="20" /></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel value="Password : " /></td>
+						<td><h:inputSecret type="password"
+								value="#{authBean.userVM.password}" size="20" maxlength="20" /></td>
+					</tr>
+					<tr>
+						<td colspan="2"><h:commandButton value="Authentification"
+								action="#{authBean.login()}" /></td>
+					</tr>
+				</table>
+				<!-- 
+		            <p class="${empty form.erreurs ? 'succes' : 'erreur'}">
+		                 Ce paragraphe affichera un message d'erreur ou de succès en fonction de la condition
+		            </p>
                  -->
-		</h:form>
+			</h:form>
+
+		</div>
 
 	</ui:define>
 </ui:composition>
