@@ -41,12 +41,6 @@ public class ControllerSubscription implements Serializable {
 			
 			return "";
 		}
-		
-		
-	
-		
-				
-	
 		 
 		public List<SubscriptionType> getSubscriptionTypeOptions() {
 		    List<SubscriptionType> options = new ArrayList<>();
@@ -79,10 +73,6 @@ public class ControllerSubscription implements Serializable {
 		    }
 		    return options;
 		}
-		
-		
-		
-		
 
 		public SubscriptionViewModel getSubscriptionViewModel() {
 			return subscriptionViewModel;

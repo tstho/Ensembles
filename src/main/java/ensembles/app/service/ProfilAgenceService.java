@@ -1,5 +1,6 @@
 package ensembles.app.service;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import ensembles.app.entity.Adresse;
@@ -7,6 +8,7 @@ import ensembles.app.entity.ProfilAgence;
 import ensembles.app.repository.RepoProfilAgence;
 import ensembles.app.viewmodels.ProfilAgenceViewModel;
 
+@Stateless
 public class ProfilAgenceService {
 
 	@Inject
