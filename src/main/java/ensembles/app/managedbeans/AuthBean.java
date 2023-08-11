@@ -8,6 +8,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import ensembles.app.entity.Role;
 import ensembles.app.entity.User;
 import ensembles.app.service.UserService;
 import ensembles.app.viewmodels.UserViewModel;
@@ -44,6 +45,10 @@ public class AuthBean implements Serializable {
 		// Mettre fin à la session et rediriger vers la page d'acceuil
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "";
+	}
+
+	public boolean isRole(Role role) {
+		return currentUser != null && currentUser.getRole() == role;
 	}
 
 	public boolean isAuthenticated() {

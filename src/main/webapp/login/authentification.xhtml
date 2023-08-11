@@ -11,8 +11,26 @@
 		<br />
 
 		<div class="renderedAuth">
+		
 			<h:outputText value="Bienvenue, #{authBean.currentUser.email} !"
 				rendered="#{authBean.authenticated}" />
+				
+			<h:panelGroup layout="block" rendered="#{authBean.isRole('AGENCY')}">
+				<!-- Contenu spécifique aux utilisateurs de type "agency" -->
+				<p> Vous êtes une agence</p>
+			</h:panelGroup>
+
+			<h:panelGroup layout="block" rendered="#{authBean.isRole('PARTNER')}">
+				<!-- Contenu spécifique aux utilisateurs de type "partner" -->
+				<p> Vous êtes un partenaire</p>
+			</h:panelGroup>
+
+			<h:panelGroup layout="block" rendered="#{authBean.isRole('CLIENT')}">
+				<!-- Contenu spécifique aux utilisateurs de type "client" -->
+				
+				<p> Vous êtes un client</p>
+			</h:panelGroup>
+
 			<h:form rendered="#{authBean.authenticated}">
 				<h:commandButton value="Se déconnecter" action="#{authBean.logout}" />
 			</h:form>
