@@ -1,14 +1,14 @@
 package ensembles.app.entity;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+//import java.util.List;
 
 
 import javax.persistence.*;
 //import java.util.Set;
 
-import javax.persistence.ManyToMany;
+//import javax.persistence.ManyToMany;
 
 @Entity
 @Table(name="Journey")

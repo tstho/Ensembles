@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Ensembles:: Voyage</title>
+	<link href="~/css/Site.css" rel="stylesheet" />
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+</h:head>
+<h:body>
+	<h2>Voyage</h2>
+	<hr />
+	<br />
+
+
+	<h:form>
+
+		<fieldset>
+			<legend>Informations du Voyage</legend>
+			<table>
+				<tr>
+					<td><h:outputLabel for="departure">Départ :<span
+								class="requis"></span>
+						</h:outputLabel></td>
+					<td><h:inputText type="text" id="departure"
+							value="#{controllerJourney.journeyViewModel.departure}"
+							size="20" maxlength="20" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="destination">Destination :<span
+								class="requis"></span>
+						</h:outputLabel></td>
+					<td><h:inputText type="text" id="destination"
+							value="#{controllerJourney.journeyViewModel.destination}"
+							size="20" maxlength="20" /></td>
+				</tr>
+				<tr>
+<!-- 					<td><h:outputLabel for="departureDate">Date de départ :<span -->
+<!-- 								class="requis"></span> -->
+<!-- 						</h:outputLabel></td> -->
+<!-- 					<td><h:inputText type="date" id="departureDate" -->
+<!-- 							value="#{controllerJourney.journeyViewModel.departureDate}" /></td> -->
+<!-- 							<td><h:outputLabel value="End Date: " /></td> -->
+
+				
+				<td><h:outputLabel value="departureDate: " /></td>
+				<td><p:datePicker
+						value="#{controllerJourney.journeyViewModel.departureDate}"
+						size="20" maxlength="20" /></td>
+			
+			    </tr>
+				
+				<tr>
+<!-- 					<td><h:outputLabel for="destinationDate">Date d'arrivée :<span -->
+<!-- 								class="requis"></span> -->
+<!-- 						</h:outputLabel></td> -->
+<!-- 					<td><h:inputText type="date" id="destinationDate" -->
+<!-- 							value="#{controllerJourney.journeyViewModel.destinationDate}" /></td> -->
+
+					<td><h:outputLabel value="destinationDate: " /></td>		
+					<td><p:datePicker
+						value="#{controllerJourney.journeyViewModel.destinationDate}"
+						size="20" maxlength="20" /></td>		
+					
+				</tr>
+				
+				<tr>
+				<td><h:outputLabel value="Conveyance : " /></td>
+
+				<td><h:selectOneMenu name="conveyance"
+						value="#{controllerJourney.journeyViewModel.conveyance}">
+
+						<f:selectItem
+							itemValue="#{Conveyance.controllerJourney}"
+							itemLabel="#{SelectConveyance}" />
+
+						<f:selectItems
+							value="#{controllerJourney.conveyanceOptions}" />
+
+
+
+					</h:selectOneMenu></td>
+
+			</tr>
+				<tr>
+					<td><h:outputLabel for="price">Prix :<span
+								class="requis"></span>
+						</h:outputLabel></td>
+					<td><h:inputText type="number" id="price"
+							value="#{controllerJourney.journeyViewModel.price}" step="0.01" /></td>
+				</tr>
+			</table>
+		</fieldset>
+		<fieldset>
+			<legend>Services</legend>
+			<h:selectManyCheckbox value="#{controllerJourney.journeyViewModel.selectedServices}">
+				<f:selectItems value="#{controllerJourney.journeyViewModel.services}" var="service"
+					itemValue="#{service}" itemLabel="#{service.name}" />
+			</h:selectManyCheckbox>
+		</fieldset>
+
+		<h:commandButton value="Soumettre" action="#{controllerJourney.saveJourney()}" />
+	</h:form>
+</h:body>
+</html>
