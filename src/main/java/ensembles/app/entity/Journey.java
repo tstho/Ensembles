@@ -1,5 +1,6 @@
 package ensembles.app.entity;
 
+import java.io.Serializable;
 //import java.util.ArrayList;
 import java.util.Date;
 //import java.util.List;
@@ -12,7 +13,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Journey")
-public class Journey {
+public class Journey implements Serializable  {
+	
+	
+	    private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
