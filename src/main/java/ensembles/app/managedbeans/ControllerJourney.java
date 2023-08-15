@@ -5,11 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
-
 import ensembles.app.entity.Conveyance;
 import ensembles.app.entity.Journey;
 import ensembles.app.repository.RepoJourney;
@@ -64,9 +62,6 @@ public class ControllerJourney implements Serializable {
 		this.journeyService = journeyService;
 	}
 
-	// public static long getSerialversionuid() {
-	// return serialVersionUID;
-	// }
 
 	public List<Journey> getJourneyList() {
 		return journeyList;
@@ -88,6 +83,10 @@ public class ControllerJourney implements Serializable {
 		initModifierJourney(journeyId);
 		return "/Journey/ModifierJourney.xhtml?faces-redirect=true";
 	}
+	
+	
+	
+	
 
 	public void initModifierJourney(Long journeyId) {
 
@@ -113,6 +112,60 @@ public class ControllerJourney implements Serializable {
 
 	}
 
+	public String redirectToDelete(Long journeyId) {
+		initSupprimerJourney(journeyId);
+		return "/Journey/SupprimerJourney.xhtml?faces-redirect=true";
+	}
+
+	public void initSupprimerJourney(Long journeyId) {
+
+		Journey journey = repoJourney.findById(journeyId);
+		journeyViewModel = new JourneyViewModel();
+		journeyViewModel.setId(journey.getId());
+		journeyViewModel.setDeparture(journey.getDeparture());
+		journeyViewModel.setDestination(journey.getDestination());
+		journeyViewModel.setDestinationDate(journey.getDestinationDate());
+		journeyViewModel.setPrice(journey.getPrice());
+		journeyViewModel.setConveyance(journey.getConveyance());
+		journeyViewModel.setDepartureDate(journey.getDepartureDate());
+
+		System.out.println(journey.toString());
+		System.out.println(journeyViewModel.toString());
+		
+		
+	}
+
+	private boolean showDeleteConfirmation = false;
+
+	public boolean isShowDeleteConfirmation() {
+	    return showDeleteConfirmation;
+	}
+
+	public void setShowDeleteConfirmation(boolean showDeleteConfirmation) {
+	    this.showDeleteConfirmation = showDeleteConfirmation;
+	}
+	
+	
+	public void prepareDeleteJourney() {
+	    
+	    showDeleteConfirmation = true;
+	}
+	
+	public void cancelDelete() {
+	    showDeleteConfirmation = false;
+	}
+	
+	public void supprimerJourney() {
+		System.out.println("ID du voyage à supprimer : " + journeyViewModel.getId());
+	    journeyService.supprimerJourney(journeyViewModel);
+	    journeyList = repoJourney.findAll();
+	    resetViewModel();
+	}
+
+	
+	
+	
+	
 	public void resetViewModel() {
 		journeyViewModel = new JourneyViewModel();
 	}

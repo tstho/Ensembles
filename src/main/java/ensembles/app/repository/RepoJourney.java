@@ -57,7 +57,15 @@ public class RepoJourney {
 		        entityManager.merge(journey);
 		        entityManager.flush();
 		    }
-
+           
+		  // methode Supprimer
+		  
+		  public void delete(Journey journey) {
+		        entityManager.remove(entityManager.merge(journey));
+		        entityManager.flush();
+		  }
+		  
+		  
 		    public EntityManager getEntityManager() {
 			return entityManager;
 		}
@@ -73,4 +81,7 @@ public class RepoJourney {
 			public Journey findById(Long id) {
 		        return entityManager.find(Journey.class, id);
 		    }	
+			
+		
+			
 }
