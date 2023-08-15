@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Ensembles:: Profil du Partenaire</title>
+	<link href="~/css/Site.css" rel="stylesheet" />
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+</h:head>
+<h:body>
+	<h2>Profil du Partenaire</h2>
+	<hr />
+	<br />
+
+
+	<h:form>
+
+		<fieldset>
+			<legend>Informations du Partenaire</legend>
+			<table>
+				<tr>
+					<td><h:outputLabel for="nom">Nom de société :<span
+								class="requis"></span>
+						</h:outputLabel></td>
+					<td><h:inputText type="text" id="nomPartenaire"
+							value="#{controllerProfilPartenaire.profilPartenaireViewModel.nomPartenaire}"
+							size="20" maxlength="20" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="societe">Numéro de SIRET :<span
+								class="requis"></span>
+						</h:outputLabel></td>
+					<td><h:inputText type="text" id="SIRET"
+							value="#{controllerProfilPartenaire.profilPartenaireViewModel.siretPartenaire}"
+							size="20" maxlength="20" /></td>
+				</tr>
+			</table>
+		</fieldset>
+		<fieldset>
+
+			<legend>Adresse du Partenaire</legend>
+			<table>
+				<tr>
+					<td><h:outputLabel for="numero">Numéro :<span
+								class="requis"></span>
+						</h:outputLabel></td>
+					<td><h:inputText type="text" id="numero"
+							value="#{controllerProfilPartenaire.profilPartenaireViewModel.numero}"
+							size="20" maxlength="20" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="complement">Complément :<span
+								class="requis"></span>
+						</h:outputLabel></td>
+					<td><h:inputText type="text" id="complement"
+							value="#{controllerProfilPartenaire.profilPartenaireViewModel.complement}"
+							size="20" maxlength="20" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="voie">Voie :<span
+								class="requis"></span>
+						</h:outputLabel></td>
+					<td><h:inputText type="text" id="voie"
+							value="#{controllerProfilPartenaire.profilPartenaireViewModel.voie}"
+							size="20" maxlength="20" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="codePostal">Code Postal :<span
+								class="requis"></span>
+						</h:outputLabel></td>
+					<td><h:inputText type="text" id="codePostal"
+							value="#{controllerProfilPartenaire.profilPartenaireViewModel.codePostal}"
+							size="20" maxlength="20" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="ville">Ville :<span
+								class="requis"></span>
+						</h:outputLabel></td>
+					<td><h:inputText type="text" id="ville"
+							value="#{controllerProfilPartenaire.profilPartenaireViewModel.ville}"
+							size="20" maxlength="20" /></td>
+				</tr>
+
+				<tr>
+					<td><h:outputLabel for="pays">Pays :<span
+								class="requis"></span>
+						</h:outputLabel></td>
+					<td><h:inputText type="text" id="pays"
+							value="#{controllerProfilPartenaire.profilPartenaireViewModel.pays}"
+							size="20" maxlength="20" /></td>
+				</tr>
+			</table>
+		</fieldset>
+		<fieldset>
+
+			<legend>Informations sur le responsable</legend>
+			<table>
+			<tr>
+				<td><h:outputLabel for="nomResponsablePartenaire">Nom du Responsable :<span
+							class="requis"></span>
+					</h:outputLabel></td>
+				<td><h:inputText type="text" id="nomResponsable"
+						value="#{controllerProfilPartenaire.profilPartenaireViewModel.nomResponsablePartenaire}"
+						size="20" maxlength="50" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="prenomResponsablePartenaire">Prénom du Responsable :<span
+							class="requis"></span>
+					</h:outputLabel></td>
+				<td><h:inputText type="text" id="prenomResponsablePartenaire"
+						value="#{controllerProfilPartenaire.profilPartenaireViewModel.prenomResponsablePartenaire}"
+						size="20" maxlength="20" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="emailResponsablePartenaire">E-mail :<span
+							class="requis"></span>
+					</h:outputLabel></td>
+				<td><h:inputText type="text" id="emailResponsablePartenaire"
+						value="#{controllerProfilPartenaire.profilPartenaireViewModel.emailResponsablePartenaire}"
+						size="20" maxlength="50" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="telephoneResponsablePartenaire">Téléphone de contact :<span
+							class="requis"></span>
+					</h:outputLabel></td>
+				<td><h:inputText type="text" id="telephoneResponsablePartenaire"
+						value="#{controllerProfilPartenaire.profilPartenaireViewModel.telephoneResponsablePartenaire}"
+						size="20" maxlength="20" /></td>
+			</tr>
+			</table>
+		</fieldset>
+		<h:commandButton value="Soumettre" action="#{controllerProfilPartenaire.saveProfilPartenaire()}" />
+	</h:form>
+</h:body>
+</html>
