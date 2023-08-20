@@ -26,6 +26,12 @@ public class UserService {
 		System.out.println(userViewModel.getRole());
 		
 	}
+
+
+	public User authenticate(String email, String password) {
+		
+		return repoUser.authenticateUser(email, password);
+	}
 	
 }	
 

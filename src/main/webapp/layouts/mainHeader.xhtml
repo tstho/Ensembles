@@ -4,22 +4,6 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-
-<h:head>
-	<!-- Update the Bootstrap CSS link -->
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-
-	<!-- Update the Bootstrap JavaScript links -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<title>Ensembles:: Index</title>
-</h:head>
-
-<h:body>
 	<ui:composition>
 		<!-- New Navigation bar -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -48,29 +32,55 @@
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> LogIn </a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<!-- User login form -->
-								<form class="px-4 py-3">
-									<div class="form-group">
-										<label for="username">Username</label> <input type="text"
-											class="form-control" id="username" placeholder="Username" />
-									</div>
-									<div class="form-group">
-										<label for="password">Password</label> <input type="password"
-											class="form-control" id="password" placeholder="Password" />
-									</div>
-									<button type="submit" class="btn btn-primary">SignIn</button>
-								</form>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#">Mot de passe oublié ?</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="ensembles/inscription.xhtml">Pas
-									encore registré ?</a>
-							</div></li>
-				    </ul>
-			</div>
-		</nav>
+							
+						<!-- Formulaire de login si l'utilisateur n'est pas authentifié -->
+						<h:panelGroup layout="block"
+							rendered="#{not authBean.authenticated}">
+							<!-- User login form -->
+							<h:form class="px-4 py-3"
+								rendered="#{not authBean.authenticated}">
+								<div class="form-group">
+									<h:outputLabel for="username" value="Email :"
+										rendered="#{not authBean.authenticated}" />
+									<h:inputText type="text" class="form-control" id="username"
+										placeholder="Username" value="#{authBean.userVM.email}"
+										rendered="#{not authBean.authenticated}" />
+								</div>
+								<div class="form-group">
+									<h:outputLabel for="password" value="Password :"
+										rendered="#{not authBean.authenticated}" />
+									<h:inputSecret type="password" class="form-control"
+										id="password" placeholder="Password"
+										value="#{authBean.userVM.password}"
+										rendered="#{not authBean.authenticated}" />
+								</div>
+								<h:commandButton value="Authentification"
+									action="#{authBean.login()}" type="submit"
+									class="btn btn-primary"
+									rendered="#{not authBean.authenticated}" />
+							</h:form>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Mot de passe oublié ?</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item"
+								href="#{request.contextPath}/login/inscription.xhtml">Pas
+								encore enregistré ?</a>
+						</h:panelGroup>
 
-	</ui:composition>
-</h:body>
+						<!-- Affichage si l'utilisateur est authentifié -->
+						<h:panelGroup layout="block" rendered="#{authBean.authenticated}">
+							<h:outputText value="Bienvenue, #{authBean.currentUser.email} !" />
+							<h:form>
+								<h:commandButton value="Se déconnecter"
+									action="#{authBean.logout}" />
+							</h:form>
+						</h:panelGroup>
+					</div></li>
 
+				<li class="nav-item"><a class="nav-link disabled" href="#">Panier</a></li>
+			</ul>
+		</div>
+	</nav>
+
+</ui:composition>
 </html>
