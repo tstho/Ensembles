@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>Template One</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+
+	<style>
+body, html {
+	height: 100%
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Amatic SC", sans-serif
+}
+
+.menu {
+	display: none
+}
+
+.bgimg {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image:
+		url("https://wallup.net/wp-content/uploads/2016/05/13/348370-relaxation-couple-men-women-landscape-nature-beach-sea-relaxing-tropical-vacation.jpg");
+	min-height: 90%;
+}
+</style>
+
+</h:head>
+<h:body>
+
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand" href="#">HOME</a>
+
+
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#myNavbar"
+				aria-controls="myNavbar" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link" href="#destinations">DESTINATIONS</a></li>
+					<li class="nav-item"><a class="nav-link" href="#about">ABOUT</a></li>
+					<li class="nav-item"><a class="nav-link" href="#myMap">LOG
+							IN</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+	<!-- Header with image -->
+	<header class="bgimg d-flex align-items-center">
+		<div class="container text-center">
+			<h1 class="text-white">LOGO HERE</h1>
+			<a href="#destinations" class="btn btn-primary btn-lg mt-3">Discover
+				our packages</a>
+		</div>
+	</header>
+
+	<!-- Destinations Container -->
+	<section id="destinations" class="bg-light py-5">
+		<div class="container text-center">
+			<h2 class="display-4">search bar</h2>
+			<div class="row justify-content-center">
+
+				<div id="packages"
+					class="alternativeSubPart container-fluid p-0 m-0">
+					<div class="row p-0 m-0">
+						<div class="card m-0 p-0 col-12 col-md-6 col-xl-4 small-zoom">
+							<div class="card-header bg-primary text-white">
+								<a data-bs-toggle="collapse" data-bs-target="#collapse-pkgOne">nom du package</a>
+							</div>
+							<div id="collapse-pkgOne" class="collapse">
+								<div class="card-body">
+									<div class="card-text">Description du package</div>
+								</div>
+							</div>
+						</div>
+						<div class="card m-0 p-0 col-12 col-md-6 col-xl-4 small-zoom">
+							<div class="card-header bg-primary text-white">
+								<a data-bs-toggle="collapse" data-bs-target="#collapse-pkgTwo">nom du package</a>
+							</div>
+							<div id="collapse-pkgTwo" class="collapse">
+								<div class="card-body">
+									<div class="card-text">Description du package</div>
+								</div>
+							</div>
+						</div>
+						<div class="card m-0 p-0 col-12 col-md-6 col-xl-4 small-zoom">
+							<div class="card-header bg-primary text-white">
+								<a data-bs-toggle="collapse" data-bs-target="#collapse-pkgThree">nom du package</a>
+							</div>
+							<div id="collapse-pkgThree" class="collapse">
+								<div class="card-body">
+									<div class="card-text">Description du package</div>
+								</div>
+							</div>
+						</div>
+						</div>
+				</div>
+			</div>
+			</div>
+	</section>
+
+<!-- About Container -->
+	<section id="about" class="bg-primary text-white py-5">
+		<div class="container text-center">
+			<h2 class="display-4">About us</h2>
+			<p class="lead">Voici vous pouvez racconter pourquoi votre agence
+				est géniale</p>
+			<p class="mb-0">fill in.</p>
+
+		</div>
+
+	</section>
+
+	<!-- Image of location/map -->
+	<section id="myMap">
+		<img src="/w3images/map.jpg" class="img-fluid" alt="Map" />
+	</section>
+
+	<!-- Contact -->
+	<section class="bg-secondary text-white py-5">
+		<div class="container text-center">
+			<h2 class="display-4">Contact</h2>
+			ici onn pourrait rentrer le formulaire de profil agence et afficher les infos pertinantes
+			<p>adresse : somewhere around the world 1111</p>
+			<p>téléphone : +33 111 111 111</p>
+			<p>email : +33 111 111 111</p>
+			<p class="mb-0">FYI! Lorem ipsum, dolor sit amet consectetur
+				adipisicing elit.</p>
+			
+			<p class="lead">
+				<strong>Create an account</strong> Create a user and start
+				travelling!
+			</p>
+			ici on peut mettre le form pour nouvel utilisateur mais déjà coché sur "client"
+			<form>
+				<div class="row">
+					<div class="col-md-6">
+						<input type="text" class="form-control mb-3" placeholder="Name"
+							required="true" /> <input type="number"
+							class="form-control mb-3" placeholder="How many people"
+							required="true" />
+					</div>
+					<div class="col-md-6">
+						<input type="datetime-local" class="form-control mb-3"
+							placeholder="Date and time" required="true" /> <input
+							type="text" class="form-control mb-3"
+							placeholder="Message / Special requirements" required="true" />
+					</div>
+				</div>
+				<button type="submit" class="btn btn-light btn-lg">SEND
+					</button>
+			</form>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="bg-dark text-white text-center py-3">
+		<p class="mb-0">Powered by EnsembleS</p>
+	</footer>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</h:body>
+</html>

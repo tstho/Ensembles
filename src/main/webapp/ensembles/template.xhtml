@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<h:head>
+	<meta charset="utf-8"></meta>
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+</h:head>
+  
+<h:body>
+    <header class="bg-light">
+        <div class="container py-3">
+            <div class="row">
+                <div class="col-md-3">
+                    <h:graphicImage library="images" name="logo.png" alt="Logo" class="img-fluid" />
+                </div>
+                <div class="col-md-9 d-flex align-items-center">
+                    <nav>
+                        <h:form>
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <h:link value="Home" outcome="/index" class="nav-link" />
+                                </li>
+                                <li class="nav-item">
+                                    <h:link value="About" outcome="/about" class="nav-link" />
+                                </li>
+                                <li class="nav-item">
+                                    <h:link value="Tours" outcome="/tours" class="nav-link" />
+                                </li>
+                                <li class="nav-item">
+                                    <h:link value="Contact" outcome="/contact" class="nav-link" />
+                                </li>
+                            </ul>
+                        </h:form>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container py-5">
+        </div>
+    </main>
+</h:body>
+</html>

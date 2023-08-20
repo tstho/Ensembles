@@ -6,7 +6,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 public class User {
@@ -16,7 +15,7 @@ public class User {
 	private Long id;
 
 	private String email;
-	private String Password;
+	private String password;
 	
 	@Enumerated(EnumType.STRING)
 	private Role role;
@@ -41,11 +40,11 @@ public class User {
 	}
 
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 
 	public void setPassword(String password) {
-		Password = password;
+		this.password = password;
 	}
 	public Role getRole() {
 		return role;
