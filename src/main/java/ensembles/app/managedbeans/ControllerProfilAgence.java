@@ -9,7 +9,7 @@ import ensembles.app.service.ProfilAgenceService;
 import ensembles.app.viewmodels.ProfilAgenceViewModel;
 
 @ManagedBean
-public class ControllerProfilAgence  implements Serializable {
+public class ControllerProfilAgence implements Serializable {
 
 
 	private static final long serialVersionUID = 1L;

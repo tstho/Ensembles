@@ -21,10 +21,8 @@ public class ControllerUser implements Serializable {
 	@Inject
 	private UserService userService;
 
-	private UserViewModel userViewModel = new UserViewModel();
-	
-	private RepoUser repoUser = new RepoUser();
-	
+	@Inject
+	private UserViewModel userViewModel;	
 
 	/*
 	 * Méthode appelé depuis la vue pour enregistrer un user
@@ -33,10 +31,9 @@ public class ControllerUser implements Serializable {
 		userService.saveUser(userViewModel);
 		
 		//reset le view model
-	//	clearUserViewModel();
+		clearUserViewModel();
 		//redirection vers l'index
-		//return "index.xhtml?faces-redirect=true";
-		return "";
+		return "/index.xhtml?faces-redirect=true";
 	}
 	
 
