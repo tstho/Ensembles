@@ -25,8 +25,8 @@ public class RepoSubscription {
 		
 
 		public Long saveSubscription(Subscription subscription) {
-//			EntityTransaction tx = this.entityManager.getTransaction();
-//			tx.begin();
+		   //EntityTransaction tx = this.entityManager.getTransaction();
+     		//tx.begin();
 			entityManager.persist(subscription);
 			entityManager.flush();
 //			tx.commit();
@@ -46,11 +46,47 @@ public class RepoSubscription {
 		        return resultList;
 		    }
 
+
+
+			    
+
+			    public Long createSubscription(Subscription subscription) {
+			        entityManager.persist(subscription);
+			        entityManager.flush();
+			        return subscription.getId();
+			    }
+
+		
+		    public Subscription updateSubscription(Subscription subscription) {
+		        return entityManager.merge(subscription);
+		 }
+		 
 		    public List<Subscription> findAll() {
 		        String reqSelect = "SELECT s FROM Subscription s";
 		        return entityManager.createQuery(reqSelect, Subscription.class).getResultList();
 		    }
-		}
+
+		    
+		    
+		    public void delete(Subscription subscription) {
+		        entityManager.remove(subscription);
+		        
+		    }
+			
+		    public Subscription findById(Long id) {
+		        return entityManager.find(Subscription.class, id);
+		    }
+		    
+
+			 public Long save(Subscription subscription) {
+			        entityManager.persist(subscription);
+			        entityManager.flush();
+			        return subscription.getId();
+			    }
+			
+				
+			}
+		
 			
 			
 					

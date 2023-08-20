@@ -1,6 +1,9 @@
 package ensembles.app.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,7 +19,7 @@ import javax.persistence.Table;
 public class Service {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	private String name;
@@ -33,6 +37,19 @@ public class Service {
 	
 	private String Description; 
 
+
+//
+//	@ManyToMany(mappedBy = "services")
+//	    private List<Journey> journeys = new ArrayList<>();
+//	
+//	public List<Journey> getJourneys() {
+//		return journeys;
+//	}
+//
+//	public void setJourneys(List<Journey> journeys) {
+//		this.journeys = journeys;
+//	}
+	
 	public String getDescription() {
 		return Description;
 	}

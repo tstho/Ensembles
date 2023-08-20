@@ -1,7 +1,7 @@
 package ensembles.app.service;
 
 import java.util.Date;
-
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -44,6 +44,43 @@ public class SubscriptionService {
 			
 		}
 		
+		public Long createSubscription(SubscriptionType subscriptionType, Date startDate, Date endDate,
+                double price, SubscriptionStatut subscriptionStatut,
+                PaymentPeriod paymentPeriod, PaymentMethod paymentMethod) {
+
+          Subscription subscription = new Subscription();
+          subscription.setSubscriptionType(subscriptionType);
+          subscription.setStartDate(startDate);
+          subscription.setEndDate(endDate);
+          subscription.setprice(price);
+          subscription.setSubscriptionStatut(subscriptionStatut);
+          subscription.setPaymentPeriod(paymentPeriod);
+          subscription.setPaymentMethod(paymentMethod);
+
+    return repoSubscription.saveSubscription(subscription);
+    }
+		
+		
+		 public void deleteSubscription(Subscription subscription) {
+		        repoSubscription.delete(subscription);
+		    }
+
+		    public Subscription findById(Long id) {
+		        return repoSubscription.findById(id);
+		    }	
+		
+
+		public Subscription updateSubscription(Subscription subscription) {
+	        return repoSubscription.updateSubscription(subscription);
+	    }
+
+	    public List<Subscription> displaySubscriptions() {
+	        return repoSubscription.displaySubscriptions();
+	    }
+
+	    public List<Subscription> getAllSubscriptions() {
+	        return repoSubscription.findAll();
+	    }
 		
 		
 		
