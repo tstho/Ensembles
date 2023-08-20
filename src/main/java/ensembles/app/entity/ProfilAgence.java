@@ -22,11 +22,14 @@ public class ProfilAgence {
 	@JoinColumn(name="adresse_id")	
 	private Adresse adresse;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="agency_website")
+	private WebSite webSite;
+	
 	private String nomResponsableSociete;
 	private String prenomResponsableSociete;
 	private String emailResponsableSociete;
 	private int telephoneResponsableSociete;
-	
 	
 	public Long getId() {
 		return id;
