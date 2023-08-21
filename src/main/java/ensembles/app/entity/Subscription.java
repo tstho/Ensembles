@@ -15,7 +15,6 @@ public class Subscription {
 
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO)
-		
 		private Long id;
 		
 		private SubscriptionType subscriptionType;

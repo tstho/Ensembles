@@ -2,24 +2,42 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
 <h:head>
+	<meta charset="utf-8"></meta>
 	<title>Ensembles:: Profil Agence</title>
 	<link href="~/css/Site.css" rel="stylesheet" />
 	<h:outputStylesheet library="css" name="bootstrap.min.css" />
 </h:head>
 <h:body>
-	<h2>Profil de l'Agence</h2>
-	<hr />
-	<br />
+  <ui:composition template="/layouts/PartnerLayout.xhtml">
+  <ui:define name="content">
 
+	
 
 	<h:form>
 
-		<fieldset>
-			<legend>Informations de l'Agence</legend>
-			<table>
+		
+<!-- 			<form> -->
+<!--   <div class="row"> -->
+<!--     <div class="col"> -->
+<!--       <input type="text" class="form-control" placeholder="Nom de société"/> -->
+<!--     </div> -->
+<!--     <div class="col"> -->
+<!--       <input type="text" class="form-control" placeholder="Numéro de SIRET"/> -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- </form> -->
+	<div class = "container">
+	<h2>Profil de l'Agence</h2>
+	<hr />
+	<br />
+	
+			<table class ="table-responsive">
+			
 				<tr>
 					<td><h:outputLabel for="nom">Nom de société :<span
 								class="requis"></span>
@@ -36,12 +54,32 @@
 							value="#{controllerProfilAgence.profilAgenceViewModel.siretSociete}"
 							size="20" maxlength="20" /></td>
 				</tr>
-			</table>
-		</fieldset>
-		<fieldset>
+			
+			
 
-			<legend>Adresse de l'Agence</legend>
-			<table>
+	
+
+			<legend>Informations de l'Agence</legend>
+<!-- 			<form> -->
+<!-- 			 <div class="row"> -->
+<!--     <div class="col"> -->
+<!--       <input type="text" class="form-control" placeholder="Numéro"/> -->
+<!--     </div> -->
+<!--     <div class="col"> -->
+<!--       <input type="text" class="form-control" placeholder="Rue"/> -->
+<!--       </div> -->
+<!--       <div class="col"> -->
+<!--       <input type="text" class="form-control" placeholder="Voie"/> -->
+<!--       </div> -->
+<!--    <div class="col"> -->
+<!--       <h:inputText type="text" class="form-control" a:placeholder="Code Postal" -->
+<!--       value="#{controllerProfilAgence.profilAgenceViewModel.numero}" -->
+<!-- 							size="20" maxlength="20"/> -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- </form> -->
+			
+			 
 				<tr>
 					<td><h:outputLabel for="numero">Numéro :<span
 								class="requis"></span>
@@ -92,11 +130,13 @@
 							size="20" maxlength="20" /></td>
 				</tr>
 			</table>
-		</fieldset>
-		<fieldset>
-
+			</div>
+	
+		
+			<div class = "container">
+			<table class ="table-responsive">
 			<legend>Informations sur le responsable</legend>
-			<table>
+			
 			<tr>
 				<td><h:outputLabel for="nomResponsableSociete">Nom du Responsable :<span
 							class="requis"></span>
@@ -130,8 +170,15 @@
 						size="20" maxlength="20" /></td>
 			</tr>
 			</table>
-		</fieldset>
-		<h:commandButton value="Soumettre" action="#{controllerProfilAgence.saveProfilAgence()}" />
+			
+	
+		<!--  <h:commandButton value="Soumettre" action="#{controllerProfilAgence.saveProfilAgence()}" />-->
+		<button type="submit" class="btn btn-primary mb-2">Valider</button>
+		</div>
 	</h:form>
+	</ui:define>
+</ui:composition>
+
+	
 </h:body>
 </html>
