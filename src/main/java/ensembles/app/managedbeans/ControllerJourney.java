@@ -139,26 +139,26 @@ public class ControllerJourney implements Serializable {
 //		
 //	}
 
-	private boolean showDeleteConfirmation = false;
-
-	public boolean isShowDeleteConfirmation() {
-	    return showDeleteConfirmation;
-	}
-
-	public void setShowDeleteConfirmation(boolean showDeleteConfirmation) {
-	    this.showDeleteConfirmation = showDeleteConfirmation;
-	}
-	
-	
-	public void prepareDeleteJourney() {
-	    
-	    showDeleteConfirmation = true;
-	}
-	
-	public void cancelDelete() {
-	    showDeleteConfirmation = false;
-	}
-	
+//	private boolean showDeleteConfirmation = false;
+//
+//	public boolean isShowDeleteConfirmation() {
+//	    return showDeleteConfirmation;
+//	}
+//
+//	public void setShowDeleteConfirmation(boolean showDeleteConfirmation) {
+//	    this.showDeleteConfirmation = showDeleteConfirmation;
+//	}
+//	
+//	
+//	public void prepareDeleteJourney() {
+//	    
+//	    showDeleteConfirmation = true;
+//	}
+//	
+//	public void cancelDelete() {
+//	    showDeleteConfirmation = false;
+//	}
+//	
 	public void supprimerJourney(Long id) {
 		System.out.println("ID du voyage à supprimer : " + journeyViewModel.getId());
 	    journeyService.supprimerJourney(id);
