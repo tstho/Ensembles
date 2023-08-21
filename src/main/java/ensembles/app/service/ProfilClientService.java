@@ -10,7 +10,7 @@ import ensembles.app.viewmodels.ProfilClientViewModel;
 
 
 @Stateless
-public class ProfilClientService {
+public class ProfilClientService extends ProfilService {
 
 	@Inject
 	RepoProfilClient repoProfilClient;

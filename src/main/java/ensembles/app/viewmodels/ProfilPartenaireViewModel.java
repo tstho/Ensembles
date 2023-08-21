@@ -1,6 +1,6 @@
 package ensembles.app.viewmodels;
 
-public class ProfilPartenaireViewModel {
+public class ProfilPartenaireViewModel extends ProfilViewModel {
 
 	private String nomPartenaire;
 	private String siretPartenaire;
@@ -65,6 +65,16 @@ public class ProfilPartenaireViewModel {
 		return telephoneResponsablePartenaire;
 	}
 
+	
+	public String getNomProfil() {
+        return nomPartenaire;
+    }
+
+ 
+    public String getEmailProfil() {
+        return emailResponsablePartenaire;
+    }
+    
 	public void setNomPartenaire(String nomPartenaire) {
 		this.nomPartenaire = nomPartenaire;
 	}
@@ -113,4 +123,8 @@ public class ProfilPartenaireViewModel {
 		this.telephoneResponsablePartenaire = telephoneResponsablePartenaire;
 	}
 
+	
+	
+	
+	
 }

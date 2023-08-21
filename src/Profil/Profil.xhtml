@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Ensembles:: Profil</title>
+	<link type="text/css" rel="stylesheet" href="form.css" />
+</h:head>
+<h:body>
+	<h2>Profil</h2>
+	<hr />
+	<br />
+
+
+	<h:form>
+		<fieldset>
+			<legend>Informations générales</legend>
+			<table>
+				<tr>
+					<td><h:outputLabel for="nom">Nom :</h:outputLabel></td>
+					<td><h:inputText type="text" id="nom"
+							value="#{controllerProfil.profilViewModel.nom}"
+							size="20" maxlength="20" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="email">Email :</h:outputLabel></td>
+					<td><h:inputText type="text" id="email"
+							value="#{controllerProfil.profilViewModel.email}"
+							size="20" maxlength="50" /></td>
+				</tr>
+			</table>
+		</fieldset>
+		<fieldset>
+			<legend>Adresse</legend>
+			<table>
+				<tr>
+					<td><h:outputLabel for="numero">Numéro :</h:outputLabel></td>
+					<td><h:inputText type="text" id="numero"
+							value="#{controllerProfil.profilViewModel.numero}"
+							size="20" maxlength="20" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="complement">Complement :</h:outputLabel></td>
+					<td><h:inputText type="text" id="complement"
+							value="#{controllerProfil.profilViewModel.complement}"
+							size="20" maxlength="20" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="voie">Voie :</h:outputLabel></td>
+					<td><h:inputText type="text" id="voie"
+							value="#{controllerProfil.profilViewModel.voie}"
+							size="20" maxlength="20" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="codePostal">Code Postal :</h:outputLabel></td>
+					<td><h:inputText type="text" id="codePostal"
+							value="#{controllerProfil.profilViewModel.codePostal}"
+							size="20" maxlength="20" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="ville">Ville :</h:outputLabel></td>
+					<td><h:inputText type="text" id="ville"
+							value="#{controllerProfil.profilViewModel.ville}"
+							size="20" maxlength="20" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="pays">Pays :</h:outputLabel></td>
+					<td><h:inputText type="text" id="pays"
+							value="#{controllerProfil.profilViewModel.pays}"
+							size="20" maxlength="20" /></td>
+				</tr>
+			</table>
+		</fieldset>
+		<h:commandButton value="Soumettre" action="#{controllerProfil.saveProfil()}" />
+	</h:form>
+</h:body>
+</html>

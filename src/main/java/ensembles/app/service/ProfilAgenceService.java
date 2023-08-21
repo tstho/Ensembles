@@ -9,7 +9,7 @@ import ensembles.app.repository.RepoProfilAgence;
 import ensembles.app.viewmodels.ProfilAgenceViewModel;
 
 @Stateless
-public class ProfilAgenceService {
+public class ProfilAgenceService extends ProfilService{
 
 	@Inject
 	RepoProfilAgence repoProfilAgence;

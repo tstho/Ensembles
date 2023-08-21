@@ -1,6 +1,6 @@
 package ensembles.app.viewmodels;
 
-public class ProfilAgenceViewModel {
+public class ProfilAgenceViewModel extends ProfilViewModel {
 
 	private String nomSociete;
 	private String siretSociete;
@@ -26,6 +26,15 @@ public class ProfilAgenceViewModel {
 	}
 	
 	
+    public String getNomProfil() {
+        return nomSociete;
+    }
+
+    
+    public String getEmailProfil() {
+        return emailResponsableSociete;
+    }
+
 	
 	public int getNumero() {
 		return numero;

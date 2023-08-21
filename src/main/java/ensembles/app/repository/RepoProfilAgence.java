@@ -6,7 +6,7 @@ import javax.persistence.PersistenceContext;
 
 import ensembles.app.entity.ProfilAgence;
 @Stateless
-public class RepoProfilAgence {
+public class RepoProfilAgence extends RepoProfil {
 
 	@PersistenceContext
 	 private EntityManager entityManager;

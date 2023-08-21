@@ -7,7 +7,7 @@ import javax.persistence.PersistenceContext;
 import ensembles.app.entity.ProfilClient;
 
 @Stateless
-public class RepoProfilClient {
+public class RepoProfilClient extends RepoProfil{
 	
 	@PersistenceContext
 	private EntityManager entityManager;

@@ -1,6 +1,6 @@
 package ensembles.app.viewmodels;
 
-public class ProfilClientViewModel {
+public class ProfilClientViewModel extends ProfilViewModel {
 
 	private String prenomClient;
 	private String nomClient;
@@ -27,6 +27,15 @@ public class ProfilClientViewModel {
 	public void setNomClient(String nomClient) {
 		this.nomClient = nomClient;
 	}
+	
+	 public String getNomProfil() {
+	        return nomClient;
+	    }
+
+	    
+	    public String getEmailProfil() {
+	        return emailClient;
+	    }
 	
 	public int getNumero() {
 		return numero;

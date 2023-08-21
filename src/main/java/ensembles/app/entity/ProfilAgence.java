@@ -4,15 +4,14 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class ProfilAgence {
+public  class ProfilAgence extends Profil {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	private String nomSociete;
@@ -27,6 +26,17 @@ public class ProfilAgence {
 	private String emailResponsableSociete;
 	private int telephoneResponsableSociete;
 	
+	 // Méthodes abstraites implémentées
+
+    @Override
+    public String getNomProfil() {
+        return nomSociete;
+    }
+
+    @Override
+    public String getEmailProfil() {
+        return emailResponsableSociete;
+    }
 	
 	public Long getId() {
 		return id;

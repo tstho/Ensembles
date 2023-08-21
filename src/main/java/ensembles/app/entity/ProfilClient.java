@@ -4,15 +4,14 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class ProfilClient {
+public  class ProfilClient extends Profil{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	@GeneratedValue(strategy = GenerationType.AUTO)
 
 	private Long id;
 
@@ -25,6 +24,18 @@ public class ProfilClient {
 	
 	private int telephoneClient;
 	private String emailClient;
+	
+	
+	
+	 // Méthodes abstraites implémentées
+
+    public String getNomProfil() {
+        return nomClient;
+    }
+
+    public String getEmailProfil() {
+        return emailClient;
+    }
 	
 	public Long getId() {
 		return id;

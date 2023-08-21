@@ -9,7 +9,7 @@ import ensembles.app.repository.RepoProfilPartenaire;
 import ensembles.app.viewmodels.ProfilPartenaireViewModel;
 
 @Stateless
-public class ProfilPartenaireService {
+public class ProfilPartenaireService extends ProfilService {
 	
 	@Inject
 	RepoProfilPartenaire repoProfilPartenaire;
