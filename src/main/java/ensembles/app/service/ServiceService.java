@@ -17,16 +17,16 @@ public class ServiceService {
 	@Inject
 	private Service service;
 	
-	public void saveService(String name,String place,Date begin, Date end, ServiceType serviceType, Double price, String description) {
+	public void saveService(String name,String place,Date begin, Date end, ServiceType ServiceType, Double price, String Description) {
 		
 		service = new Service();
 		service.setName(name);
 		service.setPlace(place);
 		service.setBegin(begin);
 		service.setEnd(end);
-		service.setServiceType(serviceType);
+		service.setServiceType(ServiceType);
 		service.setPrice(price);
-		service.setDescription(description);
+		service.setDescription(Description);
 		repoService.saveService(service);
 		
 		
