@@ -46,11 +46,14 @@ public class ControllerJourney implements Serializable {
 		this.repoJourney = repoJourney;
 	}
 
-	public void saveJourney() {
+	public String saveJourney() {
 
 		journeyService.saveJourney(journeyViewModel);
 		journeyList = repoJourney.findAll();
 		resetViewModel();
+
+		return "/Journey/displayAllJourney.xhtml?faces-redirect=true";
+		
 
 	}
 
@@ -104,36 +107,37 @@ public class ControllerJourney implements Serializable {
 		System.out.println(journeyViewModel.toString());
 	}
 
-	public void modifierJourney() {
+	public String modifierJourney() {
 		System.out.println("ID du voyage à modifier : " + journeyViewModel.getId());
 		journeyService.modifierJourney(journeyViewModel);
 		journeyList = repoJourney.findAll();
 		resetViewModel();
 
+		return "/Journey/displayAllJourney.xhtml?faces-redirect=true";
 	}
 
-	public String redirectToDelete(Long journeyId) {
-		initSupprimerJourney(journeyId);
-		return "/Journey/SupprimerJourney.xhtml?faces-redirect=true";
-	}
+//	public String redirectToDelete(Long journeyId) {
+//		initSupprimerJourney(journeyId);
+//		return "/Journey/SupprimerJourney.xhtml?faces-redirect=true";
+//	}
 
-	public void initSupprimerJourney(Long journeyId) {
-
-		Journey journey = repoJourney.findById(journeyId);
-		journeyViewModel = new JourneyViewModel();
-		journeyViewModel.setId(journey.getId());
-		journeyViewModel.setDeparture(journey.getDeparture());
-		journeyViewModel.setDestination(journey.getDestination());
-		journeyViewModel.setDestinationDate(journey.getDestinationDate());
-		journeyViewModel.setPrice(journey.getPrice());
-		journeyViewModel.setConveyance(journey.getConveyance());
-		journeyViewModel.setDepartureDate(journey.getDepartureDate());
-
-		System.out.println(journey.toString());
-		System.out.println(journeyViewModel.toString());
-		
-		
-	}
+//	public void initSupprimerJourney(Long journeyId) {
+//
+//		Journey journey = repoJourney.findById(journeyId);
+//		journeyViewModel = new JourneyViewModel();
+//		journeyViewModel.setId(journey.getId());
+//		journeyViewModel.setDeparture(journey.getDeparture());
+//		journeyViewModel.setDestination(journey.getDestination());
+//		journeyViewModel.setDestinationDate(journey.getDestinationDate());
+//		journeyViewModel.setPrice(journey.getPrice());
+//		journeyViewModel.setConveyance(journey.getConveyance());
+//		journeyViewModel.setDepartureDate(journey.getDepartureDate());
+//
+//		System.out.println(journey.toString());
+//		System.out.println(journeyViewModel.toString());
+//		
+//		
+//	}
 
 	private boolean showDeleteConfirmation = false;
 
@@ -155,9 +159,9 @@ public class ControllerJourney implements Serializable {
 	    showDeleteConfirmation = false;
 	}
 	
-	public void supprimerJourney() {
+	public void supprimerJourney(Long id) {
 		System.out.println("ID du voyage à supprimer : " + journeyViewModel.getId());
-	    journeyService.supprimerJourney(journeyViewModel);
+	    journeyService.supprimerJourney(id);
 	    journeyList = repoJourney.findAll();
 	    resetViewModel();
 	}

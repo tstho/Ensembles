@@ -52,16 +52,9 @@ public class JourneyService {
 	    }
 	    
 	    
-	    public void supprimerJourney(JourneyViewModel journeyViewModel) {
+	    public void supprimerJourney(Long id) {
 	 
-	         Journey journey = new Journey();
-		        journey.setDeparture(journeyViewModel.getDeparture());
-		        journey.setDestination(journeyViewModel.getDestination());
-		        journey.setDepartureDate(journeyViewModel.getDepartureDate());
-		        journey.setDestinationDate(journeyViewModel.getDestinationDate());
-		        journey.setPrice(journeyViewModel.getPrice());
-		        journey.setConveyance(journeyViewModel.getConveyance());
-                journey.setId(journeyViewModel.getId());
+	    		Journey journey = repoJourney.findById(id);
 	            repoJourney.delete(journey);
 	            
 	       
