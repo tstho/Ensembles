@@ -25,19 +25,19 @@
                     <td><h:inputText  value="#{controllerService.serviceViewModel.name}" size="20" maxlength="20" /></td>
                 </tr>
                 <tr>
-                    <td><h:outputLabel value="Lieu: "/></td>
+                    <td><h:outputLabel value="Lieu : "/></td>
                     <td><h:inputText value="#{controllerService.serviceViewModel.place}" size="20" maxlength="20" /></td>
                 </tr>
                 <tr>
-                    <td><h:outputLabel value="Début: "/></td>
-                    <td><p:datePicker value="#{controllerService.serviceViewModel.begin}" size="20" maxlength="20" /></td>
+                    <td><h:outputLabel value="Début : "/></td>
+                    <td><p:datePicker value="#{controllerService.serviceViewModel.startDate}" size="20" maxlength="20" /></td>
                 </tr>
                 <tr>
-                    <td><h:outputLabel value="Fin: "/></td>
-                    <td><p:datePicker value="#{controllerService.serviceViewModel.end}" size="20" maxlength="20" /></td>
+                    <td><h:outputLabel value="Fin : "/></td>
+                    <td><p:datePicker value="#{controllerService.serviceViewModel.endDate}" size="20" maxlength="20" /></td>
                 </tr>
                 <tr>
-                    <td><h:outputLabel value="Type de Service: "/></td>
+                    <td><h:outputLabel value="Type de Service : "/></td>
                     <td><p:selectOneMenu value="#{controllerService.serviceViewModel.serviceType}" style="width:350px" >
                     <f:selectItem itemLabel="Select Service type" itemValue="#{controllerService.serviceViewModel.serviceType}" noSelectionOption="true"/>
                     <f:selectItems value="#{controllerService.serviceViewModel.serviceType}"/>
