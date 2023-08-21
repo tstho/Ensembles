@@ -61,7 +61,7 @@ public class RepoJourney {
 		  // methode Supprimer
 		  
 		  public void delete(Journey journey) {
-		        entityManager.remove(entityManager.merge(journey));
+		        entityManager.remove(journey);
 		        entityManager.flush();
 		  }
 		  

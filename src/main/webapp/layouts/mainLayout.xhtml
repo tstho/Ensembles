@@ -6,6 +6,9 @@
 
 
 <h:head>
+
+    <link rel="stylesheet" href="../resources/css/styles.css"/>
+    
 	<!-- Update the Bootstrap CSS link -->
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
@@ -17,6 +20,16 @@
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<title>Ensembles:: Index</title>
+	
+	<style>
+.bgimg {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image: url("images/poleNord.png");
+	min-height: 90%
+}
+
+</style>
 </h:head>
 
 <h:body>
@@ -36,7 +49,7 @@
 		</div>
 
 		<div id="footer">
-			<ui:insert name="header">
+			<ui:insert name="footer">
 				<ui:include src="/layouts/mainFooter.xhtml" />
 			</ui:insert>
 
