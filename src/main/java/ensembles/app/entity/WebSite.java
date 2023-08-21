@@ -16,14 +16,28 @@ public class WebSite {
 	private String aboutUs;
 //	private BufferedImage logo;
     
-	@Lob
-    private byte[] logo;
+//	@Lob
+//    private byte[] logo;
 
 	/**
 	 * @return the aboutUs
 	 */
 	public String getAboutUs() {
 		return aboutUs;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	/**
@@ -36,16 +50,16 @@ public class WebSite {
 	/**
 	 * @return the logo
 	 */
-	public byte[] getLogo() {
-		return logo;
-	}
-
-	/**
-	 * @param logo the logo to set
-	 */
-	public void setLogo(byte[] logo) {
-		this.logo = logo;
-	}
+//	public byte[] getLogo() {
+//		return logo;
+//	}
+//
+//	/**
+//	 * @param logo the logo to set
+//	 */
+//	public void setLogo(byte[] logo) {
+//		this.logo = logo;
+//	}
 
 		
 
