@@ -8,10 +8,13 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+
+import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.Role;
 import ensembles.app.entity.SubscriptionType;
 import ensembles.app.entity.User;
 import ensembles.app.repository.RepoUser;
+import ensembles.app.service.ProfilAgenceService;
 import ensembles.app.service.UserService;
 import ensembles.app.viewmodels.UserViewModel;
 
@@ -29,6 +32,9 @@ public class ControllerUser implements Serializable {
 	
 	@Inject
 	private RepoUser rU;
+	
+	@Inject
+	private ProfilAgenceService proAgenceService;
 	
 	private List<User> userList;
 	
@@ -88,7 +94,10 @@ public class ControllerUser implements Serializable {
 		}
 	public String saveUser() {
 
-		userService.saveUser(userViewModel);
+		User user = userService.saveUser(userViewModel);
+		
+		
+		
 		userList = rU.findAll();
 		resetViewModel();
 

@@ -16,15 +16,16 @@ public class UserService {
 	private RepoUser repoUser;
 	
 
-	public void saveUser(UserViewModel userViewModel) {
+	public User saveUser(UserViewModel userViewModel) {
 	
 		User user = new User();
 		user.setEmail(userViewModel.getEmail());
 		user.setPassword(userViewModel.getPassword());
 		user.setRole(userViewModel.getRole());
-		repoUser.saveUser(user);
+		Long id = repoUser.saveUser(user);
+		return repoUser.findById(id);
 		
-		System.out.println(userViewModel.getRole());
+		
 		
 	}
 	

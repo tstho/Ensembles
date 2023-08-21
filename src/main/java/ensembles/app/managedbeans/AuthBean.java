@@ -8,8 +8,12 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import ensembles.app.entity.Adresse;
+import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.Role;
 import ensembles.app.entity.User;
+import ensembles.app.repository.RepoProfilAgence;
+import ensembles.app.service.ProfilAgenceService;
 import ensembles.app.service.UserService;
 import ensembles.app.viewmodels.UserViewModel;
 
@@ -24,6 +28,9 @@ public class AuthBean implements Serializable {
 
 	@Inject
 	private UserService userService;
+	
+	@Inject
+	private ProfilAgenceService pAService;
 
 	public String login() {
 
@@ -31,6 +38,21 @@ public class AuthBean implements Serializable {
 
 		if (currentUser != null) {
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentUser", currentUser);
+			
+			ProfilAgence pA = pAService.findByUserId(currentUser.getId());
+			
+			if (pA==null) {
+				pA= new ProfilAgence(); 
+				pA.setUser(currentUser);
+				pA.setAdresse(new Adresse());
+				
+				pAService.saveProfilAgence(pA);
+				
+			}
+//			ProfilAgence pA= new ProfilAgence();
+//			
+//			pA.setUser(user);
+//			proAgenceService.saveProfilAgence(pA);
 			return "/index.xhtml?faces-redirect=true"; // redirige vers la page d'acceuil
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,

@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import ensembles.app.entity.Journey;
+
 import ensembles.app.entity.User;
 
 @Stateless
@@ -31,6 +31,7 @@ public class RepoUser {
 //		tx.commit();
 //		entityManager.close();
 //		HibernateUtil.closeEntityManagerFactory();
+		System.out.println("user created :" + user.getId());
 		return user.getId();
 
 	}

@@ -17,6 +17,7 @@ public class ProfilAgenceService {
 	public void saveProfilAgence(ProfilAgenceViewModel profilAgenceViewModel) {
 		
 		ProfilAgence profilAgence = new ProfilAgence();
+		profilAgence.setUser(profilAgenceViewModel.getUser());
 		profilAgence.setNomSociete(profilAgenceViewModel.getNomSociete());
 		profilAgence.setSiretSociete(profilAgenceViewModel.getSiretSociete());
 		profilAgence.setNomResponsableSociete(profilAgenceViewModel.getNomResponsableSociete());
@@ -37,5 +38,46 @@ public class ProfilAgenceService {
 		repoProfilAgence.save(profilAgence);
 
 	}
+	
+public void saveProfilAgence(ProfilAgence profilAgence) {
+		
+
+		repoProfilAgence.save(profilAgence);
+
+	}
+
+public void modifyProfilAgence(ProfilAgenceViewModel profilAgenceViewModel) {
+		
+		ProfilAgence profilAgence = repoProfilAgence.findById(profilAgenceViewModel.getId());
+		
+		
+		profilAgence.setNomSociete(profilAgenceViewModel.getNomSociete());
+		profilAgence.setSiretSociete(profilAgenceViewModel.getSiretSociete());
+		profilAgence.setNomResponsableSociete(profilAgenceViewModel.getNomResponsableSociete());
+		profilAgence.setPrenomResponsableSociete(profilAgenceViewModel.getPrenomResponsableSociete());
+		profilAgence.setEmailResponsableSociete(profilAgenceViewModel.getEmailResponsableSociete());
+		profilAgence.setTelephoneResponsableSociete(profilAgenceViewModel.getTelephoneResponsableSociete());
+		
+		Adresse adresse = profilAgence.getAdresse();
+		
+		adresse.setId(profilAgenceViewModel.getAdresseId());
+		adresse.setNumero(profilAgenceViewModel.getNumero());
+		adresse.setComplement(profilAgenceViewModel.getComplement());
+		adresse.setVoie(profilAgenceViewModel.getVoie());
+		adresse.setCodePostal(profilAgenceViewModel.getCodePostal());
+		adresse.setVille(profilAgenceViewModel.getVille());
+		adresse.setPays(profilAgenceViewModel.getPays());
+		
+		
+
+		repoProfilAgence.update(profilAgence);
+
+	}
+
+public ProfilAgence findByUserId(Long id) {
+	
+	System.out.println(repoProfilAgence.findByUserId(id));
+	return repoProfilAgence.findByUserId(id);
+}
 
 }
