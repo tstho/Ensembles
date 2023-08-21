@@ -56,3 +56,10 @@
     float: none;
   }
 }
+
+.bgimg {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image:		url("images/poleNord.png");
+	min-height: 90%;
+}
