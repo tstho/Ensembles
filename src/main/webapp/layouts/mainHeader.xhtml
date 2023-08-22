@@ -54,6 +54,8 @@
 					<h:panelGroup layout="block" rendered="#{authBean.authenticated}">
 						<h:outputText value="Bienvenue, #{authBean.currentUser.email} !" />
 						<h:form>
+							<h:commandButton value="Mon espace"
+								action="#{authBean.redirectEspace}" />
 							<h:commandButton value="Se déconnecter"
 								action="#{authBean.logout}" />
 						</h:form>
@@ -74,7 +76,7 @@
 
 					<li class="nav-item"><a class="nav-link" href="#">About us</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-					<a class="navbar-brand" href="index.xhtml">EnsembleS</a>		
+					<a class="navbar-brand" href="http://127.0.0.1:8080/ensembles-app/index.xhtml">EnsembleS</a>		
 		</ul>
 	</nav>
 

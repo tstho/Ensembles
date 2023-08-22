@@ -1,65 +1,27 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title>Template One</title>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet"
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+		  <link rel="stylesheet" href="../resources/css/styleTemplate.css"/>
 
-	<style>
-body, html {
-	height: 100%
-}
-
-body, h1, h2, h3, h4, h5, h6 {
-	font-family: "Amatic SC", sans-serif
-}
-
-.menu {
-	display: none
-}
-
-.bgimg {
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-image:
-		url("https://img.maxisciences.com/article/1280/pole-nord/le-pole-nord-magnetique-est-fortement-utilise-par-les-outils-de-navigation-maritime-et-aeriens-notamment_0ff58648f2b83cb96c273f018093962b2840281e.jpg");
-	min-height: 90%;
-}
-</style>
 
 </h:head>
+
 <h:body>
+<ui:composition template="/layouts/mainLayout.xhtml">
 
-	<!-- Navbar -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container">
-			<a class="navbar-brand" href="#">HOME</a>
-
-
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#myNavbar"
-				aria-controls="myNavbar" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="navbar-nav ms-auto">
-					<li class="nav-item"><a class="nav-link" href="#destinations">DESTINATIONS</a></li>
-					<li class="nav-item"><a class="nav-link" href="#about">ABOUT</a></li>
-					<li class="nav-item"><a class="nav-link" href="#myMap">LOG
-							IN</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+		<ui:define name="content">
 
 
 	<!-- Header with image -->
-	<header class="bgimg d-flex align-items-center">
+	<header class="imgTemplate d-flex align-items-center">
 		<div class="container text-center">
 			<h1 class="text-white">LOGO HERE</h1>
 			<a href="#destinations" class="btn btn-primary btn-lg mt-3">Discover
@@ -178,5 +140,7 @@ body, h1, h2, h3, h4, h5, h6 {
 	<script 
 		src="/js/templateOneJS.js">
 	</script>
+	</ui:define>
+	</ui:composition>
 </h:body>
 </html>
