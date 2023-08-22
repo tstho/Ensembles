@@ -65,3 +65,13 @@
 	min-height: 90%;
 }
 
+
+.image-section {
+  position: relative;
+  height: 50vh; /* Adjust the height as needed */
+  background-image: url("https://i2.wp.com/earthnworld.com/wp-content/uploads/2015/11/IcebergsNorth-Pole.jpg?resize=1000%2C750&ssl=1");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
