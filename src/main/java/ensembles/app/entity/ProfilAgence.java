@@ -26,6 +26,24 @@ public class ProfilAgence {
 	@JoinColumn(name="agency_website")
 	private WebSite webSite;
 	
+	@OneToOne()
+	@JoinColumn(name="user_id")
+	private User user; 
+	
+	@Override
+	public String toString() {
+		return "ProfilAgence [id=" + id + ", nomSociete=" + nomSociete + ", siretSociete=" + siretSociete + ", adresse="
+				+ adresse + ", webSite=" + webSite + ", user=" + user + ", nomResponsableSociete="
+				+ nomResponsableSociete + ", prenomResponsableSociete=" + prenomResponsableSociete
+				+ ", emailResponsableSociete=" + emailResponsableSociete + ", telephoneResponsableSociete="
+				+ telephoneResponsableSociete + "]";
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	private String nomResponsableSociete;
 	private String prenomResponsableSociete;
 	private String emailResponsableSociete;
