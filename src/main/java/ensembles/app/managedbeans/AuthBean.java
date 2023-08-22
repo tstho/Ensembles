@@ -54,6 +54,19 @@ public class AuthBean implements Serializable {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "";
 	}
+	
+	public String redirectEspace() {
+		if (currentUser.getRole()==Role.AGENCY) {
+			return "/agency/adminAgency.xhtml?faces-redirect=true";
+		}
+		if (currentUser.getRole()==Role.PARTNER) {
+			return "/partners/mainPartner.xhtml?faces-redirect=true";
+		}
+		if (currentUser.getRole()==Role.CLIENT) {
+			return "/client/profilClient.xhtml?faces-redirect=true";
+		}
+		return "";
+	}
 
 	public boolean isRole(Role role) {
 		return currentUser != null && currentUser.getRole() == role;

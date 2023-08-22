@@ -1,19 +1,9 @@
-@charset "ISO-8859-1";
 
-        .navbar {
-            position: relative;
-            top: 25vh;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #fff; /* Navbar background color */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 10px 20px;
-        }
-        
-        .navbar-logo {
-            width: 50px;
-            height: 50px;
-            background-color: #3498db; /* Logo background color */
-            border-radius: 50%;
-        }
+
+.imgTemplate {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image:
+		url("https://img.maxisciences.com/article/1280/pole-nord/le-pole-nord-magnetique-est-fortement-utilise-par-les-outils-de-navigation-maritime-et-aeriens-notamment_0ff58648f2b83cb96c273f018093962b2840281e.jpg");
+	min-height: 90%;
+}
