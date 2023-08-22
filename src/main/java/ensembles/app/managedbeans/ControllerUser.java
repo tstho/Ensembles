@@ -94,7 +94,7 @@ public class ControllerUser implements Serializable {
 		}
 	public String saveUser() {
 
-		User user = userService.saveUser(userViewModel);
+		userService.saveUser(userViewModel);
 		
 		
 		

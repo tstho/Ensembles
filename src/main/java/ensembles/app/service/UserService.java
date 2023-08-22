@@ -4,8 +4,16 @@ package ensembles.app.service;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import ensembles.app.entity.Adresse;
 import ensembles.app.entity.Journey;
+import ensembles.app.entity.ProfilAgence;
+import ensembles.app.entity.ProfilClient;
+import ensembles.app.entity.ProfilPartenaire;
+import ensembles.app.entity.Role;
 import ensembles.app.entity.User;
+import ensembles.app.repository.RepoProfilAgence;
+import ensembles.app.repository.RepoProfilClient;
+import ensembles.app.repository.RepoProfilPartenaire;
 import ensembles.app.repository.RepoUser;
 import ensembles.app.viewmodels.UserViewModel;
 
@@ -14,6 +22,14 @@ public class UserService {
 	
 	@Inject
 	private RepoUser repoUser;
+	@Inject
+	private RepoProfilAgence repoProfilAgence;
+	
+	@Inject
+	private RepoProfilClient repoProfilClient;
+	
+	@Inject
+	private RepoProfilPartenaire repoProfilPartenaire;
 	
 
 	public void saveUser(UserViewModel userViewModel) {
