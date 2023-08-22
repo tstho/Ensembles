@@ -1,7 +1,25 @@
 package ensembles.app.viewmodels;
 
+import ensembles.app.entity.User;
+
 public class ProfilPartenaireViewModel {
 
+private Long Id;
+	
+	public Long getId() {
+		return Id;
+	}
+	public void setId(Long id) {
+		Id = id;
+	}
+	
+	private Long adresseId;
+	public Long getAdresseId() {
+		return adresseId;
+	}
+	public void setAdresseId(Long adresseId) {
+		this.adresseId = adresseId;
+	}
 	private String nomPartenaire;
 	private String siretPartenaire;
 
@@ -16,6 +34,18 @@ public class ProfilPartenaireViewModel {
 	private String prenomResponsablePartenaire;
 	private String emailResponsablePartenaire;
 	private int telephoneResponsablePartenaire;
+	
+	private User user;
+	
+	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public String getNomPartenaire() {
 		return nomPartenaire;
