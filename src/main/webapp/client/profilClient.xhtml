@@ -2,87 +2,141 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
 	<title>Ensembles:: Profil Client</title>
 	<link type="text/css" rel="stylesheet" href="form.css" />
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
 </h:head>
 <h:body>
-	<h2>Profil client</h2>
-	<hr />
-	<br />
+<ui:composition template="/layouts/mainLayout.xhtml">
+
+		<ui:define name="content">
+		
+		<section class="vh-100" style="background-color: grey;">
+		<div class="container py-5 h-100">
+		
+	<h5 class="card-title text-uppercase mb-0" style= "color: white;">Mon profil</h5>
+	<hr class="mt-0 mb-4" />
+
+	<div class="row">
+		<div class="col-xl-4">
+			<!-- Profile picture card-->
+			<div class="card mb-4 mb-xl-0">
+				<div class="card-header">Photo de profil</div>
+				<div class="card-body text-center">
+					<!-- Profile picture image-->
+					<img class="img-account-profile rounded-circle mb-2"
+						src="https://www.shareicon.net/data/256x256/2016/01/13/702410_users_512x512.png"
+						alt="customer profile picture" />
+					<!-- Profile picture help block-->
+					<div class="small font-italic text-muted mb-4">JPG or PNG max
+						5 MB</div>
+					<!-- Profile picture upload button-->
+					<button class="btn btn-dark btn-lg btn-block" type="button">Ajouter
+						une image</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xl-8">
+			<!--card Information client-->
+			<div class="card mb-4">
+				<div class="card-header">Information client</div>
+				<div class="card-body">
+
+					<h:form>
 
 
-	<h:form>
-		<fieldset>
-			<legend>Informations client</legend>
-			<table>
-				<tr>
-					<td><h:outputLabel for="prenomClient">Prénom :</h:outputLabel></td>
-					<td><h:inputText type="text" id="prenomClient"
-							value="#{controllerProfilClient.profilClientViewModel.prenomClient}"
-							size="20" maxlength="20" /></td>
-				</tr>
 
-				<tr>
-					<td><h:outputLabel for="nom">Nom :</h:outputLabel></td>
-					<td><h:inputText type="text" id="nomClient"
-							value="#{controllerProfilClient.profilClientViewModel.nomClient}"
-							size="20" maxlength="20" /></td>
-				</tr>
-				<tr>
-					<td><h:outputLabel for="telephoneClient">Téléphone :</h:outputLabel></td>
-					<td><h:inputText type="text" id="telephoneClient"
-							value="#{controllerProfilClient.profilClientViewModel.telephoneClient}"
-							size="20" maxlength="20" /></td>
-				</tr>
-			</table>
+						<div class="row gx-3 mb-3">
+							<div class="col-md-6">
+								<h:outputLabel for="prenomClient" class="small mb-1">Prénom </h:outputLabel>
 
-		</fieldset>
-		<fieldset>
-			<legend>Adresse</legend>
-			<table>
-				<tr>
-					<td><h:outputLabel for="numero">Numéro :</h:outputLabel></td>
-					<td><h:inputText type="text" id="numero"
-							value="#{controllerProfilClient.profilClientViewModel.numero}"
-							size="20" maxlength="20" /></td>
-				</tr>
-				<tr>
-					<td><h:outputLabel for="complement">Complement :</h:outputLabel></td>
-					<td><h:inputText type="text" id="complement"
-							value="#{controllerProfilClient.profilClientViewModel.complement}"
-							size="20" maxlength="20" /></td>
-				</tr>
-				<tr>
-					<td><h:outputLabel for="voie">Voie :</h:outputLabel></td>
-					<td><h:inputText type="text" id="voie"
-							value="#{controllerProfilClient.profilClientViewModel.voie}"
-							size="20" maxlength="20" /></td>
-				</tr>
-				<tr>
-					<td><h:outputLabel for="codePostal">Code Postal :</h:outputLabel></td>
-					<td><h:inputText type="text" id="codePostal"
-							value="#{controllerProfilClient.profilClientViewModel.codePostal}"
-							size="20" maxlength="20" /></td>
-				</tr>
-				<tr>
-					<td><h:outputLabel for="ville">Ville :</h:outputLabel></td>
-					<td><h:inputText type="text" id="ville"
-							value="#{controllerProfilClient.profilClientViewModel.ville}"
-							size="20" maxlength="20" /></td>
-				</tr>
+								<h:inputText type="text" id="prenomClient"
+									value="#{controllerProfilClient.profilClientViewModel.prenomClient}"
+									size="20" maxlength="20" styleClass="form-control" />
 
-				<tr>
-					<td><h:outputLabel for="pays">Pays :</h:outputLabel></td>
-					<td><h:inputText type="text" id="pays"
-							value="#{controllerProfilClient.profilClientViewModel.pays}"
-							size="20" maxlength="20" /></td>
-				</tr>
-			</table>
-		</fieldset>
-		<h:commandButton value="Soumettre" action="#{controllerProfilClient.saveProfilClient()}" />
-	</h:form>
+							</div>
+
+							<div class="col-md-6">
+								<h:outputLabel for="nom" class="small mb-1">Nom </h:outputLabel>
+								<h:inputText type="text" id="nomClient"
+									value="#{controllerProfilClient.profilClientViewModel.nomClient}"
+									size="20" maxlength="20" styleClass="form-control" />
+							</div>
+						</div>
+					
+
+						
+			<h4 style="color: #495057 ;">Adresse</h4>
+
+						<div class="row gx-3 mb-3">
+						
+							<div class="col-md-6">
+								<h:outputLabel for="numero" class="small mb-1">Numéro </h:outputLabel>
+								<h:inputText type="text" id="numero"
+									value="#{controllerProfilClient.profilClientViewModel.numero}"
+									size="20" maxlength="20" styleClass="form-control" />
+							</div>
+							<div class="col-md-6">
+								<h:outputLabel for="complement" class="small mb-1">Complement </h:outputLabel>
+								<h:inputText type="text" id="complement"
+									value="#{controllerProfilClient.profilClientViewModel.complement}"
+									size="20" maxlength="20" styleClass="form-control" />
+							</div>
+						</div>
+						<div class="row gx-3 mb-3">
+							<div class="col-md-6">
+								<h:outputLabel for="voie" class="small mb-1">Voie </h:outputLabel>
+								<h:inputText type="text" id="voie"
+									value="#{controllerProfilClient.profilClientViewModel.voie}"
+									size="20" maxlength="20" styleClass="form-control" />
+							</div>
+
+							<div class="col-md-6">
+								<h:outputLabel for="codePostal" class="small mb-1">Code Postal </h:outputLabel>
+								<h:inputText type="text" id="codePostal"
+									value="#{controllerProfilClient.profilClientViewModel.codePostal}"
+									size="20" maxlength="20" styleClass="form-control" />
+							</div>
+							<div class="col-md-6">
+								<h:outputLabel for="ville" class="small mb-1">Ville </h:outputLabel>
+								<h:inputText type="text" id="ville"
+									value="#{controllerProfilClient.profilClientViewModel.ville}"
+									size="20" maxlength="20" styleClass="form-control" />
+							</div>
+							<div class="col-md-6">
+								<h:outputLabel for="pays" class="small mb-1">Pays</h:outputLabel>
+								<h:inputText type="text" id="pays"
+									value="#{controllerProfilClient.profilClientViewModel.pays}"
+									size="20" maxlength="20" styleClass="form-control" />
+							</div>
+								<div class="col-md-6">
+							<h:outputLabel for="telephoneClient" class="small mb-1">Téléphone </h:outputLabel>
+							<h:inputText type="text" id="telephoneClient"
+								value="#{controllerProfilClient.profilClientViewModel.telephoneClient}"
+								size="20" maxlength="20" styleClass="form-control" />
+						</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<h:commandButton value="Soumettre"
+									action="#{controllerProfilClient.saveProfilClient()}"
+									styleClass="btn btn-dark" />
+							</div>
+						</div>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</section>
+	</ui:define>
+	</ui:composition>
 </h:body>
 </html>
