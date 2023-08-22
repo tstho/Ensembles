@@ -16,17 +16,45 @@ public class UserService {
 	private RepoUser repoUser;
 	
 
-	public User saveUser(UserViewModel userViewModel) {
+	public void saveUser(UserViewModel userViewModel) {
 	
 		User user = new User();
 		user.setEmail(userViewModel.getEmail());
 		user.setPassword(userViewModel.getPassword());
 		user.setRole(userViewModel.getRole());
-		Long id = repoUser.saveUser(user);
-		return repoUser.findById(id);
 		
+		Long userId = repoUser.saveUser(user);
 		
+		user = repoUser.findById(userId);
 		
+		createProfil(user);
+				
+	}
+
+
+	public void createProfil(User user) {
+		if(user.getRole() == Role.AGENCY) {
+
+			ProfilAgence pa = new ProfilAgence();
+			pa.setUser(user);
+			pa.setAdresse(new Adresse());
+			repoProfilAgence.save(pa);
+		}
+		if(user.getRole() == Role.CLIENT) {
+
+			ProfilClient pc = new ProfilClient();
+			pc.setUser(user);
+			pc.setAdresse(new Adresse());
+			repoProfilClient.save(pc);
+		}
+
+		if(user.getRole() == Role.PARTNER) {
+
+			ProfilPartenaire pp = new ProfilPartenaire();
+			pp.setUser(user);
+			pp.setAdresse(new Adresse());
+			repoProfilPartenaire.save(pp);
+		}
 	}
 	
 	   public void supprimerUser(Long id) {
