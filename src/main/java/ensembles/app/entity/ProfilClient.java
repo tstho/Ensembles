@@ -21,6 +21,10 @@ public class ProfilClient {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "adresse_id")	
 	private Adresse adresse;
+
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private User user;
 	
 	private int telephoneClient;
 	private String emailClient;
@@ -61,6 +65,13 @@ public class ProfilClient {
 	public void setEmailClient(String emailClient) {
 		this.emailClient = emailClient;
 	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 
 	
 }
