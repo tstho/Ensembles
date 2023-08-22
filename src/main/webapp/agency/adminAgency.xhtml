@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-		xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <link rel="stylesheet" href="../resources/css/styles.css" />
@@ -31,50 +30,20 @@
 								href="http://127.0.0.1:8080/ensembles-app/Journey/ModifierJourney.xhtml">Modifier un package</a></li>
 						<li><a class="nav-link text-white"
 								href="../templates/templateOne.xhtml">MON SITE</a></li>
-
 						</ul>
 						<hr class="d-sm-none" />
 					</div>
 					<div class="col-sm-9">
-    <h:form>
-        <h1>Modifier votre voyage</h1>
+						<div
+							class="image-section d-flex justify-content-center align-items-center vh-100">
+				<a href="pageTemplates.xhtml" class="btn btn-info" role="button">Choisir un template et un abonnement</a>
+						</div>
+					</div>
+				</div>
+			</div>
 
-        <h:outputLabel for="departure" value="Départ" />
-        <h:inputText id="departure" value="#{controllerJourney.journeyViewModel.departure}" />
+		</ui:define>
+	</ui:composition>
 
-        <h:outputLabel for="destination" value="Destination" />
-        <h:inputText id="destination" value="#{controllerJourney.journeyViewModel.destination}" />
-        
-          	<h:outputLabel value="departureDate: " />
-				<p:datePicker
-						value="#{controllerJourney.journeyViewModel.departureDate}"
-						size="20" maxlength="20" />
-			
-					
-        <h:outputLabel value="destinationDate: " />	
-					<p:datePicker
-						value="#{controllerJourney.journeyViewModel.destinationDate}"
-						size="20" maxlength="20" />	
-						
-
-        <h:outputLabel for="price" value="Prix" />
-        <h:inputText id="price" value="#{controllerJourney.journeyViewModel.price}" />
-
-        <h:outputLabel for="conveyance" value="Moyen de Transport" />
-        <h:selectOneMenu id="conveyance" value="#{controllerJourney.journeyViewModel.conveyance}">
-            <f:selectItems value="#{controllerJourney.getConveyanceOptions()}" />
-        </h:selectOneMenu>
-
-
-        <h:commandButton value="Enregistrer les modifications" action="#{controllerJourney.modifierJourney()}" />
-
-    </h:form>
-    </div>
-    </div>
-    </div>
-   </ui:define>
-   </ui:composition>
 </h:body>
-
-
 </html>
