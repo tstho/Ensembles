@@ -10,6 +10,7 @@
 	<link type="text/css" rel="stylesheet" href="form.css" />
 	<h:outputStylesheet library="css" name="bootstrap.min.css" />
 </h:head>
+
 <h:body>
 	<ui:composition template="/layouts/mainLayout.xhtml">
 
@@ -28,9 +29,6 @@
 								<div class="card-header">Logo partenaire</div>
 								<div class="card-body text-center">
 									<!-- Profile picture image-->
-									<img class="img-account-profile rounded-circle mb-2"
-										src="https://cdn.iconscout.com/icon/free/png-256/free-logo-3446031-2882300.png"
-										alt="partner profile logo" />
 									<!-- Profile picture help block-->
 									<div class="small font-italic text-muted mb-4">JPG or PNG
 										max 5 MB</div>
@@ -174,7 +172,7 @@
 										<div class="form-group">
 											<div class="col-sm-offset-2 col-sm-10">
 												<h:commandButton value="Soumettre"
-													action="#{controllerProfilPartenaire.saveProfilPartenaire()}"
+													action="#{controllerProfilPartenaire.modifierProfilP()}"
 													styleClass="btn btn-dark" />
 											</div>
 										</div>
@@ -187,6 +185,5 @@
 			</section>
 		</ui:define>
 	</ui:composition>
-
 </h:body>
 </html>

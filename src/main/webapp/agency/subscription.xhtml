@@ -11,39 +11,14 @@
 </h:head>
 <h:body>
 
-	<title>Subscription</title>
+	<title>Nom de l'abonnement </title>
 	<br />
 	<hr />
 	<h:form>
 		<table>
+				
 			<tr>
-				<td><h:outputLabel value="Subscription Type : " /></td>
-
-				<td><h:selectOneMenu name="subscription"
-						value="#{controllerSubscription.subscriptionViewModel.subscriptionType}">
-
-						<f:selectItem
-							itemValue="#{SubscriptionType.controllerSubscription}"
-							itemLabel="#{SelectSubscriptionType}" />
-
-						<f:selectItems
-							value="#{controllerSubscription.subscriptionTypeOptions}" />
-
-
-
-					</h:selectOneMenu></td>
-
-			</tr>
-			<tr>
-				<!--  <td><h:outputLabel value="Start Date : " /></td>
-				<td><h:inputText
-						value="#{controllersubscription.subscriptionViewModel.StartDate}"
-						size="20" maxlength="20" /> <h:inputText type="date" pattern="dd-MM-yyyy" /></td>-->
-
-				<!--  <td><p:outputLabel for="button" value="Start Date:" /></td>
-				<td><p:calendar id="buttonStartDate"
-						value="#{calendarView.date3}" showOn="button" /></td>-->
-
+				
 				<td><h:outputLabel value="Start Date: " /></td>
 				<td><p:datePicker
 						value="#{controllerSubscription.subscriptionViewModel.startDate}"
@@ -52,14 +27,7 @@
 			</tr>
 
 			<tr>
-				<!--  	<td><h:outputLabel value="End Date : " /></td>
-				<td><h:inputText
-						value="#{controllersubscription.subscriptionViewModel.EndDate}"
-						size="20" maxlength="20" /><h:inputText type="date" pattern="dd-MM-yyyy" /></td>-->
-
-				<!--  	<td><p:outputLabel for="button" value="End Date:" /></td>
-				<td><p:calendar id="button" value="#{calendarView.date3}"
-						showOn="button" /></td>-->
+				
 				<td><h:outputLabel value="End Date: " /></td>
 				<td><p:datePicker
 						value="#{controllerSubscription.subscriptionViewModel.endDate}"
@@ -75,67 +43,11 @@
 
 
 			<tr>
-				<td><h:outputLabel value="Subscription Statut : " /></td>
-
-				<td><h:selectOneMenu name="subscription"
-						value="#{controllerSubscription.subscriptionViewModel.subscriptionStatut}">
-
-						<f:selectItems
-							value="#{controllerSubscription.subscriptionStatutOptions}" />
-
-					</h:selectOneMenu></td>
-
-			</tr>
-
-
-			<tr>
-				<td><h:outputLabel value="Payment Method : " /></td>
-
-				<td><h:selectOneMenu name="PaymentMethod"
-						value="#{controllerSubscription.subscriptionViewModel.paymentMethod}">
-
-						<f:selectItem itemValue="#{paymentMethod.controllerSubscription}"
-							itemLabel="#{SelectPaymentMethod}" />
-
-						<f:selectItems
-							value="#{controllerSubscription.paymentMethodOptions}" />
-
-
-
-					</h:selectOneMenu></td>
-
-			</tr>
-
-			<tr>
-				<td><h:outputLabel value="Payment Period : " /></td>
-
-				<td><h:selectOneMenu name="PaymentMethod"
-						value="#{controllerSubscription.subscriptionViewModel.paymentPeriod}">
-
-						<f:selectItem itemValue="#{paymentMethod.controllerSubscription}"
-							itemLabel="#{SelectPaymentPeriod}" />
-
-						<f:selectItems
-							value="#{controllerSubscription.paymentPeriodOptions}" />
-
-
-
-					</h:selectOneMenu></td>
-
-			</tr>
-
-
-			<tr>
 				<td colspan="2"><h:commandButton value="Subscription"
 						action="#{controllerSubscription.saveSubscription()}" /></td>
 			</tr>
 		</table>
-		<!-- 
-            <p class="${empty form.erreurs ? 'succes' : 'erreur'}">
-                 Ce paragraphe affichera un message d'erreur ou de succès en fonction de la condition
-            </p>
-            
-                 -->
+		
 	</h:form>
 
 </h:body>
