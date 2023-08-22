@@ -51,23 +51,31 @@ public class ControllerProfilAgence implements Serializable {
 			
 			profilAgenceViewModel = new ProfilAgenceViewModel();
 			
+			// identification de l'agence et de son adresse 
+			
 			profilAgenceViewModel.setUser(profilAgence.getUser());
 			profilAgenceViewModel.setId(profilAgence.getId());
-			profilAgenceViewModel.setNomSociete(profilAgence.getNomSociete());
-			profilAgenceViewModel.setCodePostal(profilAgence.getAdresse().getCodePostal());
-			profilAgenceViewModel.setComplement(profilAgence.getAdresse().getComplement());
-			
-			profilAgenceViewModel.setEmailResponsableSociete(profilAgence.getEmailResponsableSociete());
-			
 			profilAgenceViewModel.setAdresseId(profilAgence.getAdresse().getId());
-			profilAgenceViewModel.setNumero(profilAgence.getAdresse().getNumero());
-			profilAgenceViewModel.setPays(profilAgence.getAdresse().getPays());
+			
+			//infos de l'agence
 			
 			profilAgenceViewModel.setNomResponsableSociete(profilAgence.getNomResponsableSociete());
 			profilAgenceViewModel.setPrenomResponsableSociete(profilAgence.getPrenomResponsableSociete());
 			profilAgenceViewModel.setSiretSociete(profilAgence.getSiretSociete());
 			
 			profilAgenceViewModel.setTelephoneResponsableSociete(profilAgence.getTelephoneResponsableSociete());
+			
+			// infos de l'adresse de l'Agence
+			
+			profilAgenceViewModel.setNomSociete(profilAgence.getNomSociete());
+			profilAgenceViewModel.setCodePostal(profilAgence.getAdresse().getCodePostal());
+			profilAgenceViewModel.setComplement(profilAgence.getAdresse().getComplement());
+			
+			profilAgenceViewModel.setEmailResponsableSociete(profilAgence.getEmailResponsableSociete());
+			
+			profilAgenceViewModel.setNumero(profilAgence.getAdresse().getNumero());
+			profilAgenceViewModel.setPays(profilAgence.getAdresse().getPays());
+		
 			profilAgenceViewModel.setVille(profilAgence.getAdresse().getVille());
 			profilAgenceViewModel.setVoie(profilAgence.getAdresse().getVoie());
 			

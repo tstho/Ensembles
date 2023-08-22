@@ -29,7 +29,14 @@
 
 			<h:panelGroup layout="block" rendered="#{authBean.isRole('PARTNER')}">
 				<!-- Contenu spécifique aux utilisateurs de type "partner" -->
-				<p> Vous êtes un partenaire</p>
+				<p> Vous êtes un partenaire
+				
+				<h:form>
+				<h:commandLink value="Espace Partenaire"
+					action="#{controllerProfilPartenaire.redirectToEdit(authBean.currentUser.id)}" />
+				</h:form>
+				
+				</p>
 			</h:panelGroup>
 
 			<h:panelGroup layout="block" rendered="#{authBean.isRole('CLIENT')}">
