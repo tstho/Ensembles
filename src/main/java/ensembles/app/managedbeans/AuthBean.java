@@ -39,20 +39,6 @@ public class AuthBean implements Serializable {
 		if (currentUser != null) {
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentUser", currentUser);
 			
-			ProfilAgence pA = pAService.findByUserId(currentUser.getId());
-			
-			if (pA==null) {
-				pA= new ProfilAgence(); 
-				pA.setUser(currentUser);
-				pA.setAdresse(new Adresse());
-				
-				pAService.saveProfilAgence(pA);
-				
-			}
-//			ProfilAgence pA= new ProfilAgence();
-//			
-//			pA.setUser(user);
-//			proAgenceService.saveProfilAgence(pA);
 			return "/index.xhtml?faces-redirect=true"; // redirige vers la page d'acceuil
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
