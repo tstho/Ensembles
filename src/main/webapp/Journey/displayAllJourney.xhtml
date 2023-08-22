@@ -60,6 +60,7 @@
 				<h:commandButton value="Modifier"
 					action="#{controllerJourney.redirectToEdit(j.id)}" />
 				<p:commandButton actionListener="#{controllerJourney.supprimerJourney(j.id)}" ajax="false" value="Supprimer">
+
 				 <p:confirm header="Confirm" message="Are you sure?" icon="ui-icon-alert"></p:confirm>
 				</p:commandButton>
 			</h:form>

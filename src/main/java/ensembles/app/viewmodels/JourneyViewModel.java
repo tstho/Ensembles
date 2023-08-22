@@ -10,7 +10,7 @@ import ensembles.app.entity.Service;
 @ManagedBean
 public class JourneyViewModel {
 	
-	    private long Id;
+	    private Long Id;
 	    private String departure;
 	    private String destination;
 	    private Date departureDate;
