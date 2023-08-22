@@ -5,83 +5,76 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition>
-	<!-- New Navigation bar -->
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<ul class="navbar-nav mr-auto">
+		
+		<!-- LOG IN -->
+		
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"> LogIn </a>
+				<div class="dropdown-menu dropdown-menu"
+					aria-labelledby="navbarDropdown">
 
-		<a class="navbar-brand" href="../index.xhtml">EnsembleS</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="#">À propos</a></li>
-				<li class="nav-item"><a class="nav-link disabled" href="#">Contact</a></li>
-
-
-			</ul>
-
-			<ul class="nav navbar-nav navbar-right">
-				<!-- 				      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
-				<li class="nav-item"><a class="nav-link disabled" href="#">Panier</a></li>
-				<!-- 				      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> Connexion </a>
-					<div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
-
-						<!-- Formulaire de login si l'utilisateur n'est pas authentifié -->
-						<h:panelGroup layout="block"
-							rendered="#{not authBean.authenticated}">
-							<!-- User login form -->
-							<h:form class="px-4 py-3"
-								rendered="#{not authBean.authenticated}">
-								<div class="form-group">
-									<h:outputLabel for="username" value="Email :"
-										rendered="#{not authBean.authenticated}" />
-									<h:inputText type="text" class="form-control" id="username"
-										placeholder="Username" value="#{authBean.userVM.email}"
-										rendered="#{not authBean.authenticated}" />
-								</div>
-								<div class="form-group">
-									<h:outputLabel for="password" value="Password :"
-										rendered="#{not authBean.authenticated}" />
-									<h:inputSecret type="password" class="form-control"
-										id="password" placeholder="Password"
-										value="#{authBean.userVM.password}"
-										rendered="#{not authBean.authenticated}" />
-								</div>
-								<h:commandButton value="Authentification"
-									action="#{authBean.login()}" type="submit"
-									class="btn btn-primary"
+					<!-- Formulaire de login si l'utilisateur n'est pas authentifié -->
+					<h:panelGroup layout="block"
+						rendered="#{not authBean.authenticated}">
+						<!-- User login form -->
+						<h:form class="px-4 py-3" rendered="#{not authBean.authenticated}">
+							<div class="form-group">
+								<h:outputLabel for="username" value="Email :"
 									rendered="#{not authBean.authenticated}" />
-							</h:form>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Mot de passe oublié ?</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item"
-								href="#{request.contextPath}/login/inscription.xhtml">Pas
-								encore enregistré ?</a>
-						</h:panelGroup>
+								<h:inputText type="text" class="form-control" id="username"
+									placeholder="Username" value="#{authBean.userVM.email}"
+									rendered="#{not authBean.authenticated}" />
+							</div>
+							<div class="form-group">
+								<h:outputLabel for="password" value="Password :"
+									rendered="#{not authBean.authenticated}" />
+								<h:inputSecret type="password" class="form-control"
+									id="password" placeholder="Password"
+									value="#{authBean.userVM.password}"
+									rendered="#{not authBean.authenticated}" />
+							</div>
+							<h:commandButton value="Authentification"
+								action="#{authBean.login()}" type="submit"
+								class="btn btn-primary" rendered="#{not authBean.authenticated}" />
+						</h:form>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">Mot de passe oublié ?</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item"
+							href="#{request.contextPath}/login/inscription.xhtml">Pas
+							encore enregistré ?</a>
+					</h:panelGroup>
 
-						<!-- Affichage si l'utilisateur est authentifié -->
-						<h:panelGroup layout="block" rendered="#{authBean.authenticated}">
-							<h:outputText value="Bienvenue, #{authBean.currentUser.email} !" />
-							<h:form>
-								<h:commandButton value="Se déconnecter"
-									action="#{authBean.logout}" />
-							</h:form>
-						</h:panelGroup>
-					</div></li>
+					<!-- Affichage si l'utilisateur est authentifié -->
+					<h:panelGroup layout="block" rendered="#{authBean.authenticated}">
+						<h:outputText value="Bienvenue, #{authBean.currentUser.email} !" />
+						<h:form>
+							<h:commandButton value="Mon espace"
+								action="#{authBean.redirectEspace}" />
+							<h:commandButton value="Se déconnecter"
+								action="#{authBean.logout}" />
+						</h:form>
+					</h:panelGroup>
+				</div></li>
+				
+			<!-- PANIER -->
+			<li class="nav-item"><a class="nav-link" href="#">Panier</a></li>
 
-			</ul>
-		</div>
+		</ul>
 
+	
+
+		<ul class="nav navbar-nav navbar-right">
+
+					<li class="nav-item"><a class="nav-link" href="#">About us</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+					<a class="navbar-brand" href="http://127.0.0.1:8080/ensembles-app/index.xhtml">EnsembleS</a>		
+		</ul>
 	</nav>
 
 

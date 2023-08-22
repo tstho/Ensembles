@@ -22,6 +22,10 @@ public class ProfilPartenaire {
 	@JoinColumn(name = "adresse_id")
 	private Adresse adresse;
 
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private User user;
+
 	private String nomResponsablePartenaire;
 	private String prenomResponsablePartenaire;
 	private String emailResponsablePartenaire;
@@ -89,6 +93,14 @@ public class ProfilPartenaire {
 
 	public void setTelephoneResponsablePartenaire(int telephoneResponsablePartenaire) {
 		this.telephoneResponsablePartenaire = telephoneResponsablePartenaire;
+	}		
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}		
 
 }

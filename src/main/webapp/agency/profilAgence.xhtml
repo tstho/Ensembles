@@ -5,180 +5,170 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
-
+<link rel="stylesheet" href="../resources/css/styles.css" />
 <h:head>
 	<meta charset="utf-8"></meta>
-	<title>Ensembles:: Profil Agence</title>
-	<link href="~/css/Site.css" rel="stylesheet" />
-	<h:outputStylesheet library="css" name="bootstrap.min.css" />
 </h:head>
 <h:body>
-  <ui:composition template="/layouts/PartnerLayout.xhtml">
-  <ui:define name="content">
 
-	
+	<ui:composition template="/layouts/mainLayout.xhtml">
 
-	<h:form>
+		<ui:define name="content">
 
-		
-<!-- 			<form> -->
-<!--   <div class="row"> -->
-<!--     <div class="col"> -->
-<!--       <input type="text" class="form-control" placeholder="Nom de société"/> -->
-<!--     </div> -->
-<!--     <div class="col"> -->
-<!--       <input type="text" class="form-control" placeholder="Numéro de SIRET"/> -->
-<!--     </div> -->
-<!--   </div> -->
-<!-- </form> -->
-	<div class = "container">
-	<h2>Profil de l'Agence</h2>
-	<hr />
-	<br />
-	
-			<table class ="table-responsive">
-			
-				<tr>
-					<td><h:outputLabel for="nom">Nom de société :<span
-								class="requis"></span>
-						</h:outputLabel></td>
-					<td><h:inputText type="text" id="nomSociete"
-							value="#{controllerProfilAgence.profilAgenceViewModel.nomSociete}"
-							size="20" maxlength="20" /></td>
-				</tr>
-				<tr>
-					<td><h:outputLabel for="societe">Numéro de SIRET :<span
-								class="requis"></span>
-						</h:outputLabel></td>
-					<td><h:inputText type="text" id="SIRET"
-							value="#{controllerProfilAgence.profilAgenceViewModel.siretSociete}"
-							size="20" maxlength="20" /></td>
-				</tr>
-			
-			
+			<div class="container" style="margin-top: 30px">
+				<div class="row">
+					<div class="col-sm-3 bg-info">
+						<ul class="nav nav-pills flex-column">
+							<li class="nav-item"><a class="nav-link text-white"
+								href="http://127.0.0.1:8080/ensembles-app/agency/profilAgence.xhtml">Profil agence</a></li>
+							<li class="nav-item"><a class="nav-link text-white" href="#">
+									Notifications</a></li>
+							<li class="nav-item"><a class="nav-link text-white"
+								href="http://127.0.0.1:8080/ensembles-app/Journey/displayAllJourney.xhtml"> Mes packages</a></li>
+							<li><a class="nav-link text-white" href="http://127.0.0.1:8080/ensembles-app/Journey/Journey.xhtml">
+									Ajouter un package</a></li>
+							<li><a class="nav-link text-white"
+								href="http://127.0.0.1:8080/ensembles-app/Journey/ModifierJourney.xhtml">Modifier un package</a></li>
+						<li><a class="nav-link text-white"
+								href="../templates/templateOne.xhtml">MON SITE</a></li>
 
-	
+						</ul>
+						<hr class="d-sm-none" />
+					</div>
+					<div class="col-sm-9">
+			<h:form>
+				<div class="container">
+					<h2>Profil de l'Agence</h2>
+					<hr />
+					<br />
 
-			<legend>Informations de l'Agence</legend>
-<!-- 			<form> -->
-<!-- 			 <div class="row"> -->
-<!--     <div class="col"> -->
-<!--       <input type="text" class="form-control" placeholder="Numéro"/> -->
-<!--     </div> -->
-<!--     <div class="col"> -->
-<!--       <input type="text" class="form-control" placeholder="Rue"/> -->
-<!--       </div> -->
-<!--       <div class="col"> -->
-<!--       <input type="text" class="form-control" placeholder="Voie"/> -->
-<!--       </div> -->
-<!--    <div class="col"> -->
-<!--       <h:inputText type="text" class="form-control" a:placeholder="Code Postal" -->
-<!--       value="#{controllerProfilAgence.profilAgenceViewModel.numero}" -->
-<!-- 							size="20" maxlength="20"/> -->
-<!--     </div> -->
-<!--   </div> -->
-<!-- </form> -->
-			
-			 
-				<tr>
-					<td><h:outputLabel for="numero">Numéro :<span
-								class="requis"></span>
-						</h:outputLabel></td>
-					<td><h:inputText type="text" id="numero"
-							value="#{controllerProfilAgence.profilAgenceViewModel.numero}"
-							size="20" maxlength="20" /></td>
-				</tr>
-				<tr>
-					<td><h:outputLabel for="complement">Complément :<span
-								class="requis"></span>
-						</h:outputLabel></td>
-					<td><h:inputText type="text" id="complement"
-							value="#{controllerProfilAgence.profilAgenceViewModel.complement}"
-							size="20" maxlength="20" /></td>
-				</tr>
-				<tr>
-					<td><h:outputLabel for="voie">Voie :<span
-								class="requis"></span>
-						</h:outputLabel></td>
-					<td><h:inputText type="text" id="voie"
-							value="#{controllerProfilAgence.profilAgenceViewModel.voie}"
-							size="20" maxlength="20" /></td>
-				</tr>
-				<tr>
-					<td><h:outputLabel for="codePostal">Code Postal :<span
-								class="requis"></span>
-						</h:outputLabel></td>
-					<td><h:inputText type="text" id="codePostal"
-							value="#{controllerProfilAgence.profilAgenceViewModel.codePostal}"
-							size="20" maxlength="20" /></td>
-				</tr>
-				<tr>
-					<td><h:outputLabel for="ville">Ville :<span
-								class="requis"></span>
-						</h:outputLabel></td>
-					<td><h:inputText type="text" id="ville"
-							value="#{controllerProfilAgence.profilAgenceViewModel.ville}"
-							size="20" maxlength="20" /></td>
-				</tr>
+					<table class="table-responsive">
 
-				<tr>
-					<td><h:outputLabel for="pays">Pays :<span
-								class="requis"></span>
-						</h:outputLabel></td>
-					<td><h:inputText type="text" id="pays"
-							value="#{controllerProfilAgence.profilAgenceViewModel.pays}"
-							size="20" maxlength="20" /></td>
-				</tr>
-			</table>
+						<tr>
+							<td><h:outputLabel for="nom">Nom de société :<span
+										class="requis"></span>
+								</h:outputLabel></td>
+							<td><h:inputText type="text" id="nomSociete"
+									value="#{controllerProfilAgence.profilAgenceViewModel.nomSociete}"
+									size="20" maxlength="20" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel for="societe">Numéro de SIRET :<span
+										class="requis"></span>
+								</h:outputLabel></td>
+							<td><h:inputText type="text" id="SIRET"
+									value="#{controllerProfilAgence.profilAgenceViewModel.siretSociete}"
+									size="20" maxlength="20" /></td>
+						</tr>
+
+
+						<h3>Informations de l'Agence</h3>
+
+						<tr>
+							<td><h:outputLabel for="numero">Numéro :<span
+										class="requis"></span>
+								</h:outputLabel></td>
+							<td><h:inputText type="text" id="numero"
+									value="#{controllerProfilAgence.profilAgenceViewModel.numero}"
+									size="20" maxlength="20" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel for="complement">Complément :<span
+										class="requis"></span>
+								</h:outputLabel></td>
+							<td><h:inputText type="text" id="complement"
+									value="#{controllerProfilAgence.profilAgenceViewModel.complement}"
+									size="20" maxlength="20" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel for="voie">Voie :<span
+										class="requis"></span>
+								</h:outputLabel></td>
+							<td><h:inputText type="text" id="voie"
+									value="#{controllerProfilAgence.profilAgenceViewModel.voie}"
+									size="20" maxlength="20" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel for="codePostal">Code Postal :<span
+										class="requis"></span>
+								</h:outputLabel></td>
+							<td><h:inputText type="text" id="codePostal"
+									value="#{controllerProfilAgence.profilAgenceViewModel.codePostal}"
+									size="20" maxlength="20" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel for="ville">Ville :<span
+										class="requis"></span>
+								</h:outputLabel></td>
+							<td><h:inputText type="text" id="ville"
+									value="#{controllerProfilAgence.profilAgenceViewModel.ville}"
+									size="20" maxlength="20" /></td>
+						</tr>
+
+						<tr>
+							<td><h:outputLabel for="pays">Pays :<span
+										class="requis"></span>
+								</h:outputLabel></td>
+							<td><h:inputText type="text" id="pays"
+									value="#{controllerProfilAgence.profilAgenceViewModel.pays}"
+									size="20" maxlength="20" /></td>
+						</tr>
+					</table>
+				</div>
+
+
+				<div class="container">
+					<table class="table-responsive">
+						<legend>Informations sur le responsable</legend>
+
+						<tr>
+							<td><h:outputLabel for="nomResponsableSociete">Nom du Responsable :<span
+										class="requis"></span>
+								</h:outputLabel></td>
+							<td><h:inputText type="text" id="nomResponsable"
+									value="#{controllerProfilAgence.profilAgenceViewModel.nomResponsableSociete}"
+									size="20" maxlength="50" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel for="prenomResponsableSociete">Prénom du Responsable :<span
+										class="requis"></span>
+								</h:outputLabel></td>
+							<td><h:inputText type="text" id="prenomResponsable"
+									value="#{controllerProfilAgence.profilAgenceViewModel.prenomResponsableSociete}"
+									size="20" maxlength="20" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel for="emailResponsableSociete">E-mail :<span
+										class="requis"></span>
+								</h:outputLabel></td>
+							<td><h:inputText type="text" id="emailResponsableSociete"
+									value="#{controllerProfilAgence.profilAgenceViewModel.emailResponsableSociete}"
+									size="20" maxlength="50" /></td>
+						</tr>
+						<tr>
+							<td><h:outputLabel for="telephoneResponsableSociete">Téléphone de contact :<span
+										class="requis"></span>
+								</h:outputLabel></td>
+							<td><h:inputText type="text"
+									id="telephoneResponsableSociete"
+									value="#{controllerProfilAgence.profilAgenceViewModel.telephoneResponsableSociete}"
+									size="20" maxlength="20" /></td>
+						</tr>
+					</table>
+
+
+					<h:commandButton value="Modifier"
+						action="#{controllerProfilAgence.modifierProfilA()}" />
+
+					<a href="../login/authentification.xhtml">Retour</a>
+				</div>
+			</h:form>
 			</div>
-	
-		
-			<div class = "container">
-			<table class ="table-responsive">
-			<legend>Informations sur le responsable</legend>
-			
-			<tr>
-				<td><h:outputLabel for="nomResponsableSociete">Nom du Responsable :<span
-							class="requis"></span>
-					</h:outputLabel></td>
-				<td><h:inputText type="text" id="nomResponsable"
-						value="#{controllerProfilAgence.profilAgenceViewModel.nomResponsableSociete}"
-						size="20" maxlength="50" /></td>
-			</tr>
-			<tr>
-				<td><h:outputLabel for="prenomResponsableSociete">Prénom du Responsable :<span
-							class="requis"></span>
-					</h:outputLabel></td>
-				<td><h:inputText type="text" id="prenomResponsable"
-						value="#{controllerProfilAgence.profilAgenceViewModel.prenomResponsableSociete}"
-						size="20" maxlength="20" /></td>
-			</tr>
-			<tr>
-				<td><h:outputLabel for="emailResponsableSociete">E-mail :<span
-							class="requis"></span>
-					</h:outputLabel></td>
-				<td><h:inputText type="text" id="emailResponsableSociete"
-						value="#{controllerProfilAgence.profilAgenceViewModel.emailResponsableSociete}"
-						size="20" maxlength="50" /></td>
-			</tr>
-			<tr>
-				<td><h:outputLabel for="telephoneResponsableSociete">Téléphone de contact :<span
-							class="requis"></span>
-					</h:outputLabel></td>
-				<td><h:inputText type="text" id="telephoneResponsableSociete"
-						value="#{controllerProfilAgence.profilAgenceViewModel.telephoneResponsableSociete}"
-						size="20" maxlength="20" /></td>
-			</tr>
-			</table>
-			
-	
-		<!--  <h:commandButton value="Soumettre" action="#{controllerProfilAgence.saveProfilAgence()}" />-->
-		<button type="submit" class="btn btn-primary mb-2">Valider</button>
-		</div>
-	</h:form>
-	</ui:define>
-</ui:composition>
+			</div>
+			</div>
+		</ui:define>
+	</ui:composition>
 
-	
+
 </h:body>
 </html>

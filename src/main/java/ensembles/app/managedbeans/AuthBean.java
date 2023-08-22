@@ -8,8 +8,12 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import ensembles.app.entity.Adresse;
+import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.Role;
 import ensembles.app.entity.User;
+import ensembles.app.repository.RepoProfilAgence;
+import ensembles.app.service.ProfilAgenceService;
 import ensembles.app.service.UserService;
 import ensembles.app.viewmodels.UserViewModel;
 
@@ -24,6 +28,9 @@ public class AuthBean implements Serializable {
 
 	@Inject
 	private UserService userService;
+	
+	@Inject
+	private ProfilAgenceService pAService;
 
 	public String login() {
 
@@ -31,6 +38,7 @@ public class AuthBean implements Serializable {
 
 		if (currentUser != null) {
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentUser", currentUser);
+			
 			return "/index.xhtml?faces-redirect=true"; // redirige vers la page d'acceuil
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
@@ -44,6 +52,19 @@ public class AuthBean implements Serializable {
 
 		// Mettre fin à la session et rediriger vers la page d'acceuil
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "/index.xhtml?faces-redirect=true";
+	}
+	
+	public String redirectEspace() {
+		if (currentUser.getRole()==Role.AGENCY) {
+			return "/agency/adminAgency.xhtml?faces-redirect=true";
+		}
+		if (currentUser.getRole()==Role.PARTNER) {
+			return "/partners/mainPartner.xhtml?faces-redirect=true";
+		}
+		if (currentUser.getRole()==Role.CLIENT) {
+			return "/client/profilClient.xhtml?faces-redirect=true";
+		}
 		return "";
 	}
 

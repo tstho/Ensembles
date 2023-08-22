@@ -1,11 +1,14 @@
 package ensembles.app.entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -26,6 +29,52 @@ public class ProfilAgence {
 	@JoinColumn(name="agency_website")
 	private WebSite webSite;
 	
+	@OneToOne()
+	@JoinColumn(name="user_id")
+	private User user; 
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="journey_id")	
+	private List<Journey> journeys;
+	
+	@Override
+	public String toString() {
+		return "ProfilAgence [id=" + id + ", nomSociete=" + nomSociete + ", siretSociete=" + siretSociete + ", adresse="
+				+ adresse + ", webSite=" + webSite + ", user=" + user + ", nomResponsableSociete="
+				+ nomResponsableSociete + ", prenomResponsableSociete=" + prenomResponsableSociete
+				+ ", emailResponsableSociete=" + emailResponsableSociete + ", telephoneResponsableSociete="
+				+ telephoneResponsableSociete + "]";
+	}
+	/**
+	 * @return the webSite
+	 */
+	public WebSite getWebSite() {
+		return webSite;
+	}
+	/**
+	 * @param webSite the webSite to set
+	 */
+	public void setWebSite(WebSite webSite) {
+		this.webSite = webSite;
+	}
+	/**
+	 * @return the journeys
+	 */
+	public List<Journey> getJourneys() {
+		return journeys;
+	}
+	/**
+	 * @param journeys the journeys to set
+	 */
+	public void setJourneys(List<Journey> journeys) {
+		this.journeys = journeys;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	private String nomResponsableSociete;
 	private String prenomResponsableSociete;
 	private String emailResponsableSociete;

@@ -17,18 +17,38 @@
 				
 			<h:panelGroup layout="block" rendered="#{authBean.isRole('AGENCY')}">
 				<!-- Contenu spécifique aux utilisateurs de type "agency" -->
-				<p> Vous êtes une agence</p>
+				<p> Bienvenue sur votre espace agence 
+				
+
+				<h:form>
+				<h:commandLink value="Espace Agence"
+					action="#{controllerProfilAgence.redirectToEdit(authBean.currentUser.id)}" />
+				</h:form>
+				</p>
 			</h:panelGroup>
 
 			<h:panelGroup layout="block" rendered="#{authBean.isRole('PARTNER')}">
 				<!-- Contenu spécifique aux utilisateurs de type "partner" -->
-				<p> Vous êtes un partenaire</p>
+				<p> Vous êtes un partenaire
+				
+				<h:form>
+				<h:commandLink value="Espace Partenaire"
+					action="#{controllerProfilPartenaire.redirectToEdit(authBean.currentUser.id)}" />
+				</h:form>
+				
+				</p>
 			</h:panelGroup>
 
 			<h:panelGroup layout="block" rendered="#{authBean.isRole('CLIENT')}">
 				<!-- Contenu spécifique aux utilisateurs de type "client" -->
 				
-				<p> Vous êtes un client</p>
+				<p> Vous êtes un client
+				
+				<h:form>
+				<h:commandLink value="Espace Client"
+					action="#{controllerProfilClient.redirectToEdit(authBean.currentUser.id)}" />
+				</h:form>
+				</p>
 			</h:panelGroup>
 
 			<h:form rendered="#{authBean.authenticated}">

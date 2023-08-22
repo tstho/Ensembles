@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+
 import ensembles.app.entity.User;
 
 @Stateless
@@ -30,6 +31,7 @@ public class RepoUser {
 //		tx.commit();
 //		entityManager.close();
 //		HibernateUtil.closeEntityManagerFactory();
+		System.out.println("user created :" + user.getId());
 		return user.getId();
 
 	}
@@ -67,5 +69,37 @@ public class RepoUser {
 			return null;
 		}
 	}
+	
+	// methode Modifier
+	
+	  public void update(User user) {
+	        entityManager.merge(user);
+	        entityManager.flush();
+	    }
+     
+	  // methode Supprimer
+	  
+	  public void delete(User user) {
+	        entityManager.remove(user);
+	        entityManager.flush();
+	  }
+	  
+	  
+	    public EntityManager getEntityManager() {
+		return entityManager;
+	}
+
+
+
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+	}
+
+
+
+		public User findById(Long id) {
+	        return entityManager.find(User.class, id);
+	    }	
+		
 
 }

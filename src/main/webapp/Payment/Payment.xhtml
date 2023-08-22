@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta charset="utf-8" />
+	<title>Ensembles ::Payment</title>
+
+</h:head>
+
+<h:body>
+	<h:form>
+		<header class="stickyHeader"> </header>
+		<main id="mainContent"
+			class="mainContentUnderStickyHeader mainContentAboveStickyFooter">
+			<section class="container-fluid">
+
+				<div id="paymentSection" class="alternativeSubPart">
+					<h3>CARTE BANCAIRE</h3>
+
+					<div class="form-group row mb-2">
+						<label class="control-label col-sm-4 text-sm-end">Numéro
+							de Carte:</label>
+						<div class="col-sm-8">
+							<h:inputText id="cardNumber"
+								value="#{paymentViewmodel.cardNumber}" />
+						</div>
+					</div>
+					<div class="form-group row mb-2">
+						<label class="control-label col-sm-4 text-sm-end">Titulaire
+							de la Carte:</label>
+						<div class="col-sm-8">
+							<h:inputText id="cardHolderName"
+								value="#{paymentViewmodel.cardHolderName}" />
+						</div>
+					</div>
+					<div class="form-group row mb-2">
+						<label class="control-label col-sm-4 text-sm-end">Date
+							d'Expiration:</label>
+						<div class="col-sm-8">
+							<h:inputText id="expirationDate"
+								value="#{paymentViewmodel.expirationDate}">
+								<f:convertDateTime pattern="MM/yyyy" />
+							</h:inputText>
+						</div>
+					</div>
+					<div class="form-group row mb-2">
+						<label class="control-label col-sm-4 text-sm-end">CVV:</label>
+						<div class="col-sm-8">
+							<h:inputText id="cvv" value="#{paymentViewmodel.cvv}" />
+						</div>
+					</div>
+
+					<div class="form-group row mb-2">
+						<div class="offset-sm-4 col-sm-8">
+
+							<p:commandButton
+								actionListener="#{controllerPayment.savePayment()}" ajax="false"
+								value="Paiement">
+								<p:confirm header="Confirm"
+									message="Votre paiement été bien prise en compte"
+									icon="ui-icon-alert"></p:confirm>
+							</p:commandButton>
+
+						</div>
+					</div>
+				</div>
+
+			</section>
+		</main>
+
+	</h:form>
+
+	<p:confirmDialog id="dialog" global="true" showEffect="fade"
+		hideEffect="explode" message="Votre paiement été bien prise en compte">
+		<p:commandButton value="OK" type="button"
+			styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+
+	</p:confirmDialog>
+
+
+
+</h:body>
+</html>
+
