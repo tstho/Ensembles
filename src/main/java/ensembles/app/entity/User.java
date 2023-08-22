@@ -12,6 +12,9 @@ import javax.persistence.Id;
 @Entity
 public class User implements Serializable {
 
+
+	private static final long serialVersionUID = 1L;
+	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", role=" + role + "]";

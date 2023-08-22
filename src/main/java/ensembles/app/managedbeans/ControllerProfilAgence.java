@@ -25,10 +25,10 @@ public class ControllerProfilAgence implements Serializable {
 	@Inject
 	ProfilAgenceService profilAgenceService;
 	
-	
-	public void saveProfilAgence() {
-		profilAgenceService.saveProfilAgence(profilAgenceViewModel);
-	}
+//	
+//	public void saveProfilAgence() {
+//		profilAgenceService.saveProfilAgence(profilAgenceViewModel);
+//	}
 
 	public ProfilAgenceViewModel getProfilAgenceViewModel() {
 		return profilAgenceViewModel;
@@ -77,12 +77,11 @@ public class ControllerProfilAgence implements Serializable {
 		}
 
 		public String modifierProfilA() {
-			System.out.println("ID de l'agence à modifier : " + profilAgenceViewModel.getId());
 			
 		profilAgenceService.modifyProfilAgence(profilAgenceViewModel);
 //			profilList = rU.findAll();
 //			resetViewModel();
-			
+
 			return "/login/authentification.xhtml?faces-redirect=true";
 		}
 	
