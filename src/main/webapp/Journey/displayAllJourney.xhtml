@@ -57,11 +57,11 @@
 		<h:column>
 			<f:facet name="header"></f:facet>
 			<h:form>
-				<h:commandLink value="Modifier"
+				<h:commandButton value="Modifier"
 					action="#{controllerJourney.redirectToEdit(j.id)}" />
-				<p:commandLink actionListener="#{controllerJourney.supprimerJourney(j.id)}" ajax="false" value="Supprimer">
+				<p:commandButton actionListener="#{controllerJourney.supprimerJourney(j.id)}" ajax="false" value="Supprimer">
 				 <p:confirm header="Confirm" message="Are you sure?" icon="ui-icon-alert"></p:confirm>
-				</p:commandLink>
+				</p:commandButton>
 			</h:form>
 		</h:column>
 
