@@ -33,74 +33,19 @@ public class ControllerSubscription implements Serializable {
         @Inject
         private RepoSubscription reposubscription;
         
-		public String saveSubscription() {
-			subscriptionService.saveSubscription(subscriptionViewModel.getSubscriptionType(), subscriptionViewModel.getStartDate(),subscriptionViewModel.getEndDate(),subscriptionViewModel.getprice(),subscriptionViewModel.getSubscriptionStatut(),subscriptionViewModel.getPaymentPeriod(),subscriptionViewModel.getPaymentMethod());
-			
-			//reset le view model
-			subscriptionViewModel = new SubscriptionViewModel();
-			
-			return "";
-		}
+//		public String saveSubscription() {
+//			subscriptionService.saveSubscription( subscriptionViewModel.getStartDate(),subscriptionViewModel.getEndDate(),subscriptionViewModel.getprice());
+//			
+//			//reset le view model
+//			subscriptionViewModel = new SubscriptionViewModel();
+//			
+//			return "";
+//		}
 		 
-		public List<SubscriptionType> getSubscriptionTypeOptions() {
-		    List<SubscriptionType> options = new ArrayList<>();
-		    for (SubscriptionType type : SubscriptionType.values()) {
-		        options.add(type);
-		    }
-		    return options;
-		}
-
-		public List<SubscriptionStatut> getSubscriptionStatutOptions() {
-		    List<SubscriptionStatut> options = new ArrayList<>();
-		    for (SubscriptionStatut statut : SubscriptionStatut.values()) {
-		        options.add(statut);
-		    }
-		    return options;
-		}
 		
-		public List<PaymentMethod> getPaymentMethodOptions() {
-		    List<PaymentMethod> options = new ArrayList<>();
-		    for (PaymentMethod method : PaymentMethod.values()) {
-		        options.add(method);
-		    }
-		    return options;
-		}
-
-		public List<PaymentPeriod> getPaymentPeriodOptions() {
-		    List<PaymentPeriod> options = new ArrayList<>();
-		    for (PaymentPeriod period : PaymentPeriod.values()) {
-		        options.add(period);
-		    }
-		    return options;
-		}
-
-		public SubscriptionViewModel getSubscriptionViewModel() {
-			return subscriptionViewModel;
-		}
-
-
-		public void setSubscriptionViewModel(SubscriptionViewModel subscriptionViewModel) {
-			this.subscriptionViewModel = subscriptionViewModel;
-		}
-
-
-
-		public SubscriptionService getSubscriptionService() {
-			return subscriptionService;
-		}
-
-
-		public void setSubscriptionService(SubscriptionService subscriptionService) {
-			this.subscriptionService = subscriptionService;
-		}
-
-		public RepoSubscription getReposubscription() {
-			return reposubscription;
-		}
-
-		public void setReposubscription(RepoSubscription reposubscription) {
-			this.reposubscription = reposubscription;
-		}
+}	   
+		
+		
 
 		
 
@@ -111,7 +56,7 @@ public class ControllerSubscription implements Serializable {
 
 
 		
-	}
+	
 
 
 
