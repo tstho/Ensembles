@@ -24,7 +24,6 @@ public class ControllerJourney implements Serializable {
 
 	@Inject
 	private JourneyViewModel journeyViewModel;
-
 	@Inject
 	private JourneyService journeyService;
 	@Inject
@@ -47,7 +46,6 @@ public class ControllerJourney implements Serializable {
 	}
 
 	public String saveJourney() {
-
 		journeyService.saveJourney(journeyViewModel);
 		journeyList = repoJourney.findAll();
 		resetViewModel();
@@ -87,12 +85,7 @@ public class ControllerJourney implements Serializable {
 		return "/Journey/ModifierJourney.xhtml?faces-redirect=true";
 	}
 	
-	
-	
-	
-
 	public void initModifierJourney(Long journeyId) {
-
 		Journey journey = repoJourney.findById(journeyId);
 		journeyViewModel = new JourneyViewModel();
 		journeyViewModel.setId(journey.getId());

@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Supprimer votre voyage</title>
+	<title>Supprimer le service</title>
 	<link type="text/css" rel="stylesheet" href="form.css" />
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
@@ -14,22 +14,19 @@
 <h:body>
 	<h:form>
 
-
 		<p:confirmDialog header="Confirmation"
-			message="Êtes-vous sûr de vouloir supprimer ce voyage?"
-			visible="#{controllerJourney.showDeleteConfirmation}">
+			message="Êtes-vous sûr de vouloir supprimer le service?"
+			visible="#{controllerService.showDeleteConfirmation}">
 
 
 			<p:commandButton value="Oui"
-				action="#{controllerJourney.supprimerJourney()}"
+				action="#{controllerService.supprimerService()}"
 				oncomplete="PF('confirmationDialog').hide();" />
 
 
 			<p:commandButton value="Non"
-				action="#{controllerJourney.cancelDelete()}"
+				action="#{controllerService.cancelDelete()}"
 				oncomplete="PF('confirmationDialog').hide();" />
-
-
 
 		</p:confirmDialog>
 
