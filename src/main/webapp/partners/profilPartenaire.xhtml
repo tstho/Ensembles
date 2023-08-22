@@ -113,49 +113,44 @@
 							</fieldset>
 							<fieldset>
 
-								<legend>Informations sur le responsable</legend>
-								<table>
-									<tr>
-										<td><h:outputLabel for="nomResponsablePartenaire">Nom du Responsable :<span
-													class="requis"></span>
-											</h:outputLabel></td>
-										<td><h:inputText type="text" id="nomResponsable"
-												value="#{controllerProfilPartenaire.profilPartenaireViewModel.nomResponsablePartenaire}"
-												size="20" maxlength="50" /></td>
-									</tr>
-									<tr>
-										<td><h:outputLabel for="prenomResponsablePartenaire">Prénom du Responsable :<span
-													class="requis"></span>
-											</h:outputLabel></td>
-										<td><h:inputText type="text"
-												id="prenomResponsablePartenaire"
-												value="#{controllerProfilPartenaire.profilPartenaireViewModel.prenomResponsablePartenaire}"
-												size="20" maxlength="20" /></td>
-									</tr>
-									<tr>
-										<td><h:outputLabel for="emailResponsablePartenaire">E-mail :<span
-													class="requis"></span>
-											</h:outputLabel></td>
-										<td><h:inputText type="text"
-												id="emailResponsablePartenaire"
-												value="#{controllerProfilPartenaire.profilPartenaireViewModel.emailResponsablePartenaire}"
-												size="20" maxlength="50" /></td>
-									</tr>
-									<tr>
-										<td><h:outputLabel for="telephoneResponsablePartenaire">Téléphone de contact :<span
-													class="requis"></span>
-											</h:outputLabel></td>
-										<td><h:inputText type="text"
-												id="telephoneResponsablePartenaire"
-												value="#{controllerProfilPartenaire.profilPartenaireViewModel.telephoneResponsablePartenaire}"
-												size="20" maxlength="20" /></td>
-									</tr>
-								</table>
-							</fieldset>
-							<h:commandButton value="Soumettre"
-								action="#{controllerProfilPartenaire.saveProfilPartenaire()}" />
-						</h:form>
-
+			<legend>Informations sur le responsable</legend>
+			<table>
+			<tr>
+				<td><h:outputLabel for="nomResponsablePartenaire">Nom du Responsable :<span
+							class="requis"></span>
+					</h:outputLabel></td>
+				<td><h:inputText type="text" id="nomResponsable"
+						value="#{controllerProfilPartenaire.profilPartenaireViewModel.nomResponsablePartenaire}"
+						size="20" maxlength="50" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="prenomResponsablePartenaire">Prénom du Responsable :<span
+							class="requis"></span>
+					</h:outputLabel></td>
+				<td><h:inputText type="text" id="prenomResponsablePartenaire"
+						value="#{controllerProfilPartenaire.profilPartenaireViewModel.prenomResponsablePartenaire}"
+						size="20" maxlength="20" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="emailResponsablePartenaire">E-mail :<span
+							class="requis"></span>
+					</h:outputLabel></td>
+				<td><h:inputText type="text" id="emailResponsablePartenaire"
+						value="#{controllerProfilPartenaire.profilPartenaireViewModel.emailResponsablePartenaire}"
+						size="20" maxlength="50" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel for="telephoneResponsablePartenaire">Téléphone de contact :<span
+							class="requis"></span>
+					</h:outputLabel></td>
+				<td><h:inputText type="text" id="telephoneResponsablePartenaire"
+						value="#{controllerProfilPartenaire.profilPartenaireViewModel.telephoneResponsablePartenaire}"
+						size="20" maxlength="20" /></td>
+			</tr>
+			</table>
+		</fieldset>
+		<h:commandButton value="Modifier" action="#{controllerProfilPartenaire.modifierProfilP()}" />
+	</h:form>
 					</div>
 				</div>
 			</div>
