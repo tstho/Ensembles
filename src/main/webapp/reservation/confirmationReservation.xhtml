@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<meta charset="UTF-8"></meta>
+
+<h:head>
+    <title>Confirmation de réservation</title>
+</h:head>
+
+<h:body>
+<h1>Votre confirmation de réservation</h1>
+   <table>
+									<tr>
+										<td><h:outputLabel for="departure">Départ :<span
+													class="requis"></span>
+											</h:outputLabel></td>
+										<td><h:outputText type="text" id="departure"
+												value="#{controllerReservation.currentReservation.journey.departure}"
+												size="20" maxlength="20" /></td>
+									</tr>
+									<tr>
+										<td><h:outputLabel for="destination">Destination :<span
+													class="requis"></span>
+											</h:outputLabel></td>
+										<td><h:outputText type="text" id="destination"
+												value="#{controllerReservation.currentReservation.journey.destination}"
+												size="20" maxlength="20" /></td>
+									</tr>
+									<tr>
+										<td><h:outputLabel for="destination">Date de départ :<span
+													class="requis"></span>
+											</h:outputLabel></td>
+										<td><h:outputText type="text" id="destination"
+												value="#{controllerReservation.currentReservation.journey.departureDate}"
+												size="20" maxlength="20" /></td>
+									</tr>
+									<tr>
+										<td><h:outputLabel for="destination">Date d'arrivée :<span
+													class="requis"></span>
+											</h:outputLabel></td>
+										<td><h:outputText type="text" id="destination"
+												value="#{controllerReservation.currentReservation.journey.destinationDate}"
+												size="20" maxlength="20" /></td>
+									</tr>
+									<tr>
+										<td><h:outputLabel for="destination">Moyen de transport :<span
+													class="requis"></span>
+											</h:outputLabel></td>
+										<td><h:outputText type="text" id="destination"
+												value="#{controllerReservation.currentReservation.journey.conveyance}"
+												size="20" maxlength="20" /></td>
+									</tr>
+									<tr>
+										<td><h:outputLabel for="destination">Prix :<span
+													class="requis"></span>
+											</h:outputLabel></td>
+										<td><h:outputText type="text" id="destination"
+												value="#{controllerReservation.currentReservation.journey.price}"
+												size="20" maxlength="20" /></td>
+									</tr>
+									<tr>
+										<td><h:outputLabel for="destination">Votre E-mail :<span
+													class="requis"></span>
+											</h:outputLabel></td>
+										<td><h:outputText type="text" id="email"
+												value="#{authBean.currentUser.email}"
+												size="20" maxlength="20" /></td>
+									</tr>
+									
+</table>
+</h:body>
+</html>
