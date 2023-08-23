@@ -92,7 +92,7 @@
                  -->
 								<tr>
 									<td colspan="2"><h:commandButton value="Proposez"
-											action="#{controllerService.saveService()}" /></td>
+											action="#{controllerService.saveService(authBean.currentUser.id)}" /></td>
 								</tr>
 							</table>
 							<!-- 

@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import ensembles.app.entity.ProfilAgence;
+import ensembles.app.entity.ProfilPartenaire;
 import ensembles.app.entity.Service;
 import ensembles.app.entity.ServiceType;
 import ensembles.app.repository.RepoService;
@@ -17,7 +19,7 @@ public class ServiceService {
 	@Inject
 	private Service service;
 	
-	public void saveService(String name,String place,Date begin, Date end, ServiceType ServiceType, Double price, String Description) {
+	public void saveService(String name,String place,Date begin, Date end, ServiceType ServiceType, Double price, String Description,ProfilPartenaire profilPartenaire) {
 		
 		service = new Service();
 		service.setName(name);
@@ -27,6 +29,9 @@ public class ServiceService {
 		service.setServiceType(ServiceType);
 		service.setPrice(price);
 		service.setDescription(Description);
+		
+		service.setProfilPartenaire(profilPartenaire);
+		
 		repoService.saveService(service);
 		
 		
