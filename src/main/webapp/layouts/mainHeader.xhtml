@@ -58,6 +58,8 @@
 								action="#{authBean.redirectEspace}" />
 							<h:commandButton value="Se déconnecter"
 								action="#{authBean.logout}" />
+								<h:commandButton value="Vos réservations"
+								action="#{controllerReservation.reservationListByUser(authBean.currentUser.id)}" rendered="#{authBean.isRole('CLIENT')}" />
 						</h:form>
 					</h:panelGroup>
 				</div></li>
