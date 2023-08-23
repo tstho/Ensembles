@@ -1,5 +1,6 @@
 package ensembles.app.entity;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,7 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+
 @Entity
+
 public class ProfilAgence {
 
 	@Id
@@ -21,6 +24,12 @@ public class ProfilAgence {
 	private String nomSociete;
 	private String siretSociete;
 
+
+	
+	
+	 @OneToMany(mappedBy="profilAgence")
+	 private List<Journey> journeys = new LinkedList<>();
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="adresse_id")	
 	private Adresse adresse;
@@ -33,9 +42,7 @@ public class ProfilAgence {
 	@JoinColumn(name="user_id")
 	private User user; 
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="journey_id")	
-	private List<Journey> journeys;
+
 	
 	@Override
 	public String toString() {

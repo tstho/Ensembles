@@ -5,11 +5,8 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
-
-import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.ProfilClient;
 import ensembles.app.service.ProfilClientService;
-import ensembles.app.viewmodels.ProfilAgenceViewModel;
 import ensembles.app.viewmodels.ProfilClientViewModel;
 
 @ManagedBean

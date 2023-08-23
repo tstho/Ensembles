@@ -1,6 +1,7 @@
 package ensembles.app.service;
 
 import ensembles.app.entity.Journey;
+import ensembles.app.entity.ProfilAgence;
 import ensembles.app.repository.RepoJourney;
 import ensembles.app.viewmodels.JourneyViewModel;
 import javax.ejb.Stateless;
@@ -16,7 +17,7 @@ public class JourneyService {
 	    @Inject
 	  private RepoJourney repoJourney;
 
-	    public void saveJourney(JourneyViewModel journeyViewModel) {
+	    public void saveJourney(JourneyViewModel journeyViewModel, ProfilAgence profilAgence) {
 	        Journey journey = new Journey();
 	        journey.setDeparture(journeyViewModel.getDeparture());
 	        journey.setDestination(journeyViewModel.getDestination());
@@ -25,6 +26,7 @@ public class JourneyService {
 	        journey.setPrice(journeyViewModel.getPrice());
 	        journey.setConveyance(journeyViewModel.getConveyance());
 
+	        journey.setProfilAgence(profilAgence);
 			
 //	   List<Service> selectedServices = journeyViewModel.getSelectedServices();
 //	        if (selectedServices != null && !selectedServices.isEmpty()) {

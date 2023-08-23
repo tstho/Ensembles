@@ -129,7 +129,7 @@
 							</fieldset>
 
 							<h:commandButton value="Soumettre"
-								action="#{controllerJourney.saveJourney()}" />
+								action="#{controllerJourney.saveJourney(authBean.currentUser.id)}" />
 						</h:form>
 					</div>
 				</div>

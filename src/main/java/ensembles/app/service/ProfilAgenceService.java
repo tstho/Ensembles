@@ -52,7 +52,7 @@ public class ProfilAgenceService {
 
 	public void modifyProfilAgence(ProfilAgenceViewModel profilAgenceViewModel) {
 
-		ProfilAgence profilAgence = repoProfilAgence.findById(profilAgenceViewModel.getId());
+		ProfilAgence profilAgence = repoProfilAgence.findById(profilAgenceViewModel.getid());
 
 		profilAgence.setNomSociete(profilAgenceViewModel.getNomSociete());
 		profilAgence.setSiretSociete(profilAgenceViewModel.getSiretSociete());
