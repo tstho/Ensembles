@@ -18,9 +18,13 @@ public class RepoReservation {
 	@PersistenceContext
 	 private EntityManager entityManager;
 
-	 public void save(Reservation reservation) {
+	 public Reservation save(Reservation reservation) {
 	        entityManager.persist(reservation);
 			entityManager.flush();
+			
+			System.out.println("Réservation dans repo après save :"+ reservation.toString());//
+			
+			return reservation;
 		
 	    }
 	 

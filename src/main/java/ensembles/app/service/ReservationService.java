@@ -48,7 +48,7 @@ public class ReservationService {
 		this.repoReservation = repoReservation;
 	}
 
-	public void saveReservation(Long journeyId, Long userId) { // récuperer un id de voyage??
+	public Reservation saveReservation(Long journeyId, Long userId) { // récuperer un id de voyage??
 		
 		Journey journey = repoJourney.findById(journeyId);
 		
@@ -59,7 +59,11 @@ public class ReservationService {
 		reservation.setJourney(journey);
 		reservation.setUser(user);// mettre "authBean.currentUser.id"?
 		
-		repoReservation.save(reservation);
+		reservation = repoReservation.save(reservation);
+		
+		System.out.println("Réservation dans Service après save :"+ reservation);
+		
+		return reservation;
 		
 		
 	}

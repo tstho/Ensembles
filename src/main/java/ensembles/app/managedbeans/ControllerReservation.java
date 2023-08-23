@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 
@@ -22,7 +23,7 @@ public class ControllerReservation implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Inject
+	
 	private ReservationViewModel reservationViewModel;
 
 	@Inject
@@ -30,6 +31,15 @@ public class ControllerReservation implements Serializable {
 	@Inject
 	private RepoReservation repoReservation;
 	
+	private Reservation currentReservation;
+	
+	public Reservation getCurrentReservation() {
+		
+		currentReservation= (Reservation) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("currentReservation");
+		
+		return currentReservation;
+	}
+
 	private List<Reservation> reservationList;
 	
 	
@@ -81,7 +91,15 @@ public class ControllerReservation implements Serializable {
 
 	public String saveReservation(Long journeyId, Long userId) {
 
-		reservationService.saveReservation(journeyId,userId);
+		currentReservation = reservationService.saveReservation(journeyId,userId);
+		
+		//ici on récupère la session pour y mettre la réservation courante 
+		
+		//TODO faire le point sur cette méthode et remettre au propre
+		
+		
+		
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("currentReservation", currentReservation);
 		//reservationList = repoReservation.findAll();
 		//resetViewModel();
 

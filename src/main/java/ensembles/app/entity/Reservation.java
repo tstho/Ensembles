@@ -23,7 +23,7 @@ public class Reservation implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="journey_id")
 	private Journey journey; 
 	

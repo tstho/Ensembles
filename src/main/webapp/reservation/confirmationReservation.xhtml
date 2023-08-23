@@ -13,28 +13,29 @@
 </h:head>
 
 <h:body>
+<h1>Votre confirmation de réservation</h1>
    <table>
 									<tr>
 										<td><h:outputLabel for="departure">Départ :<span
 													class="requis"></span>
 											</h:outputLabel></td>
-										<td><h:inputText type="text" id="departure"
-												value="#{controllerReservation.reservationViewModel.departure}"
+										<td><h:outputText type="text" id="departure"
+												value="#{controllerReservation.currentReservation.journey.departure}"
 												size="20" maxlength="20" /></td>
 									</tr>
 									<tr>
 										<td><h:outputLabel for="destination">Destination :<span
 													class="requis"></span>
 											</h:outputLabel></td>
-										<td><h:inputText type="text" id="destination"
-												value="#{controllerJourney.journeyViewModel.destination}"
+										<td><h:outputText type="text" id="destination"
+												value="#{controllerReservation.currentReservation.journey.destination}"
 												size="20" maxlength="20" /></td>
 									</tr>
 									<tr>
 										<td><h:outputLabel for="destination">Date de départ :<span
 													class="requis"></span>
 											</h:outputLabel></td>
-										<td><h:inputText type="text" id="destination"
+										<td><h:outputText type="text" id="destination"
 												value="#{controllerJourney.journeyViewModel.destination}"
 												size="20" maxlength="20" /></td>
 									</tr>
@@ -42,7 +43,7 @@
 										<td><h:outputLabel for="destination">Date d'arrivée :<span
 													class="requis"></span>
 											</h:outputLabel></td>
-										<td><h:inputText type="text" id="destination"
+										<td><h:outputText type="text" id="destination"
 												value="#{controllerJourney.journeyViewModel.destination}"
 												size="20" maxlength="20" /></td>
 									</tr>
@@ -50,7 +51,7 @@
 										<td><h:outputLabel for="destination">Moyen de transport :<span
 													class="requis"></span>
 											</h:outputLabel></td>
-										<td><h:inputText type="text" id="destination"
+										<td><h:outputText type="text" id="destination"
 												value="#{controllerJourney.journeyViewModel.destination}"
 												size="20" maxlength="20" /></td>
 									</tr>
@@ -58,7 +59,7 @@
 										<td><h:outputLabel for="destination">Prix :<span
 													class="requis"></span>
 											</h:outputLabel></td>
-										<td><h:inputText type="text" id="destination"
+										<td><h:outputText type="text" id="destination"
 												value="#{controllerJourney.journeyViewModel.destination}"
 												size="20" maxlength="20" /></td>
 									</tr>
@@ -66,8 +67,8 @@
 										<td><h:outputLabel for="destination">Votre E-mail :<span
 													class="requis"></span>
 											</h:outputLabel></td>
-										<td><h:inputText type="text" id="destination"
-												value="#{controllerJourney.journeyViewModel.destination}"
+										<td><h:outputText type="text" id="email"
+												value="#{authBean.currentUser.email}"
 												size="20" maxlength="20" /></td>
 									</tr>
 									
