@@ -29,9 +29,7 @@ public class ControllerProfilAgence implements Serializable {
 
 	private List<JourneyViewModel> journeyViewModels = new ArrayList<>();
 
-	public void addJourneyViewModel(JourneyViewModel journeyViewModel) {
-		JourneyViewModel.add(journeyViewModel);
-	}
+
 
 	public ProfilAgenceService getProfilAgenceService() {
 		return profilAgenceService;

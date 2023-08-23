@@ -10,9 +10,13 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import javax.swing.plaf.synth.SynthOptionPaneUI;
-
+import ensembles.app.entity.Journey;
+import ensembles.app.entity.ProfilAgence;
+import ensembles.app.entity.ProfilPartenaire;
 import ensembles.app.entity.Service;
 import ensembles.app.entity.ServiceType;
+import ensembles.app.repository.RepoProfilAgence;
+import ensembles.app.repository.RepoProfilPartenaire;
 import ensembles.app.repository.RepoService;
 import ensembles.app.service.ServiceService;
 import ensembles.app.viewmodels.ServiceViewModel;
@@ -29,6 +33,8 @@ public class ControllerService implements Serializable {
 	private ServiceService serviceService;
 	@Inject
 	private RepoService repoService;
+	@Inject
+	private RepoProfilPartenaire repoProfilPartenaire;
 	
 	private List<Service> serviceList;
 	
@@ -36,14 +42,24 @@ public class ControllerService implements Serializable {
 	public void init() {
 		serviceList = repoService.findAll();
 	}
-	
-	public String saveService() {
-		serviceService.saveService(serviceViewModel);
+
+	public String saveService(Long idUser) {
+		
+		ProfilPartenaire profilPartenaire = repoProfilPartenaire.findByUserId(idUser);
+		
+		serviceService.saveService(serviceViewModel.getName(), serviceViewModel.getPlace(),serviceViewModel.getStartDate(),serviceViewModel.getEndDate(),serviceViewModel.getServiceType(),serviceViewModel.getPrice(), serviceViewModel.getDescription(),profilPartenaire);
+		
 		serviceList = repoService.findAll();
-		resetViewModel();		
+		
+		
+		//setServiceList(repoService.findAll());
+		
+		//reset le view model
+		serviceViewModel = new ServiceViewModel();
+		
 		return "/ensembles/displayAllService.xhtml?faces-redirect=true";
-			
-	}
+  }
+ 
 	
 	public List<ServiceType> getServiceTypeOptions(){
 		List<ServiceType> options = new ArrayList<>();
@@ -122,8 +138,21 @@ public class ControllerService implements Serializable {
 	public List<Service> getServiceList() {
 		return serviceList;
 	}
+	public RepoProfilPartenaire getRepoProfilPartenaire() {
+		return repoProfilPartenaire;
+	}
+
+	public void setRepoProfilPartenaire(RepoProfilPartenaire repoProfilPartenaire) {
+		this.repoProfilPartenaire = repoProfilPartenaire;
+	}
+
+	public List<Service> getServiceList() {
+		return serviceList;
+	}
 
 	public void setServiceList(List<Service> serviceList) {
 		this.serviceList = serviceList;
 	}
+
+	
 }
