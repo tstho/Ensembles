@@ -6,82 +6,104 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-	<meta charset="utf-8" />
+	<meta charset="utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
 	<title>Ensembles ::Payment</title>
-
 </h:head>
 
+
 <h:body>
-	<h:form>
-		<header class="stickyHeader"> </header>
-		<main id="mainContent"
-			class="mainContentUnderStickyHeader mainContentAboveStickyFooter">
-			<section class="container-fluid">
 
-				<div id="paymentSection" class="alternativeSubPart">
-					<h3>CARTE BANCAIRE</h3>
+	<ui:composition template="../layouts/mainLayout.xhtml">
+		<ui:define name="content">
+			<h:form>
+				
+				
+					<section class="container-fluid">
 
-					<div class="form-group row mb-2">
-						<label class="control-label col-sm-4 text-sm-end">Numéro
-							de Carte:</label>
-						<div class="col-sm-8">
-							<h:inputText id="cardNumber"
-								value="#{paymentViewmodel.cardNumber}" />
+						<div id="paymentSection" class="alternativeSubPart">
+						<div class="jumbotron">
+						
+						<div class="row">
+	
+<div class="col-sm-6">
+<div class="form-group row mb-2">
+						<h3>CARTE BANCAIRE</h3>
 						</div>
-					</div>
-					<div class="form-group row mb-2">
-						<label class="control-label col-sm-4 text-sm-end">Titulaire
-							de la Carte:</label>
-						<div class="col-sm-8">
-							<h:inputText id="cardHolderName"
-								value="#{paymentViewmodel.cardHolderName}" />
+							<div class="form-group row mb-2">
+								<label class="control-label col-sm-4 text-sm-end">Numéro
+									de Carte:</label>
+								<div class="col-sm-8">
+									<h:inputText id="cardNumber"
+										value="#{paymentViewmodel.cardNumber}" />
+								</div>
+							</div>
+							<div class="form-group row mb-2">
+								<label class="control-label col-sm-4 text-sm-end">Titulaire
+									de la Carte:</label>
+								<div class="col-sm-4">
+									<h:inputText id="cardHolderName"
+										value="#{paymentViewmodel.cardHolderName}" />
+								</div>
+							</div>
+							<div class="form-group row mb-2">
+								<label class="control-label col-sm-4 text-sm-end">Date
+									d'Expiration:</label>
+								<div class="col-sm-8">
+									<h:inputText id="expirationDate"
+										value="#{paymentViewmodel.expirationDate}">
+										<f:convertDateTime pattern="MM/yyyy" />
+									</h:inputText>
+								</div>
+							</div>
+							<div class="form-group row mb-2">
+								<label class="control-label col-sm-4 text-sm-end">CVV:</label>
+								<div class="col-sm-8">
+									<h:inputText id="cvv" value="#{paymentViewmodel.cvv}" />
+								</div>
+							</div>
+
+							<div class="form-group row mb-2">
+								<div class="offset-sm-4 col-sm-8">
+
+									<p:commandButton
+										actionListener="#{controllerPayment.savePayment()}"
+										ajax="false" value="Paiement">
+										<p:confirm header="Confirm"
+											message="Votre paiement été bien prise en compte"
+											icon="ui-icon-alert"></p:confirm>
+									</p:commandButton>
+
+								</div>
+							</div>
+							</div>
+							<div class="col-lg-4 mb-3 d-flex align-items-stretch">
+									<div class="card">						
+									<img src="https://entreedestinations.com/wp-content/uploads/2019/09/Polar-bear_photo-by-Ian-Johnson.jpg"
+									alt="AgenceACreer" />
+							</div>
+							
+							</div>
+							</div>
+							</div>
 						</div>
-					</div>
-					<div class="form-group row mb-2">
-						<label class="control-label col-sm-4 text-sm-end">Date
-							d'Expiration:</label>
-						<div class="col-sm-8">
-							<h:inputText id="expirationDate"
-								value="#{paymentViewmodel.expirationDate}">
-								<f:convertDateTime pattern="MM/yyyy" />
-							</h:inputText>
-						</div>
-					</div>
-					<div class="form-group row mb-2">
-						<label class="control-label col-sm-4 text-sm-end">CVV:</label>
-						<div class="col-sm-8">
-							<h:inputText id="cvv" value="#{paymentViewmodel.cvv}" />
-						</div>
-					</div>
 
-					<div class="form-group row mb-2">
-						<div class="offset-sm-4 col-sm-8">
+			
+</section>
+			</h:form>
+		
 
-							<p:commandButton
-								actionListener="#{controllerPayment.savePayment()}" ajax="false"
-								value="Paiement">
-								<p:confirm header="Confirm"
-									message="Votre paiement été bien prise en compte"
-									icon="ui-icon-alert"></p:confirm>
-							</p:commandButton>
+			<p:confirmDialog id="dialog" global="true" showEffect="fade"
+				hideEffect="explode"
+				message="Votre paiement été bien prise en compte">
+				<a href="../agency/adminAgency.xhtml" class="btn btn-primary">OK</a>
 
-						</div>
-					</div>
-				</div>
+			</p:confirmDialog>
 
-			</section>
-		</main>
-
-	</h:form>
-
-	<p:confirmDialog id="dialog" global="true" showEffect="fade"
-		hideEffect="explode" message="Votre paiement été bien prise en compte">
-		<p:commandButton value="OK" type="button"
-			styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-
-	</p:confirmDialog>
-
-
+		</ui:define>
+	</ui:composition>
 
 </h:body>
 </html>
