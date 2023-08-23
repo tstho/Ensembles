@@ -115,7 +115,6 @@ public class ControllerJourney implements Serializable {
 	 */
 
 	public void supprimerJourney(Long id) {
-		System.out.println("ID du voyage à supprimer : " + journeyViewModel.getId());
 	    journeyService.supprimerJourney(id);
 	    journeyList = repoJourney.findAll();
 	    resetViewModel();

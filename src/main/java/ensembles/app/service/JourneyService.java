@@ -2,8 +2,13 @@ package ensembles.app.service;
 
 import ensembles.app.entity.Journey;
 import ensembles.app.entity.ProfilAgence;
+import ensembles.app.entity.Reservation;
 import ensembles.app.repository.RepoJourney;
+import ensembles.app.repository.RepoReservation;
 import ensembles.app.viewmodels.JourneyViewModel;
+
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -12,6 +17,8 @@ public class JourneyService {
 
 	@Inject
 	private RepoJourney repoJourney;
+	@Inject
+	private RepoReservation repoReservation;
  
 	    public void saveJourney(JourneyViewModel journeyViewModel, ProfilAgence profilAgence) {
 	        Journey journey = new Journey();
@@ -42,10 +49,20 @@ public class JourneyService {
 	}
 
 	public void supprimerJourney(Long id) {
-
+		
+		deleteReservationsAssociated(id);
+		
 		Journey journey = repoJourney.findById(id);
 		repoJourney.delete(journey);
 
+	}
+
+	public void deleteReservationsAssociated(Long id) {
+		List<Reservation> reservations = repoReservation.getAllReservationsByJourneyId(id);
+		
+		for(Reservation reservation : reservations){
+			repoReservation.delete(reservation);			
+		}
 	}
 
 	public RepoJourney getRepoJourney() {
