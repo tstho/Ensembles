@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
 	<title>Modifier votre service</title>
@@ -14,34 +15,31 @@
 <h:body>
 	<h:form>
 		<h1>Modifier votre service</h1>
+		<h:outputLabel for="name" value="Nom : " />
+		<h:inputText id="name" value ="#{controllerService.serviceViewModel.name}"/>
 
-		<h:outputLabel for="name" value="Name" />
-		<h:inputText id="name"
-			value="#{controllerService.serviceViewModel.name}" />
-
-		<h:outputLabel for="place" value="Place: " />
+		<h:outputLabel for="place" value="Localisation :  " />
 		<h:inputText id="place"
 			value="#{controllerService.serviceViewModel.place}" />
 
-		<h:outputLabel value="Start Date: " />
+		<h:outputLabel value="Date de départ : " />
 			<p:datePicker value="#{controllerService.serviceViewModel.begin}"
 			size="20" maxlength="20" />
 
-		<h:outputLabel value="End Date: " />
+		<h:outputLabel value="Date de fin :  " />
 			<p:datePicker value="#{controllerService.serviceViewModel.end}"
 			size="20" maxlength="20" />
 
-		<h:outputLabel for="serviceType" value="Service Type: " />
+		<h:outputLabel for="serviceType" value="Type de service : " />
 			<h:selectOneMenu id="serviceType"
 				value="#{controllerService.serviceViewModel.serviceType}">
-				<f:selectItems value="#{controllerService.getServiceTypeOptions()}" />
+				<f:selectItems value="#{controllerService.serviceTypeOptions}" />
 			</h:selectOneMenu>
 
-		<h:outputLabel for="price" value="Price: " />
-		<h:inputText id="price"
-			value="#{controllerService.serviceViewModel.price}" />
+		<h:outputLabel for="price" value="Prix :  " />
+		<h:inputText id="price"	value="#{controllerService.serviceViewModel.price}" />
 
-		<h:outputLabel for="description" value="Description: " />
+		<h:outputLabel for="description" value="Description : " />
 		<h:inputText id="description"
 			value="#{controllerService.serviceViewModel.description}" />
 

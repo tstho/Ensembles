@@ -7,6 +7,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 
@@ -17,7 +18,7 @@ import ensembles.app.service.ServiceService;
 import ensembles.app.viewmodels.ServiceViewModel;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class ControllerService implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -28,22 +29,12 @@ public class ControllerService implements Serializable {
 	private ServiceService serviceService;
 	@Inject
 	private RepoService repoService;
-	// Possibilités de modifications en rapport avec le ControllerUser.java
 	
 	private List<Service> serviceList;
 	
 	@PostConstruct
 	public void init() {
 		serviceList = repoService.findAll();
-		System.out.println(serviceList);
-	}
-	
-	public RepoService getRepoService() {
-		return repoService;
-	}
-
-	public void setRepoService(RepoService repoService) {
-		this.repoService = repoService;
 	}
 	
 	public String saveService() {
@@ -54,14 +45,6 @@ public class ControllerService implements Serializable {
 			
 	}
 	
-	public List<Service> getServiceList() {
-		return serviceList;
-	}
-
-	public void setServiceList(List<Service> serviceList) {
-		this.serviceList = serviceList;
-	}
-
 	public List<ServiceType> getServiceTypeOptions(){
 		List<ServiceType> options = new ArrayList<>();
 		for (ServiceType type : ServiceType.values()) {
@@ -72,12 +55,13 @@ public class ControllerService implements Serializable {
 
 	public String redirectToEdit(Long serviceId) {
 		initModifierService(serviceId);
+
 		return "/ensembles/modifyService.xhtml?faces-redirect=true";
 	}
 
 	private void initModifierService(Long serviceId) {
 		Service service = repoService.findById(serviceId);
-		serviceViewModel = new ServiceViewModel();
+		
 		serviceViewModel.setId(service.getId());
 		serviceViewModel.setName(service.getName());
 		serviceViewModel.setBegin(service.getBegin());
@@ -86,9 +70,6 @@ public class ControllerService implements Serializable {
 		serviceViewModel.setPrice(service.getPrice());
 		serviceViewModel.setPlace(service.getPlace());
 		serviceViewModel.setDescription(service.getDescription());
-		
-		System.out.println(service.toString());
-		System.out.println(serviceViewModel.toString());
 		
 	}
 	
@@ -111,6 +92,9 @@ public class ControllerService implements Serializable {
 	public void resetViewModel() {
 		serviceViewModel = new ServiceViewModel();
 	}
+	/*
+	 * getters & setters
+	 */
 	
 	public ServiceViewModel getServiceViewModel() {
 		return serviceViewModel;
@@ -126,5 +110,20 @@ public class ControllerService implements Serializable {
 
 	public void setServiceService(ServiceService serviceService) {
 		this.serviceService = serviceService;
+	}
+
+	public RepoService getRepoService() {
+		return repoService;
+	}
+
+	public void setRepoService(RepoService repoService) {
+		this.repoService = repoService;
+	}
+	public List<Service> getServiceList() {
+		return serviceList;
+	}
+
+	public void setServiceList(List<Service> serviceList) {
+		this.serviceList = serviceList;
 	}
 }

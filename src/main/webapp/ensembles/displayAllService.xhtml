@@ -18,13 +18,8 @@
 	<br />
 	<hr />
 
-	<h:dataTable value="#{controllerServiceManagement.serviceList}"
+	<h:dataTable value="#{controllerService.serviceList}"
 		var="service">
-
-		<h:column>
-			<f:facet name="header">ID</f:facet>
-				#{service.id}
-			</h:column>
 
 		<h:column>
 			<f:facet name="header">Name</f:facet>
