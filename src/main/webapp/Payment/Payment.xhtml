@@ -19,81 +19,80 @@
 	<ui:composition template="../layouts/mainLayout.xhtml">
 		<ui:define name="content">
 			<h:form>
-				
-				
-					<section class="container-fluid">
+				<section class="container-fluid">
 
-						<div id="paymentSection" class="alternativeSubPart">
+					<div id="paymentSection" class="alternativeSubPart">
 						<div class="jumbotron">
-						
-						<div class="row">
-	
-<div class="col-sm-6">
-<div class="form-group row mb-2">
-						<h3>CARTE BANCAIRE</h3>
+
+							<div class="row">
+
+								<div class="col-sm-6">
+									<div class="form-group row mb-2">
+										<h3>CARTE BANCAIRE</h3>
+									</div>
+									<div class="form-group row mb-2">
+										<label class="control-label col-sm-4 text-sm-end">Numéro
+											de Carte:</label>
+										<div class="col-sm-8">
+											<h:inputText id="cardNumber"
+												value="#{paymentViewmodel.cardNumber}" />
+										</div>
+									</div>
+									<div class="form-group row mb-2">
+										<label class="control-label col-sm-4 text-sm-end">Titulaire
+											de la Carte:</label>
+										<div class="col-sm-4">
+											<h:inputText id="cardHolderName"
+												value="#{paymentViewmodel.cardHolderName}" />
+										</div>
+									</div>
+									<div class="form-group row mb-2">
+										<label class="control-label col-sm-4 text-sm-end">Date
+											d'Expiration:</label>
+										<div class="col-sm-8">
+											<h:inputText id="expirationDate"
+												value="#{paymentViewmodel.expirationDate}">
+												<f:convertDateTime pattern="MM/yyyy" />
+											</h:inputText>
+										</div>
+									</div>
+									<div class="form-group row mb-2">
+										<label class="control-label col-sm-4 text-sm-end">CVV:</label>
+										<div class="col-sm-8">
+											<h:inputText id="cvv" value="#{paymentViewmodel.cvv}" />
+										</div>
+									</div>
+
+									<div class="form-group row mb-2">
+										<div class="offset-sm-4 col-sm-8">
+
+											<p:commandButton
+												actionListener="#{controllerPayment.savePayment()}"
+												ajax="false" value="Paiement">
+												<p:confirm header="Confirm"
+													message="Votre paiement été bien prise en compte"
+													icon="ui-icon-alert"></p:confirm>
+											</p:commandButton>
+
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 mb-3 d-flex align-items-stretch">
+									<div class="card">
+										<img
+											src="https://entreedestinations.com/wp-content/uploads/2019/09/Polar-bear_photo-by-Ian-Johnson.jpg"
+											alt="AgenceACreer" />
+									</div>
+
+								</div>
+							</div>
 						</div>
-							<div class="form-group row mb-2">
-								<label class="control-label col-sm-4 text-sm-end">Numéro
-									de Carte:</label>
-								<div class="col-sm-8">
-									<h:inputText id="cardNumber"
-										value="#{paymentViewmodel.cardNumber}" />
-								</div>
-							</div>
-							<div class="form-group row mb-2">
-								<label class="control-label col-sm-4 text-sm-end">Titulaire
-									de la Carte:</label>
-								<div class="col-sm-4">
-									<h:inputText id="cardHolderName"
-										value="#{paymentViewmodel.cardHolderName}" />
-								</div>
-							</div>
-							<div class="form-group row mb-2">
-								<label class="control-label col-sm-4 text-sm-end">Date
-									d'Expiration:</label>
-								<div class="col-sm-8">
-									<h:inputText id="expirationDate"
-										value="#{paymentViewmodel.expirationDate}">
-										<f:convertDateTime pattern="MM/yyyy" />
-									</h:inputText>
-								</div>
-							</div>
-							<div class="form-group row mb-2">
-								<label class="control-label col-sm-4 text-sm-end">CVV:</label>
-								<div class="col-sm-8">
-									<h:inputText id="cvv" value="#{paymentViewmodel.cvv}" />
-								</div>
-							</div>
+					</div>
 
-							<div class="form-group row mb-2">
-								<div class="offset-sm-4 col-sm-8">
 
-									<p:commandButton
-										actionListener="#{controllerPayment.savePayment()}"
-										ajax="false" value="Paiement">
-										<p:confirm header="Confirm"
-											message="Votre paiement été bien prise en compte"
-											icon="ui-icon-alert"></p:confirm>
-									</p:commandButton>
-
-								</div>
-							</div>
-							</div>
-							<div class="col-lg-4 mb-3 d-flex align-items-stretch">
-									<div class="card">						
-									<img src="https://entreedestinations.com/wp-content/uploads/2019/09/Polar-bear_photo-by-Ian-Johnson.jpg"
-									alt="AgenceACreer" />
-							</div>
-							
-							</div>
-							</div>
-							</div>
-						</div>
-
-			
-</section>
+				</section>
 			</h:form>
-		
+
 
 			<p:confirmDialog id="dialog" global="true" showEffect="fade"
 				hideEffect="explode"

@@ -29,8 +29,6 @@ public class AuthBean implements Serializable {
 	@Inject
 	private UserService userService;
 	
-	@Inject
-	private ProfilAgenceService pAService;
 
 	public String login() {
 
