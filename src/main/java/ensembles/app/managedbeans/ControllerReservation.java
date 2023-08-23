@@ -79,13 +79,13 @@ public class ControllerReservation implements Serializable {
 	 * Méthode de création d'une réservation
 	 */
 
-	public String saveReservation() {
+	public String saveReservation(Long journeyId, Long userId) {
 
-		reservationService.saveReservation(reservationViewModel);
-		reservationList = repoReservation.findAll();
-		resetViewModel();
+		reservationService.saveReservation(journeyId,userId);
+		//reservationList = repoReservation.findAll();
+		//resetViewModel();
 
-		return "/Journey/displayAllJourney.xhtml?faces-redirect=true";
+		return "/reservation/confirmationReservation.xhtml?faces-redirect=true";
 	}
 
 	

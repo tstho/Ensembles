@@ -85,6 +85,8 @@
 									<p:commandButton
 										actionListener="#{controllerJourney.supprimerJourney(j.id)}"
 										ajax="false" value="Supprimer">
+											<h:commandButton value="Reserver"
+										action="#{controllerReservation.saveReservation(j.id,authBean.currentUser.id)}" />
 
 										<p:confirm header="Confirm" message="Are you sure?"
 											icon="ui-icon-alert"></p:confirm>

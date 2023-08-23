@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,7 +27,7 @@ public class Reservation implements Serializable {
 	@JoinColumn(name="journey_id")
 	private Journey journey; 
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="user_id")
 	private User user;
 

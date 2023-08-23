@@ -7,6 +7,8 @@ import javax.faces.bean.ManagedBean;
 
 import ensembles.app.entity.Conveyance;
 import ensembles.app.entity.Service;
+
+
 @ManagedBean
 public class JourneyViewModel {
 	
