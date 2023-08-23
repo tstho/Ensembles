@@ -23,11 +23,16 @@ public class AuthBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private UserViewModel userVM = new UserViewModel();
+	@Inject
+	private UserViewModel userVM;
+	
 	private User currentUser;
 
 	@Inject
 	private UserService userService;
+	
+	private String message;
+
 	
 
 	public String login() {
@@ -67,9 +72,12 @@ public class AuthBean implements Serializable {
 	}
 
 	public String payTemplate() {
-		if(isAuthenticated() && currentUser.getRole()==Role.AGENCY) {
-			System.out.println("Agence");
-			return "/Payement/Payement.xhtml?faces-redirect=true";
+		if(isAuthenticated() ) {
+			if(currentUser.getRole()==Role.AGENCY) {
+				return "/Payment/Payment.xhtml?faces-redirect=true";
+			}else {
+				return "/login/inscription.xhtml?faces-redirect=true";
+			}
 		}else {
 			return "/login/inscription.xhtml?faces-redirect=true";
 		}

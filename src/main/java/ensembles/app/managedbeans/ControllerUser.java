@@ -31,7 +31,7 @@ public class ControllerUser implements Serializable {
 	private UserViewModel userViewModel;
 
 	@Inject
-	private RepoUser rU;
+	private RepoUser repoUser;
 
 	@Inject
 	private ProfilAgenceService proAgenceService;
@@ -41,7 +41,7 @@ public class ControllerUser implements Serializable {
 	@PostConstruct
 	public void init() {
 
-		userList = rU.findAll();
+		userList = repoUser.findAll();
 		System.out.println(userList);
 	}
 
@@ -93,7 +93,7 @@ public class ControllerUser implements Serializable {
 
 	public String saveUser() {
 		userService.saveUser(userViewModel);
-		userList = rU.findAll();
+		userList = repoUser.findAll();
 		resetViewModel();
 
 		return "/index.xhtml?faces-redirect=true";
@@ -107,7 +107,7 @@ public class ControllerUser implements Serializable {
 
 	public void initModifierUser(Long userId) {
 
-		User user = rU.findById(userId);
+		User user = repoUser.findById(userId);
 		userViewModel = new UserViewModel();
 		userViewModel.setId(userId);
 		userViewModel.setEmail(user.getEmail());
@@ -121,7 +121,7 @@ public class ControllerUser implements Serializable {
 	public String modifierUser() {
 		System.out.println("ID de l'utilisateur à modifier : " + userViewModel.getId());
 		userService.modifyUser(userViewModel);
-		userList = rU.findAll();
+		userList = repoUser.findAll();
 		resetViewModel();
 
 		return "/user/displayAllUser.xhtml?faces-redirect=true";
@@ -132,7 +132,7 @@ public class ControllerUser implements Serializable {
 	public void supprimerUser(Long id) {
 		System.out.println("ID de l'utilisateur à supprimer : " + userViewModel.getId());
 		userService.supprimerUser(id);
-		userList = rU.findAll();
+		userList = repoUser.findAll();
 		resetViewModel();
 	}
 
