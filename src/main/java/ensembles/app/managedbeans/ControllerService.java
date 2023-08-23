@@ -55,7 +55,7 @@ public class ControllerService implements Serializable {
 
 	public String redirectToEdit(Long serviceId) {
 		initModifierService(serviceId);
-
+		
 		return "/ensembles/modifyService.xhtml?faces-redirect=true";
 	}
 

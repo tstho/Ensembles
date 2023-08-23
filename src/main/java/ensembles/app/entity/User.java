@@ -29,9 +29,6 @@ public class User implements Serializable {
 	
 	@Enumerated(EnumType.STRING)
 	private Role role;
-	//relation oneTOone user et profil client
-	//Profil client 
-	//CRéé une classe abstract profil (profil client,agence, partenaire)
 
 	public Long getId() {
 		return id;

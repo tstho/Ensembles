@@ -13,9 +13,6 @@ public class JourneyService {
 	@Inject
 	private RepoJourney repoJourney;
  
-	   @Inject
-	  private RepoJourney repoJourney;
-
 	    public void saveJourney(JourneyViewModel journeyViewModel, ProfilAgence profilAgence) {
 	        Journey journey = new Journey();
 	        journey.setDeparture(journeyViewModel.getDeparture());
