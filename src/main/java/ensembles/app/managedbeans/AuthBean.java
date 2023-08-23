@@ -29,8 +29,6 @@ public class AuthBean implements Serializable {
 	@Inject
 	private UserService userService;
 	
-	@Inject
-	private ProfilAgenceService pAService;
 
 	public String login() {
 
@@ -52,7 +50,7 @@ public class AuthBean implements Serializable {
 
 		// Mettre fin à la session et rediriger vers la page d'acceuil
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "";
+		return "/index.xhtml?faces-redirect=true";
 	}
 	
 	public String redirectEspace() {
@@ -68,6 +66,15 @@ public class AuthBean implements Serializable {
 		return "";
 	}
 
+	public String payTemplate() {
+		if(isAuthenticated() && currentUser.getRole()==Role.AGENCY) {
+			System.out.println("Agence");
+			return "/Payement/Payement.xhtml?faces-redirect=true";
+		}else {
+			return "/login/inscription.xhtml?faces-redirect=true";
+		}
+	}
+	
 	public boolean isRole(Role role) {
 		return currentUser != null && currentUser.getRole() == role;
 	}

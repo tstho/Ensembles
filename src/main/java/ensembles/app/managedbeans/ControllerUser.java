@@ -28,20 +28,19 @@ public class ControllerUser implements Serializable {
 	private UserService userService;
 
 	@Inject
-	private UserViewModel userViewModel;	
-	
+	private UserViewModel userViewModel;
+
 	@Inject
 	private RepoUser rU;
-	
+
 	@Inject
 	private ProfilAgenceService proAgenceService;
-	
+
 	private List<User> userList;
-	
-	
+
 	@PostConstruct
 	public void init() {
-		
+
 		userList = rU.findAll();
 		System.out.println(userList);
 	}
@@ -49,7 +48,6 @@ public class ControllerUser implements Serializable {
 	/*
 	 * Méthode appelé depuis la vue pour enregistrer un user
 	 */
-	
 
 	/*
 	 * Efface les champs du view model
@@ -84,36 +82,29 @@ public class ControllerUser implements Serializable {
 	public void setUserViewModel(UserViewModel userViewModel) {
 		this.userViewModel = userViewModel;
 	}
-	
+
 	public List<Role> getRole() {
 		List<Role> userType = new ArrayList<>();
 		for (Role role : Role.values()) {
 			userType.add(role);
-			}
-		return userType;
 		}
-	public String saveUser() {
+		return userType;
+	}
 
+	public String saveUser() {
 		userService.saveUser(userViewModel);
-		
-		
-		
 		userList = rU.findAll();
 		resetViewModel();
 
-		return "/user/displayAllUser.xhtml?faces-redirect=true";
-		
-
+		return "/index.xhtml?faces-redirect=true";
 	}
-	
-	
-	// Modification utilisateur 
+
+	// Modification utilisateur
 	public String redirectToEdit(Long userId) {
 		initModifierUser(userId);
 		return "/user/ModifierUser.xhtml?faces-redirect=true";
 	}
-	
-	
+
 	public void initModifierUser(Long userId) {
 
 		User user = rU.findById(userId);
@@ -122,7 +113,7 @@ public class ControllerUser implements Serializable {
 		userViewModel.setEmail(user.getEmail());
 		userViewModel.setRole(user.getRole());
 		userViewModel.setPassword(user.getPassword());
-		
+
 		System.out.println(user.toString());
 		System.out.println(userViewModel.toString());
 	}
@@ -135,20 +126,18 @@ public class ControllerUser implements Serializable {
 
 		return "/user/displayAllUser.xhtml?faces-redirect=true";
 	}
-	
-	// suppression utilisateur 
-	
+
+	// suppression utilisateur
+
 	public void supprimerUser(Long id) {
 		System.out.println("ID de l'utilisateur à supprimer : " + userViewModel.getId());
-	    userService.supprimerUser(id);
-	    userList = rU.findAll();
-	    resetViewModel();
+		userService.supprimerUser(id);
+		userList = rU.findAll();
+		resetViewModel();
 	}
-	
-	
 
 	public void resetViewModel() {
 		userViewModel = new UserViewModel();
 	}
-	
+
 }

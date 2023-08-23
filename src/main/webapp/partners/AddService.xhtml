@@ -14,7 +14,6 @@
 	<ui:composition template="/layouts/mainLayout.xhtml">
 
 		<ui:define name="content">
-
 			<div class="container" style="margin-top: 30px">
 				<div class="row">
 					<div class="col-sm-3 bg-info">
@@ -51,13 +50,13 @@
 								<tr>
 									<td><h:outputLabel value="Début : " /></td>
 									<td><p:datePicker
-											value="#{controllerService.serviceViewModel.startDate}"
+											value="#{controllerService.serviceViewModel.begin}"
 											size="20" maxlength="20" /></td>
 								</tr>
 								<tr>
 									<td><h:outputLabel value="Fin : " /></td>
 									<td><p:datePicker
-											value="#{controllerService.serviceViewModel.endDate}"
+											value="#{controllerService.serviceViewModel.end}"
 											size="20" maxlength="20" /></td>
 								</tr>
 								<tr>
@@ -84,23 +83,12 @@
 											value="#{controllerService.serviceViewModel.description}"
 											rows="5" cols="33" /></td>
 								</tr>
-								<!-- 
-                <tr>
-                    <td><h:outputLabel for="confirmation">Confirm Password <span class="requis">*</span></h:outputLabel></td>
-                    <td><h:inputSecret type="password" id="confirmation" name="confirmation" value="#{controllerUser.userViewModel.password}" size="20" maxlength="20" /></td>
-                </tr>
-                 -->
 								<tr>
 									<td colspan="2"><h:commandButton value="Proposez"
 											action="#{controllerService.saveService(authBean.currentUser.id)}" /></td>
 								</tr>
 							</table>
-							<!-- 
-            <p class="${empty form.erreurs ? 'succes' : 'erreur'}">
-                 Ce paragraphe affichera un message d'erreur ou de succès en fonction de la condition
-            </p>
             
-                 -->
 						</h:form>
 					</div>
 				</div>
