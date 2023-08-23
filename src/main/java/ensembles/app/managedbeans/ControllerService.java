@@ -4,17 +4,21 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 
+import ensembles.app.entity.Service;
 import ensembles.app.entity.ServiceType;
 import ensembles.app.repository.RepoService;
 import ensembles.app.service.ServiceService;
 import ensembles.app.viewmodels.ServiceViewModel;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class ControllerService implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -25,16 +29,20 @@ public class ControllerService implements Serializable {
 	private ServiceService serviceService;
 	@Inject
 	private RepoService repoService;
-	// Possibilités de modifications en rapport avec le ControllerUser.java
 	
+	private List<Service> serviceList;
+	
+	@PostConstruct
+	public void init() {
+		serviceList = repoService.findAll();
+	}
 	
 	public String saveService() {
-		serviceService.saveService(serviceViewModel.getName(), serviceViewModel.getPlace(),serviceViewModel.getStartDate(),serviceViewModel.getEndDate(),serviceViewModel.getServiceType(),serviceViewModel.getPrice(), serviceViewModel.getDescription());
-		
-		//reset le view model
-		serviceViewModel = new ServiceViewModel();
-		
-		return "";
+		serviceService.saveService(serviceViewModel);
+		serviceList = repoService.findAll();
+		resetViewModel();		
+		return "/ensembles/displayAllService.xhtml?faces-redirect=true";
+			
 	}
 	
 	public List<ServiceType> getServiceTypeOptions(){
@@ -44,12 +52,54 @@ public class ControllerService implements Serializable {
 		}
 		return options;
 	}
-	
 
+	public String redirectToEdit(Long serviceId) {
+		initModifierService(serviceId);
+
+		return "/ensembles/modifyService.xhtml?faces-redirect=true";
+	}
+
+	private void initModifierService(Long serviceId) {
+		Service service = repoService.findById(serviceId);
+		
+		serviceViewModel.setId(service.getId());
+		serviceViewModel.setName(service.getName());
+		serviceViewModel.setBegin(service.getBegin());
+		serviceViewModel.setEnd(service.getEnd());
+		serviceViewModel.setServiceType(service.getServiceType());
+		serviceViewModel.setPrice(service.getPrice());
+		serviceViewModel.setPlace(service.getPlace());
+		serviceViewModel.setDescription(service.getDescription());
+		
+	}
+	
+	public String modifierService() {
+		System.out.println("ID du service à modifier : " + serviceViewModel.getId());
+		serviceService.modifierService(serviceViewModel);
+		serviceList = repoService.findAll();
+		resetViewModel();
+		
+		return "/ensembles/displayAllService.xhtml?faces-redirect=true";
+	}
+	
+	public void supprimerService (Long id) {
+		System.out.println("ID du voyage à supprimer : " + serviceViewModel.getId());
+		serviceService.supprimerService(id);
+		serviceList = repoService.findAll();
+		
+	}
+	
+	public void resetViewModel() {
+		serviceViewModel = new ServiceViewModel();
+	}
+	/*
+	 * getters & setters
+	 */
+	
 	public ServiceViewModel getServiceViewModel() {
 		return serviceViewModel;
 	}
-
+	
 	public void setServiceViewModel(ServiceViewModel serviceViewModel) {
 		this.serviceViewModel = serviceViewModel;
 	}
@@ -62,16 +112,18 @@ public class ControllerService implements Serializable {
 		this.serviceService = serviceService;
 	}
 
-
 	public RepoService getRepoService() {
 		return repoService;
 	}
 
-
 	public void setRepoService(RepoService repoService) {
 		this.repoService = repoService;
 	}
+	public List<Service> getServiceList() {
+		return serviceList;
+	}
 
-	
-
+	public void setServiceList(List<Service> serviceList) {
+		this.serviceList = serviceList;
+	}
 }

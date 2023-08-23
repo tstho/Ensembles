@@ -23,16 +23,13 @@ public class Service {
 	private Long id;
 	private String name;
 	private String place;
-	
 	private Date begin;
-	
 	private Date end;
 	
 	@Enumerated(EnumType.STRING)
 	private ServiceType ServiceType ;
 	
 	private Double price;
-	
 	private String Description;
 //
 //	@ManyToMany(mappedBy = "services")
@@ -45,54 +42,54 @@ public class Service {
 //	public void setJourneys(List<Journey> journeys) {
 //		this.journeys = journeys;
 //	}
-	
-	public String getDescription() {
-		return Description;
-	}
-	public void setDescription(String description) {
-		Description = description;
-	}
-	public Double getPrice() {
-		return price;
-	}
-	public void setPrice(Double prix) {
-		price = prix;
+	public Long getId() {
+		return id;
 	}
 	public String getName() {
 		return name;
 	}
-	public void setName(String nom) {
-		name = nom;
-	}
 	public String getPlace() {
 		return place;
 	}
-	public void setPlace(String lieu) {
-		place = lieu;
-	}
-	public ServiceType getServiceType() {
-		return ServiceType;
-	}
-	public void setServiceType(ServiceType serviceType) {
-		ServiceType = serviceType;
-	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
 	public Date getBegin() {
 		return begin;
-	}
-	public void setBegin(Date debut) {
-		begin = debut;
 	}
 	public Date getEnd() {
 		return end;
 	}
-	public void setEnd(Date fin) {
-		end = fin;
+	public ServiceType getServiceType() {
+		return ServiceType;
 	}
+	public Double getPrice() {
+		return price;
+	}
+	public String getDescription() {
+		return Description;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setPlace(String place) {
+		this.place = place;
+	}
+	public void setBegin(Date begin) {
+		this.begin = begin;
+	}
+	public void setEnd(Date end) {
+		this.end = end;
+	}
+	public void setServiceType(ServiceType serviceType) {
+		ServiceType = serviceType;
+	}
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+	public void setDescription(String description) {
+		Description = description;
+	}
+	
+	
 }

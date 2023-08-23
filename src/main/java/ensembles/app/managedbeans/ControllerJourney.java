@@ -22,7 +22,6 @@ public class ControllerJourney implements Serializable {
 
 	@Inject
 	private JourneyViewModel journeyViewModel;
-
 	@Inject
 	private JourneyService journeyService;
 	@Inject
@@ -41,7 +40,6 @@ public class ControllerJourney implements Serializable {
 	 */
 
 	public String saveJourney() {
-
 		journeyService.saveJourney(journeyViewModel);
 		journeyList = repoJourney.findAll();
 		resetViewModel();
@@ -71,7 +69,6 @@ public class ControllerJourney implements Serializable {
 	 */
 	
 	public void initModifierJourney(Long journeyId) {
-
 		Journey journey = repoJourney.findById(journeyId);
 		journeyViewModel = new JourneyViewModel();
 		journeyViewModel.setId(journey.getId());
@@ -152,48 +149,4 @@ public class ControllerJourney implements Serializable {
 		this.journeyList = journeyList;
 	}
 	
-	
-//	public String redirectToDelete(Long journeyId) {
-//		initSupprimerJourney(journeyId);
-//		return "/Journey/SupprimerJourney.xhtml?faces-redirect=true";
-//	}
-
-//	public void initSupprimerJourney(Long journeyId) {
-//
-//		Journey journey = repoJourney.findById(journeyId);
-//		journeyViewModel = new JourneyViewModel();
-//		journeyViewModel.setId(journey.getId());
-//		journeyViewModel.setDeparture(journey.getDeparture());
-//		journeyViewModel.setDestination(journey.getDestination());
-//		journeyViewModel.setDestinationDate(journey.getDestinationDate());
-//		journeyViewModel.setPrice(journey.getPrice());
-//		journeyViewModel.setConveyance(journey.getConveyance());
-//		journeyViewModel.setDepartureDate(journey.getDepartureDate());
-//
-//		System.out.println(journey.toString());
-//		System.out.println(journeyViewModel.toString());
-//		
-//		
-//	}
-
-//	private boolean showDeleteConfirmation = false;
-//
-//	public boolean isShowDeleteConfirmation() {
-//	    return showDeleteConfirmation;
-//	}
-//
-//	public void setShowDeleteConfirmation(boolean showDeleteConfirmation) {
-//	    this.showDeleteConfirmation = showDeleteConfirmation;
-//	}
-//	
-//	
-//	public void prepareDeleteJourney() {
-//	    
-//	    showDeleteConfirmation = true;
-//	}
-//	
-//	public void cancelDelete() {
-//	    showDeleteConfirmation = false;
-//	}
-//	
 }
