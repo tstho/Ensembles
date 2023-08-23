@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:f="http://xmlns.jcp.org/jsf/core"
-    xmlns:p="http://primefaces.org/ui">
-    
-<h:head>
-    <title>Modifier votre voyage</title>
-    <link type="text/css" rel="stylesheet" href="form.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
-</h:head>
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
+<link rel="stylesheet" href="../resources/css/styles.css" />
+<h:head>
+	<meta charset="utf-8"></meta>
+</h:head>
 <h:body>
+
+	<ui:composition template="/layouts/mainLayout.xhtml">
+
+		<ui:define name="content">
+
+			<div class="container" style="margin-top: 30px">
+				<div class="row">
+					<div class="col-sm-3 bg-info">
+						<ul class="nav nav-pills flex-column">
+							<li class="nav-item"><a class="nav-link text-white"
+								href="http://127.0.0.1:8080/ensembles-app/agency/profilAgence.xhtml">Profil agence</a></li>
+							<li class="nav-item"><a class="nav-link text-white" href="#">
+									Notifications</a></li>
+							<li class="nav-item"><a class="nav-link text-white"
+								href="http://127.0.0.1:8080/ensembles-app/Journey/displayAllJourney.xhtml"> Mes packages</a></li>
+							<li><a class="nav-link text-white" href="http://127.0.0.1:8080/ensembles-app/Journey/Journey.xhtml">
+									Ajouter un package</a></li>
+							<li><a class="nav-link text-white"
+								href="http://127.0.0.1:8080/ensembles-app/Journey/ModifierJourney.xhtml">Modifier un package</a></li>
+						<li><a class="nav-link text-white"
+								href="../templates/templateOne.xhtml">MON SITE</a></li>
+
+						</ul>
+						<hr class="d-sm-none" />
+					</div>
+					<div class="col-sm-9">
     <h:form>
         <h1>Modifier votre voyage</h1>
 
@@ -44,6 +69,12 @@
         <h:commandButton value="Enregistrer les modifications" action="#{controllerJourney.modifierJourney()}" />
 
     </h:form>
+    </div>
+    </div>
+    </div>
+   </ui:define>
+   </ui:composition>
 </h:body>
+
 
 </html>

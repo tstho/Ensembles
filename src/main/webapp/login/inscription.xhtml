@@ -4,50 +4,85 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
+<h:head>
+	<meta charset="utf-8"></meta>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+</h:head>
 
+<h:body>
 	<ui:composition template="/layouts/mainLayout.xhtml">
 
 		<ui:define name="content">
-		<br />
-		<hr />
-		<h:form>
-			<table>
-				<h:selectOneRadio value="#{controllerUser.userViewModel.role}">
-					<f:selectItem itemValue="CLIENT" itemLabel="client" />
-					<f:selectItem itemValue="AGENCY" itemLabel="agence" />
-					<f:selectItem itemValue="PARTNER" itemLabel="partenaire" />
-				</h:selectOneRadio>
-				<tr>
-					<td><h:outputLabel value="Email : " /></td>
-					<td><h:inputText type="text"
-							value="#{controllerUser.userViewModel.email}" size="20"
-							maxlength="50" /></td>
-				</tr>
-				<tr>
-					<td><h:outputLabel value="Password : " /></td>
-					<td><h:inputSecret type="password"
-							value="#{controllerUser.userViewModel.password}" size="20"
-							maxlength="50" /></td>
-				</tr>
-				<!-- 
-                <tr>
-                    <td><h:outputLabel for="confirmation">Confirm Password <span class="requis">*</span></h:outputLabel></td>
-                    <td><h:inputSecret type="password" id="confirmation" name="confirmation" value="#{controllerUser.userViewModel.password}" size="20" maxlength="20" /></td>
-                </tr>
-                 -->
-				<tr>
-					<td colspan="2"><h:commandButton value="Inscription"
-							action="#{controllerUser.saveUser}" /></td>
-				</tr>
-			</table>
-			<!-- 
-            <p class="${empty form.erreurs ? 'succes' : 'erreur'}">
-                 Ce paragraphe affichera un message d'erreur ou de succès en fonction de la condition
-            </p>
-            
-                 -->
-		</h:form>
 
-	</ui:define>
-</ui:composition>
+			<section class="vh-100" style="background-color: grey;">
+				<div class="container py-5 h-100">
+					<!-- 		<div class="jumbotron">	 -->
+					<div
+						class="row d-flex justify-content-center align-items-center h-100">
+						<div class="col col-xl-10">
+							<div class="card" style="border-radius: 1rem;">
+								<div class="row g-0">
+									<div class="col-md-6 col-lg-5 d-none d-md-block">
+										<img
+											src="https://images.nationalgeographic.org/image/upload/v1638889904/EducationHub/photos/at-the-north-pole.jpg"
+											alt="login form pix" class="img-fluid"
+											style="border-radius: 1rem 0 0 1rem;" />
+									</div>
+									<div class="col-md-6 col-lg-7 d-flex align-items-center">
+										<div class="card-body p-4 p-lg-5 text-black">
+											<h:form>
+												<div class="d-flex align-items-center mr-auto">
+													<i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+													<span class="h1 fw-bold mb-0">Ensembles</span>
+												</div>
+												<h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Formulaire
+													d'inscription</h5>
+												<div class="form-outline mb-4">
+													<h:outputLabel value="Email  "
+														styleClass="control-label col-sm-4" />
+													<div class="col-sm-10">
+														<h:inputText type="text"
+															value="#{controllerUser.userViewModel.email}" size="20"
+															maxlength="50" styleClass="form-control" />
+													</div>
+												</div>
+												<div class="form-outline mb-4">
+													<h:outputLabel value="Mot de passe"
+														styleClass="control-label col-sm-4" />
+													<div class="col-sm-10">
+														<h:inputSecret type="password"
+															value="#{controllerUser.userViewModel.password}"
+															size="20" maxlength="50" styleClass="form-control" />
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="form-check align-items-center">
+														<h:selectOneRadio
+															value="#{controllerUser.userViewModel.role}">
+															<f:selectItem itemValue="CLIENT" itemLabel="Client" />
+															<f:selectItem itemValue="AGENCY" itemLabel="Agence" />
+															<f:selectItem itemValue="PARTNER" itemLabel="Partenaire" />
+														</h:selectOneRadio>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<div class="col-sm-offset-2 col-sm-10">
+														<h:commandButton value="Inscription"
+															action="#{controllerUser.saveUser}"
+															styleClass="btn btn-dark btn-lg btn-block" />
+													</div>
+												</div>
+											</h:form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</ui:define>
+	</ui:composition>
+</h:body>
 </html>

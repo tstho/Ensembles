@@ -1,7 +1,25 @@
 package ensembles.app.viewmodels;
 
+import ensembles.app.entity.User;
+
 public class ProfilClientViewModel {
 
+	private Long Id;
+	
+	public Long getId() {
+		return Id;
+	}
+	public void setId(Long id) {
+		Id = id;
+	}
+	
+	private Long adresseId;
+	public Long getAdresseId() {
+		return adresseId;
+	}
+	public void setAdresseId(Long adresseId) {
+		this.adresseId = adresseId;
+	}
 	private String prenomClient;
 	private String nomClient;
 
@@ -15,6 +33,14 @@ public class ProfilClientViewModel {
 	private int telephoneClient;
 	private String emailClient;
 	
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public String getPrenomClient() {
 		return prenomClient;
 	}
