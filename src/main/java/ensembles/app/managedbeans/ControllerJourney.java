@@ -24,7 +24,6 @@ public class ControllerJourney implements Serializable {
 
 	@Inject
 	private JourneyViewModel journeyViewModel;
-
 	@Inject
 	private JourneyService journeyService;
 	@Inject
@@ -81,7 +80,6 @@ public class ControllerJourney implements Serializable {
 	 */
 	
 	public void initModifierJourney(Long journeyId) {
-
 		Journey journey = repoJourney.findById(journeyId);
 		journeyViewModel = new JourneyViewModel();
 		journeyViewModel.setId(journey.getId());
@@ -165,6 +163,5 @@ public class ControllerJourney implements Serializable {
 	public void setJourneyList(List<Journey> journeyList) {
 		this.journeyList = journeyList;
 	}
-	
 	
 }

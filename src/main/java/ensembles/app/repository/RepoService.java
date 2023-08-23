@@ -53,4 +53,20 @@ public class RepoService {
 
 		return entityManager.createQuery(reqSelect, Service.class).getResultList();
 	}
+
+	public void update(Service service) {
+		entityManager.merge(service);
+		entityManager.flush();
+		
+	}
+	
+	public void delete(Service service) {
+		entityManager.remove(service);
+		entityManager.flush();
+		
+	}
+
+	public Service findById(Long id) {
+		return entityManager.find(Service.class, id);
+	}
 }
