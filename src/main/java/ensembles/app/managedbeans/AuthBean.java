@@ -66,6 +66,15 @@ public class AuthBean implements Serializable {
 		return "";
 	}
 
+	public String payTemplate() {
+		if(isAuthenticated() && currentUser.getRole()==Role.AGENCY) {
+			System.out.println("Agence");
+			return "/Payement/Payement.xhtml?faces-redirect=true";
+		}else {
+			return "/login/inscription.xhtml?faces-redirect=true";
+		}
+	}
+	
 	public boolean isRole(Role role) {
 		return currentUser != null && currentUser.getRole() == role;
 	}
