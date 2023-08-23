@@ -26,21 +26,13 @@ public class Journey implements Serializable  {
 	private Date DepartureDate; 
 	private Date DestinationDate;
 	private Conveyance conveyance;
+	
 	private Double price;
 	
-//	 @ManyToMany
-//	    @JoinTable(name = "journey_service",
-//	        joinColumns = @JoinColumn(name = "journey_id"),
-//	        inverseJoinColumns = @JoinColumn(name = "service_id"))    
-//    private List<Service> services = new ArrayList<Service>();
-//	 
-//	public List<Service> getServices() {
-//		return services;
-//	}
-//	public void setServices(List<Service> services) {
-//		this.services = services;
-//	}
-	
+
+	    @ManyToOne
+	    @JoinColumn(name="agency_id")   
+	    private ProfilAgence profilAgence;
 	
 	public Long getId() {
 		return id;
@@ -85,7 +77,12 @@ public class Journey implements Serializable  {
 		this.price = price;
 	}
 
-
+	public ProfilAgence getProfilAgence() {
+		return profilAgence;
+	}
+	public void setProfilAgence(ProfilAgence profilAgence) {
+		this.profilAgence = profilAgence;
+	}
 	
 	
 

@@ -101,6 +101,11 @@ public class JourneyViewModel {
 		public void setId(long id) {
 			Id = id;
 		}
+
+		public static  void add(JourneyViewModel journeyViewModel) {
+			// TODO Auto-generated method stub
+			
+		}
 	}
 
 

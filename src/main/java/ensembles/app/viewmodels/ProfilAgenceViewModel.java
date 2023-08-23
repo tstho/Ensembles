@@ -1,16 +1,19 @@
 package ensembles.app.viewmodels;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ensembles.app.entity.User;
 
 public class ProfilAgenceViewModel {
 	
-	private Long Id;
+	private Long id;
 
-	public Long getId() {
-		return Id;
+	public Long getid() {
+		return id;
 	}
-	public void setId(Long id) {
-		Id = id;
+	public void setid(Long id) {
+		this.id = id;
 	}
 	private String nomSociete;
 	private String siretSociete;
@@ -36,7 +39,7 @@ public class ProfilAgenceViewModel {
 	
 	private User user; 
 	
-	
+	private List<JourneyViewModel> journeyViewModels;
 	
 	public User getUser() {
 		return user;
@@ -119,7 +122,19 @@ public class ProfilAgenceViewModel {
 	public void setTelephoneResponsableSociete(int telephoneResponsableSociete) {
 		this.telephoneResponsableSociete = telephoneResponsableSociete;
 	}
+	public List<JourneyViewModel> getJourneyViewModels() {
+		return journeyViewModels;
+	}
+	public void setJourneyViewModels(List<JourneyViewModel> journeyViewModels) {
+		this.journeyViewModels = journeyViewModels;
+	}
+	
+		
+	}
+	
+	
+	
 	
 	
 
-}
+

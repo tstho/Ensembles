@@ -10,7 +10,9 @@ import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import ensembles.app.entity.Conveyance;
 import ensembles.app.entity.Journey;
+import ensembles.app.entity.ProfilAgence;
 import ensembles.app.repository.RepoJourney;
+import ensembles.app.repository.RepoProfilAgence;
 import ensembles.app.service.JourneyService;
 import ensembles.app.viewmodels.JourneyViewModel;
 
@@ -26,7 +28,10 @@ public class ControllerJourney implements Serializable {
 	private JourneyService journeyService;
 	@Inject
 	private RepoJourney repoJourney;
-
+	@Inject
+	private RepoProfilAgence repoProfilAgence;
+	
+	
 	private List<Journey> journeyList;
 
 	@PostConstruct
@@ -39,14 +44,20 @@ public class ControllerJourney implements Serializable {
 	 * Méthode d'enregistrement d'un voyage
 	 */
 
-	public String saveJourney() {
-		journeyService.saveJourney(journeyViewModel);
+	public String saveJourney(Long idUser) {
+		
+		ProfilAgence profilAgence = repoProfilAgence.findByUserId(idUser);
+		
+		journeyService.saveJourney(journeyViewModel, profilAgence);
 		journeyList = repoJourney.findAll();
+		
 		resetViewModel();
 
 		return "/Journey/displayAllJourney.xhtml?faces-redirect=true";
 	}
 
+	
+	
 
 	public List<Conveyance> getConveyanceOptions() {
 		List<Conveyance> options = new ArrayList<>();
@@ -90,6 +101,10 @@ public class ControllerJourney implements Serializable {
 	public String modifierJourney() {
 		journeyService.modifierJourney(journeyViewModel);
 		journeyList = repoJourney.findAll();
+		
+		ControllerProfilAgence profilAgenceController = new ControllerProfilAgence();
+		profilAgenceController.updateJourneyViewModel(journeyViewModel);
+		
 		resetViewModel();
 
 		return "/Journey/displayAllJourney.xhtml?faces-redirect=true";
