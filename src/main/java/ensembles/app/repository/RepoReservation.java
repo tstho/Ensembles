@@ -57,6 +57,7 @@ public class RepoReservation {
 		String reqSelect="SELECT r FROM Reservation r WHERE journey_id = :id";
 		TypedQuery<Reservation> query = entityManager.createQuery(reqSelect, Reservation.class);
 		query.setParameter("id", id);
+		
 		try {
 			return query.getResultList();
 		} catch (Exception e) {

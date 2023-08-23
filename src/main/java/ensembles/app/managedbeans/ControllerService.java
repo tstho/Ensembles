@@ -47,7 +47,7 @@ public class ControllerService implements Serializable {
 		
 		ProfilPartenaire profilPartenaire = repoProfilPartenaire.findByUserId(idUser);
 		
-		serviceService.saveService(serviceViewModel.getName(), serviceViewModel.getPlace(),serviceViewModel.getStartDate(),serviceViewModel.getEndDate(),serviceViewModel.getServiceType(),serviceViewModel.getPrice(), serviceViewModel.getDescription(),profilPartenaire);
+		serviceService.saveService(serviceViewModel.getName(), serviceViewModel.getPlace(),serviceViewModel.getBegin(),serviceViewModel.getEnd(),serviceViewModel.getServiceType(),serviceViewModel.getPrice(), serviceViewModel.getDescription(),profilPartenaire);
 		
 		serviceList = repoService.findAll();
 		
@@ -134,9 +134,6 @@ public class ControllerService implements Serializable {
 
 	public void setRepoService(RepoService repoService) {
 		this.repoService = repoService;
-	}
-	public List<Service> getServiceList() {
-		return serviceList;
 	}
 	public RepoProfilPartenaire getRepoProfilPartenaire() {
 		return repoProfilPartenaire;
