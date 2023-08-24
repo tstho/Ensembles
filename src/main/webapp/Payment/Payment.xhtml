@@ -66,13 +66,11 @@
 									<div class="form-group row mb-2">
 										<div class="offset-sm-4 col-sm-8">
 
-											<p:commandButton
-												actionListener="#{controllerPayment.savePaymentWebsite()}"
-												ajax="false" value="Paiement">
-												<p:confirm header="Confirm"
-													message="Votre paiement été bien prise en compte"
-													icon="ui-icon-alert"></p:confirm>
-											</p:commandButton>
+											<h:commandButton value="Paiement"
+												action="#{controllerPayment.savePaymentWebsite(authBean.currentUser.id)}"
+												>
+										
+											</h:commandButton>
 
 										</div>
 									</div>
@@ -94,12 +92,7 @@
 			</h:form>
 
 
-			<p:confirmDialog id="dialog" global="true" showEffect="fade"
-				hideEffect="explode"
-				message="Votre paiement été bien prise en compte">
-				<a href="../agency/mainAgence.xhtml" class="btn btn-primary">OK</a>
-
-			</p:confirmDialog>
+			
 
 		</ui:define>
 	</ui:composition>

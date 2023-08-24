@@ -25,7 +25,6 @@ public class RepoWebSite {
 
 
 	public WebSite findById(Long id) {
-		
 		return entityManager.find(WebSite.class, id);
 	}
 
