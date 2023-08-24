@@ -63,7 +63,7 @@ public class AuthBean implements Serializable {
 	
 	public String redirectEspace() {
 		if (currentUser.getRole()==Role.AGENCY) {
-			return "/agency/adminAgency.xhtml?faces-redirect=true";
+			return "/agency/mainAgence.xhtml?faces-redirect=true";
 		}
 		if (currentUser.getRole()==Role.PARTNER) {
 			return "/partners/mainPartner.xhtml?faces-redirect=true";
