@@ -7,3 +7,13 @@
 		url("https://img.maxisciences.com/article/1280/pole-nord/le-pole-nord-magnetique-est-fortement-utilise-par-les-outils-de-navigation-maritime-et-aeriens-notamment_0ff58648f2b83cb96c273f018093962b2840281e.jpg");
 	min-height: 90%;
 }
+
+.align-middle{
+	
+	vertical-align: middle;
+}
+
+.align-bottom{
+	vertical-align: bottom;
+	
+}

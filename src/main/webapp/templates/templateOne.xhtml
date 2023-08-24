@@ -9,138 +9,229 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet"
 		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-		  <link rel="stylesheet" href="../resources/css/styleTemplate.css"/>
+	<link rel="stylesheet" href="../resources/css/styleTemplate.css" />
 
 
 </h:head>
 
 <h:body>
-<ui:composition template="/layouts/mainLayout.xhtml">
+	<ui:composition template="/layouts/mainLayout.xhtml">
 
 		<ui:define name="content">
 
 
-	<!-- Header with image -->
-	<header class="imgTemplate d-flex align-items-center">
-		<div class="container text-center">
-			<h1 class="text-white">LOGO HERE</h1>
-			<a href="#destinations" class="btn btn-primary btn-lg mt-3">Discover
-				our packages</a>
-		</div>
-	</header>
+			<!-- Header with image -->
+			<header class="imgTemplate d-flex align-items-center"
+				style="background-image: url('https://digiato.com/wp-content/uploads/2022/08/photo_2022-08-22_10-38-16.jpg');">
+				<div class="container vh-100 text-center">
 
-	<!-- Destinations Container -->
-	<section id="destinations" class="bg-light py-5">
-		<div class="container text-center">
-			<h2 class="display-4">search bar</h2>
-			<div class="row justify-content-center">
+					<h1 class="text-white">MON LOGO</h1>
+					<a href="#destinations" class="btn btn-primary btn-lg mt-3">Discover
+						our packages</a>
 
-				<div id="packages"
-					class="alternativeSubPart container-fluid p-0 m-0">
-					<div class="row p-0 m-0">
-						<div class="card m-0 p-0 col-12 col-md-6 col-xl-4 small-zoom">
-							<div class="card-header bg-primary text-white">
-								<a data-bs-toggle="collapse" data-bs-target="#collapse-pkgOne">nom du package</a>
-							</div>
-							<div id="collapse-pkgOne" class="collapse">
-								<div class="card-body">
-									<div class="card-text">Description du package</div>
-								</div>
-							</div>
-						</div>
-						<div class="card m-0 p-0 col-12 col-md-6 col-xl-4 small-zoom">
-							<div class="card-header bg-primary text-white">
-								<a data-bs-toggle="collapse" data-bs-target="#collapse-pkgTwo">nom du package</a>
-							</div>
-							<div id="collapse-pkgTwo" class="collapse">
-								<div class="card-body">
-									<div class="card-text">Description du package</div>
-								</div>
-							</div>
-						</div>
-						<div class="card m-0 p-0 col-12 col-md-6 col-xl-4 small-zoom">
-							<div class="card-header bg-primary text-white">
-								<a data-bs-toggle="collapse" data-bs-target="#collapse-pkgThree">nom du package</a>
-							</div>
-							<div id="collapse-pkgThree" class="collapse">
-								<div class="card-body">
-									<div class="card-text">Description du package</div>
-								</div>
-							</div>
-						</div>
-						</div>
 				</div>
-			</div>
-			</div>
-	</section>
 
-<!-- About Container -->
-<h:form>
-	<section id="about" class="bg-primary text-white py-5">
-		<div class="container text-center">
-			<h2 class="display-4">About us</h2>
-			<h:inputText id="aboutUsTextArea" class="form-control" type="text" value="#{controllerWebSite.webSiteViewModel.aboutUs}" size="20" maxlength="50" />
-			 <h:commandButton type="submit" class="btn btn-primary mt-3" onclick="saveAboutUsContent()" action="#{controllerWebSite.saveWebSite()}">Save</h:commandButton>
+			</header>
 
-		</div>
+			<!-- Destinations Container -->
+			<section id="destinations" class="vh-100 py-5"
+				style="background-color: white;">
+				<div class="container">
+					<h2 class="display-4 text-center">NOS BONS PLANS</h2>
+					<div class="row justify-content-center">
 
-	</section>
-</h:form>
+						<div id="packages"
+							class="alternativeSubPart container-fluid p-0 m-0">
+							<div class="row p-0 m-0">
+								<div class="card m-0 p-0 col-12 col-md-6 col-xl-4 small-zoom">
+									<div class="card-header bg-info text-white text-center">
+										<a data-bs-toggle="collapse" data-bs-target="#collapse-pkgOne">nom
+											du package</a>
+									</div>
+									<div id="collapse-pkgOne" class="collapse">
+										<img class="card-img-top" src="../images/Auroreboreale.jpg"
+											alt="Card image cap" />
+										<div class="card-body">
+											<div class="card-text">Description du package</div>
+											<p class="card-text">
+												<small class="text-muted">de Paris</small>
+											</p>
+											<p class="card-text">Destination :</p>
+											<p class="card-text">Transport :</p>
+											<p class="card-text">Aller :</p>
+											<p class="card-text">Retour :</p>
 
-	<!-- Image of location/map -->
-	<section id="myMap">
-		<img src="/w3images/map.jpg" class="img-fluid" alt="Map" />
-	</section>
+											<a href="#" class="btn btn-primary float-right">Je
+												réserve</a>
+										</div>
+										<div class="card-footer">
+											<small class="text-muted">€</small>
+										</div>
+									</div>
+								</div>
+								<div class="card m-0 p-0 col-12 col-md-6 col-xl-4 small-zoom">
+									<div class="card-header bg-info text-white text-center">
+										<a data-bs-toggle="collapse" data-bs-target="#collapse-pkgTwo">nom
+											du package</a>
+									</div>
+									<div id="collapse-pkgTwo" class="collapse">
+										<img class="card-img-top" src="../images/1cruise.jpg"
+											alt="Card image cap" />
+										<div class="card-body">
+											<div class="card-text">Description du package</div>
+											<p class="card-text">
+												<small class="text-muted">de Paris</small>
+											</p>
+											<p class="card-text">Destination :</p>
+											<p class="card-text">Transport :</p>
+											<p class="card-text">Aller :</p>
+											<p class="card-text">Retour :</p>
 
-	<!-- Contact -->
-	<section class="bg-secondary text-white py-5">
-		<div class="container text-center">
-			<h2 class="display-4">Contact</h2>
-			ici onn pourrait rentrer le formulaire de profil agence et afficher les infos pertinantes
-			<p>adresse : somewhere around the world 1111</p>
-			<p>téléphone : +33 111 111 111</p>
-			<p>email : +33 111 111 111</p>
-			<p class="mb-0">FYI! Lorem ipsum, dolor sit amet consectetur
-				adipisicing elit.</p>
-			
-			<p class="lead">
-				<strong>Create an account</strong> Create a user and start
-				travelling!
-			</p>
-			ici on peut mettre le form pour nouvel utilisateur mais déjà coché sur "client"
-			<form>
-				<div class="row">
-					<div class="col-md-6">
-						<input type="text" class="form-control mb-3" placeholder="Name"
-							required="true" /> <input type="number"
-							class="form-control mb-3" placeholder="How many people"
-							required="true" />
-					</div>
-					<div class="col-md-6">
-						<input type="datetime-local" class="form-control mb-3"
-							placeholder="Date and time" required="true" /> <input
-							type="text" class="form-control mb-3"
-							placeholder="Message / Special requirements" required="true" />
+											<a href="#" class="btn btn-primary float-right">Je
+												réserve</a>
+										</div>
+										<div class="card-footer">
+											<small class="text-muted">€</small>
+										</div>
+									</div>
+								</div>
+								<div class="card m-0 p-0 col-12 col-md-6 col-xl-4 small-zoom">
+									<div class="card-header bg-info text-white text-center">
+										<a data-bs-toggle="collapse"
+											data-bs-target="#collapse-pkgThree">nom du package</a>
+									</div>
+									<div id="collapse-pkgThree" class="collapse">
+										<img class="card-img-top" src="../images/building.webp"
+											alt="Card image cap" />
+										<div class="card-body">
+											<div class="card-text">Description du package</div>
+											<p class="card-text">
+												<small class="text-muted">de Paris</small>
+											</p>
+											<p class="card-text">Destination :</p>
+											<p class="card-text">Transport :</p>
+											<p class="card-text">Aller :</p>
+											<p class="card-text">Retour :</p>
+
+											<a href="#" class="btn btn-primary float-right">Je
+												réserve</a>
+										</div>
+										<div class="card-footer">
+											<small class="text-muted">€</small>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-				<button type="submit" class="btn btn-light btn-lg">SEND
-					</button>
-			</form>
-		</div>
-	</section>
+			</section>
 
-	<!-- Footer -->
-	<footer class="bg-dark text-white text-center py-3">
-		<p class="mb-0">Powered by EnsembleS</p>
-	</footer>
+			<!-- About Container -->
+			<h:form>
+				<section id="about" class="bg-light text-dark py-5">
 
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+					<div class="container" style="max-width: 640px;">
+						<h1 class="display-5 text-center">Qui sommes-nous ?</h1>
+						<div class="card mb-3" >
+							<div class="row g-0">
+								<div class="col-md-4">
+
+									<img
+										src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/0a/82/cb/0a82cb73-f148-e094-ea7b-8cf28f2cd342/455d1e3f-e4a0-4d8a-b4d6-4a7d5068793f.jpg/1200x1200bf-60.jpg"
+										alt="Trendy Pants and Shoes" class="img-fluid rounded-start" />
+								</div>
+								<div class="col-md-8">
+								<div class="card-body">
+									<!--card Information t-->
+								
+
+										<p class="card-text justify text-center">Sunt in culpa qui officia deserunt
+											mollit anim id est laborum consectetur adipiscing elit, sed
+											do eiusmod tempor incididunt ut labore et dolore magna
+											aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+											ullamco.Sunt in culpa qui officia deserunt mollit anim id est
+											</p>
+											<p class="card-text">
+          <small class="text-muted float-right" >signature</small>
+        </p>
+										<!-- 			<h:inputText id="aboutUsTextArea" class="form-control" type="text" value="#{controllerWebSite.webSiteViewModel.aboutUs}" size="20" maxlength="50" /> -->
+										<!-- 			 <h:commandButton type="submit" class="btn btn-primary mt-3" onclick="saveAboutUsContent()" action="#{controllerWebSite.saveWebSite()}">Save</h:commandButton> -->
+									</div>
+							</div>
+							</div>
+						</div>
+
+					</div>
+				</section>
+			</h:form>
+
+			<!--  contact form -->
+			<!-- <h:form> -->
+			<!-- 	<section id="about" class="bg-primary text-white py-5"> -->
+			<!-- 		<div class="container text-center"> -->
+			<!-- 			<h2 class="display-4">Contact</h2> -->
+			<!-- 			<h:inputText id="aboutUsTextArea" class="form-control" type="text" value="#{controllerWebSite.webSiteViewModel.aboutUs}" size="20" maxlength="50" /> -->
+			<!-- 			 <h:commandButton type="submit" class="btn btn-primary mt-3" onclick="saveAboutUsContent()" action="#{controllerWebSite.saveWebSite()}">Save</h:commandButton> -->
+
+			<!-- 		</div> -->
+
+			<!-- 	</section> -->
+			<!-- </h:form> -->
+
+			<!-- Image of location/map -->
+			<!-- 	<section id="myMap"> -->
+			<!-- 		<img src="/w3images/map.jpg" class="img-fluid" alt="Map" /> -->
+			<!-- 	</section> -->
+
+			<!-- Contact -->
+			<!-- 	<section class="bg-secondary text-white py-5"> -->
+			<!-- 		<div class="container text-center"> -->
+			<!-- 			<h2 class="display-4">Contact</h2> -->
+			<!-- 			ici onn pourrait rentrer le formulaire de profil agence et afficher les infos pertinantes -->
+			<!-- 			<p>adresse : somewhere around the world 1111</p> -->
+			<!-- 			<p>téléphone : +33 111 111 111</p> -->
+			<!-- 			<p>email : +33 111 111 111</p> -->
+			<!-- 			<p class="mb-0">FYI! Lorem ipsum, dolor sit amet consectetur -->
+			<!-- 				adipisicing elit.</p> -->
+
+			<!-- 			<p class="lead"> -->
+			<!-- 				<strong>Create an account</strong> Create a user and start -->
+			<!-- 				travelling! -->
+			<!-- 			</p> -->
+			<!-- 			ici on peut mettre le form pour nouvel utilisateur mais déjà coché sur "client" -->
+			<!-- 			<form> -->
+			<!-- 				<div class="row"> -->
+			<!-- 					<div class="col-md-6"> -->
+			<!-- 						<input type="text" class="form-control mb-3" placeholder="Name" -->
+			<!-- 							required="true" /> <input type="number" -->
+			<!-- 							class="form-control mb-3" placeholder="How many people" -->
+			<!-- 							required="true" /> -->
+			<!-- 					</div> -->
+			<!-- 					<div class="col-md-6"> -->
+			<!-- 						<input type="datetime-local" class="form-control mb-3" -->
+			<!-- 							placeholder="Date and time" required="true" /> <input -->
+			<!-- 							type="text" class="form-control mb-3" -->
+			<!-- 							placeholder="Message / Special requirements" required="true" /> -->
+			<!-- 					</div> -->
+			<!-- 				</div> -->
+			<!-- 				<button type="submit" class="btn btn-light btn-lg">SEND -->
+			<!-- 					</button> -->
+			<!-- 			</form> -->
+			<!-- 		</div> -->
+			<!-- 	</section> -->
+
+			<!-- Footer -->
+			<footer class="bg-dark text-white text-center py-3">
+				<p class="mb-0">Powered by EnsembleS</p>
+			</footer>
+
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
 	</script>
-	<script 
-		src="/js/templateOneJS.js">
+			<script src="/js/templateOneJS.js">
 	</script>
-	</ui:define>
+		</ui:define>
 	</ui:composition>
 </h:body>
 </html>

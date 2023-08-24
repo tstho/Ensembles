@@ -20,21 +20,36 @@
 
 			<div class="container">
 				<div class="background jumbotron jumbotron-fluid text-white text-center">
-
-					<h2 class="display-4 text-center p-5">Tout ce qu'il vous faut pour
-						créer le site de votre agence de voyage</h2>
-
+					<h2 class="display-1 text-center">Libérez votre créativité</h2>
 
 					<!-- Right box with video -->
 					<div class="container">
-					
-							<div class="col-sm-12">
-								<p class="text-center">
-									Trouvez tout ce dont vous avez besoin pour faire vivre votre
-									agence de voyage avec des </p>
-									<p class="text-center">templates qui vous pouvez 
-									personaliser et des abonnements adaptés à vos besoins.</p>
-							
+						<div class="row">
+							<div class="col-sm-9">
+								<p class="text-right">
+									Trouvez tout ce dont vous avez besoin pour faire vivre votre agence de voyage 
+									avec des templates agence voyage avec des possibilités de paiement. <!-- Choisissez parmi une sélection de kit comprenant -->
+<!-- 												les meilleures typographies, couleurs et mise en page qui correspond à -->
+<!-- 												votre vision.--> <a 
+										href="agency/mainAgency.xhtml"
+										class="btn btn-light btn-lg-end active">COMMENCER</a>
+								</p>
+							</div>
+
+							<div class="col-sm-3 embed-responsive embed-responsive-16by9">
+								<iframe width="56" height="31"
+									src="https://www.youtube.com/embed/pQqzFE8hPG4"
+									title="YouTube video player" frameborder="0"
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+							</div>
+
+							<div class="row">
+								<!-- Left box? plateform description -->
+								<div class="col-lg " style="">
+									<!-- 							<a href="partners/mainPartner.xhtml" -->
+									<!-- 								class="btn btn-light btn-sm active">Offrir un service</a>  -->
+
+								</div>
 							</div>
 						</div>
 					</div>
@@ -45,21 +60,59 @@
 
 			<div class="container">
 
-				<div class="row">
-					<div class="col-lg-4">
-						<div class="card">
-							<img src="../images/traveltemplate1.jpg" class="card-img-top"
-								alt="classic template" />
-							<div class="card-body">
-								<h5 class="card-title">Classic Website</h5>
-								<p class="card-text">Choisissez parmi une sélection de kit
-									comprenant les meilleures typographies, couleurs et mise en
-									page qui correspond à votre vision.</p>
-								<p class="card-title">Durée : 1 mois</p>
-								<p class="card-title">Prix : 30 euros</p>
-								<h:form>
+
+								<div class="row">
+									<div class="col-lg-4 mb-3 d-flex align-items-stretch">
+										<div class="card">
+											<img src="../images/traveltemplate1.jpg" class="card-img-top"
+												alt="classic template" />
+											<div class="card-body">
+												<h5 class="card-title">Classic</h5>
+												<p class="card-text"> 5 collaborateurs, fonctionnalités classiques
+												</p>
+												<p class="card-title">Durée : 1 mois  </p> 
+													<p class="card-title">Prix : 30 €</p> 
+											<h:form>
 									<h:commandButton value="COMMENCER" action="#{authBean.payTemplate()}" class="btn btn-info" />
 								</h:form>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-lg-4 mb-3 d-flex align-items-stretch">
+										<div class="card">
+											<img src="../images/traveltemplate2.jpg" class="card-img-top"
+												alt="premium template" />
+											<div class="card-body">
+												<h5 class="card-title"> Essentiel</h5>
+												<p class="card-text">5 collaborateurs, fonctionnalités essentielles</p>
+													<p class="card-title">Durée : 3 mois </p> 
+													<p class="card-title">Prix : 90 €</p> 
+											<h:form>
+									<h:commandButton value="COMMENCER" action="#{authBean.payTemplate()}" class="btn btn-info" />
+								</h:form>
+											
+											</div>
+										</div>
+									</div>
+
+									<div class="col-lg-4 mb-3 d-flex align-items-stretch">
+										<div class="card">
+											<img src="../images/traveltemplate3.jpg" class="card-img-top"
+												alt="Platinum template" />
+											<div class="card-body">
+												<h5 class="card-title">Premium</h5>
+												<p class="card-text">5 collaborateurs, fonctions avancées</p>
+													<p class="card-title"> Durée : 12 mois</p> 
+													<p class="card-title">Prix : 500 €</p> 
+												<h:form>
+									<h:commandButton value="COMMENCER" action="#{authBean.payTemplate()}" class="btn btn-info" />
+								</h:form>
+											</div>
+										</div>
+									</div>
+								</div>
+
 							</div>
 						</div>
 					</div>
