@@ -16,11 +16,11 @@ public class RepoJourney {
 	 @PersistenceContext
 	 private EntityManager entityManager;
 
-	 public void save(Journey journey) {
+	 public Journey save(Journey journey) {
 	        entityManager.persist(journey);
 			entityManager.flush();
 			
-		
+		return journey;
 	    }
 
 	 

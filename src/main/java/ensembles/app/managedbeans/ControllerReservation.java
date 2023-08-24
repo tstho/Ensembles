@@ -4,9 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
@@ -14,13 +13,13 @@ import ensembles.app.entity.Journey;
 import ensembles.app.entity.Reservation;
 import ensembles.app.repository.RepoJourney;
 import ensembles.app.repository.RepoReservation;
-
 import ensembles.app.service.ReservationService;
-
 import ensembles.app.viewmodels.ReservationViewModel;
 
+
+
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class ControllerReservation implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -127,7 +126,9 @@ public class ControllerReservation implements Serializable {
 	public void setJourneyList(List<Journey> journeyList) {
 		this.journeyList = journeyList;
 	}
-
+	
+	
+	
 	public String reservationListByUser(Long userId){
 		
 		journeyList = new ArrayList<Journey>();
@@ -137,7 +138,13 @@ public class ControllerReservation implements Serializable {
 		for(Reservation reservation : reservationList) {
 			Long journeyId = reservation.getJourney().getId() ;
 			Journey journey =repoJourney.findById(journeyId) ;
+			
+			System.out.println("j'ajoute dans la liste et la voici");
+			
 			journeyList.add(journey);
+			
+			System.out.println(journeyList.toString());
+			
 		}
 		
 		return "/reservation/displayReservationByUser.xhtml?faces-redirect=true";
