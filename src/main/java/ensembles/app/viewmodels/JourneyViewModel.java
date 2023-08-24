@@ -13,29 +13,29 @@ import ensembles.app.entity.Service;
 public class JourneyViewModel {
 	
 	    private Long Id;
-	    private String departure;
 	    private String destination;
 	    private Date departureDate;
 	    private Date destinationDate;
 	    private Double price;
 	    private Conveyance conveyance;
+	    private String description;
 	    private List<Service> services; 
        
 	    
 	    @Override
 		public String toString() {
-			return "JourneyViewModel [Id=" + Id + ", departure=" + departure + ", destination=" + destination
+			return "JourneyViewModel [Id=" + Id + ", description=" + description + ", destination=" + destination
 					+ ", departureDate=" + departureDate + ", destinationDate=" + destinationDate + ", price=" + price
 					+ ", conveyance=" + conveyance + ", services=" + services + ", selectedServices=" + selectedServices
 					+ "]";
 		}
 
-		public String getDeparture() {
-	        return departure;
+		public String getDescription() {
+	        return description;
 	    }
 
-	    public void setDeparture(String departure) {
-	        this.departure = departure;
+	    public void setDescription(String description) {
+	        this.description = description;
 	    }
 
 	    public String getDestination() {

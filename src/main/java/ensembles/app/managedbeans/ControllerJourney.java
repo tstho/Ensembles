@@ -83,7 +83,7 @@ public class ControllerJourney implements Serializable {
 		Journey journey = repoJourney.findById(journeyId);
 		journeyViewModel = new JourneyViewModel();
 		journeyViewModel.setId(journey.getId());
-		journeyViewModel.setDeparture(journey.getDeparture());
+		journeyViewModel.setDescription(journey.getDescription());
 		journeyViewModel.setDestination(journey.getDestination());
 		journeyViewModel.setDestinationDate(journey.getDestinationDate());
 		journeyViewModel.setPrice(journey.getPrice());
