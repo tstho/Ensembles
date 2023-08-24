@@ -4,25 +4,54 @@ import ensembles.app.entity.Color;
 
 public class WebSiteViewModel {
 
+	private Long id; 
 	
-	private Long id;
-	private String aboutUs;
-	//private byte[] logo;
 	
 	private String logo;
 	private String imageBackground;
 	private Color color;
 	private String imageAboutUs;
-	
-	private Long profilAgenceId;
-	
+	private String aboutUs;
 
-	public Long getProfilAgenceId() {
-		return profilAgenceId;
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setProfilAgenceId(Long profilAgenceId) {
-		this.profilAgenceId = profilAgenceId;
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+
+	public String getImageBackground() {
+		return imageBackground;
+	}
+
+	public void setImageBackground(String imageBackground) {
+		this.imageBackground = imageBackground;
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
+	}
+
+	public String getImageAboutUs() {
+		return imageAboutUs;
+	}
+
+	public void setImageAboutUs(String imageAboutUs) {
+		this.imageAboutUs = imageAboutUs;
 	}
 
 	public String getAboutUs() {
@@ -73,14 +102,5 @@ public class WebSiteViewModel {
 		this.imageAboutUs = imageAboutUs;
 	}
 	
-	
-
-//	public byte[] getLogo() {
-//		return logo;
-//	}
-//
-//	public void setLogo(byte[] logo) {
-//		this.logo = logo;
-//	}
 	
 }

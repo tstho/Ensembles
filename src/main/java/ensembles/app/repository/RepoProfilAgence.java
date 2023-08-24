@@ -2,12 +2,16 @@ package ensembles.app.repository;
 
 
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import ensembles.app.entity.ProfilAgence;
+import ensembles.app.entity.User;
 
 
 @Stateless
@@ -21,8 +25,33 @@ public class RepoProfilAgence {
 		entityManager.persist(profilAgence);
 		entityManager.flush();
 		
+		System.out.println("profilAgence created :" + profilAgence.getId());
+		
 		return profilAgence.getId();
 	}
+	
+	public List<ProfilAgence> displayProfilAgence() {
+
+		String reqSelect = "SELECT * FROM ProfilAgence";
+
+		Query query = entityManager.createNativeQuery(reqSelect, User.class);
+
+		@SuppressWarnings("unchecked")
+
+		List<ProfilAgence> resultList = (List<ProfilAgence>) query.getResultList();
+
+		return resultList;
+
+	}
+	
+	public List<ProfilAgence> findAll() {
+
+		String reqSelect = "SELECT p FROM ProfilAgence p";
+
+		return entityManager.createQuery(reqSelect, ProfilAgence.class).getResultList();
+	}
+	
+	
 	
 	// methode Modifier
 	

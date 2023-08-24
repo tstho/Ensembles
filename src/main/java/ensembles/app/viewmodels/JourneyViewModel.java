@@ -20,6 +20,8 @@ public class JourneyViewModel {
 	    private Conveyance conveyance;
 	    private String description;
 	    private List<Service> services; 
+	    private List<Service> selectedServices;
+
        
 	    
 	   
@@ -54,8 +56,6 @@ public class JourneyViewModel {
 	    public void setDestinationDate(Date destinationDate) {
 	        this.destinationDate = destinationDate;
 	    }
-
-	    private List<Service> selectedServices;
 
 	    public List<Service> getSelectedServices() {
 	        return selectedServices;

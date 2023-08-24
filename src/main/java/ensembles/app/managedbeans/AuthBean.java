@@ -49,7 +49,7 @@ public class AuthBean implements Serializable {
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("Identifiant ou mot de passe incorrect."));
-			return null;
+			return "/index.xhtml?faces-redirect=true";
 		}
 	}
 
