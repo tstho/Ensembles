@@ -49,38 +49,58 @@
 					</div>
 					<div class="col-sm-9">
 
-						<section class="vh-100" style="background-color: #F8F9F9;">
+						<section class="vh-100" style="background-color: grey;">
+							<div class="container h-100">
 
-							<div class="container-fluid p-5 bg-info text-light text-center">
-								<h1>Mon Espace Agence</h1>
-								<p>Configurer votre site en 3 étapes</p>
-							</div>
-
-							<div class="container mt-5">
-								<div class="row">
-									<div class="col-sm-4">
-										<h3>Etape 1</h3>
-										<p>Complétez votre profil agence</p>
-										<p>Pensez à mettre votre logo</p>
-									</div>
-									<div class="col-sm-4">
-										<h3>Etape 2</h3>
-										<p>Allez dans Configuration pour customiser votre site</p>
-										<p>Munissez-vous de vos photos et textes</p>
-									</div>
-									<div class="col-sm-4">
-										<h3>Etape 3</h3>
-										<p>Créez vos offres de voyages</p>
-										<p>... et gérer les d'ici !</p>
+								<div class="card mb-6">
+									<div class="card-header">Modifier mon site</div>
+									<div class="card-body">
+										<h:form>
+											<div class="row gx-3 mb-3">
+												<div class="col-md-6">
+												<h:outputLabel for="nom" class="small mb-1">Logo :<span
+															class="requis"></span>
+													</h:outputLabel>
+													<h:inputText type="text" id="nomSociete"
+														value="#{controllerProfilAgence.profilAgenceViewModel.nomSociete}"
+														size="20" maxlength="20" styleClass="form-control" />
+												</div>
+												<div class="col-md-6">
+													<h:outputLabel for="societe" class="small mb-1">Image background :<span
+															class="requis"></span>
+													</h:outputLabel>
+													<h:inputText type="text" id="SIRET"
+														value="#{controllerProfilAgence.profilAgenceViewModel.siretSociete}"
+														size="20" maxlength="20" styleClass="form-control" />
+												</div>
+												<div class="col-md-6">
+													<h:outputLabel for="societe" class="small mb-1">About :<span
+															class="requis"></span>
+													</h:outputLabel>
+													<h:inputText type="text" id="SIRET"
+														value="#{controllerProfilAgence.profilAgenceViewModel.siretSociete}"
+														size="20" maxlength="20" styleClass="form-control" />
+												</div>
+											</div>
+											
+											<div class="form-group">
+												<div class="col-sm-offset-2 col-sm-10">
+													<h:commandButton value="Modifier"
+														action="#{controllerProfilAgence.modifierProfilA()}"
+														styleClass="btn btn-dark" />
+												</div>
+											</div>
+										</h:form>
 									</div>
 								</div>
 							</div>
-
-						</section>
-
+								</section>
 					</div>
 				</div>
+			
+
 			</div>
+
 		</ui:define>
 	</ui:composition>
 

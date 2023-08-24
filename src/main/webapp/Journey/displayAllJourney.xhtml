@@ -84,26 +84,13 @@
 								<h:form>
 									<h:commandButton value="Modifier"
 										action="#{controllerJourney.redirectToEdit(j.id)}" />
-
-									<p:commandButton
-										actionListener="#{controllerJourney.supprimerJourney(j.id)}"
-										ajax="false" value="Supprimer">
-										<h:commandButton value="Reserver"
-											action="#{controllerReservation.saveReservation(j.id,authBean.currentUser.id)}" />
-
-										<p:confirm header="Confirm" message="Are you sure?"
-											icon="ui-icon-alert"></p:confirm>
-									</p:commandButton>
+									<h:commandButton value="Supprimer"
+										action="#{controllerJourney.supprimerJourney(j.id)}" />
+									<h:commandButton value="Reserver"
+										action="#{authBean.makeReservation(j.id,authBean.currentUser.id)}" />
 								</h:form>
 							</h:column>
 						</h:dataTable>
-						<p:confirmDialog id="dialog" global="true" showEffect="fade"
-							hideEffect="explode" message="Êtes-vous sure?">
-							<p:commandButton value="Oui" type="button"
-								styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-							<p:commandButton value="Non" type="button"
-								styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-						</p:confirmDialog>
 
 					</div>
 				</div>
