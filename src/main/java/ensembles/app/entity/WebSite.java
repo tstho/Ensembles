@@ -13,54 +13,50 @@ public class WebSite {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	private String logo;
+	private String imageBackground;
+	private Color color;
+	private String imageAboutUs;
 	private String aboutUs;
-//	private BufferedImage logo;
-    
-//	@Lob
-//    private byte[] logo;
-
-	/**
-	 * @return the aboutUs
-	 */
-	public String getAboutUs() {
-		return aboutUs;
-	}
-
-	/**
-	 * @return the id
-	 */
+	
+	
 	public Long getId() {
 		return id;
 	}
-
-	/**
-	 * @param id the id to set
-	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	/**
-	 * @param aboutUs the aboutUs to set
-	 */
+	public String getAboutUs() {
+		return aboutUs;
+	}
 	public void setAboutUs(String aboutUs) {
 		this.aboutUs = aboutUs;
 	}
-
-	/**
-	 * @return the logo
-	 */
-//	public byte[] getLogo() {
-//		return logo;
-//	}
-//
-//	/**
-//	 * @param logo the logo to set
-//	 */
-//	public void setLogo(byte[] logo) {
-//		this.logo = logo;
-//	}
-
+	public String getLogo() {
+		return logo;
+	}
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+	public String getImage() {
+		return imageBackground;
+	}
+	public void setImage(String image) {
+		this.imageBackground = image;
+	}
+	public Color getColor() {
+		return color;
+	}
+	public void setColor(Color color) {
+		this.color = color;
+	}
+	public String getImageAboutUs() {
+		return imageAboutUs;
+	}
+	public void setImageAboutUs(String imageAboutUs) {
+		this.imageAboutUs = imageAboutUs;
+	}
+    
 		
 
 }

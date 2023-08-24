@@ -44,8 +44,6 @@ import ensembles.app.viewmodels.PaymentViewmodel;
 	    public String savePayment() {
 	        paymentService.savePayment(paymentViewModel.getCardNumber(), paymentViewModel.getCvv(),paymentViewModel.getCardHolderName(),paymentViewModel.getExpirationDate(),paymentViewModel.getPaymentMethod(),paymentViewModel.getPaypalAmount());
 	        
-	        
-	        	
 	    		
 	        // Réinitialiser le view model
 	        paymentViewModel = new PaymentViewmodel();
@@ -54,7 +52,7 @@ import ensembles.app.viewmodels.PaymentViewmodel;
 	        String confirmationMessage = "Votre paiement a été effectué avec succès.";
 	        paymentViewModel.setShowPaymentConfirmation(true, confirmationMessage);
 
-	        return "";
+	        return "/agency/mainAgence.xhtml?faces-redirect=true";
 	        
 	    }
 
