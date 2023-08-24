@@ -7,13 +7,17 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import ensembles.app.entity.Conveyance;
 import ensembles.app.entity.Journey;
 import ensembles.app.entity.ProfilAgence;
+import ensembles.app.entity.Reservation;
 import ensembles.app.repository.RepoJourney;
 import ensembles.app.repository.RepoProfilAgence;
+import ensembles.app.repository.RepoReservation;
 import ensembles.app.service.JourneyService;
+import ensembles.app.service.ReservationService;
 import ensembles.app.viewmodels.JourneyViewModel;
 
 @ManagedBean
@@ -30,34 +34,39 @@ public class ControllerJourney implements Serializable {
 	private RepoJourney repoJourney;
 	@Inject
 	private RepoProfilAgence repoProfilAgence;
-	
-	
+
 	private List<Journey> journeyList;
 
-	@PostConstruct
-	public void init() {
-		journeyList = repoJourney.findAll();
-		System.out.println(journeyList);
-	}
-	
+	private Journey currentJourney;
+
+
 	/*
 	 * Méthode d'enregistrement d'un voyage
 	 */
 
-	public String saveJourney(Long idUser) {
+	public String saveJourney(Long userId) {
+
+		ProfilAgence profilAgence = repoProfilAgence.findByUserId(userId);
 		
-		ProfilAgence profilAgence = repoProfilAgence.findByUserId(idUser);
+		journeyService.saveJourney(profilAgence, journeyViewModel);
 		
-		journeyService.saveJourney(journeyViewModel, profilAgence);
-		journeyList = repoJourney.findAll();
-		
-		resetViewModel();
+		journeyList = repoJourney.findByAgenceId(profilAgence.getId());
 
 		return "/Journey/displayAllJourney.xhtml?faces-redirect=true";
 	}
 
-	
-	
+	/*
+	 * Méthode pour récupérer le voyage en cours
+	 */
+
+	public Journey getCurrentJourney() {
+
+		currentJourney = (Journey) FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
+				.get("currentJourney");
+
+		return currentJourney;
+
+	}
 
 	public List<Conveyance> getConveyanceOptions() {
 		List<Conveyance> options = new ArrayList<>();
@@ -78,7 +87,7 @@ public class ControllerJourney implements Serializable {
 	/*
 	 * Méthode d'initialisation du formulaire de modification
 	 */
-	
+
 	public void initModifierJourney(Long journeyId) {
 		Journey journey = repoJourney.findById(journeyId);
 		journeyViewModel = new JourneyViewModel();
@@ -97,27 +106,49 @@ public class ControllerJourney implements Serializable {
 	/*
 	 * Méthode de modification d'un voyage
 	 */
-	
+
 	public String modifierJourney() {
 		journeyService.modifierJourney(journeyViewModel);
 		journeyList = repoJourney.findAll();
-		
+
 		ControllerProfilAgence profilAgenceController = new ControllerProfilAgence();
 		profilAgenceController.updateJourneyViewModel(journeyViewModel);
-		
+
 		resetViewModel();
 
 		return "/Journey/displayAllJourney.xhtml?faces-redirect=true";
 	}
-	
+
 	/*
 	 * Méthode de suppression d'un voyage
 	 */
 
 	public void supprimerJourney(Long id) {
-	    journeyService.supprimerJourney(id);
-	    journeyList = repoJourney.findAll();
-	    resetViewModel();
+		journeyService.supprimerJourney(id);
+		journeyList = repoJourney.findAll();
+		resetViewModel();
+	}
+
+	public String journeyListByProfilAgence(Long profilAgenceId) {
+
+		journeyList = new ArrayList<Journey>();
+
+		journeyList = repoJourney.getAllJourneysByProfilAgenceId(profilAgenceId);
+
+		for (Journey journey : journeyList) {
+			Long journeyId = journey.getId();
+			Journey voyage = repoJourney.findById(journeyId);
+
+			System.out.println("j'ajoute dans la liste et la voici");
+
+			journeyList.add(journey);
+
+			System.out.println(journeyList.toString());
+
+		}
+
+		return "/journey/displayJourneyByProfilAgence.xhtml?faces-redirect=true";
+
 	}
 
 	/*
@@ -126,11 +157,11 @@ public class ControllerJourney implements Serializable {
 	public void resetViewModel() {
 		journeyViewModel = new JourneyViewModel();
 	}
-	
+
 	/*
 	 * Getters & setters
 	 */
-	
+
 	public JourneyViewModel getJourneyViewModel() {
 		return journeyViewModel;
 	}
@@ -138,6 +169,7 @@ public class ControllerJourney implements Serializable {
 	public void setJourneyViewModel(JourneyViewModel journeyViewModel) {
 		this.journeyViewModel = journeyViewModel;
 	}
+
 	public RepoJourney getRepoJourney() {
 		return repoJourney;
 	}
@@ -154,7 +186,6 @@ public class ControllerJourney implements Serializable {
 		this.journeyService = journeyService;
 	}
 
-
 	public List<Journey> getJourneyList() {
 		return journeyList;
 	}
@@ -162,5 +193,17 @@ public class ControllerJourney implements Serializable {
 	public void setJourneyList(List<Journey> journeyList) {
 		this.journeyList = journeyList;
 	}
-	
+
+	public RepoProfilAgence getRepoProfilAgence() {
+		return repoProfilAgence;
+	}
+
+	public void setRepoProfilAgence(RepoProfilAgence repoProfilAgence) {
+		this.repoProfilAgence = repoProfilAgence;
+	}
+
+	public void setCurrentJourney(Journey currentJourney) {
+		this.currentJourney = currentJourney;
+	}
+
 }
