@@ -12,7 +12,7 @@ public class ReservationViewModel {
 	
 	private Long journeyId;
 	
-	private String Departure;
+	private String Description;
 	private String Destination; 
 	private Date DepartureDate; 
 	private Date DestinationDate;
@@ -25,11 +25,11 @@ public class ReservationViewModel {
 	
 	
 	
-	public String getDeparture() {
-		return Departure;
+	public String getDescription() {
+		return Description;
 	}
-	public void setDeparture(String departure) {
-		Departure = departure;
+	public void setDescription(String description) {
+		Description = description;
 	}
 	public String getDestination() {
 		return Destination;
