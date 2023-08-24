@@ -67,7 +67,7 @@
 										<div class="offset-sm-4 col-sm-8">
 
 											<p:commandButton
-												actionListener="#{controllerPayment.savePayment()}"
+												actionListener="#{controllerPayment.savePaymentWebsite()}"
 												ajax="false" value="Paiement">
 												<p:confirm header="Confirm"
 													message="Votre paiement été bien prise en compte"
@@ -97,7 +97,7 @@
 			<p:confirmDialog id="dialog" global="true" showEffect="fade"
 				hideEffect="explode"
 				message="Votre paiement été bien prise en compte">
-				<a href="../agency/adminAgency.xhtml" class="btn btn-primary">OK</a>
+				<a href="../agency/mainAgence.xhtml" class="btn btn-primary">OK</a>
 
 			</p:confirmDialog>
 
