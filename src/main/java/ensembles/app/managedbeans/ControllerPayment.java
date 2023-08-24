@@ -48,34 +48,31 @@ public class ControllerPayment implements Serializable {
 
 	}
 
-	public void savePaymentWebsite(Long userId) {
+	public String savePaymentWebsite(Long userId) {
 		
 		paymentService.savePayment(paymentViewModel.getCardNumber(), paymentViewModel.getCvv(),
 				paymentViewModel.getCardHolderName(), paymentViewModel.getExpirationDate(),
 				paymentViewModel.getPaymentMethod(), paymentViewModel.getPaypalAmount());
 
 		System.out.println("Je crée ton site là");
+		
 		//TODO Créer le website en base de données et lui attribuer l'id de l'agence
 		
 				ProfilAgence pA = rPA.findById(userId);// trouver l'id de l'agence
 				
 				WebSite webSite = new WebSite(); //instancier un site vide 
 				
-				Long webSiteId = repoWebSite.saveWebSite(webSite); //créer l'id du site vide 
+				webSite.setProfilAgence(pA);
 				
-				WebSite webSiteF = repoWebSite.findById(webSiteId); // retrouver le site correspondant au site créé
+				repoWebSite.saveWebSite(webSite);
 				
-				pA.setWebSite(webSiteF); // "injecter le site à l'agence"
 				
-				rPA.update(pA); // mettre à jour les infos de l'agence
 				
 		// Réinitialiser le view model
 		
 		paymentViewModel = new PaymentViewmodel();
 
-		String confirmationMessage = "Votre paiement a été effectué avec succès.";
-		paymentViewModel.setShowPaymentConfirmation(true, confirmationMessage);
-
+		return "/agency/mainAgence.xhtml?faces-redirect=true";
 		
 		
 	

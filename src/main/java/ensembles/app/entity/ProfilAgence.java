@@ -36,9 +36,8 @@ public class ProfilAgence {
 	@JoinColumn(name="user_id")
 	private User user; 
 
-	@OneToOne
-	@JoinColumn(name="agency_website")
-	private WebSite webSite;
+	
+	
 	
 	 @OneToMany(mappedBy="profilAgence")
 	 private List<Journey> journeys = new LinkedList<>();
@@ -47,7 +46,7 @@ public class ProfilAgence {
 	@Override
 	public String toString() {
 		return "ProfilAgence [id=" + id + ", nomSociete=" + nomSociete + ", siretSociete=" + siretSociete + ", adresse="
-				+ adresse + ", webSite=" + webSite + ", user=" + user + ", nomResponsableSociete="
+				+ adresse + ", webSite=" + ", user=" + user + ", nomResponsableSociete="
 				+ nomResponsableSociete + ", prenomResponsableSociete=" + prenomResponsableSociete
 				+ ", emailResponsableSociete=" + emailResponsableSociete + ", telephoneResponsableSociete="
 				+ telephoneResponsableSociete + "]";
@@ -55,12 +54,8 @@ public class ProfilAgence {
 	/*
 	 * getters & setters
 	 */
-	public WebSite getWebSite() {
-		return webSite;
-	}
-	public void setWebSite(WebSite webSite) {
-		this.webSite = webSite;
-	}
+
+	
 	public List<Journey> getJourneys() {
 		return journeys;
 	}

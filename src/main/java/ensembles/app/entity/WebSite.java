@@ -22,9 +22,23 @@ public class WebSite {
 	private String imageAboutUs;
 	private String aboutUs;
 	
+	@OneToOne
+	@JoinColumn(name="profilAgence_id")
+	private ProfilAgence profilAgence;
 	
 	
-	
+	public String getImageBackground() {
+		return imageBackground;
+	}
+	public void setImageBackground(String imageBackground) {
+		this.imageBackground = imageBackground;
+	}
+	public ProfilAgence getProfilAgence() {
+		return profilAgence;
+	}
+	public void setProfilAgence(ProfilAgence profilAgence) {
+		this.profilAgence = profilAgence;
+	}
 	public Long getId() {
 		return id;
 	}
