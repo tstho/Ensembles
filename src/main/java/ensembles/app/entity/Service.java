@@ -1,17 +1,15 @@
 package ensembles.app.entity;
 
-import java.util.ArrayList;
+
 import java.util.Date;
-import java.util.List;
-
-
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,76 +21,74 @@ public class Service {
 	private Long id;
 	private String name;
 	private String place;
-	
 	private Date begin;
-	
 	private Date end;
 	
 	@Enumerated(EnumType.STRING)
 	private ServiceType ServiceType ;
 	
 	private Double price;
-	
 	private String Description;
-//
-//	@ManyToMany(mappedBy = "services")
-//	    private List<Journey> journeys = new ArrayList<>();
-//	
-//	public List<Journey> getJourneys() {
-//		return journeys;
-//	}
-//
-//	public void setJourneys(List<Journey> journeys) {
-//		this.journeys = journeys;
-//	}
 	
-	public String getDescription() {
-		return Description;
-	}
-	public void setDescription(String description) {
-		Description = description;
-	}
-	public Double getPrice() {
-		return price;
-	}
-	public void setPrice(Double prix) {
-		price = prix;
+	 @ManyToOne
+	 @JoinColumn(name="partenaire_id")   
+	 private ProfilPartenaire profilPartenaire;
+  
+	public Long getId() {
+		return id;
 	}
 	public String getName() {
 		return name;
 	}
-	public void setName(String nom) {
-		name = nom;
-	}
 	public String getPlace() {
 		return place;
 	}
-	public void setPlace(String lieu) {
-		place = lieu;
-	}
-	public ServiceType getServiceType() {
-		return ServiceType;
-	}
-	public void setServiceType(ServiceType serviceType) {
-		ServiceType = serviceType;
-	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
 	public Date getBegin() {
 		return begin;
-	}
-	public void setBegin(Date debut) {
-		begin = debut;
 	}
 	public Date getEnd() {
 		return end;
 	}
-	public void setEnd(Date fin) {
-		end = fin;
+	public ServiceType getServiceType() {
+		return ServiceType;
 	}
+	public Double getPrice() {
+		return price;
+	}
+	public String getDescription() {
+		return Description;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setPlace(String place) {
+		this.place = place;
+	}
+	public void setBegin(Date begin) {
+		this.begin = begin;
+	}
+	public void setEnd(Date end) {
+		this.end = end;
+	}
+	public void setServiceType(ServiceType serviceType) {
+		ServiceType = serviceType;
+	}
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+	public ProfilPartenaire getProfilPartenaire() {
+		return profilPartenaire;
+	}
+	public void setProfilPartenaire(ProfilPartenaire profilPartenaire) {
+		this.profilPartenaire = profilPartenaire;
+	}
+	public void setDescription(String description) {
+		Description = description;
+	}
+	
+	
 }
+

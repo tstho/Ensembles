@@ -1,5 +1,6 @@
 package ensembles.app.entity;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,7 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+
 @Entity
+
 public class ProfilAgence {
 
 	@Id
@@ -20,23 +23,27 @@ public class ProfilAgence {
 
 	private String nomSociete;
 	private String siretSociete;
+	private String nomResponsableSociete;
+	private String prenomResponsableSociete;
+	private String emailResponsableSociete;
+	private int telephoneResponsableSociete;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="adresse_id")	
 	private Adresse adresse;
-	
+
+	@OneToOne()
+	@JoinColumn(name="user_id")
+	private User user; 
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="agency_website")
 	private WebSite webSite;
 	
-	@OneToOne()
-	@JoinColumn(name="user_id")
-	private User user; 
+	 @OneToMany(mappedBy="profilAgence")
+	 private List<Journey> journeys = new LinkedList<>();
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="journey_id")	
-	private List<Journey> journeys;
-	
+		
 	@Override
 	public String toString() {
 		return "ProfilAgence [id=" + id + ", nomSociete=" + nomSociete + ", siretSociete=" + siretSociete + ", adresse="
@@ -45,27 +52,18 @@ public class ProfilAgence {
 				+ ", emailResponsableSociete=" + emailResponsableSociete + ", telephoneResponsableSociete="
 				+ telephoneResponsableSociete + "]";
 	}
-	/**
-	 * @return the webSite
+	/*
+	 * getters & setters
 	 */
 	public WebSite getWebSite() {
 		return webSite;
 	}
-	/**
-	 * @param webSite the webSite to set
-	 */
 	public void setWebSite(WebSite webSite) {
 		this.webSite = webSite;
 	}
-	/**
-	 * @return the journeys
-	 */
 	public List<Journey> getJourneys() {
 		return journeys;
 	}
-	/**
-	 * @param journeys the journeys to set
-	 */
 	public void setJourneys(List<Journey> journeys) {
 		this.journeys = journeys;
 	}
@@ -75,10 +73,6 @@ public class ProfilAgence {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	private String nomResponsableSociete;
-	private String prenomResponsableSociete;
-	private String emailResponsableSociete;
-	private int telephoneResponsableSociete;
 	
 	public Long getId() {
 		return id;

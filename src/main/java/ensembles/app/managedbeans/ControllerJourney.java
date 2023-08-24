@@ -10,7 +10,9 @@ import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import ensembles.app.entity.Conveyance;
 import ensembles.app.entity.Journey;
+import ensembles.app.entity.ProfilAgence;
 import ensembles.app.repository.RepoJourney;
+import ensembles.app.repository.RepoProfilAgence;
 import ensembles.app.service.JourneyService;
 import ensembles.app.viewmodels.JourneyViewModel;
 
@@ -22,12 +24,14 @@ public class ControllerJourney implements Serializable {
 
 	@Inject
 	private JourneyViewModel journeyViewModel;
-
 	@Inject
 	private JourneyService journeyService;
 	@Inject
 	private RepoJourney repoJourney;
-
+	@Inject
+	private RepoProfilAgence repoProfilAgence;
+	
+	
 	private List<Journey> journeyList;
 
 	@PostConstruct
@@ -40,15 +44,20 @@ public class ControllerJourney implements Serializable {
 	 * Méthode d'enregistrement d'un voyage
 	 */
 
-	public String saveJourney() {
-
-		journeyService.saveJourney(journeyViewModel);
+	public String saveJourney(Long idUser) {
+		
+		ProfilAgence profilAgence = repoProfilAgence.findByUserId(idUser);
+		
+		journeyService.saveJourney(journeyViewModel, profilAgence);
 		journeyList = repoJourney.findAll();
+		
 		resetViewModel();
 
 		return "/Journey/displayAllJourney.xhtml?faces-redirect=true";
 	}
 
+	
+	
 
 	public List<Conveyance> getConveyanceOptions() {
 		List<Conveyance> options = new ArrayList<>();
@@ -71,11 +80,10 @@ public class ControllerJourney implements Serializable {
 	 */
 	
 	public void initModifierJourney(Long journeyId) {
-
 		Journey journey = repoJourney.findById(journeyId);
 		journeyViewModel = new JourneyViewModel();
 		journeyViewModel.setId(journey.getId());
-		journeyViewModel.setDeparture(journey.getDeparture());
+		journeyViewModel.setDescription(journey.getDescription());
 		journeyViewModel.setDestination(journey.getDestination());
 		journeyViewModel.setDestinationDate(journey.getDestinationDate());
 		journeyViewModel.setPrice(journey.getPrice());
@@ -93,6 +101,10 @@ public class ControllerJourney implements Serializable {
 	public String modifierJourney() {
 		journeyService.modifierJourney(journeyViewModel);
 		journeyList = repoJourney.findAll();
+		
+		ControllerProfilAgence profilAgenceController = new ControllerProfilAgence();
+		profilAgenceController.updateJourneyViewModel(journeyViewModel);
+		
 		resetViewModel();
 
 		return "/Journey/displayAllJourney.xhtml?faces-redirect=true";
@@ -103,7 +115,6 @@ public class ControllerJourney implements Serializable {
 	 */
 
 	public void supprimerJourney(Long id) {
-		System.out.println("ID du voyage à supprimer : " + journeyViewModel.getId());
 	    journeyService.supprimerJourney(id);
 	    journeyList = repoJourney.findAll();
 	    resetViewModel();
@@ -152,48 +163,4 @@ public class ControllerJourney implements Serializable {
 		this.journeyList = journeyList;
 	}
 	
-	
-//	public String redirectToDelete(Long journeyId) {
-//		initSupprimerJourney(journeyId);
-//		return "/Journey/SupprimerJourney.xhtml?faces-redirect=true";
-//	}
-
-//	public void initSupprimerJourney(Long journeyId) {
-//
-//		Journey journey = repoJourney.findById(journeyId);
-//		journeyViewModel = new JourneyViewModel();
-//		journeyViewModel.setId(journey.getId());
-//		journeyViewModel.setDeparture(journey.getDeparture());
-//		journeyViewModel.setDestination(journey.getDestination());
-//		journeyViewModel.setDestinationDate(journey.getDestinationDate());
-//		journeyViewModel.setPrice(journey.getPrice());
-//		journeyViewModel.setConveyance(journey.getConveyance());
-//		journeyViewModel.setDepartureDate(journey.getDepartureDate());
-//
-//		System.out.println(journey.toString());
-//		System.out.println(journeyViewModel.toString());
-//		
-//		
-//	}
-
-//	private boolean showDeleteConfirmation = false;
-//
-//	public boolean isShowDeleteConfirmation() {
-//	    return showDeleteConfirmation;
-//	}
-//
-//	public void setShowDeleteConfirmation(boolean showDeleteConfirmation) {
-//	    this.showDeleteConfirmation = showDeleteConfirmation;
-//	}
-//	
-//	
-//	public void prepareDeleteJourney() {
-//	    
-//	    showDeleteConfirmation = true;
-//	}
-//	
-//	public void cancelDelete() {
-//	    showDeleteConfirmation = false;
-//	}
-//	
 }

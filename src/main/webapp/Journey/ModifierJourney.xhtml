@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-		xmlns:p="http://primefaces.org/ui"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <link rel="stylesheet" href="../resources/css/styles.css" />
@@ -20,60 +20,75 @@
 					<div class="col-sm-3 bg-info">
 						<ul class="nav nav-pills flex-column">
 							<li class="nav-item"><a class="nav-link text-white"
-								href="http://127.0.0.1:8080/ensembles-app/agency/profilAgence.xhtml">Profil agence</a></li>
+								href="http://127.0.0.1:8080/ensembles-app/agency/profilAgence.xhtml">Profil
+									agence</a></li>
 							<li class="nav-item"><a class="nav-link text-white" href="#">
 									Notifications</a></li>
 							<li class="nav-item"><a class="nav-link text-white"
-								href="http://127.0.0.1:8080/ensembles-app/Journey/displayAllJourney.xhtml"> Mes packages</a></li>
-							<li><a class="nav-link text-white" href="http://127.0.0.1:8080/ensembles-app/Journey/Journey.xhtml">
-									Ajouter un package</a></li>
+								href="http://127.0.0.1:8080/ensembles-app/Journey/displayAllJourney.xhtml">
+									Mes voyages</a></li>
 							<li><a class="nav-link text-white"
-								href="http://127.0.0.1:8080/ensembles-app/Journey/ModifierJourney.xhtml">Modifier un package</a></li>
-						<li><a class="nav-link text-white"
+								href="http://127.0.0.1:8080/ensembles-app/Journey/Journey.xhtml">
+									Ajouter un voyage</a></li>
+							<li><a class="nav-link text-white"
 								href="../templates/templateOne.xhtml">MON SITE</a></li>
-
 						</ul>
 						<hr class="d-sm-none" />
 					</div>
 					<div class="col-sm-9">
-    <h:form>
-        <h1>Modifier votre voyage</h1>
+						<h:form>
+							<h3>Modifier votre voyage</h3>
 
-        <h:outputLabel for="departure" value="Départ" />
-        <h:inputText id="departure" value="#{controllerJourney.journeyViewModel.departure}" />
+							<table>
+								<tr>
+									<td><h:outputLabel for="destination" value="Destination" /></td>
+									<td><h:inputText id="destination"
+											value="#{controllerJourney.journeyViewModel.destination}" /></td>
+								</tr>
+								<tr>
+									<td><h:outputLabel value="Departure date: " /></td>
+									<td><p:datePicker
+											value="#{controllerJourney.journeyViewModel.departureDate}"
+											size="20" maxlength="20" /></td>
+								</tr>
+								<tr>
+									<td><h:outputLabel value="Destination date: " /></td>
+									<td><p:datePicker
+											value="#{controllerJourney.journeyViewModel.destinationDate}"
+											size="20" maxlength="20" /></td>
+								</tr>
+								<tr>
+									<td><h:outputLabel for="price" value="Prix" /></td>
+									<td><h:inputText id="price"
+											value="#{controllerJourney.journeyViewModel.price}" /></td>
+								</tr>
+								<tr>
+									<td><h:outputLabel for="conveyance"
+											value="Moyen de Transport" /></td>
+									<td><h:selectOneMenu id="conveyance"
+											value="#{controllerJourney.journeyViewModel.conveyance}">
+											<f:selectItems
+												value="#{controllerJourney.getConveyanceOptions()}" />
+										</h:selectOneMenu></td>
+								</tr>
+								<tr>
+									<td><h:outputLabel for="description"
+											value="Description : " /></td>
+									<td><h:inputText id="description"
+											value="#{controllerJourney.journeyViewModel.description}" /></td>
+								</tr>
 
-        <h:outputLabel for="destination" value="Destination" />
-        <h:inputText id="destination" value="#{controllerJourney.journeyViewModel.destination}" />
-        
-          	<h:outputLabel value="departureDate: " />
-				<p:datePicker
-						value="#{controllerJourney.journeyViewModel.departureDate}"
-						size="20" maxlength="20" />
-			
-					
-        <h:outputLabel value="destinationDate: " />	
-					<p:datePicker
-						value="#{controllerJourney.journeyViewModel.destinationDate}"
-						size="20" maxlength="20" />	
-						
-
-        <h:outputLabel for="price" value="Prix" />
-        <h:inputText id="price" value="#{controllerJourney.journeyViewModel.price}" />
-
-        <h:outputLabel for="conveyance" value="Moyen de Transport" />
-        <h:selectOneMenu id="conveyance" value="#{controllerJourney.journeyViewModel.conveyance}">
-            <f:selectItems value="#{controllerJourney.getConveyanceOptions()}" />
-        </h:selectOneMenu>
-
-
-        <h:commandButton value="Enregistrer les modifications" action="#{controllerJourney.modifierJourney()}" />
-
-    </h:form>
-    </div>
-    </div>
-    </div>
-   </ui:define>
-   </ui:composition>
+								<tr>
+								<td>	<h:commandButton value="Enregistrer les modifications"
+										action="#{controllerJourney.modifierJourney()}" /></td>
+								</tr>
+							</table>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
 </h:body>
 
 

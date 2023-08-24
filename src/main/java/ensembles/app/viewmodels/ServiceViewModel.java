@@ -11,17 +11,28 @@ public class ServiceViewModel {
 	
 	private ServiceType serviceType;
 	
+	private Long Id;
 	private String name;
-
-	private Date startDate;
-	
-	private Date endDate;
-	
-	private String place;
-	
+	private Date begin;
+	private Date end;	
+	private String place;	
 	private Double price; 
-	
 	private String Description;
+	
+	@Override
+	public String toString() {
+		return "ServiceViewModel [serviceType=" + serviceType + ", Id=" + Id + ", name=" + name + ", begin="
+				+ begin + ", end=" + end + ", place=" + place + ", price=" + price + ", Description="
+				+ Description + "]";
+	}
+
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
 
 	public ServiceType getServiceType() {
 		return serviceType;
@@ -31,12 +42,12 @@ public class ServiceViewModel {
 		return name;
 	}
 
-	public Date getStartDate() {
-		return startDate;
+	public Date getBegin() {
+		return begin;
 	}
 
-	public Date getEndDate() {
-		return endDate;
+	public Date getEnd() {
+		return end;
 	}
 
 	public String getPlace() {
@@ -59,12 +70,12 @@ public class ServiceViewModel {
 		this.name = name;
 	}
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+	public void setBegin(Date begin) {
+		this.begin = begin;
 	}
 
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+	public void setEnd(Date end) {
+		this.end = end;
 	}
 
 	public void setPlace(String place) {

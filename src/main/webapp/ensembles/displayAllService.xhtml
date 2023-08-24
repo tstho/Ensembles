@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<title>Affichage des services</title>
@@ -12,14 +13,13 @@
 </h:head>
 
 <h:body>
-	<h3>Liste des services</h3>
+	<title>Liste des services</title>
+	
+	<br />
+	<hr />
 
-	<h:dataTable value="#{controllerServiceManagement.serviceList}" var="service">
-
-		<h:column>
-			<f:facet name="header">ID</f:facet>
-				#{service.id}
-			</h:column>
+	<h:dataTable value="#{controllerService.serviceList}"
+		var="service">
 
 		<h:column>
 			<f:facet name="header">Name</f:facet>
@@ -55,8 +55,27 @@
 			<f:facet name="header">Description</f:facet>
 				#{service.description}
 			</h:column>
+			
+		<h:column>
+			<f:facet name="header"></f:facet>
+			<h:form>
+				<h:commandLink value="Modifier"
+					action="#{controllerService.redirectToEdit(service.id)}" />
+				<p:commandLink actionListener="#{controllerService.supprimerService(service.id)}" ajax="false" value="Supprimer">
+				 <p:confirm header="Confirm" message="Are you sure?" icon="ui-icon-alert"></p:confirm>
+				</p:commandLink>
+			</h:form>
+		</h:column>
 
 	</h:dataTable>
+
+	<p:confirmDialog id="dialog" global="true" showEffect="fade"
+		hideEffect="explode" message="Are you sure?">
+		<p:commandButton value="Yes" type="button"
+			styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+		<p:commandButton value="No" type="button"
+			styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+	</p:confirmDialog>
 
 </h:body>
 
