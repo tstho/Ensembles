@@ -8,7 +8,7 @@
 <h:head>
 
 	<meta charset="utf-8"></meta>
-
+  <link rel="stylesheet" href="../resources/css/styles.css"/>
 </h:head>
 
 
@@ -19,29 +19,22 @@
 		<ui:define name="content">
 
 			<div class="container">
-				<div class="background jumbotron jumbotron-fluid text-white text-center">
+				<div class="background jumbotron jumbotron-fluid text-center">
 					<h2 class="display-1 text-center">Libérez votre créativité</h2>
 
 					<!-- Right box with video -->
 					<div class="container">
 						<div class="row">
-							<div class="col-sm-9">
-								<p class="text-right">
-									Trouvez tout ce dont vous avez besoin pour faire vivre votre agence de voyage 
-									avec des templates agence voyage avec des possibilités de paiement. <!-- Choisissez parmi une sélection de kit comprenant -->
+							<div class="col-sm-12">
+								<p class="text-center">
+									Trouvez tout ce dont vous avez besoin pour faire vivre votre agence de voyage </p><p class="text-center">
+									avec des templates que vous pouvez personaliser et des abonnements qui s'adaptent à vos besoins. <!-- Choisissez parmi une sélection de kit comprenant -->
 <!-- 												les meilleures typographies, couleurs et mise en page qui correspond à -->
-<!-- 												votre vision.--> <a 
-										href="agency/mainAgency.xhtml"
-										class="btn btn-light btn-lg-end active">COMMENCER</a>
+<!-- 												votre vision.--> 
 								</p>
 							</div>
-
-							<div class="col-sm-3 embed-responsive embed-responsive-16by9">
-								<iframe width="56" height="31"
-									src="https://www.youtube.com/embed/pQqzFE8hPG4"
-									title="YouTube video player" frameborder="0"
-									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
 							</div>
+							
 
 							<div class="row">
 								<!-- Left box? plateform description -->
@@ -114,46 +107,8 @@
 								</div>
 
 							</div>
-						</div>
-					</div>
 
-					<div class="col-lg-4 d-none d-lg-block">
-						<div class="card">
-							<img src="../images/traveltemplate2.jpg" class="card-img-top"
-								alt="premium template" />
-							<div class="card-body">
-								<h5 class="card-title">Premium Website</h5>
-								<p class="card-title">Durée : 3mois</p>
-								<p class="card-title">Prix : 90 euros</p>
-								<h:form>
-									<h:commandButton value="COMMENCER" action="#{authBean.payTemplate()}" class="btn btn-info" />
-								</h:form>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-lg-4 d-none d-lg-block">
-						<div class="card">
-							<img src="../images/traveltemplate3.jpg" class="card-img-top"
-								alt="Platinum template" />
-							<div class="card-body">
-								<h5 class="card-title">Platinum Website</h5>
-								<p class="card-text">Whether you need a portfolio website,
-									an online store, you can use Ensembles' customizable and
-									responsive website templates to get started</p>
-								<p class="card-title">Durée : 1ans</p>
-								<p class="card-title">Prix : 500 euros</p>
-								<h:form>
-									<h:commandButton value="COMMENCER" action="#{authBean.payTemplate()}" class="btn btn-info" />
-								</h:form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</ui:define>
-
-
+			</ui:define>
 	</ui:composition>
 
 </h:body>
