@@ -3,8 +3,11 @@ package ensembles.app.service;
 import ensembles.app.entity.Journey;
 import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.Reservation;
+import ensembles.app.entity.User;
 import ensembles.app.repository.RepoJourney;
+import ensembles.app.repository.RepoProfilAgence;
 import ensembles.app.repository.RepoReservation;
+import ensembles.app.repository.RepoUser;
 import ensembles.app.viewmodels.JourneyViewModel;
 
 import java.util.List;
@@ -19,8 +22,14 @@ public class JourneyService {
 	private RepoJourney repoJourney;
 	@Inject
 	private RepoReservation repoReservation;
+	
+		 @Inject
+		  private RepoProfilAgence repoProfilAgence;	
+	
+	
  
-	    public void saveJourney(JourneyViewModel journeyViewModel, ProfilAgence profilAgence) {
+	    public void saveJourney(ProfilAgence profilAgence, JourneyViewModel journeyViewModel) {
+	    	
 	        Journey journey = new Journey();
 	        journey.setDescription(journeyViewModel.getDescription());
 	        journey.setDestination(journeyViewModel.getDestination());
@@ -31,8 +40,9 @@ public class JourneyService {
 
 	        journey.setProfilAgence(profilAgence);
 
-		repoJourney.save(journey);
+	        repoJourney.save(journey);
 	}
+
 
 	public void modifierJourney(JourneyViewModel journeyViewModel) {
 
@@ -72,4 +82,15 @@ public class JourneyService {
 	public void setRepoJourney(RepoJourney repoJourney) {
 		this.repoJourney = repoJourney;
 	}
+
+	public RepoProfilAgence getRepoProfilAgence() {
+		return repoProfilAgence;
+	}
+
+	public void setRepoProfilAgence(RepoProfilAgence repoProfilAgence) {
+		this.repoProfilAgence = repoProfilAgence;
+	}
+	
+		
+	
 }

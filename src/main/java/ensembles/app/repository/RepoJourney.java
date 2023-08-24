@@ -6,25 +6,26 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import ensembles.app.entity.Journey;
+import ensembles.app.entity.Reservation;
 
 
 @Stateless
 public class RepoJourney {
 	
-	 @PersistenceContext
-	 private EntityManager entityManager;
+	@PersistenceContext
+	private EntityManager entityManager;
 
-	 public Journey save(Journey journey) {
-	        entityManager.persist(journey);
-			entityManager.flush();
-			
+	public Journey save(Journey journey) {
+		entityManager.persist(journey);
+		entityManager.flush();
+		System.out.println("Réservation dans repo après save :" + journey.toString());
 		return journey;
-	    }
-
+	}
 	 
-	 
+	
 	 public List<Journey> displayJourney() {
 			
 			String reqSelect="SELECT * FROM Journey";
@@ -40,7 +41,27 @@ public class RepoJourney {
 			return resultList;
 			
 		}
-	     // methode afficher la liste
+	 
+	 
+	  // methode afficher la liste
+	 
+	 public List<Journey> getAllJourneysByProfilAgenceId(Long id) {
+
+			String reqSelect="SELECT r FROM Journey r WHERE profilAgence_id = :id";
+			TypedQuery<Journey> query = entityManager.createQuery(reqSelect, Journey.class);
+			query.setParameter("id", id);
+			
+			try {
+				return query.getResultList();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			}
+		} 
+	 
+	 
+	   
 
 		public List<Journey> findAll() {
 			
@@ -50,6 +71,23 @@ public class RepoJourney {
 			return entityManager.createQuery(reqSelect, Journey.class).getResultList();
 	 
 }
+		
+		
+		
+		public List<Journey> getAllJourneysByJourneyId(Long id) {
+
+			String reqSelect="SELECT r FROM Reservation r WHERE journey_id = :id";
+			TypedQuery<Journey> query = entityManager.createQuery(reqSelect, Journey.class);
+			query.setParameter("id", id);
+			
+			try {
+				return query.getResultList();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			}
+		}		
 		
 		// methode Modifier
 		
@@ -80,7 +118,22 @@ public class RepoJourney {
 
 			public Journey findById(Long id) {
 		        return entityManager.find(Journey.class, id);
-		    }	
+		    }
+
+
+			public List<Journey> findByAgenceId(Long id) {
+				String reqSelect="SELECT j FROM Journey j WHERE agency_id = :id";
+				TypedQuery<Journey> query = entityManager.createQuery(reqSelect, Journey.class);
+				query.setParameter("id", id);
+				
+				try {
+					return query.getResultList();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return null;
+				}
+			}	
 			
 		
 			
