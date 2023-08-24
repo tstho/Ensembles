@@ -16,10 +16,10 @@ public class Journey implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	private String Departure;
-	private String Destination;
-	private Date DepartureDate;
+
+	private String Description;
+	private String Destination; 
+	private Date DepartureDate; 
 	private Date DestinationDate;
 	private Conveyance conveyance;
 	private Double price;
@@ -39,12 +39,11 @@ public class Journey implements Serializable {
 		this.id = id;
 	}
 
-	public String getDeparture() {
-		return Departure;
+	public String getDescription() {
+		return Description;
 	}
-
-	public void setDeparture(String departure) {
-		Departure = departure;
+	public void setDescription(String description) {
+		Description = description;
 	}
 
 	public String getDestination() {

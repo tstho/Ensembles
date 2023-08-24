@@ -22,7 +22,7 @@ public class JourneyService {
  
 	    public void saveJourney(JourneyViewModel journeyViewModel, ProfilAgence profilAgence) {
 	        Journey journey = new Journey();
-	        journey.setDeparture(journeyViewModel.getDeparture());
+	        journey.setDescription(journeyViewModel.getDescription());
 	        journey.setDestination(journeyViewModel.getDestination());
 	        journey.setDepartureDate(journeyViewModel.getDepartureDate());
 	        journey.setDestinationDate(journeyViewModel.getDestinationDate());
@@ -37,7 +37,7 @@ public class JourneyService {
 	public void modifierJourney(JourneyViewModel journeyViewModel) {
 
 		Journey journey = new Journey();
-		journey.setDeparture(journeyViewModel.getDeparture());
+		journey.setDescription(journeyViewModel.getDescription());
 		journey.setDestination(journeyViewModel.getDestination());
 		journey.setDepartureDate(journeyViewModel.getDepartureDate());
 		journey.setDestinationDate(journeyViewModel.getDestinationDate());

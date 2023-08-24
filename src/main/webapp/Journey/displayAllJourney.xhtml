@@ -29,13 +29,10 @@
 									Notifications</a></li>
 							<li class="nav-item"><a class="nav-link text-white"
 								href="http://127.0.0.1:8080/ensembles-app/Journey/displayAllJourney.xhtml">
-									Mes packages</a></li>
+									Mes voyages</a></li>
 							<li><a class="nav-link text-white"
 								href="http://127.0.0.1:8080/ensembles-app/Journey/Journey.xhtml">
-									Ajouter un package</a></li>
-							<li><a class="nav-link text-white"
-								href="http://127.0.0.1:8080/ensembles-app/Journey/ModifierJourney.xhtml">Modifier
-									un package</a></li>
+									Ajouter un voyage</a></li>
 							<li><a class="nav-link text-white"
 								href="../templates/templateOne.xhtml">MON SITE</a></li>
 						</ul>
@@ -47,25 +44,23 @@
 
 						<h:dataTable value="#{controllerJourney.journeyList}" var="j">
 							<h:column>
-								<f:facet name="header">Départ</f:facet>
-								#{j.departure}
-							</h:column>
-
+								<f:facet name="header">ID</f:facet>
+			#{j.id}
+		</h:column>
 							<h:column>
 								<f:facet name="header">Destination</f:facet>
 								#{j.destination}
 							</h:column>
 
 							<h:column>
-								<f:facet name="header">Date de Départ</f:facet>
-							#{j.departureDate}
-						</h:column>
+								<f:facet name="header">Date du début du voyage</f:facet>
+			#{j.departureDate}
+		</h:column>
 
 							<h:column>
-								<f:facet name="header">Date de Destination</f:facet>
-								#{j.destinationDate}
-							</h:column>
-
+								<f:facet name="header">Date de fin du voyage </f:facet>
+			#{j.destinationDate}
+		</h:column>
 							<h:column>
 								<f:facet name="header">Moyen de Transport</f:facet>
 							#{j.conveyance}
@@ -73,25 +68,39 @@
 
 							<h:column>
 								<f:facet name="header">Prix</f:facet>
-							#{j.price}
-						</h:column>
 
-
-
+			#{j.price}
+		</h:column>
+							<h:column>
+								<f:facet name="header">Description</f:facet>
+			#{j.description}
+		</h:column>
 							<h:column>
 								<f:facet name="header"></f:facet>
 								<h:form>
 									<h:commandButton value="Modifier"
 										action="#{controllerJourney.redirectToEdit(j.id)}" />
-									<h:commandButton value="Supprimer"
-										action="#{controllerJourney.supprimerJourney(j.id)}" />
-									<h:commandButton value="Reserver"
-										action="#{controllerReservation.saveReservation(j.id,authBean.currentUser.id)}" />
+
+									<p:commandButton
+										actionListener="#{controllerJourney.supprimerJourney(j.id)}"
+										ajax="false" value="Supprimer">
+										<h:commandButton value="Reserver"
+											action="#{controllerReservation.saveReservation(j.id,authBean.currentUser.id)}" />
+
+										<p:confirm header="Confirm" message="Are you sure?"
+											icon="ui-icon-alert"></p:confirm>
+									</p:commandButton>
 								</h:form>
 							</h:column>
-
-
 						</h:dataTable>
+						<p:confirmDialog id="dialog" global="true" showEffect="fade"
+							hideEffect="explode" message="Êtes-vous sure?">
+							<p:commandButton value="Oui" type="button"
+								styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+							<p:commandButton value="Non" type="button"
+								styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+						</p:confirmDialog>
+
 					</div>
 				</div>
 			</div>
