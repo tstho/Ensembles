@@ -9,61 +9,96 @@
 <meta charset="UTF-8"></meta>
 
 <h:head>
-    <title>Confirmation de réservation</title>
+	<title>Confirmation de reservation</title>
 </h:head>
 
 <h:body>
-<h1>Votre confirmation de réservation</h1>
-   <table>
-									<tr>
-										<td><h:outputLabel for="destination">Destination :<span
-													class="requis"></span>
-											</h:outputLabel></td>
-										<td><h:outputText type="text" id="destination"
-												value="#{controllerReservation.currentReservation.journey.destination}"
-												size="20" maxlength="20" /></td>
-									</tr>
-									<tr>
-										<td><h:outputLabel for="destination">Date de départ :<span
-													class="requis"></span>
-											</h:outputLabel></td>
-										<td><h:outputText type="text" id="destination"
-												value="#{controllerReservation.currentReservation.journey.departureDate}"
-												size="20" maxlength="20" /></td>
-									</tr>
-									<tr>
-										<td><h:outputLabel for="destination">Date d'arrivée :<span
-													class="requis"></span>
-											</h:outputLabel></td>
-										<td><h:outputText type="text" id="destination"
-												value="#{controllerReservation.currentReservation.journey.destinationDate}"
-												size="20" maxlength="20" /></td>
-									</tr>
-									<tr>
-										<td><h:outputLabel for="destination">Moyen de transport :<span
-													class="requis"></span>
-											</h:outputLabel></td>
-										<td><h:outputText type="text" id="destination"
-												value="#{controllerReservation.currentReservation.journey.conveyance}"
-												size="20" maxlength="20" /></td>
-									</tr>
-									<tr>
-										<td><h:outputLabel for="destination">Prix :<span
-													class="requis"></span>
-											</h:outputLabel></td>
-										<td><h:outputText type="text" id="destination"
-												value="#{controllerReservation.currentReservation.journey.price}"
-												size="20" maxlength="20" /></td>
-									</tr>
-									<tr>
-										<td><h:outputLabel for="destination">Votre E-mail :<span
-													class="requis"></span>
-											</h:outputLabel></td>
-										<td><h:outputText type="text" id="email"
-												value="#{authBean.currentUser.email}"
-												size="20" maxlength="20" /></td>
-									</tr>
-									
-</table>
+	<ui:composition template="/layouts/mainLayout.xhtml">
+
+		<ui:define name="content">
+
+			<section class="vh-100" style="background-color: grey;">
+				<div class="container py-5 h-100">
+
+					<div
+						class="row d-flex justify-content-center align-items-center h-100">
+						<div class="col col-xl-10">
+							<div class="card" style="border-radius: 1rem;">
+								<div class="row g-0">
+									<div class="col-md-6 col-lg-5 d-none d-md-block">
+										<img
+											src="https://images.nationalgeographic.org/image/upload/v1638889904/EducationHub/photos/at-the-north-pole.jpg"
+											alt="login form pix" class="img-fluid"
+											style="border-radius: 1rem 0 0 1rem;" />
+									</div>
+
+									<div class="col-md-6 col-lg-7 d-flex align-items-center">
+										<div class="card-body p-4 p-lg-5 text-black">
+											<h:form>
+
+													<i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+													<h5 class="fw-normal mb-3 pb-3"
+														style="letter-spacing: 1px;">Reservation confirmée</h5>
+													<div class="col-md-6">
+														<h:outputLabel for="destination">Destination :<span
+																class="requis"></span>
+														</h:outputLabel>
+														<h:outputText type="text" id="destination"
+															value="#{controllerReservation.currentReservation.journey.destination}"
+															size="20" maxlength="20" />
+													</div>
+													<div class="col-md-6">
+														<h:outputLabel for="dateDepart">Date de départ :
+															<span class="requis"></span>
+														</h:outputLabel>
+														<h:outputText type="text" id="dateDepart"
+															value="#{controllerReservation.currentReservation.journey.departureDate}"
+															size="20" maxlength="20" />
+													</div>
+													<div class="col-md-6">
+														<h:outputLabel for="dateArrive">Date d'arrivée :<span
+																class="requis"></span>
+														</h:outputLabel>
+														<h:outputText type="text" id="dateArrive"
+															value="#{controllerReservation.currentReservation.journey.destinationDate}"
+															size="20" maxlength="20" />
+													</div>
+													<div class="col-md-6">
+														<h:outputLabel for="transport">Moyen de transport :<span
+																class="requis"></span>
+														</h:outputLabel>
+														<h:outputText type="text" id="transport"
+															value="#{controllerReservation.currentReservation.journey.conveyance}"
+															size="20" maxlength="20" />
+													</div>
+													<div class="col-md-6">
+														<h:outputLabel for="prix">Prix :<span
+																class="requis"></span>
+														</h:outputLabel>
+														<h:outputText type="text" id="prix"
+															value="#{controllerReservation.currentReservation.journey.price}"
+															size="20" maxlength="20" />
+													</div>
+													<div class="col-md-6">
+														<h:outputLabel for="email">Votre E-mail :<span
+																class="requis"></span>
+														</h:outputLabel>
+														<h:outputText type="text" id="email"
+															value="#{authBean.currentUser.email}" size="20"
+															maxlength="20" />
+
+
+													</div>
+											</h:form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>
