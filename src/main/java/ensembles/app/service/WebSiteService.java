@@ -18,8 +18,15 @@ public class WebSiteService {
 		
 		WebSite webSite = new WebSite();
 		webSite.setAboutUs(webSiteViewModel.getAboutUs());
+		webSite.setId(webSiteViewModel.getId());
+		webSite.setColor(webSiteViewModel.getColor());
+		webSite.setImage(webSiteViewModel.getImageBackground());
+		webSite.setImageAboutUs(webSiteViewModel.getImageAboutUs());
+		
+		webSite.setLogo(webSiteViewModel.getLogo());
 		
 		repoWebSite.saveWebSite(webSite);
 	}
 	
+
 }

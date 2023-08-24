@@ -3,13 +3,24 @@ package ensembles.app.managedbeans;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 
+import ensembles.app.entity.Journey;
+import ensembles.app.entity.ProfilAgence;
+import ensembles.app.entity.User;
+import ensembles.app.entity.WebSite;
+import ensembles.app.repository.RepoPayment;
+import ensembles.app.repository.RepoProfilAgence;
+import ensembles.app.repository.RepoUser;
+import ensembles.app.repository.RepoWebSite;
 import ensembles.app.service.PaymentService;
+import ensembles.app.service.WebSiteService;
 import ensembles.app.viewmodels.PaymentViewmodel;
+import ensembles.app.viewmodels.WebSiteViewModel;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class ControllerPayment implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -18,7 +29,13 @@ public class ControllerPayment implements Serializable {
 	public PaymentViewmodel paymentViewModel;
 
 	@Inject
-	PaymentService paymentService;
+	private PaymentService paymentService;
+	
+	@Inject
+	private RepoProfilAgence rPA;
+	
+	@Inject
+	private RepoWebSite repoWebSite;
 
 	public void initModifierPrix() {
 		int prix1 = 30;
@@ -31,21 +48,37 @@ public class ControllerPayment implements Serializable {
 
 	}
 
-	public void savePaymentWebsite() {
+	public void savePaymentWebsite(Long userId) {
+		
 		paymentService.savePayment(paymentViewModel.getCardNumber(), paymentViewModel.getCvv(),
 				paymentViewModel.getCardHolderName(), paymentViewModel.getExpirationDate(),
 				paymentViewModel.getPaymentMethod(), paymentViewModel.getPaypalAmount());
 
+		System.out.println("Je crée ton site là");
+		//TODO Créer le website en base de données et lui attribuer l'id de l'agence
+		
+				ProfilAgence pA = rPA.findById(userId);// trouver l'id de l'agence
+				
+				WebSite webSite = new WebSite(); //instancier un site vide 
+				
+				Long webSiteId = repoWebSite.saveWebSite(webSite); //créer l'id du site vide 
+				
+				WebSite webSiteF = repoWebSite.findById(webSiteId); // retrouver le site correspondant au site créé
+				
+				pA.setWebSite(webSiteF); // "injecter le site à l'agence"
+				
+				rPA.update(pA); // mettre à jour les infos de l'agence
+				
 		// Réinitialiser le view model
+		
 		paymentViewModel = new PaymentViewmodel();
 
-		//TODO Créer le website en base de données
-		//TODO Attribuer le website au profilAgence
-		
 		String confirmationMessage = "Votre paiement a été effectué avec succès.";
 		paymentViewModel.setShowPaymentConfirmation(true, confirmationMessage);
 
-
+		
+		
+	
 	}
 
 	public PaymentViewmodel getPaymentViewModel() {

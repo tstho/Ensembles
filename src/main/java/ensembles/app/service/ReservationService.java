@@ -48,7 +48,7 @@ public class ReservationService {
 		this.repoReservation = repoReservation;
 	}
 
-	public Reservation saveReservation(Long journeyId, Long userId) { // récuperer un id de voyage??
+	public Reservation saveReservation(Long journeyId, Long userId) { 
 		
 		Journey journey = repoJourney.findById(journeyId);
 		

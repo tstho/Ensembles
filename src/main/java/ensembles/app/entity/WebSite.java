@@ -1,10 +1,13 @@
 package ensembles.app.entity;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.JoinColumn;
+
+import javax.persistence.OneToOne;
 
 @Entity
 public class WebSite {
@@ -20,6 +23,8 @@ public class WebSite {
 	private String aboutUs;
 	
 	
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -29,14 +34,14 @@ public class WebSite {
 	public String getAboutUs() {
 		return aboutUs;
 	}
-	public void setAboutUs(String aboutUs) {
-		this.aboutUs = aboutUs;
+	public String setAboutUs(String aboutUs) {
+		return "Parlez de votre Agence";
 	}
 	public String getLogo() {
 		return logo;
 	}
-	public void setLogo(String logo) {
-		this.logo = logo;
+	public String setLogo(String logo) {
+		return "Chargez votre Logo";
 	}
 	public String getImage() {
 		return imageBackground;
@@ -56,7 +61,7 @@ public class WebSite {
 	public void setImageAboutUs(String imageAboutUs) {
 		this.imageAboutUs = imageAboutUs;
 	}
-    
+	
 		
 
 }

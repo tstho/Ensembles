@@ -66,9 +66,9 @@
 									<div class="form-group row mb-2">
 										<div class="offset-sm-4 col-sm-8">
 
-											<p:commandButton
-												actionListener="#{controllerPayment.savePaymentWebsite()}"
-												ajax="false" value="Paiement">
+											<p:commandButton value="Paiement"
+												action="#{controllerPayment.savePaymentWebsite(authBean.currentUser.id)}"
+												>
 												<p:confirm header="Confirm"
 													message="Votre paiement été bien prise en compte"
 													icon="ui-icon-alert"></p:confirm>

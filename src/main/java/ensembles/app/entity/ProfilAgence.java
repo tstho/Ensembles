@@ -32,11 +32,11 @@ public class ProfilAgence {
 	@JoinColumn(name="adresse_id")	
 	private Adresse adresse;
 
-	@OneToOne()
+	@OneToOne
 	@JoinColumn(name="user_id")
 	private User user; 
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="agency_website")
 	private WebSite webSite;
 	
