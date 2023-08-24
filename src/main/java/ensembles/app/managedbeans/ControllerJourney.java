@@ -109,12 +109,15 @@ public class ControllerJourney implements Serializable {
 
 	public String modifierJourney() {
 		journeyService.modifierJourney(journeyViewModel);
+		resetViewModel();
+		
+		// Inutile
+		//TODO appeler fonction journeyListByAgenceId
 		journeyList = repoJourney.findAll();
 
 		ControllerProfilAgence profilAgenceController = new ControllerProfilAgence();
 		profilAgenceController.updateJourneyViewModel(journeyViewModel);
 
-		resetViewModel();
 
 		return "/Journey/displayAllJourney.xhtml?faces-redirect=true";
 	}

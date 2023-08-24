@@ -2,8 +2,11 @@ package ensembles.app.repository;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
+import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.User;
 import ensembles.app.entity.WebSite;
 
@@ -33,5 +36,22 @@ public class RepoWebSite {
 		entityManager.merge(webSite);
         entityManager.flush();
 		
+	}
+
+
+	public WebSite getWebsiteByAgence(Long id) {
+
+		TypedQuery<WebSite> query = entityManager
+				.createQuery("SELECT wS FROM WebSite wS WHERE profilAgence_id = :id", WebSite.class);
+		query.setParameter("id", id);
+		
+
+		try {
+			return query.setMaxResults(1).getSingleResult();
+					//query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	
 	}
 }

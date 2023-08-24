@@ -12,9 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-
 @Entity
-
 public class ProfilAgence {
 
 	@Id
@@ -29,95 +27,106 @@ public class ProfilAgence {
 	private int telephoneResponsableSociete;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="adresse_id")	
+	@JoinColumn(name = "adresse_id")
 	private Adresse adresse;
 
 	@OneToOne
-	@JoinColumn(name="user_id")
-	private User user; 
+	@JoinColumn(name = "user_id")
+	private User user;
 
-	
-	
-	
-	 @OneToMany(mappedBy="profilAgence")
-	 private List<Journey> journeys = new LinkedList<>();
-	
-		
+	@OneToMany(mappedBy = "profilAgence")
+	private List<Journey> journeys = new LinkedList<>();
+
 	@Override
 	public String toString() {
-		return "ProfilAgence [id=" + id + ", nomSociete=" + nomSociete + ", siretSociete=" + siretSociete + ", adresse="
-				+ adresse + ", webSite=" + ", user=" + user + ", nomResponsableSociete="
-				+ nomResponsableSociete + ", prenomResponsableSociete=" + prenomResponsableSociete
-				+ ", emailResponsableSociete=" + emailResponsableSociete + ", telephoneResponsableSociete="
-				+ telephoneResponsableSociete + "]";
+		return "ProfilAgence [id=" + id + ", nomSociete=" + nomSociete + ", siretSociete=" + siretSociete
+				+ ", nomResponsableSociete=" + nomResponsableSociete + ", prenomResponsableSociete="
+				+ prenomResponsableSociete + ", emailResponsableSociete=" + emailResponsableSociete
+				+ ", telephoneResponsableSociete=" + telephoneResponsableSociete + ", adresse=" + adresse + ", user="
+				+ user + ", journeys=" + journeys + "]";
 	}
+
 	/*
 	 * getters & setters
 	 */
-
-	
 	public List<Journey> getJourneys() {
 		return journeys;
 	}
+
 	public void setJourneys(List<Journey> journeys) {
 		this.journeys = journeys;
 	}
+
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getNomSociete() {
 		return nomSociete;
 	}
+
 	public void setNomSociete(String nomSociete) {
 		this.nomSociete = nomSociete;
 	}
+
 	public String getSiretSociete() {
 		return siretSociete;
 	}
+
 	public void setSiretSociete(String siretSociete) {
 		this.siretSociete = siretSociete;
 	}
+
 	public Adresse getAdresse() {
 		return adresse;
 	}
+
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
+
 	public String getNomResponsableSociete() {
 		return nomResponsableSociete;
 	}
+
 	public void setNomResponsableSociete(String nomResponsableSociete) {
 		this.nomResponsableSociete = nomResponsableSociete;
 	}
+
 	public String getPrenomResponsableSociete() {
 		return prenomResponsableSociete;
 	}
+
 	public void setPrenomResponsableSociete(String prenomResponsableSociete) {
 		this.prenomResponsableSociete = prenomResponsableSociete;
 	}
+
 	public String getEmailResponsableSociete() {
 		return emailResponsableSociete;
 	}
+
 	public void setEmailResponsableSociete(String emailResponsableSociete) {
 		this.emailResponsableSociete = emailResponsableSociete;
 	}
+
 	public int getTelephoneResponsableSociete() {
 		return telephoneResponsableSociete;
 	}
+
 	public void setTelephoneResponsableSociete(int telephoneResponsableSociete) {
 		this.telephoneResponsableSociete = telephoneResponsableSociete;
 	}
-	
-	
 
 }

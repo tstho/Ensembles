@@ -41,10 +41,6 @@ public class WebSiteService {
 		webSite.setImageAboutUs(webSiteViewModel.getImageBackground());
 		webSite.setLogo(webSiteViewModel.getLogo());
 		
-
-		
-
-		
 		repoWebSite.update(webSite);
 	}
 	

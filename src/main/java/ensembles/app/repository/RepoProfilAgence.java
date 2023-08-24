@@ -12,6 +12,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.User;
+import ensembles.app.entity.WebSite;
 
 
 @Stateless
@@ -78,6 +79,8 @@ public class RepoProfilAgence {
 				return null;
 			}
 		
-		}	
+		}
+
+		
 
 }
