@@ -22,14 +22,7 @@ public class JourneyViewModel {
 	    private List<Service> services; 
        
 	    
-	    @Override
-		public String toString() {
-			return "JourneyViewModel [Id=" + Id + ", description=" + description + ", destination=" + destination
-					+ ", departureDate=" + departureDate + ", destinationDate=" + destinationDate + ", price=" + price
-					+ ", conveyance=" + conveyance + ", services=" + services + ", selectedServices=" + selectedServices
-					+ "]";
-		}
-
+	   
 		public String getDescription() {
 	        return description;
 	    }
