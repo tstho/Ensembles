@@ -31,6 +31,9 @@ public class AuthBean implements Serializable {
 	@Inject
 	private UserService userService;
 	
+	@Inject
+	ControllerReservation controllerReservation;
+	
 	private String message;
 
 	
@@ -78,6 +81,15 @@ public class AuthBean implements Serializable {
 			}else {
 				return "/login/inscription.xhtml?faces-redirect=true";
 			}
+		}else {
+			return "/login/inscription.xhtml?faces-redirect=true";
+		}
+	}
+	
+	public String makeReservation(Long journeyId, Long userId) {
+		if(isAuthenticated() ) {
+			return controllerReservation.saveReservation(journeyId, userId);
+			
 		}else {
 			return "/login/inscription.xhtml?faces-redirect=true";
 		}
