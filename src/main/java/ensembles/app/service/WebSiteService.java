@@ -3,6 +3,8 @@ package ensembles.app.service;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
+import ensembles.app.entity.Adresse;
+import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.WebSite;
 import ensembles.app.repository.RepoWebSite;
 import ensembles.app.viewmodels.WebSiteViewModel;
@@ -20,6 +22,24 @@ public class WebSiteService {
 		webSite.setAboutUs(webSiteViewModel.getAboutUs());
 		
 		repoWebSite.saveWebSite(webSite);
+	}
+
+
+	public void modifyWebsite(WebSiteViewModel webSiteViewModel) {
+	
+		WebSite webSite = repoWebSite.findById(webSiteViewModel.getId());
+
+		webSite.setAboutUs(webSiteViewModel.getAboutUs());
+		webSite.setColor(webSiteViewModel.getColor());
+		webSite.setImage(webSiteViewModel.getImageAboutUs());
+		webSite.setImageAboutUs(webSiteViewModel.getImageBackground());
+		webSite.setLogo(webSiteViewModel.getLogo());
+		
+
+		
+
+		
+		repoWebSite.update(webSite);
 	}
 	
 }
