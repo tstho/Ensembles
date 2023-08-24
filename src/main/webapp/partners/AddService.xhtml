@@ -8,6 +8,24 @@
 <h:head>
 	<meta charset="utf-8"></meta>
 	<title>Ensembles :: Ajout de services</title>
+
+	<!-- Inclure les fichiers CSS de Bootstrap -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+	<!-- Inclure les fichiers JavaScript de Bootstrap (jQuery requis) -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+	<!-- Inclure les fichiers CSS et JS de Bootstrap Datepicker -->
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
 </h:head>
 <h:body>
 
@@ -48,28 +66,29 @@
 											maxlength="20" /></td>
 								</tr>
 								<tr>
-									<td><h:outputLabel value="Début : " /></td>
-									<td><p:datePicker
+									<td><h:outputLabel  for="datePickerBegin" value="Début : " /></td>
+									<td><h:inputText id="datePickerBegin"
 											value="#{controllerService.serviceViewModel.begin}"
-											size="20" maxlength="20" /></td>
+											styleClass="form-control datepicker" /></td>
 								</tr>
 								<tr>
 									<td><h:outputLabel value="Fin : " /></td>
-									<td><p:datePicker
+									<td><h:inputText
 											value="#{controllerService.serviceViewModel.end}"
-											size="20" maxlength="20" /></td>
+											styleClass="form-control datepicker" /></td>
 								</tr>
+
 								<tr>
-									<td><h:outputLabel value="Type de Service : " /></td>
-									<td><p:selectOneMenu
-											value="#{controllerService.serviceViewModel.serviceType}"
-											style="width:350px">
-											<f:selectItem itemLabel="Select Service type"
-												itemValue="#{controllerService.serviceViewModel.serviceType}"
-												noSelectionOption="true" />
-											<f:selectItems
-												value="#{controllerService.serviceViewModel.serviceType}" />
-										</p:selectOneMenu></td>
+									<td><h:outputLabel value="Type de service : " /></td>
+
+									<td><h:selectOneMenu name="service"
+											value="#{controllerService.serviceViewModel.serviceType}">
+
+											<f:selectItem itemValue="#{ServiceType.controllerService}"
+												itemLabel="#{SelectService}" />
+
+											<f:selectItems value="#{controllerService.serviceOptions}" />
+										</h:selectOneMenu></td>
 								</tr>
 								<tr>
 									<td><h:outputLabel value="Prix: " /></td>
@@ -88,7 +107,7 @@
 											action="#{controllerService.saveService(authBean.currentUser.id)}" /></td>
 								</tr>
 							</table>
-            
+
 						</h:form>
 					</div>
 				</div>
@@ -99,6 +118,13 @@
 
 
 	</ui:composition>
-
+	<script>
+        $(document).ready(function() {
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy', // Format de la date
+                autoclose: true
+            });
+        });
+    </script>
 </h:body>
 </html>

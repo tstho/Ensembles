@@ -23,10 +23,7 @@ public class Service {
 	private String place;
 	private Date begin;
 	private Date end;
-	
-	@Enumerated(EnumType.STRING)
 	private ServiceType ServiceType ;
-	
 	private Double price;
 	private String Description;
 	
