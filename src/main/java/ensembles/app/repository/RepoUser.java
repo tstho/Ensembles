@@ -90,7 +90,6 @@ public class RepoUser {
 	}
 
 
-
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}

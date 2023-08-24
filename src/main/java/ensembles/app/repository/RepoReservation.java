@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
+import javax.persistence.TypedQuery;
 
 import ensembles.app.entity.Reservation;
 
@@ -50,6 +50,26 @@ public class RepoReservation {
 		
 		
 		return entityManager.createQuery(reqSelect, Reservation.class).getResultList();
+	}
+
+	public List<Reservation> getAllReservationsByJourneyId(Long id) {
+
+		String reqSelect="SELECT r FROM Reservation r WHERE journey_id = :id";
+		TypedQuery<Reservation> query = entityManager.createQuery(reqSelect, Reservation.class);
+		query.setParameter("id", id);
+		
+		try {
+			return query.getResultList();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public void delete(Reservation reservation) {
+        entityManager.remove(reservation);
+        entityManager.flush();
 	}
 
 }

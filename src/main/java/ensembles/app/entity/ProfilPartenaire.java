@@ -1,11 +1,15 @@
 package ensembles.app.entity;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -21,6 +25,10 @@ public class ProfilPartenaire {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "adresse_id")
 	private Adresse adresse;
+	
+	
+	@OneToMany(mappedBy="profilPartenaire")
+	 private List<Service> services = new LinkedList<>();
 
 	@OneToOne
 	@JoinColumn(name="user_id")

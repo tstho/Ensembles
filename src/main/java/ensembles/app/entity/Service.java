@@ -1,17 +1,15 @@
 package ensembles.app.entity;
 
-import java.util.ArrayList;
+
 import java.util.Date;
-import java.util.List;
-
-
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -31,17 +29,11 @@ public class Service {
 	
 	private Double price;
 	private String Description;
-//
-//	@ManyToMany(mappedBy = "services")
-//	    private List<Journey> journeys = new ArrayList<>();
-//	
-//	public List<Journey> getJourneys() {
-//		return journeys;
-//	}
-//
-//	public void setJourneys(List<Journey> journeys) {
-//		this.journeys = journeys;
-//	}
+	
+	 @ManyToOne
+	 @JoinColumn(name="partenaire_id")   
+	 private ProfilPartenaire profilPartenaire;
+  
 	public Long getId() {
 		return id;
 	}
@@ -87,9 +79,16 @@ public class Service {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+	public ProfilPartenaire getProfilPartenaire() {
+		return profilPartenaire;
+	}
+	public void setProfilPartenaire(ProfilPartenaire profilPartenaire) {
+		this.profilPartenaire = profilPartenaire;
+	}
 	public void setDescription(String description) {
 		Description = description;
 	}
 	
 	
 }
+
