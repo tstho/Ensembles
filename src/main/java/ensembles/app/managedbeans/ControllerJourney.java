@@ -17,6 +17,7 @@ import ensembles.app.repository.RepoJourney;
 import ensembles.app.repository.RepoProfilAgence;
 import ensembles.app.repository.RepoReservation;
 import ensembles.app.service.JourneyService;
+import ensembles.app.service.ProfilAgenceService;
 import ensembles.app.service.ReservationService;
 import ensembles.app.viewmodels.JourneyViewModel;
 
@@ -34,28 +35,23 @@ public class ControllerJourney implements Serializable {
 	private RepoJourney repoJourney;
 	@Inject
 	private RepoProfilAgence repoProfilAgence;
+	@Inject
+	private ProfilAgenceService profilAgenceService;
 
 	private List<Journey> journeyList;
 
 	private Journey currentJourney;
 	
-	@PostConstruct
-	
-
 
 	/*
-	 * Méthode d'enregistrement d'un voyage
+	 * Méthode pour récupérer la liste des modes de transport
 	 */
-
-	public String saveJourney(Long userId) {
-
-		ProfilAgence profilAgence = repoProfilAgence.findByUserId(userId);
-		
-		journeyService.saveJourney(profilAgence, journeyViewModel);
-		
-		journeyList = repoJourney.findByAgenceId(profilAgence.getId());
-
-		return "/Journey/displayAllJourney.xhtml?faces-redirect=true";
+	public List<Conveyance> getConveyanceOptions() {
+		List<Conveyance> options = new ArrayList<>();
+		for (Conveyance conveyance : Conveyance.values()) {
+			options.add(conveyance);
+		}
+		return options;
 	}
 
 	/*
@@ -70,72 +66,36 @@ public class ControllerJourney implements Serializable {
 		return currentJourney;
 
 	}
+	
 
 	/*
-	 * Méthode pour récupérer la liste des modes de transport
-	 */
-	public List<Conveyance> getConveyanceOptions() {
-		List<Conveyance> options = new ArrayList<>();
-		for (Conveyance conveyance : Conveyance.values()) {
-			options.add(conveyance);
-		}
-		return options;
-	}
-
-	/*
-	 * Méthode de redirection vers le formulaire de modification
-	 */
-	public String redirectToEdit(Long journeyId) {
-		initModifierJourney(journeyId);
-		return "/Journey/ModifierJourney.xhtml?faces-redirect=true";
-	}
-
-	/*
-	 * Méthode d'initialisation du formulaire de modification
+	 * Méthode d'enregistrement d'un voyage
 	 */
 
-	public void initModifierJourney(Long journeyId) {
+	public String saveJourney(Long userId) {
+
+		ProfilAgence profilAgence = repoProfilAgence.findByUserId(userId);
 		
-		Journey journey = repoJourney.findById(journeyId);
+		journeyService.saveJourney(profilAgence, journeyViewModel);
 		
-		journeyViewModel = new JourneyViewModel();
-		// initialisation des champs du viewModel
-		journeyViewModel.setId(journey.getId());
-		journeyViewModel.setDescription(journey.getDescription());
-		journeyViewModel.setDestination(journey.getDestination());
-		journeyViewModel.setDestinationDate(journey.getDestinationDate());
-		journeyViewModel.setPrice(journey.getPrice());
-		journeyViewModel.setConveyance(journey.getConveyance());
-		journeyViewModel.setDepartureDate(journey.getDepartureDate());
-		journeyViewModel.setProfilAgence(journey.getProfilAgence());
-
-		System.out.println(journey.toString());
-		System.out.println(journeyViewModel.toString());
-	}
-
-	/*
-	 * Méthode de modification d'un voyage
-	 */
-
-	public String modifierJourney() {
-		journeyService.modifierJourney(journeyViewModel);
-		resetViewModel();
-		
-		journeyList = journeyListByProfilAgence(journeyViewModel.getProfilAgence().getId());
-//
+		journeyList = journeyListByProfilAgence(profilAgence.getId());
 
 		return "/Journey/displayAllJourney.xhtml?faces-redirect=true";
 	}
-
+	
 	/*
-	 * Méthode de suppression d'un voyage
+	 * Méthode redirection vers listes de voyages
 	 */
 
-	public void supprimerJourney(Long id) {
-		journeyService.supprimerJourney(id);
-		journeyList = repoJourney.findAll();
-		resetViewModel();
+	public String redirectToJourneyList(Long userId) {
+
+		ProfilAgence profilAgence = repoProfilAgence.findByUserId(userId);
+		
+		journeyList = journeyListByProfilAgence(profilAgence.getId());
+
+		return "/Journey/displayAllJourney.xhtml?faces-redirect=true";
 	}
+	
 	/*
 	 * Méthode pour récupérer la liste des voyages de l'agence 
 	 */
@@ -145,6 +105,68 @@ public class ControllerJourney implements Serializable {
 
 		return journeyList;
 
+	}
+	
+
+	/*
+	 * Méthode de redirection vers le formulaire de modification
+	 */
+	public String redirectToEdit(Long journeyId, Long userId) {
+		initModifierJourney(journeyId, userId);
+		return "/Journey/ModifierJourney.xhtml?faces-redirect=true";
+	}
+
+	/*
+	 * Méthode d'initialisation du formulaire de modification
+	 */
+
+	public void initModifierJourney(Long journeyId, Long userId) {
+		
+		Journey journey = repoJourney.findById(journeyId);
+		ProfilAgence profilAgence = profilAgenceService.findByUserId(userId);
+		
+		journeyViewModel = new JourneyViewModel();
+		// initialisation des champs du viewModel
+		journeyViewModel.setId(journey.getId());
+		journeyViewModel.setDescription(journey.getDescription());
+		journeyViewModel.setDestination(journey.getDestination());
+		journeyViewModel.setDepartureDate(journey.getDepartureDate());
+		journeyViewModel.setDestinationDate(journey.getDestinationDate());
+		journeyViewModel.setPrice(journey.getPrice());
+		journeyViewModel.setConveyance(journey.getConveyance());
+		journeyViewModel.setProfilAgence(profilAgence);
+
+		System.out.println(journey.toString());
+		System.out.println(journeyViewModel.toString());
+	}
+
+	/*
+	 * Méthode de modification d'un voyage
+	 */
+
+	public String modifierJourney( Long userId) {
+		
+		journeyService.modifierJourney(journeyViewModel);
+		resetViewModel();
+		
+		System.out.println("modification BDD effectué");
+		
+		return redirectToJourneyList(userId);
+	}
+
+	/*
+	 * Méthode de suppression d'un voyage
+	 */
+
+	public void supprimerJourney(Long journeyId, Long userId) {
+		
+		journeyService.supprimerJourney(journeyId);
+
+		// on met à jour la liste des voyages affiché
+		ProfilAgence profilAgence = profilAgenceService.findByUserId(userId);
+		
+		journeyList = journeyListByProfilAgence(profilAgence.getId());
+		
 	}
 	
 

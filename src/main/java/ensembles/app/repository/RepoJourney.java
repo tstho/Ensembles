@@ -9,7 +9,6 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import ensembles.app.entity.Journey;
-import ensembles.app.entity.Reservation;
 
 @Stateless
 public class RepoJourney {

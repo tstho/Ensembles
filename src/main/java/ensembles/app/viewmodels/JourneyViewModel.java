@@ -1,11 +1,13 @@
 package ensembles.app.viewmodels;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
 import ensembles.app.entity.Conveyance;
 import ensembles.app.entity.ProfilAgence;
+import ensembles.app.entity.Service;
 
 @ManagedBean
 public class JourneyViewModel {
@@ -18,8 +20,19 @@ public class JourneyViewModel {
 	private Conveyance conveyance;
 	private String description;
 	private ProfilAgence profilAgence;
+    private List<Service> services; 
+    private List<Service> selectedServices;
 	
+    
+    
 	
+	@Override
+	public String toString() {
+		return "JourneyViewModel [Id=" + Id + ", destination=" + destination + ", departureDate=" + departureDate
+				+ ", destinationDate=" + destinationDate + ", price=" + price + ", conveyance=" + conveyance
+				+ ", description=" + description + ", profilAgence=" + profilAgence + ", services=" + services
+				+ ", selectedServices=" + selectedServices + "]";
+	}
 	public Long getId() {
 		return Id;
 	}
@@ -67,6 +80,18 @@ public class JourneyViewModel {
 	}
 	public void setProfilAgence(ProfilAgence profilAgence) {
 		this.profilAgence = profilAgence;
+	}
+	public List<Service> getServices() {
+		return services;
+	}
+	public void setServices(List<Service> services) {
+		this.services = services;
+	}
+	public List<Service> getSelectedServices() {
+		return selectedServices;
+	}
+	public void setSelectedServices(List<Service> selectedServices) {
+		this.selectedServices = selectedServices;
 	}
 
 	

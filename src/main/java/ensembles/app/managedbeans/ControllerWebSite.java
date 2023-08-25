@@ -41,7 +41,7 @@ public class ControllerWebSite implements Serializable {
 		webSiteService.saveWebSite(webSiteViewModel);
 	}
 
-	// Redirection Modification du profil de l'agence
+	// Redirection Modification du website
 	public String redirectToEdit(Long userId) {
 		initModifierWebsite(userId);
 		return "/templates/configTemplate.xhtml?faces-redirect=true";

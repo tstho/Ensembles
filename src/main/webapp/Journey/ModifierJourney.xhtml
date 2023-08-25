@@ -87,7 +87,7 @@
 
 								<tr>
 								<td>	<h:commandButton value="Enregistrer les modifications"
-										action="#{controllerJourney.modifierJourney()}" /></td>
+										action="#{controllerJourney.modifierJourney(authBean.currentUser.id)}" /></td>
 								</tr>
 							</table>
 						</h:form>
