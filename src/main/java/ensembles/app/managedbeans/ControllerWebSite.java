@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import ensembles.app.entity.Journey;
 import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.WebSite;
+import ensembles.app.repository.RepoJourney;
 import ensembles.app.repository.RepoProfilAgence;
 import ensembles.app.repository.RepoWebSite;
 import ensembles.app.service.ProfilAgenceService;
@@ -38,6 +39,8 @@ public class ControllerWebSite implements Serializable {
 	private RepoProfilAgence repoProfilAgence;
 	@Inject
 	private RepoWebSite repoWebSite;
+	@Inject
+	private RepoJourney repoJourney;
 	
 	private List<Journey> journeyList; 
 	
@@ -63,9 +66,24 @@ public class ControllerWebSite implements Serializable {
     		webSiteViewModel.setImageBackground(webSite.getImageBackground());
     		webSiteViewModel.setLogo(webSite.getLogo());
     		webSiteViewModel.setProfilAgence(webSite.getProfilAgence());
+    		
+    		journeyListByProfilAgence(webSite.getProfilAgence().getId());
+    		
+    		
         }
     }
 
+    /*
+	 * Méthode pour récupérer la liste des voyages de l'agence 
+	 */
+	public List<Journey> journeyListByProfilAgence(Long agenceId) {
+		
+		journeyList = repoJourney.findByAgenceId(agenceId);
+
+		return journeyList;
+
+	}
+    
 	public void saveWebSite() {
 		webSiteService.saveWebSite(webSiteViewModel);
 	}
