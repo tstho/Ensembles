@@ -38,6 +38,9 @@ public class ControllerJourney implements Serializable {
 	private List<Journey> journeyList;
 
 	private Journey currentJourney;
+	
+	@PostConstruct
+	
 
 
 	/*
@@ -68,6 +71,9 @@ public class ControllerJourney implements Serializable {
 
 	}
 
+	/*
+	 * Méthode pour récupérer la liste des modes de transport
+	 */
 	public List<Conveyance> getConveyanceOptions() {
 		List<Conveyance> options = new ArrayList<>();
 		for (Conveyance conveyance : Conveyance.values()) {
@@ -89,8 +95,11 @@ public class ControllerJourney implements Serializable {
 	 */
 
 	public void initModifierJourney(Long journeyId) {
+		
 		Journey journey = repoJourney.findById(journeyId);
+		
 		journeyViewModel = new JourneyViewModel();
+		// initialisation des champs du viewModel
 		journeyViewModel.setId(journey.getId());
 		journeyViewModel.setDescription(journey.getDescription());
 		journeyViewModel.setDestination(journey.getDestination());
@@ -98,6 +107,7 @@ public class ControllerJourney implements Serializable {
 		journeyViewModel.setPrice(journey.getPrice());
 		journeyViewModel.setConveyance(journey.getConveyance());
 		journeyViewModel.setDepartureDate(journey.getDepartureDate());
+		journeyViewModel.setProfilAgence(journey.getProfilAgence());
 
 		System.out.println(journey.toString());
 		System.out.println(journeyViewModel.toString());
@@ -111,12 +121,7 @@ public class ControllerJourney implements Serializable {
 		journeyService.modifierJourney(journeyViewModel);
 		resetViewModel();
 		
-		// Inutile
-		//TODO appeler fonction journeyListByAgenceId
-		journeyList = repoJourney.findAll();
-
-//		ControllerProfilAgence profilAgenceController = new ControllerProfilAgence();
-//		profilAgenceController.updateJourneyViewModel(journeyViewModel);
+		journeyList = journeyListByProfilAgence(journeyViewModel.getProfilAgence().getId());
 //
 
 		return "/Journey/displayAllJourney.xhtml?faces-redirect=true";
@@ -131,28 +136,17 @@ public class ControllerJourney implements Serializable {
 		journeyList = repoJourney.findAll();
 		resetViewModel();
 	}
+	/*
+	 * Méthode pour récupérer la liste des voyages de l'agence 
+	 */
+	public List<Journey> journeyListByProfilAgence(Long agenceId) {
+		
+		journeyList = repoJourney.findByAgenceId(agenceId);
 
-	public String journeyListByProfilAgence(Long profilAgenceId) {
-
-		journeyList = new ArrayList<Journey>();
-
-		journeyList = repoJourney.getAllJourneysByProfilAgenceId(profilAgenceId);
-
-		for (Journey journey : journeyList) {
-			Long journeyId = journey.getId();
-			Journey voyage = repoJourney.findById(journeyId);
-
-			System.out.println("j'ajoute dans la liste et la voici");
-
-			journeyList.add(journey);
-
-			System.out.println(journeyList.toString());
-
-		}
-
-		return "/journey/displayJourneyByProfilAgence.xhtml?faces-redirect=true";
+		return journeyList;
 
 	}
+	
 
 	/*
 	 * Méthode pour reset le view model

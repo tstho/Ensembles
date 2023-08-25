@@ -22,43 +22,38 @@ import java.util.List;
 public class ControllerWebSite implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Inject
 	WebSiteViewModel webSiteViewModel;
-	
+
 	@Inject
 	private WebSiteService webSiteService;
-	
+
 	@Inject
 	private ProfilAgenceService profilAgenceService;
-	
+
 	@Inject
 	private RepoProfilAgence repoProfilAgence;
 	@Inject
 	private RepoWebSite repoWebSite;
-	
+
 	public void saveWebSite() {
 		webSiteService.saveWebSite(webSiteViewModel);
 	}
-	
-	// Modification du profil de l'agence
+
+	// Redirection Modification du profil de l'agence
 	public String redirectToEdit(Long userId) {
 		initModifierWebsite(userId);
 		return "/templates/configTemplate.xhtml?faces-redirect=true";
 	}
 
 	public void initModifierWebsite(Long userId) {
-		System.out.println("init Modifier Website : ");
+
 		ProfilAgence profilAgence = profilAgenceService.findByUserId(userId);
-		System.out.println("Profil Agence : ");
-		System.out.println(profilAgence.toString());
 		WebSite webSite = repoWebSite.getWebsiteByAgence(profilAgence.getId());
-		System.out.println(" Website : ");
-		System.out.println(webSite.toString());
-		
-		
+
 		webSiteViewModel = new WebSiteViewModel();
-		
+
 		// initialisation des champs du viewModel
 		webSiteViewModel.setId(webSite.getId());
 		webSiteViewModel.setAboutUs(webSite.getAboutUs());
@@ -67,27 +62,29 @@ public class ControllerWebSite implements Serializable {
 		webSiteViewModel.setImageBackground(webSite.getImageBackground());
 		webSiteViewModel.setLogo(webSite.getLogo());
 		webSiteViewModel.setProfilAgence(profilAgence);
-		
-		System.out.println(webSiteViewModel.toString());
+
 	}
-		
+
+	/*
+	 * Méthode pour modifier les champs du website
+	 */
 	public String modifierWebsite() {
 
-		System.out.println("Je modifie ton site là");
-		System.out.println(webSiteViewModel.toString());
 		webSiteService.modifyWebsite(webSiteViewModel);
-//			profilList = rU.findAll();
 
-//			resetViewModel();
+		resetViewModel();
 
 		return "/templates/templateOne.xhtml?faces-redirect=true";
+	}
+
+	private WebSiteViewModel resetViewModel() {
+		return this.webSiteViewModel = new WebSiteViewModel();
+
 	}
 
 	/*
 	 * getters & setters
 	 */
-	
-	
 
 	public WebSiteViewModel getWebSiteViewModel() {
 		return webSiteViewModel;
@@ -129,8 +126,4 @@ public class ControllerWebSite implements Serializable {
 		this.repoWebSite = repoWebSite;
 	}
 
-
-
-	
-	
 }
