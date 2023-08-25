@@ -49,10 +49,14 @@
 						<div id="packages"
 							class="alternativeSubPart container-fluid p-0 m-0">
 							<div class="row p-0 m-0">
-								<div class="card m-0 p-0 col-12 col-md-6 col-xl-4 small-zoom">
+							
+							<!-- NEW  cards -->
+							
+							 <ui:repeat value="#{controllerWebSite.journeyList}" var="j" varStatus="loop">
+					        
+					           <div class="card m-0 p-0 col-12 col-md-6 col-xl-4 small-zoom">
 									<div class="card-header bg-info text-white text-center">
-										<a data-bs-toggle="collapse" data-bs-target="#collapse-pkgOne">nom
-											du package</a>
+										<a data-bs-toggle="collapse" data-bs-target="#collapse-pkgOne">#{j.destination}</a>
 									</div>
 									<div id="collapse-pkgOne" class="collapse">
 										<img class="card-img-top" src="../images/Auroreboreale.jpg"
@@ -62,71 +66,23 @@
 											<p class="card-text">
 												<small class="text-muted">de Paris</small>
 											</p>
-											<p class="card-text">Destination :</p>
-											<p class="card-text">Transport :</p>
-											<p class="card-text">Aller :</p>
-											<p class="card-text">Retour :</p>
+											<p class="card-text">Destination : #{j.destination}</p>
+											<p class="card-text">Transport : #{j.conveyance}</p>
+											<p class="card-text">Aller : #{j.departureDate}</p>
+											<p class="card-text">Retour : #{j.destinationDate}</p>
 
 											<a href="#" class="btn btn-primary float-right">Je
 												réserve</a>
 										</div>
 										<div class="card-footer">
-											<small class="text-muted">€</small>
+											<small class="text-muted">#{j.price} €</small>
 										</div>
 									</div>
 								</div>
-								<div class="card m-0 p-0 col-12 col-md-6 col-xl-4 small-zoom">
-									<div class="card-header bg-info text-white text-center">
-										<a data-bs-toggle="collapse" data-bs-target="#collapse-pkgTwo">nom
-											du package</a>
-									</div>
-									<div id="collapse-pkgTwo" class="collapse">
-										<img class="card-img-top" src="../images/1cruise.jpg"
-											alt="Card image cap" />
-										<div class="card-body">
-											<div class="card-text">Description du package</div>
-											<p class="card-text">
-												<small class="text-muted">de Paris</small>
-											</p>
-											<p class="card-text">Destination :</p>
-											<p class="card-text">Transport :</p>
-											<p class="card-text">Aller :</p>
-											<p class="card-text">Retour :</p>
-
-											<a href="#" class="btn btn-primary float-right">Je
-												réserve</a>
-										</div>
-										<div class="card-footer">
-											<small class="text-muted">€</small>
-										</div>
-									</div>
-								</div>
-								<div class="card m-0 p-0 col-12 col-md-6 col-xl-4 small-zoom">
-									<div class="card-header bg-info text-white text-center">
-										<a data-bs-toggle="collapse"
-											data-bs-target="#collapse-pkgThree">nom du package</a>
-									</div>
-									<div id="collapse-pkgThree" class="collapse">
-										<img class="card-img-top" src="../images/building.webp"
-											alt="Card image cap" />
-										<div class="card-body">
-											<div class="card-text">Description du package</div>
-											<p class="card-text">
-												<small class="text-muted">de Paris</small>
-											</p>
-											<p class="card-text">Destination :</p>
-											<p class="card-text">Transport :</p>
-											<p class="card-text">Aller :</p>
-											<p class="card-text">Retour :</p>
-
-											<a href="#" class="btn btn-primary float-right">Je
-												réserve</a>
-										</div>
-										<div class="card-footer">
-											<small class="text-muted">€</small>
-										</div>
-									</div>
-								</div>
+						       
+						    </ui:repeat>
+				
+								
 							</div>
 						</div>
 					</div>
@@ -134,7 +90,6 @@
 			</section>
 
 			<!-- About Container -->
-			<h:form>
 				<section id="about" class="bg-light text-dark py-5">
 
 					<div class="container" style="max-width: 640px;">
@@ -155,19 +110,18 @@
 										<p class="card-text justify text-center">#{controllerWebSite.webSiteViewModel.aboutUs}
 											</p>
 											<p class="card-text">
-          <small class="text-muted float-right" >signature</small>
-        </p>
+								          <small class="text-muted float-right" >signature</small>
+								        </p>
 									</div>
 							</div>
 							</div>
 						</div>
 
 					</div>
-				</section>
-			</h:form>
+				</section>>
 
 			<footer class="bg-dark text-white text-center py-3">
-				<p class="mb-0">Powered by EnsembleS</p>
+				<p class="mb-0">créé grâce à EnsembleS</p>
 			</footer>
 
 			<script
