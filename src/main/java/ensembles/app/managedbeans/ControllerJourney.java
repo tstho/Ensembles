@@ -115,9 +115,9 @@ public class ControllerJourney implements Serializable {
 		//TODO appeler fonction journeyListByAgenceId
 		journeyList = repoJourney.findAll();
 
-		ControllerProfilAgence profilAgenceController = new ControllerProfilAgence();
-		profilAgenceController.updateJourneyViewModel(journeyViewModel);
-
+//		ControllerProfilAgence profilAgenceController = new ControllerProfilAgence();
+//		profilAgenceController.updateJourneyViewModel(journeyViewModel);
+//
 
 		return "/Journey/displayAllJourney.xhtml?faces-redirect=true";
 	}

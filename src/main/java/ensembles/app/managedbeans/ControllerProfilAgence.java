@@ -29,31 +29,10 @@ public class ControllerProfilAgence implements Serializable {
 	@Inject
 	private ProfilAgenceService profilAgenceService;
 	
-
-	@Inject
-	private RepoProfilAgence repoProfilAgence;
-
-	@Inject
-	private ProfilAgenceService proAgenceService;
+	
+	private List<JourneyViewModel> journeyViewModels = new ArrayList<>();
 
 	private List<ProfilAgence> profilAgenceList;
-
-	@PostConstruct
-	public void init() {
-
-		profilAgenceList = repoProfilAgence.findAll();
-		System.out.println(profilAgenceList);
-	}
-	
-	
-	
-	
-	
-
-//	
-//	public void saveProfilAgence() {
-//		profilAgenceService.saveProfilAgence(profilAgenceViewModel);
-//	}
 
 	
 
@@ -107,13 +86,10 @@ public class ControllerProfilAgence implements Serializable {
 
 	}
 
-	public List<JourneyViewModel> getJourneysForAgence() {
-		return profilAgenceViewModel.getJourneyViewModels();
-	}
-
-	public void updateJourneys() {
-		profilAgenceViewModel.setJourneyViewModels(new ArrayList<>(profilAgenceViewModel.getJourneyViewModels()));
-	}
+//
+//	public void updateJourneys() {
+//		profilAgenceViewModel.setJourneyViewModels(new ArrayList<>(profilAgenceViewModel.getJourneyViewModels()));
+//	}
 
 	public String modifierProfilA() {
 
@@ -124,41 +100,19 @@ public class ControllerProfilAgence implements Serializable {
 
 		return "/login/authentification.xhtml?faces-redirect=true";
 	}
+
 	
-	
-	
-	public RepoProfilAgence getRepoProfilAgence() {
-		return repoProfilAgence;
+/*
+ * getters & setters
+ */
+
+	public ProfilAgenceViewModel getProfilAgenceViewModel() {
+		return profilAgenceViewModel;
 	}
 
-	public void setRepoProfilAgence(RepoProfilAgence repoProfilAgence) {
-		this.repoProfilAgence = repoProfilAgence;
+	public void setProfilAgenceViewModel(ProfilAgenceViewModel profilAgenceViewModel) {
+		this.profilAgenceViewModel = profilAgenceViewModel;
 	}
-
-	public ProfilAgenceService getProAgenceService() {
-		return proAgenceService;
-	}
-
-	public void setProAgenceService(ProfilAgenceService proAgenceService) {
-		this.proAgenceService = proAgenceService;
-	}
-
-	public List<ProfilAgence> getProfilAgenceList() {
-		return profilAgenceList;
-	}
-
-	public void setProfilAgenceList(List<ProfilAgence> profilAgenceList) {
-		this.profilAgenceList = profilAgenceList;
-	}
-
-
-
-
-
-
-	private List<JourneyViewModel> journeyViewModels = new ArrayList<>();
-
-
 
 	public ProfilAgenceService getProfilAgenceService() {
 		return profilAgenceService;
@@ -176,16 +130,12 @@ public class ControllerProfilAgence implements Serializable {
 		this.journeyViewModels = journeyViewModels;
 	}
 
-	public void updateJourneyViewModel(JourneyViewModel journeyViewModel) {
-
+	public List<ProfilAgence> getProfilAgenceList() {
+		return profilAgenceList;
 	}
 
-	public ProfilAgenceViewModel getProfilAgenceViewModel() {
-		return profilAgenceViewModel;
+	public void setProfilAgenceList(List<ProfilAgence> profilAgenceList) {
+		this.profilAgenceList = profilAgenceList;
 	}
-
-	public void setProfilAgenceViewModel(ProfilAgenceViewModel profilAgenceViewModel) {
-		this.profilAgenceViewModel = profilAgenceViewModel;
-	}
-
+	
 }

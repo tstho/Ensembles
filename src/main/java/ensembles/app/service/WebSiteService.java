@@ -22,7 +22,7 @@ public class WebSiteService {
 		webSite.setAboutUs(webSiteViewModel.getAboutUs());
 		webSite.setId(webSiteViewModel.getId());
 		webSite.setColor(webSiteViewModel.getColor());
-		webSite.setImage(webSiteViewModel.getImageBackground());
+		webSite.setImageBackground(webSiteViewModel.getImageBackground());
 		webSite.setImageAboutUs(webSiteViewModel.getImageAboutUs());
 		
 		webSite.setLogo(webSiteViewModel.getLogo());
@@ -32,14 +32,21 @@ public class WebSiteService {
 
 
 	public void modifyWebsite(WebSiteViewModel webSiteViewModel) {
+		
+		System.out.println("Le viewmodel dans le service");
+		System.out.println(webSiteViewModel);
 	
 		WebSite webSite = repoWebSite.findById(webSiteViewModel.getId());
 
-		webSite.setAboutUs(webSiteViewModel.getAboutUs());
-		webSite.setColor(webSiteViewModel.getColor());
-		webSite.setImage(webSiteViewModel.getImageAboutUs());
-		webSite.setImageAboutUs(webSiteViewModel.getImageBackground());
 		webSite.setLogo(webSiteViewModel.getLogo());
+		webSite.setImageBackground(webSiteViewModel.getImageBackground());
+		webSite.setColor(webSiteViewModel.getColor());
+		webSite.setImageAboutUs(webSiteViewModel.getImageAboutUs());
+		webSite.setAboutUs(webSiteViewModel.getAboutUs());
+		webSite.setProfilAgence(webSiteViewModel.getProfilAgence());
+		
+		
+		System.out.println(webSite.toString());
 		
 		repoWebSite.update(webSite);
 	}

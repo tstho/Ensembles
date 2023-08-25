@@ -48,9 +48,15 @@ public class ControllerWebSite implements Serializable {
 	}
 
 	public void initModifierWebsite(Long userId) {
-
+		System.out.println("init Modifier Website : ");
 		ProfilAgence profilAgence = profilAgenceService.findByUserId(userId);
+		System.out.println("Profil Agence : ");
+		System.out.println(profilAgence.toString());
 		WebSite webSite = repoWebSite.getWebsiteByAgence(profilAgence.getId());
+		System.out.println(" Website : ");
+		System.out.println(webSite.toString());
+		
+		
 		webSiteViewModel = new WebSiteViewModel();
 		
 		// initialisation des champs du viewModel
@@ -58,15 +64,17 @@ public class ControllerWebSite implements Serializable {
 		webSiteViewModel.setAboutUs(webSite.getAboutUs());
 		webSiteViewModel.setColor(webSite.getColor());
 		webSiteViewModel.setImageAboutUs(webSite.getImageAboutUs());
-		webSiteViewModel.setImageBackground(webSite.getImage());
+		webSiteViewModel.setImageBackground(webSite.getImageBackground());
 		webSiteViewModel.setLogo(webSite.getLogo());
-		webSiteViewModel.setProfilAgence(webSite.getProfilAgence());
+		webSiteViewModel.setProfilAgence(profilAgence);
+		
 		System.out.println(webSiteViewModel.toString());
 	}
 		
 	public String modifierWebsite() {
 
 		System.out.println("Je modifie ton site là");
+		System.out.println(webSiteViewModel.toString());
 		webSiteService.modifyWebsite(webSiteViewModel);
 //			profilList = rU.findAll();
 

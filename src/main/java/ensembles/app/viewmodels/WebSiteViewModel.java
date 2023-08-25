@@ -21,7 +21,8 @@ public class WebSiteViewModel {
 	@Override
 	public String toString() {
 		return "WebSiteViewModel [id=" + id + ", logo=" + logo + ", imageBackground=" + imageBackground + ", color="
-				+ color + ", imageAboutUs=" + imageAboutUs + ", aboutUs=" + aboutUs + "]";
+				+ color + ", imageAboutUs=" + imageAboutUs + ", aboutUs=" + aboutUs + ", profilAgence=" + profilAgence
+				+ "]";
 	}
 	/*
 	 * getters & setters
