@@ -28,9 +28,10 @@
 							<li class="nav-item"><a class="nav-link text-white"
 								href="http://127.0.0.1:8080/ensembles-app/agency/profilAgence.xhtml">Profil
 									agence</a></li>
-							<li class="nav-item"><a class="nav-link text-white" href="http://127.0.0.1:8080/ensembles-app/templates/configTemplate.xhtml">
+							<li class="nav-item"><a class="nav-link text-white"
+								href="http://127.0.0.1:8080/ensembles-app/templates/configTemplate.xhtml">
 									Configuration</a></li>
-									<li><a class="nav-link text-white"
+							<li><a class="nav-link text-white"
 								href="../templates/templateOne.xhtml">MON SITE</a></li>
 							<li class="nav-item"><a class="nav-link text-white"
 								href="http://127.0.0.1:8080/ensembles-app/Journey/displayAllJourney.xhtml">
@@ -38,8 +39,8 @@
 							<li><a class="nav-link text-white"
 								href="http://127.0.0.1:8080/ensembles-app/Journey/Journey.xhtml">
 									Ajouter un voyage</a></li>
-							
-							
+
+
 							<li class="nav-item"><a class="nav-link text-white" href="#">
 									Abonnement</a></li>
 						</ul>
@@ -50,10 +51,7 @@
 						<h3>Liste des voyages</h3>
 
 						<h:dataTable value="#{controllerJourney.journeyList}" var="j">
-							<h:column>
-								<f:facet name="header">ID</f:facet>
-			#{j.id}
-		</h:column>
+
 							<h:column>
 								<f:facet name="header">Destination</f:facet>
 								#{j.destination}
@@ -61,27 +59,27 @@
 
 							<h:column>
 								<f:facet name="header">Date du début du voyage</f:facet>
-			#{j.departureDate}
-		</h:column>
+								#{j.departureDate}
+							</h:column>
 
 							<h:column>
 								<f:facet name="header">Date de fin du voyage </f:facet>
-			#{j.destinationDate}
-		</h:column>
+								#{j.destinationDate}
+							</h:column>
 							<h:column>
 								<f:facet name="header">Moyen de Transport</f:facet>
-							#{j.conveyance}
-						</h:column>
+								#{j.conveyance}
+							</h:column>
 
 							<h:column>
 								<f:facet name="header">Prix</f:facet>
-
-			#{j.price}
-		</h:column>
+					
+								#{j.price}
+							</h:column>
 							<h:column>
 								<f:facet name="header">Description</f:facet>
-			#{j.description}
-		</h:column>
+								#{j.description}
+							</h:column>
 							<h:column>
 								<f:facet name="header"></f:facet>
 								<h:form>

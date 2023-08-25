@@ -1,9 +1,11 @@
 package ensembles.app.managedbeans;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 
+import ensembles.app.entity.Journey;
 import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.WebSite;
 import ensembles.app.repository.RepoProfilAgence;
@@ -36,6 +38,33 @@ public class ControllerWebSite implements Serializable {
 	private RepoProfilAgence repoProfilAgence;
 	@Inject
 	private RepoWebSite repoWebSite;
+	
+	private List<Journey> journeyList; 
+	
+	private Long websiteId;
+	
+	/*
+	 * Redirection Index -> Website
+	 */
+
+	public String redirectWebsite(Long websiteId) {
+	    return "http://127.0.0.1:8080/ensembles-app/templates/templateOne.xhtml?wsId=" + websiteId + "&faces-redirect=true";
+	}
+	
+    public void onPageLoad() {
+        if (websiteId != null) {
+        	
+        	WebSite webSite = repoWebSite.findById(websiteId);
+
+    		webSiteViewModel.setId(webSite.getId());
+    		webSiteViewModel.setAboutUs(webSite.getAboutUs());
+    		webSiteViewModel.setColor(webSite.getColor());
+    		webSiteViewModel.setImageAboutUs(webSite.getImageAboutUs());
+    		webSiteViewModel.setImageBackground(webSite.getImageBackground());
+    		webSiteViewModel.setLogo(webSite.getLogo());
+    		webSiteViewModel.setProfilAgence(webSite.getProfilAgence());
+        }
+    }
 
 	public void saveWebSite() {
 		webSiteService.saveWebSite(webSiteViewModel);
@@ -126,4 +155,19 @@ public class ControllerWebSite implements Serializable {
 		this.repoWebSite = repoWebSite;
 	}
 
+	public List<Journey> getJourneyList() {
+		return journeyList;
+	}
+
+	public void setJourneyList(List<Journey> journeyList) {
+		this.journeyList = journeyList;
+	}
+	public Long getWebsiteId() {
+		return websiteId;
+	}
+	public void setWebsiteId(Long websiteId) {
+		this.websiteId = websiteId;
+	}
+
+	
 }
