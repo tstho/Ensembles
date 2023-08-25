@@ -38,6 +38,10 @@ public class RepoWebSite {
 		
 	}
 
+//	 public byte[] loadImage(int id){
+//	        return entityManager.find(WebSite.class, id).getLogo();
+//	    }
+
 
 	public WebSite getWebsiteByAgence(Long id) {
 
