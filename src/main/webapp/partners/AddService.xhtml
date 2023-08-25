@@ -47,72 +47,95 @@
 						</ul>
 						<hr class="d-sm-none" />
 					</div>
+
+
 					<div class="col-sm-9">
+						<div class="container h-100">
+							<h5 class="card-title text-uppercase mb-0" style="color: black;">Ajoutez
+								vos services</h5>
+							<hr class="mt-0 mb-4" />
+							<div class="card mb-4">
+								<div class="card-body">
+									<h:form>
+										<div class="row gx-3 mb-3">
+											<div class="col-md-6">
 
-						<h3>Ajoutez vos services</h3>
+												<h:outputLabel class="small mb-1" value="Nom du Service : " />
+												<h:inputText
+													value="#{controllerService.serviceViewModel.name}"
+													size="20" maxlength="20" styleClass="form-control" />
 
-						<h:form>
-							<table>
-								<tr>
-									<td><h:outputLabel value="Nom du Service : " /></td>
-									<td><h:inputText
-											value="#{controllerService.serviceViewModel.name}" size="20"
-											maxlength="20" /></td>
-								</tr>
-								<tr>
-									<td><h:outputLabel value="Lieu : " /></td>
-									<td><h:inputText
-											value="#{controllerService.serviceViewModel.place}" size="20"
-											maxlength="20" /></td>
-								</tr>
-								<tr>
-									<td><h:outputLabel  for="datePickerBegin" value="Début : " /></td>
-									<td><h:inputText id="datePickerBegin"
-											value="#{controllerService.serviceViewModel.begin}"
-											styleClass="form-control datepicker" /></td>
-								</tr>
-								<tr>
-									<td><h:outputLabel value="Fin : " /></td>
-									<td><h:inputText
-											value="#{controllerService.serviceViewModel.end}"
-											styleClass="form-control datepicker" /></td>
-								</tr>
+											</div>
+											<div class="col-md-6">
 
-								<tr>
-									<td><h:outputLabel value="Type de service : " /></td>
+												<h:outputLabel class="small mb-1" value="Lieu : " />
+												<h:inputText
+													value="#{controllerService.serviceViewModel.place}"
+													size="20" maxlength="20" styleClass="form-control" />
 
-									<td><h:selectOneMenu name="service"
-											value="#{controllerService.serviceViewModel.serviceType}">
+											</div>
+											<div class="col-md-6">
 
-											<f:selectItem itemValue="#{ServiceType.controllerService}"
-												itemLabel="#{SelectService}" />
+												<h:outputLabel class="small mb-1" for="datePickerBegin"
+													value="Début : " />
+												<h:inputText id="datePickerBegin"
+													value="#{controllerService.serviceViewModel.begin}"
+													styleClass="form-control datepicker" />
 
-											<f:selectItems value="#{controllerService.serviceOptions}" />
-										</h:selectOneMenu></td>
-								</tr>
-								<tr>
-									<td><h:outputLabel value="Prix: " /></td>
-									<td><h:inputText
-											value="#{controllerService.serviceViewModel.price}" size="20"
-											maxlength="20" /></td>
-								</tr>
-								<tr>
-									<td><h:outputLabel value="Description: " /></td>
-									<td><h:inputTextarea
-											value="#{controllerService.serviceViewModel.description}"
-											rows="5" cols="33" /></td>
-								</tr>
-								<tr>
-									<td colspan="2"><h:commandButton value="Proposez"
-											action="#{controllerService.saveService(authBean.currentUser.id)}" /></td>
-								</tr>
-							</table>
+											</div>
+											<div class="col-md-6">
 
-						</h:form>
+												<h:outputLabel class="small mb-1" value="Fin : " />
+												<h:inputText
+													value="#{controllerService.serviceViewModel.end}"
+													styleClass="form-control datepicker" />
+											</div>
+											
+											
+											<div class="col-md-6">
+												<h:outputLabel class="small mb-1" value="Prix: " />
+												<h:inputText
+													value="#{controllerService.serviceViewModel.price}"
+													size="20" maxlength="20" styleClass="form-control" />
+											</div>
+											<div class="col-md-6">
+												<h:outputLabel class="small mb-1" value="Type de service : " />
+
+												<h:selectOneMenu name="service" styleClass="form-control"
+													value="#{controllerService.serviceViewModel.serviceType}">
+
+													<f:selectItem itemValue="#{ServiceType.controllerService}"
+														itemLabel="#{SelectService}" />
+
+													<f:selectItems value="#{controllerService.serviceOptions}" />
+												</h:selectOneMenu>
+											</div>
+											
+											<div class="col-md-6">
+												<h:outputLabel class="small mb-1" value="Description: " />
+												<h:inputTextarea
+													value="#{controllerService.serviceViewModel.description}"
+													rows="5" cols="33" styleClass="form-control" />
+
+											</div>
+											
+											</div>
+												<div class="form-group">
+													<div class="col-sm-offset-2 col-sm-10">
+														<h:commandButton value="Proposez"
+															action="#{controllerService.saveService(authBean.currentUser.id)}"
+															styleClass="btn btn-dark" />
+													</div>
+												</div>
+											
+										
+									</h:form>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-
 
 		</ui:define>
 
