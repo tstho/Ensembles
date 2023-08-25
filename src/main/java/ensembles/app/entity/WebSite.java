@@ -23,7 +23,7 @@ public class WebSite {
 	private String imageAboutUs;
 	private String aboutUs;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="profilAgence_id")
 	private ProfilAgence profilAgence;
 	
