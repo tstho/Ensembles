@@ -15,9 +15,15 @@
 </h:head>
 
 <h:body>
+<f:metadata>
+    <f:viewParam name="wsId" value="#{controllerWebSite.websiteId}" />
+</f:metadata>
 	<ui:composition template="/layouts/mainLayout.xhtml">
 
 		<ui:define name="content">
+
+
+			#{controllerWebSite.onPageLoad()}
 
 
 			<!-- Header with image -->
