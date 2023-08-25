@@ -46,14 +46,18 @@ public class JourneyService {
 
 	public void modifierJourney(JourneyViewModel journeyViewModel) {
 
-		Journey journey = new Journey();
+		Journey journey = repoJourney.findById(journeyViewModel.getId());
+		
 		journey.setDescription(journeyViewModel.getDescription());
 		journey.setDestination(journeyViewModel.getDestination());
 		journey.setDepartureDate(journeyViewModel.getDepartureDate());
 		journey.setDestinationDate(journeyViewModel.getDestinationDate());
 		journey.setPrice(journeyViewModel.getPrice());
 		journey.setConveyance(journeyViewModel.getConveyance());
-		journey.setId(journeyViewModel.getId());
+		journey.setProfilAgence(journeyViewModel.getProfilAgence());
+		
+		System.out.println("le journey dans service " + journey);
+		
 		repoJourney.update(journey);
 
 	}
