@@ -38,8 +38,8 @@
 						<ul class="nav nav-pills flex-column">
 							<li class="nav-item"><a class="nav-link text-white"
 								href="profilPartenaire.xhtml"> Mon profil</a></li>
-							<li class="nav-item"><a class="nav-link text-white" href="#">
-									Mes services</a></li>
+							<li class="nav-item"><a class="nav-link text-white"
+								href="displayAllService.xhtml"> Mes services</a></li>
 							<li class="nav-item"><a class="nav-link text-white"
 								href="AddService.xhtml"> Ajouter un service</a></li>
 							<li class="nav-item"><a class="nav-link text-white" href="#">
@@ -103,7 +103,7 @@
 											rows="5" cols="33" /></td>
 								</tr>
 								<tr>
-									<td colspan="2"><h:commandButton value="Proposez"
+									<td colspan="2"><h:commandButton value="Ajouter"
 											action="#{controllerService.saveService(authBean.currentUser.id)}" /></td>
 								</tr>
 							</table>
