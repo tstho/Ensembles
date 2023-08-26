@@ -21,21 +21,25 @@
 			<div class="container" style="margin-top: 30px">
 				<div class="row">
 					<div class="col-sm-3 bg-info">
-						<ul class="nav nav-pills flex-column">
+						<!-- BAR DE NAVIGATION AGENCY -->
+						<h:form>
+							<ul class="nav nav-pills flex-column">
 								<li class="nav-item"><a class="nav-link text-white"
 									href="http://127.0.0.1:8080/ensembles-app/agency/mainAgence.xhtml">
 										Dashboard</a></li>
 								<li class="nav-item"><a class="nav-link text-white"
-									href="http://127.0.0.1:8080/ensembles-app/agency/profilAgence.xhtml">Profil
-										agence</a></li>
-										<li class="nav-item"><h:commandLink
+									href="http://127.0.0.1:8080/ensembles-app/agency/profilAgence.xhtml">
+										Profil agence</a></li>
+								<li class="nav-item"><h:commandLink
+										class="nav-link text-white"
 										action="#{controllerJourney.redirectToJourneyList(authBean.currentUser.id)}"
 										value="Mes voyages" /></li>
 								<li><a class="nav-link text-white"
 									href="http://127.0.0.1:8080/ensembles-app/Journey/Journey.xhtml">
 										Ajouter un voyage</a></li>
 								<li class="nav-item"><a class="nav-link text-white"
-									href="#"> Abonnement</a></li>
+									href="http://127.0.0.1:8080/ensembles-app/agency/partnersServices.xhtml">
+										Services des partenaires</a></li>
 								<li class="nav-item"><h:commandLink
 										class="nav-link text-white"
 										action="#{controllerWebSite.redirectToEdit(authBean.currentUser.id)}"
@@ -43,13 +47,14 @@
 								<li><a class="nav-link text-white"
 									href="../templates/templateOne.xhtml">MON SITE</a></li>
 							</ul>
+						</h:form>
 						<hr class="d-sm-none" />
 					</div>
 					<div class="col-sm-9">
 
 						<h3>Liste des voyages</h3>
 
-						<h:dataTable value="#{controllerJourney.journeyList}" var="j">
+						<h:dataTable class="table table-hover" value="#{controllerJourney.journeyList}" var="j">
 
 							<h:column>
 								<f:facet name="header">Destination</f:facet>
@@ -57,12 +62,12 @@
 							</h:column>
 
 							<h:column>
-								<f:facet name="header">Date du début du voyage</f:facet>
+								<f:facet name="header">Date début</f:facet>
 								#{j.departureDate}
 							</h:column>
 
 							<h:column>
-								<f:facet name="header">Date de fin du voyage </f:facet>
+								<f:facet name="header">Date de fin </f:facet>
 								#{j.destinationDate}
 							</h:column>
 							<h:column>

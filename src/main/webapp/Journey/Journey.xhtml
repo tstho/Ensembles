@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-		xmlns:p="http://primefaces.org/ui"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <link rel="stylesheet" href="../resources/css/styles.css" />
@@ -18,21 +18,25 @@
 			<div class="container" style="margin-top: 30px">
 				<div class="row">
 					<div class="col-sm-3 bg-info">
-						<ul class="nav nav-pills flex-column">
+						<!-- BAR DE NAVIGATION AGENCY -->
+						<h:form>
+							<ul class="nav nav-pills flex-column">
 								<li class="nav-item"><a class="nav-link text-white"
 									href="http://127.0.0.1:8080/ensembles-app/agency/mainAgence.xhtml">
 										Dashboard</a></li>
 								<li class="nav-item"><a class="nav-link text-white"
-									href="http://127.0.0.1:8080/ensembles-app/agency/profilAgence.xhtml">Profil
-										agence</a></li>
-								<li class="nav-item"><a class="nav-link text-white"
-									href="http://127.0.0.1:8080/ensembles-app/Journey/displayAllJourney.xhtml">
-										Liste de mes voyages</a></li>
+									href="http://127.0.0.1:8080/ensembles-app/agency/profilAgence.xhtml">
+										Profil agence</a></li>
+								<li class="nav-item"><h:commandLink
+										class="nav-link text-white"
+										action="#{controllerJourney.redirectToJourneyList(authBean.currentUser.id)}"
+										value="Mes voyages" /></li>
 								<li><a class="nav-link text-white"
 									href="http://127.0.0.1:8080/ensembles-app/Journey/Journey.xhtml">
 										Ajouter un voyage</a></li>
 								<li class="nav-item"><a class="nav-link text-white"
-									href="#"> Abonnement</a></li>
+									href="http://127.0.0.1:8080/ensembles-app/agency/partnersServices.xhtml">
+										Services des partenaires</a></li>
 								<li class="nav-item"><h:commandLink
 										class="nav-link text-white"
 										action="#{controllerWebSite.redirectToEdit(authBean.currentUser.id)}"
@@ -40,6 +44,7 @@
 								<li><a class="nav-link text-white"
 									href="../templates/templateOne.xhtml">MON SITE</a></li>
 							</ul>
+						</h:form>
 						<hr class="d-sm-none" />
 					</div>
 					<div class="col-sm-9">
@@ -57,7 +62,7 @@
 												size="20" maxlength="20" /></td>
 									</tr>
 									<tr>
-												<td><h:outputLabel value="departureDate: " /></td>
+										<td><h:outputLabel value="departureDate: " /></td>
 										<td><p:datePicker
 												value="#{controllerJourney.journeyViewModel.departureDate}"
 												size="20" maxlength="20" /></td>
@@ -71,7 +76,7 @@
 									<tr>
 										<td><h:outputLabel value="Moyen de transport : " /></td>
 
-										<td><h:selectOneMenu name="conveyance" 
+										<td><h:selectOneMenu name="conveyance"
 												value="#{controllerJourney.journeyViewModel.conveyance}">
 
 												<f:selectItem itemValue="#{Conveyance.controllerJourney}"
@@ -79,7 +84,7 @@
 
 												<f:selectItems
 													value="#{controllerJourney.conveyanceOptions}" />
-										</h:selectOneMenu></td>
+											</h:selectOneMenu></td>
 									</tr>
 									<tr>
 										<td><h:outputLabel for="price">Prix :<span
@@ -100,7 +105,7 @@
 									<tr>
 										<td><h:outputLabel value="Service : " /></td>
 
-										<td><h:selectOneMenu name="conveyance" 
+										<td><h:selectOneMenu name="conveyance"
 												value="#{controllerJourney.journeyViewModel.conveyance}">
 
 												<f:selectItem itemValue="#{Conveyance.controllerJourney}"
@@ -108,7 +113,7 @@
 
 												<f:selectItems
 													value="#{controllerJourney.conveyanceOptions}" />
-										</h:selectOneMenu></td>
+											</h:selectOneMenu></td>
 									</tr>
 								</table>
 
@@ -127,7 +132,7 @@
 					</div>
 				</div>
 			</div>
-			</ui:define>
-			</ui:composition>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>
