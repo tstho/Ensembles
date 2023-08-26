@@ -3,8 +3,6 @@ package ensembles.app.managedbeans;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -12,13 +10,10 @@ import javax.inject.Inject;
 import ensembles.app.entity.Conveyance;
 import ensembles.app.entity.Journey;
 import ensembles.app.entity.ProfilAgence;
-import ensembles.app.entity.Reservation;
 import ensembles.app.repository.RepoJourney;
 import ensembles.app.repository.RepoProfilAgence;
-import ensembles.app.repository.RepoReservation;
 import ensembles.app.service.JourneyService;
 import ensembles.app.service.ProfilAgenceService;
-import ensembles.app.service.ReservationService;
 import ensembles.app.viewmodels.JourneyViewModel;
 
 @ManagedBean

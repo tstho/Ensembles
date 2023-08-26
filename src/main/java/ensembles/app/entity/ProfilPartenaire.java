@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +28,7 @@ public class ProfilPartenaire {
 	private Adresse adresse;
 	
 	
-	@OneToMany(mappedBy="profilPartenaire")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="profilPartenaire")
 	 private List<Service> services = new LinkedList<>();
 
 	@OneToOne
@@ -39,9 +40,41 @@ public class ProfilPartenaire {
 	private String emailResponsablePartenaire;
 	private int telephoneResponsablePartenaire;
 
+		
+	@Override
+	public String toString() {
+		return "ProfilPartenaire [id=" + id + ", nomPartenaire=" + nomPartenaire + ", siretPartenaire="
+				+ siretPartenaire + ", adresse=" + adresse + ", services=" + services + ", user=" + user
+				+ ", nomResponsablePartenaire=" + nomResponsablePartenaire + ", prenomResponsablePartenaire="
+				+ prenomResponsablePartenaire + ", emailResponsablePartenaire=" + emailResponsablePartenaire
+				+ ", telephoneResponsablePartenaire=" + telephoneResponsablePartenaire + "]";
+	}
+	
+	
+	/*
+	 * getters & setters
+	 */
+	
+	
 	public Long getId() {
 		return id;
 	}
+
+	/**
+	 * @return the services
+	 */
+	public List<Service> getServices() {
+		return services;
+	}
+
+
+	/**
+	 * @param services the services to set
+	 */
+	public void setServices(List<Service> services) {
+		this.services = services;
+	}
+
 
 	public String getNomPartenaire() {
 		return nomPartenaire;
