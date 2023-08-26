@@ -2,23 +2,15 @@ package ensembles.app.managedbeans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-
-import ensembles.app.entity.Conveyance;
-import ensembles.app.entity.Journey;
-import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.ProfilPartenaire;
 import ensembles.app.entity.Service;
 import ensembles.app.entity.ServiceType;
-import ensembles.app.repository.RepoProfilAgence;
 import ensembles.app.repository.RepoProfilPartenaire;
 import ensembles.app.repository.RepoService;
 import ensembles.app.service.ServiceService;
