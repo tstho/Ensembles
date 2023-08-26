@@ -15,9 +15,9 @@
 </h:head>
 
 <h:body>
-<f:metadata>
-    <f:viewParam name="wsId" value="#{controllerWebSite.websiteId}" />
-</f:metadata>
+	<f:metadata>
+		<f:viewParam name="wsId" value="#{controllerWebSite.websiteId}" />
+	</f:metadata>
 	<ui:composition template="/layouts/mainLayout.xhtml">
 
 		<ui:define name="content">
@@ -49,40 +49,45 @@
 						<div id="packages"
 							class="alternativeSubPart container-fluid p-0 m-0">
 							<div class="row p-0 m-0">
-							
-							<!-- NEW  cards -->
-							
-							 <ui:repeat value="#{controllerWebSite.journeyList}" var="j" varStatus="loop">
-					        
-					           <div class="card m-0 p-0 col-12 col-md-6 col-xl-4 small-zoom">
-									<div class="card-header bg-info text-white text-center">
-										<a data-bs-toggle="collapse" data-bs-target="#collapse-pkgOne">#{j.destination}</a>
-									</div>
-									<div id="collapse-pkgOne" class="collapse">
-										<img class="card-img-top" src="../images/Auroreboreale.jpg"
-											alt="Card image cap" />
-										<div class="card-body">
-											<div class="card-text">Description du package</div>
-											<p class="card-text">
-												<small class="text-muted">de Paris</small>
-											</p>
-											<p class="card-text">Destination : #{j.destination}</p>
-											<p class="card-text">Transport : #{j.conveyance}</p>
-											<p class="card-text">Aller : #{j.departureDate}</p>
-											<p class="card-text">Retour : #{j.destinationDate}</p>
 
-											<a href="#" class="btn btn-primary float-right">Je
-												réserve</a>
+								<!-- NEW  cards -->
+
+								<ui:repeat value="#{controllerWebSite.journeyList}" var="j"
+									varStatus="loop">
+
+									<div class="card m-0 p-0 col-12 col-md-6 col-xl-4 small-zoom">
+										<div class="card-header bg-info text-white text-center">
+											<a data-bs-toggle="collapse"
+												data-bs-target="#collapse-pkgOne">#{j.destination}</a>
 										</div>
-										<div class="card-footer">
-											<small class="text-muted">#{j.price} €</small>
+										<div id="collapse-pkgOne" class="collapse">
+											<img class="card-img-top" src="../images/Auroreboreale.jpg"
+												alt="Card image cap" />
+											<div class="card-body">
+												<div class="card-text">Description du package</div>
+												<p class="card-text">
+													<small class="text-muted">de Paris</small>
+												</p>
+												<p class="card-text">Destination : #{j.destination}</p>
+												<p class="card-text">Transport : #{j.conveyance}</p>
+												<p class="card-text">Aller : #{j.departureDate}</p>
+												<p class="card-text">Retour : #{j.destinationDate}</p>
+
+												<h:form>
+													<h:commandButton value="Je réserve"
+														action="#{controllerReservation.saveReservation(j.id,authBean.currentUser.id)}" />
+													
+												</h:form>
+											</div>
+											<div class="card-footer">
+												<small class="text-muted">#{j.price} €</small>
+											</div>
 										</div>
 									</div>
-								</div>
-						       
-						    </ui:repeat>
-				
-								
+
+								</ui:repeat>
+
+
 							</div>
 						</div>
 					</div>
@@ -90,35 +95,35 @@
 			</section>
 
 			<!-- About Container -->
-				<section id="about" class="bg-light text-dark py-5">
+			<section id="about" class="bg-light text-dark py-5">
 
-					<div class="container" style="max-width: 640px;">
-						<h1 class="display-5 text-center">Qui sommes-nous ?</h1>
-						<div class="card mb-3" >
-							<div class="row g-0">
-								<div class="col-md-4">
+				<div class="container" style="max-width: 640px;">
+					<h1 class="display-5 text-center">Qui sommes-nous ?</h1>
+					<div class="card mb-3">
+						<div class="row g-0">
+							<div class="col-md-4">
 
-									<img
-										src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/0a/82/cb/0a82cb73-f148-e094-ea7b-8cf28f2cd342/455d1e3f-e4a0-4d8a-b4d6-4a7d5068793f.jpg/1200x1200bf-60.jpg"
-										alt="Trendy Pants and Shoes" class="img-fluid rounded-start" />
-								</div>
-								<div class="col-md-8">
+								<img
+									src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/0a/82/cb/0a82cb73-f148-e094-ea7b-8cf28f2cd342/455d1e3f-e4a0-4d8a-b4d6-4a7d5068793f.jpg/1200x1200bf-60.jpg"
+									alt="Trendy Pants and Shoes" class="img-fluid rounded-start" />
+							</div>
+							<div class="col-md-8">
 								<div class="card-body">
 									<!--card Information t-->
-								
 
-										<p class="card-text justify text-center">#{controllerWebSite.webSiteViewModel.aboutUs}
-											</p>
-											<p class="card-text">
-								          <small class="text-muted float-right" >signature</small>
-								        </p>
-									</div>
-							</div>
+
+									<p class="card-text justify text-center">#{controllerWebSite.webSiteViewModel.aboutUs}
+									</p>
+									<p class="card-text">
+										<small class="text-muted float-right">signature</small>
+									</p>
+								</div>
 							</div>
 						</div>
-
 					</div>
-				</section>>
+
+				</div>
+			</section>>
 
 			<footer class="bg-dark text-white text-center py-3">
 				<p class="mb-0">créé grâce à EnsembleS</p>
