@@ -79,7 +79,6 @@ public class ProfilAgenceService {
 
 	public ProfilAgence findByUserId(Long id) {
 
-		System.out.println(repoProfilAgence.findByUserId(id));
 		return repoProfilAgence.findByUserId(id);
 	}
 

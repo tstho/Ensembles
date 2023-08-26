@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
 	<meta charset="utf-8"></meta>
@@ -14,7 +15,6 @@
 
 
 <h:body>
-
 	<ui:composition template="layouts/mainLayout.xhtml">
 
 		<ui:define name="content">
@@ -37,8 +37,8 @@
 
 							<div class="col-sm-6">
 								<a href="partners/mainPartner.xhtml"
-									class="btn btn-light btn-lg-end active"> METS TES SERVICES A
-									DISPOSITION DE NOS AGENCES</a>
+									class="btn btn-light btn-lg-end active"> METS TES SERVICES
+									A DISPOSITION DE NOS AGENCES</a>
 							</div>
 						</div>
 					</div>
@@ -46,58 +46,29 @@
 			</div>
 
 			<!--  Template boxes -->
-
+			#{controllerIndex.onPageLoad()}
 			<div class="container">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-4 mb-3 d-flex align-items-stretch">
-							<div class="card ">
-								<a href="templates/templateOne.xhtml"> 
-								<img src="images/agenceOne.png" class="card-img-top"
-									alt="AgenceACreer" />
-								</a>
-							</div>
-						</div>
-
-						<div class="col-lg-4 mb-3 d-flex align-items-stretch">
-							<div class="card">
-								<a href="https://www.66nord.com/"> 
-								<img src="images/agencyTwo.png" class="card-img-top"
-									alt="AgenceACreer" />
-								</a>
-							</div>
-						</div>
-
-						<div class="col-lg-4 mb-3 d-flex align-items-stretch">
-							<div class="card">
-								<a href="https://www.gngl.com/ps-spitzberg/rn-pole-nord-geographique">
-									<img src="images/agencyThree.png" class="card-img-top"
-									alt="AgenceACreer" />
-								</a>
-							</div>
-						</div>
 
 
-
-					</div>
-					<div class="row">
-						<div class="col-lg-4 mb-3 d-flex align-items-stretch">
-							<div class="card ">
-								<a href="https://www.voyages-exception.fr/croisieres/polaires"> 
+				<!-- Websites de présentation  -->
+				<div class="row">
+					<div class="col-lg-4 mb-3 d-flex align-items-stretch">
+						<div class="card ">
+							<a href="https://www.voyages-exception.fr/croisieres/polaires">
 								<img src="images/agencyFour.png" class="card-img-top"
-									alt="AgenceACreer" />
-								</a>
-							</div>
+								alt="AgenceACreer" />
+							</a>
 						</div>
+					</div>
 
-						<div class="col-lg-4 mb-3 d-flex align-items-stretch">
-							<div class="card">
-								<a href="https://www.ponant.com/destinations/pole-nord"> 
-								<img src="images/agencyFive.png" class="card-img-top"
-									alt="AgenceACreer" />
-								</a>
-							</div>
+					<div class="col-lg-4 mb-3 d-flex align-items-stretch">
+						<div class="card">
+							<a href="https://www.66nord.com/"> <img
+								src="images/agencyTwo.png" class="card-img-top"
+								alt="AgenceACreer" />
+							</a>
 						</div>
+					</div>
 
 						<div class="col-lg-4 mb-3 d-flex align-items-stretch">
 							<div class="card">
@@ -107,11 +78,27 @@
 								</a>
 							</div>
 						</div>
-
-
-
 					</div>
 				</div>
+				
+				
+					<!--  NEW View WebSites -->
+					
+					<div class="row">
+					    <ui:repeat value="#{controllerIndex.webSiteList}" var="ws" varStatus="loop">
+					        
+					            <div class="col-lg-4 mb-3 d-flex align-items-stretch">
+					                <div class="card ">
+					                    <h:form>
+					                        <h:outputLink  value="#{controllerWebSite.redirectWebsite(ws.id)}" >
+					                            <img src="images/agenceOne.png" class="card-img-top" alt="AgenceACreer" />
+					                        </h:outputLink >
+					                    </h:form>
+					                </div>
+					            </div>
+					       
+					    </ui:repeat>
+					</div>
 			</div>
 
 
@@ -134,6 +121,7 @@
 <!-- 			<br /> -->
 <!-- 			<a href="partners/AddService.xhtml">Proposez vos services</a> -->
 
+
 <!-- 			<br /> -->
 <!-- 			<a href="agency/subscription.xhtml">Abonnement</a> -->
 
@@ -149,25 +137,24 @@
 <!-- 			<a href="ensembles/RechercherSubscription.xhtml">creer un -->
 <!-- 				abonnement </a> -->
 
+
 <!-- 			<br /> -->
 <!-- 			<a href="ensembles/DeleteSubscription.xhtml">Supprimer abonnement</a> -->
+
 
 <!-- 			<br /> -->
 <!-- 			<a href="ensembles/UpdateSubscription.xhtml">Modifier abonnement</a> -->
 
-<!-- 			<br /> -->
-<!-- 			<a href="user/displayAllUser.xhtml">Affichage des -->
-<!-- 				utilisateurs</a> -->
+
 
 
 <!-- 			<br /> -->
-			
+
 
 		</ui:define>
 
 
 	</ui:composition>
-
 </h:body>
 </html>
 

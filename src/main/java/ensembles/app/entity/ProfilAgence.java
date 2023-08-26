@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +35,7 @@ public class ProfilAgence {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@OneToMany(mappedBy = "profilAgence")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "profilAgence")
 	private List<Journey> journeys = new LinkedList<>();
 
 	@Override
