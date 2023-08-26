@@ -7,7 +7,9 @@ import javax.persistence.EntityManager;
 
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
+import ensembles.app.entity.Journey;
 import ensembles.app.entity.Service;
 
 @Stateless
@@ -54,6 +56,25 @@ public class RepoService {
 		return entityManager.createQuery(reqSelect, Service.class).getResultList();
 	}
 
+
+	public Service findById(Long id) {
+		return entityManager.find(Service.class, id);
+	}
+	
+	public List<Service> findByPartnerId(Long id) {
+		String reqSelect = "SELECT s FROM Service s WHERE service_id = :id";
+		TypedQuery<Service> query = entityManager.createQuery(reqSelect, Service.class);
+		query.setParameter("id", id);
+
+		try {
+			return query.getResultList();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	public void update(Service service) {
 		entityManager.merge(service);
 		entityManager.flush();
@@ -65,8 +86,12 @@ public class RepoService {
 		entityManager.flush();
 		
 	}
+	
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
 
-	public Service findById(Long id) {
-		return entityManager.find(Service.class, id);
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
 	}
 }

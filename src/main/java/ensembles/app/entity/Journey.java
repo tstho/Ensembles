@@ -32,8 +32,6 @@ public class Journey implements Serializable {
 	private List<Reservation> reservations = new LinkedList<>();
 	
 	
-	
-
 	@Override
 	public String toString() {
 		return "Journey [id=" + id + ", Destination=" + Destination + ", DepartureDate=" + DepartureDate

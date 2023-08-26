@@ -9,22 +9,6 @@
 	<meta charset="utf-8"></meta>
 	<title>Ensembles :: Ajout de services</title>
 
-	<!-- Inclure les fichiers CSS de Bootstrap -->
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-
-	<!-- Inclure les fichiers JavaScript de Bootstrap (jQuery requis) -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-	<!-- Inclure les fichiers CSS et JS de Bootstrap Datepicker -->
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
 </h:head>
 <h:body>
@@ -47,79 +31,84 @@
 						</ul>
 						<hr class="d-sm-none" />
 					</div>
-        <div class="col-sm-9">
-
-          <h3>Ajoutez vos services</h3>
-
+					<div class="col-sm-9">
 						<h:form>
-							<table>
-								<tr>
-									<td><h:outputLabel value="Nom du Service : " /></td>
-									<td><h:inputText
-											value="#{controllerService.serviceViewModel.name}" size="20"
-											maxlength="20" /></td>
-								</tr>
-								<tr>
-									<td><h:outputLabel value="Lieu : " /></td>
-									<td><h:inputText
-											value="#{controllerService.serviceViewModel.place}" size="20"
-											maxlength="20" /></td>
-								</tr>
-								<tr>
-									<td><h:outputLabel  for="datePickerBegin" value="Début : " /></td>
-									<td><h:inputText id="datePickerBegin"
-											value="#{controllerService.serviceViewModel.begin}"
-											styleClass="form-control datepicker" /></td>
-								</tr>
-								<tr>
-									<td><h:outputLabel value="Fin : " /></td>
-									<td><h:inputText
-											value="#{controllerService.serviceViewModel.end}"
-											styleClass="form-control datepicker" /></td>
-								</tr>
+						<fieldset>
+							<h3>Ajoutez vos services</h3>
 
-								<tr>
-									<td><h:outputLabel value="Type de service : " /></td>
+						
+								<table>
+									<tr>
+										<td><h:outputLabel for="name">Nom du service :<span
+													class="requis"></span>
+											</h:outputLabel></td>
+										<td><h:inputText type="text" id="name"
+												value="#{controllerService.serviceViewModel.name}" size="20"
+												maxlength="20" /></td>
+									</tr>
+									<tr>
+									
+											<td><h:outputLabel for="place">Lieu :<span
+													class="requis"></span>
+											</h:outputLabel></td>
+										<td><h:inputText type="text" id="place"
+												value="#{controllerService.serviceViewModel.place}" size="20"
+												maxlength="20" /></td>
+									</tr>
+									<tr>
+										<td><h:outputLabel value="Début : " /></td>
+										<td><p:datePicker
+												value="#{controllerService.serviceViewModel.begin}"
+												size="20" maxlength="20" /></td>
+									</tr>
+									<tr>
+										<td><h:outputLabel value="Fin : " /></td>
+										<td><p:datePicker
+												value="#{controllerService.serviceViewModel.end}" 
+												size="20" maxlength="20" /></td>
+									</tr>
 
-									<td><h:selectOneMenu name="service"
-											value="#{controllerService.serviceViewModel.serviceType}">
+									<tr>
+										<td><h:outputLabel value="Type de service : " /></td>
 
-											<f:selectItem itemValue="#{ServiceType.controllerService}"
-												itemLabel="#{SelectService}" />
+										<td><h:selectOneMenu name="service"
+												value="#{controllerService.serviceViewModel.serviceType}">
 
-											<f:selectItems value="#{controllerService.serviceOptions}" />
-										</h:selectOneMenu></td>
-								</tr>
-								<tr>
-									<td><h:outputLabel value="Prix: " /></td>
-									<td><h:inputText
-											value="#{controllerService.serviceViewModel.price}" size="20"
-											maxlength="20" /></td>
-								</tr>
-								<tr>
-									<td><h:outputLabel value="Description: " /></td>
-									<td><h:inputTextarea
-											value="#{controllerService.serviceViewModel.description}"
-											rows="5" cols="33" /></td>
-								</tr>
-								<tr>
-									<td colspan="2"><h:commandButton value="Ajouter"
-											action="#{controllerService.saveService(authBean.currentUser.id)}" /></td>
-								</tr>
-			  			</table>
+												<f:selectItem itemValue="#{ServiceType.controllerService}"
+													itemLabel="#{SelectService}" />
+
+												<f:selectItems value="#{controllerService.serviceOptions}" />
+											</h:selectOneMenu></td>
+									</tr>
+									<tr>
+
+										<td><h:outputLabel for="price">Prix :<span
+													class="requis"></span>
+											</h:outputLabel></td>
+										<td><h:inputText type="number" id="price"
+												value="#{controllerService.serviceViewModel.price}"
+												step="0.01" /></td>
+									</tr>
+									<tr>
+
+										<td><h:outputLabel for="description">Description : <span
+													class="requis"></span>
+											</h:outputLabel></td>
+										<td><h:inputText type="text" id="description"
+												value="#{controllerService.serviceViewModel.description}"
+												rows="5" cols="33" /></td>
+									</tr>
+								</table>
+						</fieldset>
+
+						<h:commandButton value="Ajouter"
+							action="#{controllerService.saveService(authBean.currentUser.id)}" />
 						</h:form>
 					</div>
 				</div>
 			</div>
 		</ui:define>
 	</ui:composition>
-	<script>
-        $(document).ready(function() {
-            $('.datepicker').datepicker({
-                format: 'dd/mm/yyyy', // Format de la date
-                autoclose: true
-            });
-        });
-    </script>
+
 </h:body>
 </html>

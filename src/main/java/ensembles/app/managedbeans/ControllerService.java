@@ -1,3 +1,4 @@
+
 package ensembles.app.managedbeans;
 
 import java.io.Serializable;
@@ -7,13 +8,17 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+
+import ensembles.app.entity.Journey;
 import ensembles.app.entity.ProfilPartenaire;
 import ensembles.app.entity.Service;
 import ensembles.app.entity.ServiceType;
 import ensembles.app.repository.RepoProfilPartenaire;
 import ensembles.app.repository.RepoService;
 import ensembles.app.service.ServiceService;
+import ensembles.app.service.ProfilPartenaireService;
 import ensembles.app.viewmodels.ServiceViewModel;
 
 @ManagedBean
@@ -30,27 +35,56 @@ public class ControllerService implements Serializable {
 	private RepoService repoService;
 	@Inject
 	private RepoProfilPartenaire repoProfilPartenaire;
+	@Inject
+	private ProfilPartenaireService profilPartenaireService;
 
 	private List<Service> serviceList;
+	
+	private Service currentService;
 
 	@PostConstruct
 	public void init() {
 		serviceList = repoService.findAll();
 	}
 
+	/*
+	 * Méthode pour récupérer le service en cours
+	 */
+
+	public Service getCurrentService() {
+
+		currentService = (Service) FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
+				.get("currentService");
+
+		return currentService;
+
+	}
+	/*
+	 * Méthode d'enregistrement d'un service
+	 */
+
 	public String saveService(Long idUser) {
 
 		ProfilPartenaire profilPartenaire = repoProfilPartenaire.findByUserId(idUser);
 
-		serviceService.saveService(serviceViewModel.getName(), serviceViewModel.getPlace(), serviceViewModel.getBegin(),
-				serviceViewModel.getEnd(), serviceViewModel.getServiceType(), serviceViewModel.getPrice(),
-				serviceViewModel.getDescription(), profilPartenaire);
+		serviceService.saveService(profilPartenaire, serviceViewModel);
 
-		serviceList = repoService.findAll();
+		serviceList = serviceListByProfilPartenaire(profilPartenaire.getId());
 
 		resetViewModel();
 
-		return "/ensembles/displayAllService.xhtml?faces-redirect=true";
+		return "/partners/displayAllService.xhtml?faces-redirect=true";
+	}
+	
+	/*
+	 * Méthode pour récupérer la liste des services du partenaire
+	 */
+	public List<Service> serviceListByProfilPartenaire(Long partnerId) {
+		
+		serviceList = repoService.findByPartnerId(partnerId);
+
+		return serviceList;
+
 	}
 
 	public List<ServiceType> getServiceOptions() {
@@ -64,7 +98,7 @@ public class ControllerService implements Serializable {
 	public String redirectToEdit(Long serviceId) {
 		initModifierService(serviceId);
 
-		return "/ensembles/modifyService.xhtml?faces-redirect=true";
+		return "/partners/modifyService.xhtml?faces-redirect=true";
 	}
 
 	private void initModifierService(Long serviceId) {
@@ -87,7 +121,7 @@ public class ControllerService implements Serializable {
 		serviceList = repoService.findAll();
 		resetViewModel();
 
-		return "/ensembles/displayAllService.xhtml?faces-redirect=true";
+		return "/partners/displayAllService.xhtml?faces-redirect=true";
 	}
 
 	public void supprimerService(Long id) {

@@ -38,46 +38,43 @@
 					<div class="col-sm-9">
 						<h3>Liste des services</h3>
 
-
-						<hr />
-
-						<h:dataTable value="#{controllerService.serviceList}"
-							var="service">
+						<h:dataTable class="table table-hover"
+							value="#{controllerService.serviceList}" var="s">
 
 							<h:column>
-								<f:facet name="header">Name</f:facet>
-				#{service.name}
-			</h:column>
+								<f:facet name="header">Service</f:facet>
+							#{s.name}
+							</h:column>
 
 							<h:column>
-								<f:facet name="header">serviceType</f:facet>
-				#{service.serviceType}
-			</h:column>
+								<f:facet name="header">Type</f:facet>
+							#{s.serviceType}
+							</h:column>
 
 							<h:column>
-								<f:facet name="header">startDate</f:facet>
-				#{service.begin}
-			</h:column>
+							<f:facet name="header">Début</f:facet>
+							#{s.begin}
+							</h:column>
 
 							<h:column>
-								<f:facet name="header">endDate</f:facet>
-				#{service.end}
-			</h:column>
+							<f:facet name="header">Fin</f:facet>
+							#{s.end}
+							</h:column>
 
 							<h:column>
-								<f:facet name="header">place</f:facet>
-				#{service.place}
-			</h:column>
+							<f:facet name="header">Lieu</f:facet>
+							#{s.place}
+							</h:column>
 
 							<h:column>
-								<f:facet name="header">price</f:facet>
-				#{service.price}
-			</h:column>
+							<f:facet name="header">Prix</f:facet>
+							#{s.price}
+							</h:column>
 
 							<h:column>
-								<f:facet name="header">Description</f:facet>
-				#{service.description}
-			</h:column>
+							<f:facet name="header">Description</f:facet>
+							#{s.description}
+							</h:column>
 
 							<h:column>
 								<f:facet name="header"></f:facet>
