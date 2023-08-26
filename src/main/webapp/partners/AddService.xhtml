@@ -47,9 +47,9 @@
 						</ul>
 						<hr class="d-sm-none" />
 					</div>
-					<div class="col-sm-9">
+        <div class="col-sm-9">
 
-						<h3>Ajoutez vos services</h3>
+          <h3>Ajoutez vos services</h3>
 
 						<h:form>
 							<table>
@@ -106,17 +106,12 @@
 									<td colspan="2"><h:commandButton value="Ajouter"
 											action="#{controllerService.saveService(authBean.currentUser.id)}" /></td>
 								</tr>
-							</table>
-
+			  			</table>
 						</h:form>
 					</div>
 				</div>
 			</div>
-
-
 		</ui:define>
-
-
 	</ui:composition>
 	<script>
         $(document).ready(function() {

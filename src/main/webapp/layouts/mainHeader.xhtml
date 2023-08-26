@@ -8,7 +8,8 @@
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<ul class="navbar-nav mr-auto">
-		
+		<a class="navbar-brand" href="http://127.0.0.1:8080/ensembles-app/index.xhtml"><img src="http://127.0.0.1:8080/ensembles-app/images/logo.png" alt="Logo" style="width:60px;"/></a>
+		<li class="nav-item"><a class="nav-link" href="#">About us</a></li>	
 		<!-- LOG IN -->
 		
 			<li class="nav-item dropdown"><a
@@ -52,20 +53,23 @@
 
 					<!-- Affichage si l'utilisateur est authentifié -->
 					<h:panelGroup layout="block" rendered="#{authBean.authenticated}">
-						<h:outputText value="Bienvenue, #{authBean.currentUser.email} !" />
-						<h:form>
-							<h:commandButton value="Mon espace"
+							<h:form class="px-4 py-3" >		
+						<h:outputText value=" Bienvenue, #{authBean.currentUser.email} !" />
+						<div class="dropdown-divider"></div>
+						
+							<h:commandButton value="Mon espace" class="btn btn-secondary"
 								action="#{authBean.redirectEspace}" />
-							<h:commandButton value="Se déconnecter"
-								action="#{authBean.logout}" />
-								<h:commandButton value="Vos réservations"
+								<div class="dropdown-divider"></div>
+								<h:commandButton value="Vos réservations" class="btn btn-secondary"
 								action="#{controllerReservation.reservationListByUser(authBean.currentUser.id)}" rendered="#{authBean.isRole('CLIENT')}" />
+								<div class="dropdown-divider"></div>
+								<h:commandButton value="Se déconnecter" class="btn btn-secondary"
+								action="#{authBean.logout}" />
 						</h:form>
 					</h:panelGroup>
 				</div></li>
 				
-			<!-- PANIER -->
-			<li class="nav-item"><a class="nav-link" href="#">Panier</a></li>
+		
 
 		</ul>
 
@@ -73,9 +77,9 @@
 
 		<ul class="nav navbar-nav navbar-right">
 
-					<li class="nav-item"><a class="nav-link" href="#">About us</a></li>
+					
 					<li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-					<a class="navbar-brand" href="http://127.0.0.1:8080/ensembles-app/index.xhtml">EnsembleS</a>		
+						
 		</ul>
 	</nav>
 
