@@ -19,35 +19,40 @@
 				<div class="row">
 					<div class="col-sm-2 bg-info">
 					
-					
-<!-- BAR DE NAVIGATION AGENCY -->
+						<!-- BAR DE NAVIGATION AGENCY -->
 						<h:form>
 							<ul class="nav nav-pills flex-column">
 								<li class="nav-item"><a class="nav-link text-white"
 									href="http://127.0.0.1:8080/ensembles-app/agency/mainAgence.xhtml">
 										Dashboard</a></li>
-								<li class="nav-item"><a class="nav-link text-white"
-									href="http://127.0.0.1:8080/ensembles-app/agency/profilAgence.xhtml">
-										Profil agence</a></li>
-								<li class="nav-item"><h:commandLink
+								<li class="nav-item">
+									<h:commandLink
+										class="nav-link text-white"
+										action="#{controllerProfilAgence.redirectToEdit(authBean.currentUser.id)}"
+										value="Profil agence" />
+								</li>
+								<li class="nav-item">
+									<h:commandLink
 										class="nav-link text-white"
 										action="#{controllerJourney.redirectToJourneyList(authBean.currentUser.id)}"
-										value="Mes voyages" /></li>
+										value="Mes voyages" />
+								</li>
 								<li><a class="nav-link text-white"
 									href="http://127.0.0.1:8080/ensembles-app/Journey/Journey.xhtml">
 										Ajouter un voyage</a></li>
 								<li class="nav-item"><a class="nav-link text-white"
 									href="http://127.0.0.1:8080/ensembles-app/agency/partnersServices.xhtml">
 										Services des partenaires</a></li>
-								<li class="nav-item"><h:commandLink
+								<li class="nav-item">
+									<h:commandLink
 										class="nav-link text-white"
 										action="#{controllerWebSite.redirectToEdit(authBean.currentUser.id)}"
-										value="Personnalisation de mon site" /></li>
+										value="Personnalisation de mon site" />
+								</li>
 								<li><a class="nav-link text-white"
 									href="../templates/templateOne.xhtml">MON SITE</a></li>
 							</ul>
 						</h:form>
-						
 						
 						<hr class="d-sm-none" />
 					</div>

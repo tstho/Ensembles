@@ -1,16 +1,12 @@
 package ensembles.app.service;
 
-import java.util.Date;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.ProfilPartenaire;
 import ensembles.app.entity.Service;
-import ensembles.app.entity.ServiceType;
 import ensembles.app.repository.RepoService;
-import ensembles.app.viewmodels.JourneyViewModel;
 import ensembles.app.viewmodels.ServiceViewModel;
 
 @Stateless

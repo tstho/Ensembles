@@ -3,11 +3,9 @@ package ensembles.app.service;
 import ensembles.app.entity.Journey;
 import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.Reservation;
-import ensembles.app.entity.User;
 import ensembles.app.repository.RepoJourney;
 import ensembles.app.repository.RepoProfilAgence;
 import ensembles.app.repository.RepoReservation;
-import ensembles.app.repository.RepoUser;
 import ensembles.app.viewmodels.JourneyViewModel;
 
 import java.util.List;
@@ -55,8 +53,6 @@ public class JourneyService {
 		journey.setPrice(journeyViewModel.getPrice());
 		journey.setConveyance(journeyViewModel.getConveyance());
 		journey.setProfilAgence(journeyViewModel.getProfilAgence());
-		
-		System.out.println("le journey dans service " + journey);
 		
 		repoJourney.update(journey);
 

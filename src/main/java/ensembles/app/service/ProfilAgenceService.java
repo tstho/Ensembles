@@ -52,8 +52,8 @@ public class ProfilAgenceService {
 
 	public void modifyProfilAgence(ProfilAgenceViewModel profilAgenceViewModel) {
 
-		ProfilAgence profilAgence = repoProfilAgence.findById(profilAgenceViewModel.getid());
-
+		ProfilAgence profilAgence = repoProfilAgence.findById(profilAgenceViewModel.getId());
+				
 		profilAgence.setNomSociete(profilAgenceViewModel.getNomSociete());
 		profilAgence.setSiretSociete(profilAgenceViewModel.getSiretSociete());
 		profilAgence.setNomResponsableSociete(profilAgenceViewModel.getNomResponsableSociete());
@@ -70,6 +70,8 @@ public class ProfilAgenceService {
 		adresse.setCodePostal(profilAgenceViewModel.getCodePostal());
 		adresse.setVille(profilAgenceViewModel.getVille());
 		adresse.setPays(profilAgenceViewModel.getPays());
+		
+		profilAgence.setAdresse(adresse);
 
 		repoAdresse.update(adresse);
 
@@ -78,6 +80,7 @@ public class ProfilAgenceService {
 	}
 
 	public ProfilAgence findByUserId(Long id) {
+		System.out.println("Service find by user id");
 
 		return repoProfilAgence.findByUserId(id);
 	}

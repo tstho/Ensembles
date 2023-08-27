@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import ensembles.app.entity.Adresse;
+import ensembles.app.entity.Journey;
 import ensembles.app.entity.ProfilAgence;
 
 @Stateless
@@ -22,4 +23,10 @@ public class RepoAdresse {
 		entityManager.merge(adresse);
 		entityManager.flush();
 	}
+	
+
+	public Adresse findById(Long id) {
+		return entityManager.find(Adresse.class, id);
+	}
+
 }

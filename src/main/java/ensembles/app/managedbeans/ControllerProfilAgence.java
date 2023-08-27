@@ -4,19 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import ensembles.app.entity.ProfilAgence;
-import ensembles.app.entity.User;
-import ensembles.app.repository.RepoProfilAgence;
-import ensembles.app.repository.RepoUser;
 import ensembles.app.service.ProfilAgenceService;
-import ensembles.app.service.UserService;
 import ensembles.app.viewmodels.JourneyViewModel;
 import ensembles.app.viewmodels.ProfilAgenceViewModel;
-import ensembles.app.viewmodels.UserViewModel;
 
 @ManagedBean
 @SessionScoped
@@ -28,7 +22,6 @@ public class ControllerProfilAgence implements Serializable {
 
 	@Inject
 	private ProfilAgenceService profilAgenceService;
-	
 	
 	private List<JourneyViewModel> journeyViewModels = new ArrayList<>();
 
@@ -43,46 +36,43 @@ public class ControllerProfilAgence implements Serializable {
 	}
 
 	public void initModifierProfilA(Long userId) {
+		System.out.println("init modifier profilA");
 
 		ProfilAgence profilAgence = profilAgenceService.findByUserId(userId);
+		System.out.println(profilAgence.toString());
 
 		profilAgenceViewModel = new ProfilAgenceViewModel();
 
-		// identification de l'agence et de son adresse
+		// identification de l'agence et de son user
 
+		profilAgenceViewModel.setId(profilAgence.getId());
 		profilAgenceViewModel.setUser(profilAgence.getUser());
-		profilAgenceViewModel.setid(profilAgence.getId());
-		profilAgenceViewModel.setAdresseId(profilAgence.getAdresse().getId());
 
 		// infos de l'agence
 
+		profilAgenceViewModel.setNomSociete(profilAgence.getNomSociete());
+		profilAgenceViewModel.setSiretSociete(profilAgence.getSiretSociete());
 		profilAgenceViewModel.setNomResponsableSociete(profilAgence.getNomResponsableSociete());
 		profilAgenceViewModel.setPrenomResponsableSociete(profilAgence.getPrenomResponsableSociete());
-		profilAgenceViewModel.setSiretSociete(profilAgence.getSiretSociete());
-
+		profilAgenceViewModel.setEmailResponsableSociete(profilAgence.getEmailResponsableSociete());
 		profilAgenceViewModel.setTelephoneResponsableSociete(profilAgence.getTelephoneResponsableSociete());
 
 		// infos de l'adresse de l'Agence
-
-		profilAgenceViewModel.setNomSociete(profilAgence.getNomSociete());
-		profilAgenceViewModel.setCodePostal(profilAgence.getAdresse().getCodePostal());
-		profilAgenceViewModel.setComplement(profilAgence.getAdresse().getComplement());
-
-		profilAgenceViewModel.setEmailResponsableSociete(profilAgence.getEmailResponsableSociete());
+		
+		profilAgenceViewModel.setAdresseId(profilAgence.getAdresse().getId());
 
 		profilAgenceViewModel.setNumero(profilAgence.getAdresse().getNumero());
-		profilAgenceViewModel.setPays(profilAgence.getAdresse().getPays());
-
-		profilAgenceViewModel.setVille(profilAgence.getAdresse().getVille());
+		profilAgenceViewModel.setComplement(profilAgence.getAdresse().getComplement());
 		profilAgenceViewModel.setVoie(profilAgence.getAdresse().getVoie());
-
-		System.out.println(profilAgence.toString());
-		System.out.println(profilAgenceViewModel.toString());
+		profilAgenceViewModel.setCodePostal(profilAgence.getAdresse().getCodePostal());
+		profilAgenceViewModel.setVille(profilAgence.getAdresse().getVille());
+		profilAgenceViewModel.setPays(profilAgence.getAdresse().getPays());
 
 		// Infos voyages associer a l'agence
 
-		List<JourneyViewModel> journeyViewModels = profilAgenceViewModel.getJourneyViewModels();
-		profilAgenceViewModel.setJourneyViewModels(journeyViewModels);
+		profilAgenceViewModel.setJourneys(profilAgence.getJourneys());
+
+		System.out.println(profilAgenceViewModel.toString());
 
 	}
 
@@ -91,20 +81,23 @@ public class ControllerProfilAgence implements Serializable {
 //		profilAgenceViewModel.setJourneyViewModels(new ArrayList<>(profilAgenceViewModel.getJourneyViewModels()));
 //	}
 
-	public String modifierProfilA() {
+	public String modifierProfilA(Long userId) {
 
 		profilAgenceService.modifyProfilAgence(profilAgenceViewModel);
-//			profilList = rU.findAll();
+		resetViewModel();
 
-//			resetViewModel();
-
-		return "/login/authentification.xhtml?faces-redirect=true";
+		return redirectToEdit(userId);
 	}
 
 	
 /*
  * getters & setters
  */
+
+	private void resetViewModel() {
+		profilAgenceViewModel = new ProfilAgenceViewModel();
+		
+	}
 
 	public ProfilAgenceViewModel getProfilAgenceViewModel() {
 		return profilAgenceViewModel;
