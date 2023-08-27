@@ -5,8 +5,6 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
-<!-- <link rel="stylesheet" href="../resources/css/styles.css" /> -->
-
 
 <h:head>
 	<meta charset="utf-8"></meta>
@@ -59,7 +57,7 @@
 									<h:commandLink
 										class="nav-link text-white"
 										action="#{controllerWebSite.redirectToEdit(authBean.currentUser.id)}"
-										value="Personnalisation de mon site" />
+										value="Personnaliser mon site" />
 								</li>
 								<li class="nav-item">
 									<h:commandLink
@@ -116,10 +114,7 @@
 								<h:column>
 									<f:facet name="header"></f:facet>
 									<h:form>
-										<h:commandLink value="Ajouter au voyage" action="#" />
-										<p:commandLink actionListener="#" ajax="false"
-											value="Choisir voyage">
-										</p:commandLink>
+										<h:commandButton value="Ajouter à un voyage" action="#" type="button" class="btn btn-secondary" />
 									</h:form>
 								</h:column>
 

@@ -58,7 +58,7 @@ public class ImageStoreBean {
 			
 			byte[] byteFile =uploadedFile.getContent();
 			
-			File file = new File("/Users/aitcheou/Desktop/EnvJEE/IDE/workspaceJEE/ensembles-app/miracle"+ extension);
+			File file = new File("C:\\Users\\karen\\Desktop"+ extension);
 			
 			FileOutputStream foS = new FileOutputStream(file);
 			

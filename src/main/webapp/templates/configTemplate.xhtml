@@ -18,52 +18,38 @@
 			<div class="container" style="margin-top: 30px">
 				<div class="row">
 					<div class="col-sm-2 bg-info">
-					
+
 						<!-- BAR DE NAVIGATION AGENCY -->
 						<h:form>
 							<ul class="nav nav-pills flex-column">
-								<li class="nav-item">
-									<a class="nav-link text-white"
+								<li class="nav-item"><a class="nav-link text-white"
 									href="http://127.0.0.1:8080/ensembles-app/agency/mainAgence.xhtml">
-										Dashboard</a>
-								</li>
-								<li class="nav-item">
-									<h:commandLink
+										Dashboard</a></li>
+								<li class="nav-item"><h:commandLink
 										class="nav-link text-white"
 										action="#{controllerProfilAgence.redirectToEdit(authBean.currentUser.id)}"
-										value="Profil agence" />
-								</li>
-								<li class="nav-item">
-									<h:commandLink
+										value="Profil agence" /></li>
+								<li class="nav-item"><h:commandLink
 										class="nav-link text-white"
 										action="#{controllerJourney.redirectToJourneyList(authBean.currentUser.id)}"
-										value="Mes voyages" />
-								</li>
-								<li>
-									<a class="nav-link text-white"
+										value="Mes voyages" /></li>
+								<li><a class="nav-link text-white"
 									href="http://127.0.0.1:8080/ensembles-app/Journey/Journey.xhtml">
-										Ajouter un voyage</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link text-white"
+										Ajouter un voyage</a></li>
+								<li class="nav-item"><a class="nav-link text-white"
 									href="http://127.0.0.1:8080/ensembles-app/agency/partnersServices.xhtml">
-										Services des partenaires</a>
-								</li>
-								<li class="nav-item">
-									<h:commandLink
+										Services des partenaires</a></li>
+								<li class="nav-item"><h:commandLink
 										class="nav-link text-white"
 										action="#{controllerWebSite.redirectToEdit(authBean.currentUser.id)}"
-										value="Personnalisation de mon site" />
-								</li>
-								<li class="nav-item">
-									<h:commandLink
+										value="Personnaliser mon site" /></li>
+								<li class="nav-item"><h:commandLink
 										class="nav-link text-white"
 										action="#{controllerWebSite.redirectWebsiteViaAgence(authBean.currentUser.id)}"
-										value="Mon Site" />
-								</li>
+										value="Mon Site" /></li>
 							</ul>
 						</h:form>
-						
+
 						<hr class="d-sm-none" />
 					</div>
 					<div class="col-sm-9">
@@ -72,28 +58,31 @@
 								<div class="card mb-6">
 									<div class="card-header">Modifier mon site</div>
 									<div class="card-body">
-									
-										<h:form>
+
+										<h:form enctype="multipart/form-data">
 											<div class="row gx-3 mb-3">
+											
+											
 												<div class="col-md-6">
-
-													<p>Télécharger un logo :</p>
-													<!--  TODO Voir input pour télécharger image  -->
-													<input type="file" id="myFile" name="filename" />
-
-													<!--	h:commandButton value="Ajouter un logo"
-														 action="#"  /-->
-
-												</div>
-												<div class="col-md-6">
-													<h:outputLabel for="societe" class="small mb-1">Image background :
+													<h:outputLabel for="societe" class="small mb-1">Nom de l'agence :
 													</h:outputLabel>
-													<div class="card mb-4 mb-xl-0">
-														<!--  h:commandButton value="Ajouter un logo"
-															action="" /-->
-
-													</div>
+													<h:inputText type="text" id="logo"
+														value="#{controllerWebSite.webSiteViewModel.logo}"
+														size="20" maxlength="20" styleClass="form-control" />
 												</div>
+
+
+												<div class="col-md-6">
+													<p>Image background :</p>
+													<p:messages showDetail="true" />
+													<p:fileUpload value="#{imageStoreBean.uploadedFile}"
+														mode="simple" />
+													<p:commandButton value="Submit" ajax="false"
+														actionListener="#{imageStoreBean.storeImage()}" />
+													<h:graphicImage id="imageBackground" alt="uploaded image" url="/image" />
+												</div>
+
+
 												<div class="col-md-6">
 													<h:outputLabel for="societe" class="small mb-1">Texte "A propos" :
 													</h:outputLabel>
@@ -103,21 +92,13 @@
 												</div>
 
 												<div class="col-md-6">
-
 													<h:outputLabel for="societe" class="small mb-1">Couleur :
 													</h:outputLabel>
 													<h:inputText type="text" id="color"
 														value="#{controllerWebSite.webSiteViewModel.color}"
 														size="20" maxlength="20" styleClass="form-control" />
 												</div>
-												<div class="col-md-6">
-													<h:outputLabel for="societe" class="small mb-1">Image "A propos"
-													</h:outputLabel>
-													<div class="card mb-4 mb-xl-0">
-														<!--  h:commandButton value="Ajouter une image A propos"
-															action="" /-->
-													</div>
-												</div>
+												
 											</div>
 
 											<div class="form-group">
@@ -127,19 +108,7 @@
 														styleClass="btn btn-dark" />
 												</div>
 											</div>
-
 										</h:form>
-										<div class="card mb-4 mb-xl-0">
-											<h:form enctype="multipart/form-data" prependId="false">
-												
-													<h:outputText value="#{uploadBean.text}" />
-												
-												<h:inputFile id="file" value="#{uploadBean.uploadedFile}"/>
-												<h:commandButton value="Save"
-													action="#{uploadBean.uploadFile()}" />
-											</h:form>
-
-										</div>
 									</div>
 								</div>
 							</div>
