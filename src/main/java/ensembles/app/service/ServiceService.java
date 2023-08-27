@@ -10,6 +10,7 @@ import ensembles.app.entity.ProfilPartenaire;
 import ensembles.app.entity.Service;
 import ensembles.app.entity.ServiceType;
 import ensembles.app.repository.RepoService;
+import ensembles.app.viewmodels.JourneyViewModel;
 import ensembles.app.viewmodels.ServiceViewModel;
 
 @Stateless
@@ -40,8 +41,8 @@ public class ServiceService {
 	}
 
 	public void modifierService(ServiceViewModel serviceViewModel) {
-		Service service = new Service();
-		service.setId(serviceViewModel.getId());
+		Service service = repoService.findById(serviceViewModel.getId());
+		
 		service.setName(serviceViewModel.getName());
 		service.setPlace(serviceViewModel.getPlace());
 		service.setBegin(serviceViewModel.getBegin());
@@ -49,6 +50,8 @@ public class ServiceService {
 		service.setServiceType(serviceViewModel.getServiceType());
 		service.setPrice(serviceViewModel.getPrice());
 		service.setDescription(serviceViewModel.getDescription());
+		service.setProfilPartenaire(serviceViewModel.getProfilPartenaire());
+		
 		repoService.update(service);
 	}
 

@@ -1,6 +1,5 @@
 package ensembles.app.managedbeans;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
@@ -13,8 +12,6 @@ import ensembles.app.repository.RepoProfilAgence;
 import ensembles.app.repository.RepoWebSite;
 import ensembles.app.service.ProfilAgenceService;
 import ensembles.app.service.WebSiteService;
-import ensembles.app.viewmodels.JourneyViewModel;
-import ensembles.app.viewmodels.ProfilAgenceViewModel;
 import ensembles.app.viewmodels.WebSiteViewModel;
 
 import java.io.Serializable;

@@ -131,8 +131,6 @@ public class ControllerJourney implements Serializable {
 		journeyViewModel.setConveyance(journey.getConveyance());
 		journeyViewModel.setProfilAgence(profilAgence);
 
-		System.out.println(journey.toString());
-		System.out.println(journeyViewModel.toString());
 	}
 
 	/*
@@ -143,9 +141,7 @@ public class ControllerJourney implements Serializable {
 		
 		journeyService.modifierJourney(journeyViewModel);
 		resetViewModel();
-		
-		System.out.println("modification BDD effectué");
-		
+				
 		return redirectToJourneyList(userId);
 	}
 
