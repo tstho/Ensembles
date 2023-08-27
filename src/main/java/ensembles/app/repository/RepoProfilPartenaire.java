@@ -6,7 +6,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.ProfilPartenaire;
 
 @Stateless
@@ -22,10 +21,12 @@ public class RepoProfilPartenaire {
 		
 		return profilPartenaire.getId();
 	}
+	
 	// methode Modifier
 	
 	  public void update(ProfilPartenaire profilPartenaire) {
 	        entityManager.merge(profilPartenaire);
+			entityManager.flush();
 	  }
 	  
 	  

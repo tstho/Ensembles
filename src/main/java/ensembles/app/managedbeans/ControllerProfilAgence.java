@@ -89,15 +89,15 @@ public class ControllerProfilAgence implements Serializable {
 		return redirectToEdit(userId);
 	}
 
-	
-/*
- * getters & setters
- */
+
 
 	private void resetViewModel() {
 		profilAgenceViewModel = new ProfilAgenceViewModel();
 		
 	}
+/*
+ * getters & setters
+ */
 
 	public ProfilAgenceViewModel getProfilAgenceViewModel() {
 		return profilAgenceViewModel;

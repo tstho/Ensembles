@@ -80,8 +80,7 @@ public class ProfilAgenceService {
 	}
 
 	public ProfilAgence findByUserId(Long id) {
-		System.out.println("Service find by user id");
-
+		
 		return repoProfilAgence.findByUserId(id);
 	}
 
