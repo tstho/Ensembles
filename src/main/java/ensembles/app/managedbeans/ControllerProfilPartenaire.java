@@ -51,8 +51,6 @@ public class ControllerProfilPartenaire implements Serializable {
 		profilPartenaireViewModel.setUser(profilPartenaire.getUser());
 		profilPartenaireViewModel.setId(profilPartenaire.getId());
 
-		profilPartenaireViewModel.setAdresseId(profilPartenaire.getAdresse().getId());
-
 		// infos du partenaire
 
 		profilPartenaireViewModel.setNomPartenaire(profilPartenaire.getNomPartenaire());

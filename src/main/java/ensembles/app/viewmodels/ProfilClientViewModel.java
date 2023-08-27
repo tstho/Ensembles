@@ -5,23 +5,13 @@ import ensembles.app.entity.User;
 public class ProfilClientViewModel {
 
 	private Long Id;
+	private User user;
 	
-	public Long getId() {
-		return Id;
-	}
-	public void setId(Long id) {
-		Id = id;
-	}
-	
-	private Long adresseId;
-	public Long getAdresseId() {
-		return adresseId;
-	}
-	public void setAdresseId(Long adresseId) {
-		this.adresseId = adresseId;
-	}
 	private String prenomClient;
 	private String nomClient;
+	private int telephoneClient;
+
+	private Long adresseId;
 
 	private int numero;
 	private String complement;
@@ -30,11 +20,14 @@ public class ProfilClientViewModel {
 	private String ville;
 	private String pays;
 	
-	private int telephoneClient;
-	private String emailClient;
 	
-	private User user;
 	
+	public Long getId() {
+		return Id;
+	}
+	public void setId(Long id) {
+		Id = id;
+	}
 	public User getUser() {
 		return user;
 	}
@@ -53,7 +46,18 @@ public class ProfilClientViewModel {
 	public void setNomClient(String nomClient) {
 		this.nomClient = nomClient;
 	}
-	
+	public int getTelephoneClient() {
+		return telephoneClient;
+	}
+	public void setTelephoneClient(int telephoneClient) {
+		this.telephoneClient = telephoneClient;
+	}
+	public Long getAdresseId() {
+		return adresseId;
+	}
+	public void setAdresseId(Long adresseId) {
+		this.adresseId = adresseId;
+	}
 	public int getNumero() {
 		return numero;
 	}
@@ -90,18 +94,8 @@ public class ProfilClientViewModel {
 	public void setPays(String pays) {
 		this.pays = pays;
 	}
-	public int getTelephoneClient() {
-		return telephoneClient;
-	}
-	public void setTelephoneClient(int telephoneClient) {
-		this.telephoneClient = telephoneClient;
-	}
-	public String getEmailClient() {
-		return emailClient;
-	}
-	public void setEmailClient(String emailClient) {
-		this.emailClient = emailClient;
-	}
+	
+	
 	
 	
 }

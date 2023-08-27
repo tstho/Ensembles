@@ -17,6 +17,8 @@
 
 		<ui:define name="content">
 
+		#{controllerProfilClient.initModifierProfilC(authBean.currentUser.id)}
+
 			<section class="vh-100" style="background-color: grey;">
 				<div class="container h-100">
 
@@ -124,7 +126,7 @@
 										<div class="form-group">
 											<div class="col-sm-offset-2 col-sm-10">
 												<h:commandButton value="Modifier"
-													action="#{controllerProfilClient.modifierProfilC()}" />
+													action="#{controllerProfilClient.modifierProfilC(authBean.currentUser.id)}" />
 											</div>
 										</div>
 									</h:form>
