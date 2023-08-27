@@ -15,11 +15,6 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", password=" + password + ", role=" + role + "]";
-	}
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -29,6 +24,13 @@ public class User implements Serializable {
 	
 	@Enumerated(EnumType.STRING)
 	private Role role;
+	
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", email=" + email + ", password=" + password + ", role=" + role + "]";
+	}
+
 
 	public Long getId() {
 		return id;

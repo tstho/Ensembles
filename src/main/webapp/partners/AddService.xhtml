@@ -2,152 +2,90 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
 	<meta charset="utf-8"></meta>
 	<title>Ensembles :: Ajout de services</title>
 
-	<!-- Inclure les fichiers CSS de Bootstrap -->
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-
-	<!-- Inclure les fichiers JavaScript de Bootstrap (jQuery requis) -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-	<!-- Inclure les fichiers CSS et JS de Bootstrap Datepicker -->
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-
 </h:head>
 <h:body>
 
-	<ui:composition template="/layouts/mainLayout.xhtml">
+				
+										<h:form>
+											<fieldset>
+												<h3>Ajouter un service</h3>
+												<table>
 
-		<ui:define name="content">
-			<div class="container" style="margin-top: 30px">
-				<div class="row">
-					<div class="col-sm-3 bg-info">
-						<ul class="nav nav-pills flex-column">
-							<li class="nav-item"><a class="nav-link text-white"
-								href="profilPartenaire.xhtml"> Mon profil</a></li>
-							<li class="nav-item"><a class="nav-link text-white" href="#">
-									Mes services</a></li>
-							<li class="nav-item"><a class="nav-link text-white"
-								href="AddService.xhtml"> Ajouter un service</a></li>
-							<li class="nav-item"><a class="nav-link text-white" href="#">
-									Notifications</a></li>
-						</ul>
-						<hr class="d-sm-none" />
-					</div>
+													<tr>
+														<td><h:outputLabel
+																value="Nom du Service : " /></td>
+														<td><h:inputText
+																value="#{controllerService.serviceViewModel.name}"
+																size="20" maxlength="20" /></td>
+													</tr>
+													<tr>
+														<td><h:outputLabel  value="Lieu : " /></td>
+														<td><h:inputText
+																value="#{controllerService.serviceViewModel.place}"
+																size="20" maxlength="20" /></td>
+													</tr>
+													<tr>
+														<td><h:outputLabel 
+																for="datePickerBegin" value="Début : " /></td>
+														<td><h:inputText id="datePickerBegin"
+																value="#{controllerService.serviceViewModel.begin}"
+																/></td>
+													</tr>
+													<tr>
+														<td><h:outputLabel  value="Fin : " /></td>
 
+														<td><h:inputText
+																value="#{controllerService.serviceViewModel.end}"
+																 /></td>
+													</tr>
+													<tr>
+														<td><h:outputLabel value="Prix: " /></td>
+														<td><h:inputText
+																value="#{controllerService.serviceViewModel.price}"
+																size="20" maxlength="20" /></td>
+													</tr>
+													<tr>
+														<td><h:outputLabel 
+																value="Type de service : " /></td>
+														<td><h:selectOneMenu name="service"
+																value="#{controllerService.serviceViewModel.serviceType}">
 
-					<div class="col-sm-9">
-						<div class="container h-100">
-							<h5 class="card-title text-uppercase mb-0" style="color: black;">Ajoutez
-								vos services</h5>
-							<hr class="mt-0 mb-4" />
-							<div class="card mb-4">
-								<div class="card-body">
-									<h:form>
-										<div class="row gx-3 mb-3">
-											<div class="col-md-6">
+																<f:selectItem
+																	itemValue="#{ServiceType.controllerService}"
+																	itemLabel="#{SelectService}" />
 
-												<h:outputLabel class="small mb-1" value="Nom du Service : " />
-												<h:inputText
-													value="#{controllerService.serviceViewModel.name}"
-													size="20" maxlength="20" styleClass="form-control" />
+																<f:selectItems
+																	value="#{controllerService.serviceOptions}" />
+															</h:selectOneMenu></td>
+													</tr>
+													<tr>
+														<td><h:outputLabel
+																value="Description: " /></td>
 
-											</div>
-											<div class="col-md-6">
+														<td><h:inputTextarea
+																value="#{controllerService.serviceViewModel.description}"
+																rows="5" cols="33" /></td>
+													</tr>
+													<tr>
+														<td><h:outputLabel
+																value="user ID : " /></td>
 
-												<h:outputLabel class="small mb-1" value="Lieu : " />
-												<h:inputText
-													value="#{controllerService.serviceViewModel.place}"
-													size="20" maxlength="20" styleClass="form-control" />
+														<td>#{authBean.currentUser.id}</td>
+													</tr>
+												</table>
 
-											</div>
-											<div class="col-md-6">
+											</fieldset>
 
-												<h:outputLabel class="small mb-1" for="datePickerBegin"
-													value="Début : " />
-												<h:inputText id="datePickerBegin"
-													value="#{controllerService.serviceViewModel.begin}"
-													styleClass="form-control datepicker" />
-
-											</div>
-											<div class="col-md-6">
-
-												<h:outputLabel class="small mb-1" value="Fin : " />
-												<h:inputText
-													value="#{controllerService.serviceViewModel.end}"
-													styleClass="form-control datepicker" />
-											</div>
-											
-											
-											<div class="col-md-6">
-												<h:outputLabel class="small mb-1" value="Prix: " />
-												<h:inputText
-													value="#{controllerService.serviceViewModel.price}"
-													size="20" maxlength="20" styleClass="form-control" />
-											</div>
-											<div class="col-md-6">
-												<h:outputLabel class="small mb-1" value="Type de service : " />
-
-												<h:selectOneMenu name="service" styleClass="form-control"
-													value="#{controllerService.serviceViewModel.serviceType}">
-
-													<f:selectItem itemValue="#{ServiceType.controllerService}"
-														itemLabel="#{SelectService}" />
-
-													<f:selectItems value="#{controllerService.serviceOptions}" />
-												</h:selectOneMenu>
-											</div>
-											
-											<div class="col-md-6">
-												<h:outputLabel class="small mb-1" value="Description: " />
-												<h:inputTextarea
-													value="#{controllerService.serviceViewModel.description}"
-													rows="5" cols="33" styleClass="form-control" />
-
-											</div>
-											
-											</div>
-												<div class="form-group">
-													<div class="col-sm-offset-2 col-sm-10">
-														<h:commandButton value="Proposez"
-															action="#{controllerService.saveService(authBean.currentUser.id)}"
-															styleClass="btn btn-dark" />
-													</div>
-												</div>
-											
+											<h:commandButton value="Proposez votre service"
+												action="#{controllerService.saveService(authBean.currentUser.id)}"
+												/>
+										</h:form>
 										
-									</h:form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</ui:define>
-
-
-	</ui:composition>
-	<script>
-        $(document).ready(function() {
-            $('.datepicker').datepicker({
-                format: 'dd/mm/yyyy', // Format de la date
-                autoclose: true
-            });
-        });
-    </script>
 </h:body>
 </html>

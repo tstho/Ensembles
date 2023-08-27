@@ -7,7 +7,9 @@ import javax.persistence.EntityManager;
 
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
+import ensembles.app.entity.Journey;
 import ensembles.app.entity.Service;
 
 @Stateless
@@ -21,15 +23,10 @@ public class RepoService {
 //		this.entityManager=HibernateUtil.createEntityManager();
 //	}
 
-	public Long saveService(Service service) {
-//		EntityTransaction tx = this.entityManager.getTransaction();
-//		tx.begin();
+	public Service saveService(Service service) {
 		entityManager.persist(service);
 		entityManager.flush();
-//		tx.commit();
-//		entityManager.close();
-//		HibernateUtil.closeEntityManagerFactory();
-		return service.getId();
+		return service;
 
 	}
 
@@ -68,5 +65,19 @@ public class RepoService {
 
 	public Service findById(Long id) {
 		return entityManager.find(Service.class, id);
+	}
+
+	public List<Service> findByPartenaireId(Long id) {
+		String reqSelect = "SELECT s FROM Service s WHERE partenaire_id = :id";
+		TypedQuery<Service> query = entityManager.createQuery(reqSelect, Service.class);
+		query.setParameter("id", id);
+
+		try {
+			return query.getResultList();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

@@ -30,7 +30,15 @@ public class Service {
 	 @ManyToOne
 	 @JoinColumn(name="partenaire_id")   
 	 private ProfilPartenaire profilPartenaire;
+	 
+	 
   
+	@Override
+	public String toString() {
+		return "Service [id=" + id + ", name=" + name + ", place=" + place + ", begin=" + begin + ", end=" + end
+				+ ", ServiceType=" + ServiceType + ", price=" + price + ", Description=" + Description
+				+ ", profilPartenaire=" + profilPartenaire + "]";
+	}
 	public Long getId() {
 		return id;
 	}

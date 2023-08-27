@@ -19,7 +19,6 @@ public class RepoJourney {
 	public Journey save(Journey journey) {
 		entityManager.persist(journey);
 		entityManager.flush();
-		System.out.println("Réservation dans repo après save :" + journey.toString());
 		return journey;
 	}
 

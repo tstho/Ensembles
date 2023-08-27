@@ -31,8 +31,6 @@ public class Journey implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "journey")
 	private List<Reservation> reservations = new LinkedList<>();
 	
-	
-	
 
 	@Override
 	public String toString() {

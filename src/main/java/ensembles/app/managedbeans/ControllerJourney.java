@@ -78,9 +78,9 @@ public class ControllerJourney implements Serializable {
 		
 		journeyService.saveJourney(profilAgence, journeyViewModel);
 		
-		journeyList = journeyListByProfilAgence(profilAgence.getId());
-
-		return "/Journey/displayAllJourney.xhtml?faces-redirect=true";
+		resetViewModel();
+		
+		return redirectToJourneyList(userId);
 	}
 	
 	/*
@@ -148,8 +148,6 @@ public class ControllerJourney implements Serializable {
 		
 		journeyService.modifierJourney(journeyViewModel);
 		resetViewModel();
-		
-		System.out.println("modification BDD effectué");
 		
 		return redirectToJourneyList(userId);
 	}
