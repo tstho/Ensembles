@@ -22,6 +22,10 @@ public class ProfilPartenaire {
 
 	private String nomPartenaire;
 	private String siretPartenaire;
+	private String nomResponsablePartenaire;
+	private String prenomResponsablePartenaire;
+	private String emailResponsablePartenaire;
+	private int telephoneResponsablePartenaire;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "adresse_id")
@@ -34,20 +38,11 @@ public class ProfilPartenaire {
 	@OneToOne
 	@JoinColumn(name="user_id")
 	private User user;
-
-	private String nomResponsablePartenaire;
-	private String prenomResponsablePartenaire;
-	private String emailResponsablePartenaire;
-	private int telephoneResponsablePartenaire;
-
 		
 	@Override
 	public String toString() {
 		return "ProfilPartenaire [id=" + id + ", nomPartenaire=" + nomPartenaire + ", siretPartenaire="
-				+ siretPartenaire + ", adresse=" + adresse + ", services=" + services + ", user=" + user
-				+ ", nomResponsablePartenaire=" + nomResponsablePartenaire + ", prenomResponsablePartenaire="
-				+ prenomResponsablePartenaire + ", emailResponsablePartenaire=" + emailResponsablePartenaire
-				+ ", telephoneResponsablePartenaire=" + telephoneResponsablePartenaire + "]";
+				+ siretPartenaire + "]";
 	}
 	
 	

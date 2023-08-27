@@ -9,7 +9,6 @@ import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.ProfilPartenaire;
 import ensembles.app.entity.Service;
 import ensembles.app.entity.ServiceType;
-import ensembles.app.repository.RepoProfilPartenaire;
 import ensembles.app.repository.RepoService;
 import ensembles.app.viewmodels.ServiceViewModel;
 
@@ -20,12 +19,10 @@ public class ServiceService {
 	private RepoService repoService;
 	@Inject
 	private Service service;
-	@Inject
-	private RepoProfilPartenaire repoProfilPartenaire;
 	
-	public void saveService(ProfilPartenaire profilPartenaire, ServiceViewModel serviceViewModel) {
-		
-		Service service = new Service();
+	public void saveService(ServiceViewModel serviceViewModel, ProfilPartenaire profilPartenaire) {
+		System.out.println("Serviceservice saveService() : ");
+		service = new Service();
 		service.setName(serviceViewModel.getName());
 		service.setPlace(serviceViewModel.getPlace());
 		service.setBegin(serviceViewModel.getBegin());
@@ -33,8 +30,11 @@ public class ServiceService {
 		service.setServiceType(serviceViewModel.getServiceType());
 		service.setPrice(serviceViewModel.getPrice());
 		service.setDescription(serviceViewModel.getDescription());
-		
 		service.setProfilPartenaire(profilPartenaire);
+		
+		System.out.println("Service : ");
+		System.out.println(service);
+		
 		repoService.saveService(service);
 
 	}

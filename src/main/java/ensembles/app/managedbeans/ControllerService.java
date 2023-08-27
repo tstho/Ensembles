@@ -1,24 +1,18 @@
-
 package ensembles.app.managedbeans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-
-import ensembles.app.entity.Journey;
 import ensembles.app.entity.ProfilPartenaire;
 import ensembles.app.entity.Service;
 import ensembles.app.entity.ServiceType;
 import ensembles.app.repository.RepoProfilPartenaire;
 import ensembles.app.repository.RepoService;
 import ensembles.app.service.ServiceService;
-import ensembles.app.service.ProfilPartenaireService;
 import ensembles.app.viewmodels.ServiceViewModel;
 
 @ManagedBean
@@ -35,58 +29,12 @@ public class ControllerService implements Serializable {
 	private RepoService repoService;
 	@Inject
 	private RepoProfilPartenaire repoProfilPartenaire;
-	@Inject
-	private ProfilPartenaireService profilPartenaireService;
 
 	private List<Service> serviceList;
-	
-	private Service currentService;
-
-	@PostConstruct
-	public void init() {
-		serviceList = repoService.findAll();
-	}
 
 	/*
-	 * Méthode pour récupérer le service en cours
+	 * Méthode pour récupérer la liste des types de services
 	 */
-
-	public Service getCurrentService() {
-
-		currentService = (Service) FacesContext.getCurrentInstance().getExternalContext().getSessionMap()
-				.get("currentService");
-
-		return currentService;
-
-	}
-	/*
-	 * Méthode d'enregistrement d'un service
-	 */
-
-	public String saveService(Long idUser) {
-
-		ProfilPartenaire profilPartenaire = repoProfilPartenaire.findByUserId(idUser);
-
-		serviceService.saveService(profilPartenaire, serviceViewModel);
-
-		serviceList = serviceListByProfilPartenaire(profilPartenaire.getId());
-
-		resetViewModel();
-
-		return "/partners/displayAllService.xhtml?faces-redirect=true";
-	}
-	
-	/*
-	 * Méthode pour récupérer la liste des services du partenaire
-	 */
-	public List<Service> serviceListByProfilPartenaire(Long partnerId) {
-		
-		serviceList = repoService.findByPartnerId(partnerId);
-
-		return serviceList;
-
-	}
-
 	public List<ServiceType> getServiceOptions() {
 		List<ServiceType> options = new ArrayList<>();
 		for (ServiceType serviceType : ServiceType.values()) {
@@ -95,10 +43,57 @@ public class ControllerService implements Serializable {
 		return options;
 	}
 
+	/*
+	 * Méthode pour enregistrer un nouveau service
+	 */
+	public String saveService(Long idUser) {
+		
+		System.out.println("Méthode save service : userID : " + idUser);
+		System.out.println("service VM : ");
+		System.out.println(serviceViewModel);
+
+		ProfilPartenaire profilPartenaire = repoProfilPartenaire.findByUserId(idUser);
+
+		serviceService.saveService(serviceViewModel, profilPartenaire);
+
+		resetViewModel();
+
+		return redirectToServiceList(idUser);
+	}
+	
+	/*
+	 * Méthode redirection vers listes de voyages
+	 */
+
+	public String redirectToServiceList(Long userId) {
+
+		ProfilPartenaire profilPartenaire = repoProfilPartenaire.findByUserId(userId);
+		
+		serviceList = serviceListByProfilPartenaire(profilPartenaire.getId());
+
+		return "/partners/displayAllService.xhtml?faces-redirect=true";
+	}
+	
+	/*
+	 * Méthode pour récupérer la liste des voyages de l'agence 
+	 */
+	public List<Service> serviceListByProfilPartenaire(Long partenaireId) {
+		
+		serviceList = repoService.findByPartenaireId(partenaireId);
+
+		return serviceList;
+
+	}
+	
+
+	/*
+	 * Méthode de redirection vers le formulaire de modification
+	 */
+	
 	public String redirectToEdit(Long serviceId) {
 		initModifierService(serviceId);
 
-		return "/partners/modifyService.xhtml?faces-redirect=true";
+		return "/ensembles/modifyService.xhtml?faces-redirect=true";
 	}
 
 	private void initModifierService(Long serviceId) {
@@ -115,13 +110,12 @@ public class ControllerService implements Serializable {
 
 	}
 
-	public String modifierService() {
-		System.out.println("ID du service à modifier : " + serviceViewModel.getId());
+	public String modifierService(Long userId) {
 		serviceService.modifierService(serviceViewModel);
-		serviceList = repoService.findAll();
+
 		resetViewModel();
 
-		return "/partners/displayAllService.xhtml?faces-redirect=true";
+		return redirectToServiceList(userId);
 	}
 
 	public void supprimerService(Long id) {
@@ -177,5 +171,6 @@ public class ControllerService implements Serializable {
 	public void setServiceList(List<Service> serviceList) {
 		this.serviceList = serviceList;
 	}
+	
 
 }
