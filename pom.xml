@@ -209,6 +209,8 @@
 			<scope>test</scope>
 		</dependency>
 
+
+
 		<!-- Optional, but highly recommended -->
 		<!-- Arquillian allows you to test enterprise code such as EJBs and Transactional(JTA) 
 			JPA from JUnit/TestNG -->
@@ -224,11 +226,18 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- dependance Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
 		<!-- Maven will append the version to the finalName (which is the name 
-		given to the generated war, and hence the context root) -->
+			given to the generated war, and hence the context root) -->
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>

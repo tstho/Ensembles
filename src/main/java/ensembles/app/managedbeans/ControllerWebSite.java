@@ -1,8 +1,18 @@
 package ensembles.app.managedbeans;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Serializable;
+import java.util.Scanner;
+
+import javax.el.ELContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.servlet.http.Part;
+
+import org.primefaces.model.file.UploadedFile;
 
 import ensembles.app.entity.Journey;
 import ensembles.app.entity.ProfilAgence;
@@ -14,15 +24,16 @@ import ensembles.app.service.ProfilAgenceService;
 import ensembles.app.service.WebSiteService;
 import ensembles.app.viewmodels.WebSiteViewModel;
 
-import java.io.Serializable;
-import java.util.List;
-
 @ManagedBean
 @SessionScoped
 public class ControllerWebSite implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
+	private Part uploadedFile;
+	private String text;
+	private byte[] logo;
+	
 	@Inject
 	WebSiteViewModel webSiteViewModel;
 
@@ -93,7 +104,7 @@ public class ControllerWebSite implements Serializable {
 	}
     
 	public void saveWebSite() {
-		webSiteService.saveWebSite(webSiteViewModel);
+				webSiteService.saveWebSite(webSiteViewModel);
 	}
 
 	// Redirection Modification du website
@@ -129,6 +140,30 @@ public class ControllerWebSite implements Serializable {
 
 		return redirectWebsite(webSiteViewModel.getId());
 	}
+	
+	public void upload() {
+		
+		System.out.println("uploaded file :" + uploadedFile);
+		
+        if (null != uploadedFile) {
+            try {
+                InputStream is = uploadedFile.getInputStream();
+                text = new Scanner(is).useDelimiter("\\A").next();
+                
+                System.out.println("After upload :" + text);
+            } catch (IOException ex) {
+            }
+        }
+	}
+	
+//	private UploadedFile getUploadedPicture()
+//    {
+//        FacesContext context = FacesContext.getCurrentInstance();
+//        ELContext elContext = context.getELContext();
+//        UploadBean uploadBean = (UploadBean) elContext.getELResolver().getValue(elContext, null, "uploadBean");
+//        return uploadBean.getUploadedFile();
+//    }
+//        
 
 
 	/*
@@ -173,6 +208,30 @@ public class ControllerWebSite implements Serializable {
 
 	public void setRepoWebSite(RepoWebSite repoWebSite) {
 		this.repoWebSite = repoWebSite;
+	}
+
+	public Part getUploadedFile() {
+		return uploadedFile;
+	}
+
+	public void setUploadedFile(Part uploadedFile) {
+		this.uploadedFile = uploadedFile;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public byte[] getLogo() {
+		return logo;
+	}
+
+	public void setLogo(byte[] logo) {
+		this.logo = logo;
 	}
 
 	public List<Journey> getJourneyList() {
