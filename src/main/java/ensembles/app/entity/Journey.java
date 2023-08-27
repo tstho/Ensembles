@@ -17,19 +17,27 @@ public class Journey implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private String Description;
 	private String Destination; 
 	private Date DepartureDate; 
 	private Date DestinationDate;
-	private Conveyance conveyance;
 	private Double price;
+	private Conveyance conveyance;
+	private String Description;
 
 	@ManyToOne
 	@JoinColumn(name = "agency_id")
 	private ProfilAgence profilAgence;
 	
-	@OneToMany(mappedBy = "journey")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "journey")
 	private List<Reservation> reservations = new LinkedList<>();
+	
+	
+	@Override
+	public String toString() {
+		return "Journey [id=" + id + ", Destination=" + Destination + ", DepartureDate=" + DepartureDate
+				+ ", DestinationDate=" + DestinationDate + ", price=" + price + ", conveyance=" + conveyance
+				+ ", Description=" + Description + ", profilAgence=" + profilAgence.getId() + "]";
+	}
 
 	public Long getId() {
 		return id;

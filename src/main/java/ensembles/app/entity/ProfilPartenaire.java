@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,94 +22,133 @@ public class ProfilPartenaire {
 
 	private String nomPartenaire;
 	private String siretPartenaire;
-
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "adresse_id")
-	private Adresse adresse;
-	
-	
-	@OneToMany(mappedBy="profilPartenaire")
-	 private List<Service> services = new LinkedList<>();
-
-	@OneToOne
-	@JoinColumn(name="user_id")
-	private User user;
-
 	private String nomResponsablePartenaire;
 	private String prenomResponsablePartenaire;
 	private String emailResponsablePartenaire;
 	private int telephoneResponsablePartenaire;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "adresse_id")
+	private Adresse adresse;
+
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="profilPartenaire")
+	 private List<Service> services = new LinkedList<>();
+
+		
+	@Override
+	public String toString() {
+		return "ProfilPartenaire [id=" + id + ", nomPartenaire=" + nomPartenaire + ", siretPartenaire="
+				+ siretPartenaire + "]";
+	}
+
+
 	public Long getId() {
 		return id;
 	}
 
-	public String getNomPartenaire() {
-		return nomPartenaire;
-	}
-
-	public String getSiretPartenaire() {
-		return siretPartenaire;
-	}
-
-	public Adresse getAdresse() {
-		return adresse;
-	}
-
-	public String getNomResponsablePartenaire() {
-		return nomResponsablePartenaire;
-	}
-
-	public String getPrenomResponsablePartenaire() {
-		return prenomResponsablePartenaire;
-	}
-
-	public String getEmailResponsablePartenaire() {
-		return emailResponsablePartenaire;
-	}
-
-	public int getTelephoneResponsablePartenaire() {
-		return telephoneResponsablePartenaire;
-	}
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+
+	public String getNomPartenaire() {
+		return nomPartenaire;
+	}
+
+
 	public void setNomPartenaire(String nomPartenaire) {
 		this.nomPartenaire = nomPartenaire;
 	}
+
+
+	public String getSiretPartenaire() {
+		return siretPartenaire;
+	}
+
 
 	public void setSiretPartenaire(String siretPartenaire) {
 		this.siretPartenaire = siretPartenaire;
 	}
 
-	public void setAdresse(Adresse adresse) {
-		this.adresse = adresse;
+
+	public String getNomResponsablePartenaire() {
+		return nomResponsablePartenaire;
 	}
+
 
 	public void setNomResponsablePartenaire(String nomResponsablePartenaire) {
 		this.nomResponsablePartenaire = nomResponsablePartenaire;
 	}
 
+
+	public String getPrenomResponsablePartenaire() {
+		return prenomResponsablePartenaire;
+	}
+
+
 	public void setPrenomResponsablePartenaire(String prenomResponsablePartenaire) {
 		this.prenomResponsablePartenaire = prenomResponsablePartenaire;
 	}
+
+
+	public String getEmailResponsablePartenaire() {
+		return emailResponsablePartenaire;
+	}
+
 
 	public void setEmailResponsablePartenaire(String emailResponsablePartenaire) {
 		this.emailResponsablePartenaire = emailResponsablePartenaire;
 	}
 
+
+	public int getTelephoneResponsablePartenaire() {
+		return telephoneResponsablePartenaire;
+	}
+
+
 	public void setTelephoneResponsablePartenaire(int telephoneResponsablePartenaire) {
 		this.telephoneResponsablePartenaire = telephoneResponsablePartenaire;
-	}		
+	}
+
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
 
 	public User getUser() {
 		return user;
 	}
 
+
 	public void setUser(User user) {
 		this.user = user;
-	}		
+	}
+
+
+	public List<Service> getServices() {
+		return services;
+	}
+
+
+	public void setServices(List<Service> services) {
+		this.services = services;
+	}
+	
+	
+	/*
+	 * getters & setters
+	 */
+	
 
 }

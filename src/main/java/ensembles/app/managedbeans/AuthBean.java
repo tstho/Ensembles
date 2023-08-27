@@ -8,12 +8,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-import ensembles.app.entity.Adresse;
-import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.Role;
 import ensembles.app.entity.User;
-import ensembles.app.repository.RepoProfilAgence;
-import ensembles.app.service.ProfilAgenceService;
 import ensembles.app.service.UserService;
 import ensembles.app.viewmodels.UserViewModel;
 
@@ -33,10 +29,7 @@ public class AuthBean implements Serializable {
 	
 	@Inject
 	ControllerReservation controllerReservation;
-	
-	private String message;
-
-	
+		
 
 	public String login() {
 

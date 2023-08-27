@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 
+import ensembles.app.entity.ProfilAgence;
+import ensembles.app.entity.ProfilPartenaire;
 import ensembles.app.entity.ServiceType;
 
 @ManagedBean
@@ -18,7 +20,22 @@ public class ServiceViewModel {
 	private String place;	
 	private Double price; 
 	private String Description;
+	private ProfilPartenaire profilPartenaire;
 	
+	/**
+	 * @return the profilPartenaire
+	 */
+	public ProfilPartenaire getProfilPartenaire() {
+		return profilPartenaire;
+	}
+
+	/**
+	 * @param profilPartenaire the profilPartenaire to set
+	 */
+	public void setProfilPartenaire(ProfilPartenaire profilPartenaire) {
+		this.profilPartenaire = profilPartenaire;
+	}
+
 	@Override
 	public String toString() {
 		return "ServiceViewModel [serviceType=" + serviceType + ", Id=" + Id + ", name=" + name + ", begin="

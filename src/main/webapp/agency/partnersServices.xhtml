@@ -2,7 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<!-- <link rel="stylesheet" href="../resources/css/styles.css" /> -->
 
 
 <h:head>
@@ -17,11 +20,11 @@
 
 		<ui:define name="content">
 
+		#{controllerService.onPageLoad()}
 			<div class="container" style="margin-top: 30px">
 				<div class="row">
 					<div class="col-sm-2 bg-info">
-
-						
+					
 						<!-- BAR DE NAVIGATION AGENCY -->
 						<h:form>
 							<ul class="nav nav-pills flex-column">
@@ -56,7 +59,7 @@
 									<h:commandLink
 										class="nav-link text-white"
 										action="#{controllerWebSite.redirectToEdit(authBean.currentUser.id)}"
-										value="Personnaliser mon site" />
+										value="Personnalisation de mon site" />
 								</li>
 								<li class="nav-item">
 									<h:commandLink
@@ -66,44 +69,66 @@
 								</li>
 							</ul>
 						</h:form>
-
-
+					
 						<hr class="d-sm-none" />
 					</div>
 					<div class="col-sm-9">
+					
+							<h3>Liste des services</h3>
+							<hr />
+							<h:dataTable class="table table-hover" value="#{controllerService.serviceList}"
+								var="service">
+								<h:column>
+									<f:facet name="header">Service</f:facet>
+				#{service.name}
+			</h:column>
 
-						<section>
+								<h:column>
+									<f:facet name="header">Type de service</f:facet>
+				#{service.serviceType}
+			</h:column>
 
-							<div class="container-fluid p-5 bg-info text-light text-center">
-								<h1>Mon Espace Agence</h1>
-								<p>Configurer votre site en 3 étapes</p>
-							</div>
+								<h:column>
+									<f:facet name="header">Date début</f:facet>
+				#{service.begin}
+			</h:column>
 
-							<div class="container mt-5">
-								<div class="row">
-									<div class="col-sm-4">
-										<h3>Etape 1</h3>
-										<p>Complétez votre profil agence</p>
-										<p>Pensez à mettre votre logo</p>
-									</div>
-									<div class="col-sm-4">
-										<h3>Etape 2</h3>
-										<p>Allez dans Configuration pour customiser votre site</p>
-										<p>Munissez-vous de vos photos et textes</p>
-									</div>
-									<div class="col-sm-4">
-										<h3>Etape 3</h3>
-										<p>Créez vos offres de voyages</p>
-										<p>... et gérer les d'ici !</p>
-									</div>
-								</div>
-							</div>
+								<h:column>
+									<f:facet name="header">Date fin</f:facet>
+				#{service.end}
+			</h:column>
 
-						</section>
+								<h:column>
+									<f:facet name="header">Localisation</f:facet>
+				#{service.place}
+			</h:column>
 
+								<h:column>
+									<f:facet name="header">Prix</f:facet>
+				#{service.price}
+			</h:column>
+
+								<h:column>
+									<f:facet name="header">Description</f:facet>
+				#{service.description}
+			</h:column>
+
+								<h:column>
+									<f:facet name="header"></f:facet>
+									<h:form>
+										<h:commandLink value="Ajouter au voyage" action="#" />
+										<p:commandLink actionListener="#" ajax="false"
+											value="Choisir voyage">
+										</p:commandLink>
+									</h:form>
+								</h:column>
+
+							</h:dataTable>
+
+						</div>
 					</div>
 				</div>
-			</div>
+
 		</ui:define>
 	</ui:composition>
 

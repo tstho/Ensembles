@@ -1,13 +1,13 @@
 package ensembles.app.repository;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import ensembles.app.entity.ProfilAgence;
-import ensembles.app.entity.User;
 import ensembles.app.entity.WebSite;
 
 @Stateless
@@ -58,4 +58,14 @@ public class RepoWebSite {
 		}
 	
 	}
+
+
+	public List<WebSite> findAll() {
+
+			String reqSelect = "SELECT w FROM WebSite w";
+
+			return entityManager.createQuery(reqSelect, WebSite.class).getResultList();
+
+	}
+
 }

@@ -6,7 +6,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.ProfilClient;
 
 @Stateless
@@ -27,6 +26,7 @@ public class RepoProfilClient {
 	
 	  public void update(ProfilClient profilClient) {
 	        entityManager.merge(profilClient);
+			entityManager.flush();
 	  }
 	  
 	  

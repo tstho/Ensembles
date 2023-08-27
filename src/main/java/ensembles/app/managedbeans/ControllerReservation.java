@@ -79,8 +79,29 @@ public class ControllerReservation implements Serializable {
 		reservationViewModel = new ReservationViewModel();
 	}
 	
-	// Methode pour afficher la liste de toutes les réservations
+	// Methode pour afficher la liste de toutes les réservations par utilisateurs
 
+	public String reservationListByUser(Long userId){
+		
+		journeyList = new ArrayList<Journey>();
+		
+		reservationList = repoReservation.getAllReservationsByUserId(userId);
+		
+		for(Reservation reservation : reservationList) {
+			Long journeyId = reservation.getJourney().getId() ;
+			Journey journey =repoJourney.findById(journeyId) ;
+			
+			journeyList.add(journey);
+			
+			
+		}
+		
+		return "/reservation/displayReservationByUser.xhtml?faces-redirect=true";
+		
+	}
+	
+	
+	
 	/*
 	 * gettes & setters
 	 */
@@ -117,8 +138,6 @@ public class ControllerReservation implements Serializable {
 		this.reservationList = reservationList;
 	}
 	
-	
-	
 	public List<Journey> getJourneyList() {
 		return journeyList;
 	}
@@ -128,27 +147,5 @@ public class ControllerReservation implements Serializable {
 	}
 	
 	
-	
-	public String reservationListByUser(Long userId){
-		
-		journeyList = new ArrayList<Journey>();
-		
-		reservationList = repoReservation.getAllReservationsByUserId(userId);
-		
-		for(Reservation reservation : reservationList) {
-			Long journeyId = reservation.getJourney().getId() ;
-			Journey journey =repoJourney.findById(journeyId) ;
-			
-			System.out.println("j'ajoute dans la liste et la voici");
-			
-			journeyList.add(journey);
-			
-			System.out.println(journeyList.toString());
-			
-		}
-		
-		return "/reservation/displayReservationByUser.xhtml?faces-redirect=true";
-		
-	}
 
 }

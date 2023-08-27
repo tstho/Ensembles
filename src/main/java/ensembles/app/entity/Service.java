@@ -1,10 +1,9 @@
 package ensembles.app.entity;
 
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +13,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Service")
-public class Service {
+public class Service implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,6 +32,13 @@ public class Service {
 	 @JoinColumn(name="partenaire_id")   
 	 private ProfilPartenaire profilPartenaire;
   
+	@Override
+	public String toString() {
+		return "Service [id=" + id + ", name=" + name + ", place=" + place + ", begin=" + begin + ", end=" + end
+				+ ", ServiceType=" + ServiceType + ", price=" + price + ", Description=" + Description
+				+ ", profilPartenaire=" + profilPartenaire + "]";
+	}
+	
 	public Long getId() {
 		return id;
 	}

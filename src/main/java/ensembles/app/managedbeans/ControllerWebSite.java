@@ -14,8 +14,10 @@ import javax.servlet.http.Part;
 
 import org.primefaces.model.file.UploadedFile;
 
+import ensembles.app.entity.Journey;
 import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.WebSite;
+import ensembles.app.repository.RepoJourney;
 import ensembles.app.repository.RepoProfilAgence;
 import ensembles.app.repository.RepoWebSite;
 import ensembles.app.service.ProfilAgenceService;
@@ -34,41 +36,90 @@ public class ControllerWebSite implements Serializable {
 	
 	@Inject
 	WebSiteViewModel webSiteViewModel;
-	
+
 	@Inject
 	private WebSiteService webSiteService;
-	
+
 	@Inject
 	private ProfilAgenceService profilAgenceService;
-	
+
 	@Inject
 	private RepoProfilAgence repoProfilAgence;
 	@Inject
 	private RepoWebSite repoWebSite;
+	@Inject
+	private RepoJourney repoJourney;
 	
+	private List<Journey> journeyList; 
 	
+	private Long websiteId;
+	
+	/*
+	 * Redirection Index -> Website
+	 */
+
+	public String redirectWebsite(Long websiteId) {
+	    return "/templates/templateOne.xhtml?wsId=" + websiteId + "&faces-redirect=true";
+	}
+	/*
+	 * Redirection EspaceAgence -> Website
+	 */
+
+	public String redirectWebsiteViaAgence(Long userId) {
+		ProfilAgence profilAgence = profilAgenceService.findByUserId(userId);
+		WebSite webSite = repoWebSite.getWebsiteByAgence(profilAgence.getId());
+		websiteId = webSite.getId();
+
+	    return "/templates/templateOne.xhtml?wsId=" + websiteId + "&faces-redirect=true";
+	}
+	
+    public void onPageLoad() {
+        if (websiteId != null) {
+        	
+        	WebSite webSite = repoWebSite.findById(websiteId);
+
+    		webSiteViewModel.setId(webSite.getId());
+    		webSiteViewModel.setAboutUs(webSite.getAboutUs());
+    		webSiteViewModel.setColor(webSite.getColor());
+    		webSiteViewModel.setImageAboutUs(webSite.getImageAboutUs());
+    		webSiteViewModel.setImageBackground(webSite.getImageBackground());
+    		webSiteViewModel.setLogo(webSite.getLogo());
+    		webSiteViewModel.setProfilAgence(webSite.getProfilAgence());
+    		
+    		journeyListByProfilAgence(webSite.getProfilAgence().getId());
+    		
+    		
+        }
+    }
+
+    /*
+	 * Méthode pour récupérer la liste des voyages de l'agence 
+	 */
+	public List<Journey> journeyListByProfilAgence(Long agenceId) {
+		
+		journeyList = repoJourney.findByAgenceId(agenceId);
+
+		return journeyList;
+
+	}
+    
 	public void saveWebSite() {
 				webSiteService.saveWebSite(webSiteViewModel);
 	}
-	
-	// Modification du profil de l'agence
+
+	// Redirection Modification du website
 	public String redirectToEdit(Long userId) {
 		initModifierWebsite(userId);
 		return "/templates/configTemplate.xhtml?faces-redirect=true";
 	}
 
 	public void initModifierWebsite(Long userId) {
-		System.out.println("init Modifier Website : ");
+
 		ProfilAgence profilAgence = profilAgenceService.findByUserId(userId);
-		System.out.println("Profil Agence : ");
-		System.out.println(profilAgence.toString());
 		WebSite webSite = repoWebSite.getWebsiteByAgence(profilAgence.getId());
-		System.out.println(" Website : ");
-		System.out.println(webSite.toString());
-		
-		
+
 		webSiteViewModel = new WebSiteViewModel();
-		
+
 		// initialisation des champs du viewModel
 		webSiteViewModel.setId(webSite.getId());
 		webSiteViewModel.setAboutUs(webSite.getAboutUs());
@@ -77,20 +128,17 @@ public class ControllerWebSite implements Serializable {
 		webSiteViewModel.setImageBackground(webSite.getImageBackground());
 		webSiteViewModel.setLogo(webSite.getLogo());
 		webSiteViewModel.setProfilAgence(profilAgence);
-		
-		System.out.println(webSiteViewModel.toString());
+
 	}
-		
+
+	/*
+	 * Méthode pour modifier les champs du website
+	 */
 	public String modifierWebsite() {
 
-		System.out.println("Je modifie ton site là");
-		System.out.println(webSiteViewModel.toString());
 		webSiteService.modifyWebsite(webSiteViewModel);
-//			profilList = rU.findAll();
 
-//			resetViewModel();
-
-		return "/templates/templateOne.xhtml?faces-redirect=true";
+		return redirectWebsite(webSiteViewModel.getId());
 	}
 	
 	public void upload() {
@@ -117,11 +165,10 @@ public class ControllerWebSite implements Serializable {
 //    }
 //        
 
+
 	/*
 	 * getters & setters
 	 */
-	
-	
 
 	public WebSiteViewModel getWebSiteViewModel() {
 		return webSiteViewModel;
@@ -187,8 +234,19 @@ public class ControllerWebSite implements Serializable {
 		this.logo = logo;
 	}
 
+	public List<Journey> getJourneyList() {
+		return journeyList;
+	}
 
+	public void setJourneyList(List<Journey> journeyList) {
+		this.journeyList = journeyList;
+	}
+	public Long getWebsiteId() {
+		return websiteId;
+	}
+	public void setWebsiteId(Long websiteId) {
+		this.websiteId = websiteId;
+	}
 
-	
 	
 }

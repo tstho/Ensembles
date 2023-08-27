@@ -43,7 +43,8 @@ public class ProfilPartenaireService {
 	}
 
 	public ProfilPartenaire findByUserId(Long userId) {
-		System.out.println(repoProfilPartenaire.findByUserId(userId));
+		System.out.println("Service find by user id");
+
 		return repoProfilPartenaire.findByUserId(userId);
 	}
 
@@ -60,12 +61,15 @@ public class ProfilPartenaireService {
 		
 		Adresse adresse = profilPartenaire.getAdresse();
 		
+		adresse.setId(profilPartenaireViewModel.getAdresseId());
 		adresse.setNumero(profilPartenaireViewModel.getNumero());
 		adresse.setComplement(profilPartenaireViewModel.getComplement());
 		adresse.setVoie(profilPartenaireViewModel.getVoie());
 		adresse.setCodePostal(profilPartenaireViewModel.getCodePostal());
 		adresse.setVille(profilPartenaireViewModel.getVille());
 		adresse.setPays(profilPartenaireViewModel.getPays());
+		
+		profilPartenaire.setAdresse(adresse);
 		
 		repoAdresse.update(adresse);
 
