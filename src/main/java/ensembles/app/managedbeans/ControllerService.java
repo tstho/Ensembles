@@ -6,10 +6,13 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import ensembles.app.entity.ProfilPartenaire;
+import ensembles.app.entity.Role;
 import ensembles.app.entity.Service;
 import ensembles.app.entity.ServiceType;
+import ensembles.app.entity.User;
 import ensembles.app.repository.RepoProfilPartenaire;
 import ensembles.app.repository.RepoService;
 import ensembles.app.service.ServiceService;
@@ -29,8 +32,23 @@ public class ControllerService implements Serializable {
 	private RepoService repoService;
 	@Inject
 	private RepoProfilPartenaire repoProfilPartenaire;
+	
+	private User currentUser;
 
 	private List<Service> serviceList;
+	
+	public void onPageLoad() {
+		currentUser = (User) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("currentUser");
+		
+		if(currentUser != null  && currentUser.getRole() == Role.PARTNER) {
+			
+			ProfilPartenaire profilPartenaire = repoProfilPartenaire.findByUserId(currentUser.getId());
+			
+			serviceListByProfilPartenaire(profilPartenaire.getId());
+		}else {
+			serviceList = repoService.findAll();
+		}
+	}
 
 	/*
 	 * Méthode pour récupérer la liste des types de services
