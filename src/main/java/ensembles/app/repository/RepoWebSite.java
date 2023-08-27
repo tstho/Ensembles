@@ -8,9 +8,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import ensembles.app.entity.Journey;
-import ensembles.app.entity.ProfilAgence;
-import ensembles.app.entity.User;
 import ensembles.app.entity.WebSite;
 
 @Stateless

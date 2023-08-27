@@ -1,7 +1,6 @@
 package ensembles.app.entity;
 
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,10 +32,10 @@ public class WebSite {
 		return "WebSite [id=" + id + ", logo=" + logo + ", imageBackground=" + imageBackground + ", color=" + color
 				+ ", imageAboutUs=" + imageAboutUs + ", aboutUs=" + aboutUs + ", profilAgence=" ;
 	}
+	
 	/*
 	 * getters & setters
 	 */
-
 
 	public Long getId() {
 		return id;

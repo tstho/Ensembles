@@ -3,8 +3,6 @@ package ensembles.app.service;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import ensembles.app.entity.Adresse;
-import ensembles.app.entity.ProfilAgence;
 import ensembles.app.entity.WebSite;
 import ensembles.app.repository.RepoWebSite;
 import ensembles.app.viewmodels.WebSiteViewModel;
@@ -32,10 +30,7 @@ public class WebSiteService {
 
 
 	public void modifyWebsite(WebSiteViewModel webSiteViewModel) {
-		
-		System.out.println("Le viewmodel dans le service");
-		System.out.println(webSiteViewModel);
-	
+			
 		WebSite webSite = repoWebSite.findById(webSiteViewModel.getId());
 
 		webSite.setLogo(webSiteViewModel.getLogo());
@@ -44,9 +39,6 @@ public class WebSiteService {
 		webSite.setImageAboutUs(webSiteViewModel.getImageAboutUs());
 		webSite.setAboutUs(webSiteViewModel.getAboutUs());
 		webSite.setProfilAgence(webSiteViewModel.getProfilAgence());
-		
-		
-		System.out.println(webSite.toString());
 		
 		repoWebSite.update(webSite);
 	}

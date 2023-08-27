@@ -48,7 +48,18 @@ public class ControllerWebSite implements Serializable {
 	 */
 
 	public String redirectWebsite(Long websiteId) {
-	    return "http://127.0.0.1:8080/ensembles-app/templates/templateOne.xhtml?wsId=" + websiteId + "&faces-redirect=true";
+	    return "/templates/templateOne.xhtml?wsId=" + websiteId + "&faces-redirect=true";
+	}
+	/*
+	 * Redirection EspaceAgence -> Website
+	 */
+
+	public String redirectWebsiteViaAgence(Long userId) {
+		ProfilAgence profilAgence = profilAgenceService.findByUserId(userId);
+		WebSite webSite = repoWebSite.getWebsiteByAgence(profilAgence.getId());
+		websiteId = webSite.getId();
+
+	    return "/templates/templateOne.xhtml?wsId=" + websiteId + "&faces-redirect=true";
 	}
 	
     public void onPageLoad() {
@@ -116,15 +127,9 @@ public class ControllerWebSite implements Serializable {
 
 		webSiteService.modifyWebsite(webSiteViewModel);
 
-		resetViewModel();
-
-		return "/templates/templateOne.xhtml?faces-redirect=true";
+		return redirectWebsite(webSiteViewModel.getId());
 	}
 
-	private WebSiteViewModel resetViewModel() {
-		return this.webSiteViewModel = new WebSiteViewModel();
-
-	}
 
 	/*
 	 * getters & setters
